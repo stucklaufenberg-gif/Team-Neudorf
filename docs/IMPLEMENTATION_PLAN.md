@@ -65,3 +65,18 @@ Umsetzung ohne neue Abhängigkeit: CSS-Transforms, SVG und ein kleines Skript (`
 - Bildrate im Headless-Browser ohne GPU: Desktop-Hero ca. 30 fps (vor Optimierung 11), 390 px 60 fps. **Nicht gemessen:** echte Geräte mit Grafikkarte, Safari/Firefox, Screenreader.
 
 **Neue Kurztexte zur Freigabe:** Schnellkontakt-Beschriftungen „Anrufen“, „WhatsApp“, „Gespräch anfragen“; Navigationsbezeichnung „Stationen“.
+
+## 9. Cloudflare-Pages-Vorschau (Testumgebung)
+**Einstellungen im Cloudflare-Dashboard:** Framework Astro · Build-Befehl `npm run build` · Ausgabeordner `dist` · Node 22 (über `.nvmrc`) · Branch `claude/busy-hopper-kebr8h`. Keine Umgebungsvariablen nötig.
+
+**Vorschau-Modus** (`src/data/env.ts`) ist bei jedem Cloudflare-Pages-Build automatisch aktiv (`CF_PAGES=1`):
+- `noindex, nofollow` auf allen Seiten, `robots.txt` sperrt alles, zusätzlich `X-Robots-Tag` für `*.pages.dev` (`public/_headers`).
+- Sichtbare Kennzeichnung „Testumgebung · nicht öffentlich“.
+- Formulare (Kontakt, Schaden) senden nichts: Hinweis im Formular, beim Absenden klare Meldung mit E-Mail, Telefon und WhatsApp. Kein vorgetäuschter Versand.
+- Für einen späteren Livegang auf Cloudflare: Umgebungsvariable `PUBLIC_PREVIEW=false` setzen.
+
+**Verhalten von Cloudflare Pages bei `.html`-Adressen:** `/polizei.html` wird per 308 auf `/polizei` weitergeleitet (Plattformverhalten, nicht abschaltbar). Alle bisherigen Adressen bleiben damit erreichbar; Canonical-Tags zeigen weiter auf die `.html`-Adressen der Hauptdomain. Sollen die `.html`-Adressen im Livebetrieb exakt ohne Weiterleitung ausgeliefert werden, entweder auf dem bisherigen Webspace bleiben (mit `.htaccess`) oder Cloudflare Workers Static Assets mit `html_handling: "none"` nutzen.
+
+**Geprüft mit dem lokalen Cloudflare-Emulator (`wrangler pages dev dist`):** 54 Seitenaufrufe (27 Seiten × 390/1440 px) ohne Überlauf, Konsolen- oder Ladefehler; 26 interne Linkziele erreichbar; eigene 404-Seite; Navigation per Klick und mobilem Menü; Motion aktiv; Formulare senden keinen POST.
+
+**Vor dem produktiven Livegang:** Formular-Backend (bisherige PHP-Skripte auf dem alten Webspace oder Ersatz, z. B. Cloudflare Pages Function mit Mailversand – braucht Anbieterentscheidung und Datenschutzprüfung) · Rechtstexte prüfen und Datenschutzerklärung anpassen · fachliche Freigabe der neuen Kurztexte · Porträt in hoher Auflösung · Aktuelles aktualisieren · Entscheidung Hosting und `.html`-Strategie · Vorschau-Modus abschalten · Domain erst danach umstellen · Test auf echten Geräten/Safari.

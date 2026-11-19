@@ -9,6 +9,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
+import { isPreview } from '../data/env';
 
 interface Props {
   title: string;
@@ -26,13 +27,13 @@ const quick = !['/kontakt.html', '/schaden-melden.html', '/danke.html', '/schade
 const ogImage = site.url + '/assets/images/logo-header.png';
 ---
 <!doctype html>
-<html lang="de">
+<html lang="de" data-preview={isPreview ? '' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {(noindex || isPreview) && <meta name="robots" content={isPreview ? 'noindex, nofollow' : 'noindex'} />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#011D37" />
@@ -49,6 +50,7 @@ const ogImage = site.url + '/assets/images/logo-header.png';
   </head>
   <body class:list={[{ 'is-home': home }]}>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
+    {isPreview && <p class="preview-flag" role="note">Testumgebung · nicht öffentlich</p>}
     <Header path={path} />
     <main id="main">
       <slot />

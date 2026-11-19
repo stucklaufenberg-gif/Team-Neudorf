@@ -163,6 +163,17 @@ document.querySelectorAll<HTMLFormElement>('form[action$=".php"]').forEach((form
   form.addEventListener('submit', async (e) => {
     if (!form.checkValidity()) return; // Browser zeigt die Pflichtfeld-Hinweise
     e.preventDefault();
+    if (document.documentElement.hasAttribute('data-preview')) {
+      // Testumgebung: Es gibt hier kein Formular-Backend – nichts senden, nichts vortäuschen.
+      status.innerHTML =
+        '<strong>Testumgebung: Dieses Formular ist in der Vorschau nicht angeschlossen. Es wurde nichts gesendet.</strong> ' +
+        `Sie können Ihre Angaben <a href="${mailtoFallback()}">als vorbereitete E-Mail senden</a>, ` +
+        'anrufen (<a href="tel:+4922569596141">02256 9596141</a>) oder ' +
+        '<a href="https://wa.me/4922569596141?text=Hallo%20Team-Neudorf%2C%20ich%20habe%20eine%20Frage" target="_blank" rel="noopener">per WhatsApp schreiben</a>.';
+      status.hidden = false;
+      status.scrollIntoView({ block: 'center', behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      return;
+    }
     form.setAttribute('aria-busy', 'true');
     status.hidden = true;
     try {
