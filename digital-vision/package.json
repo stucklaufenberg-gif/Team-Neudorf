@@ -1,0 +1,24 @@
+{
+  "name": "team-neudorf-digital-vision",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "astro dev --port 4500",
+    "build": "astro build",
+    "preview": "astro preview --port 4500",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "astro": "^7.4.13",
+    "sharp": "^0.35.5",
+    "typescript": "^6.0.3"
+  }
+}
