@@ -1,0 +1,253 @@
+---
+// Automatisch aus legacy/lehramt.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenLehramt from '../assets/images/sparten/lehramt.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Lehramt",
+            "item": "https://www.team-neudorf.de/lehramt.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bin ich im Referendariat schon beihilfeberechtigt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. In NRW leisten Sie den Vorbereitungsdienst als Beamtin oder Beamter auf Widerruf und erhalten Anwärterbezüge. Damit haben Sie Anspruch auf Beihilfe nach der Beihilfenverordnung NRW, in der Regel 50 Prozent. Die übrigen Kosten sichern Sie über eine beihilfekonforme private Krankenversicherung ab. Viele Versicherer bieten dafür Anwärtertarife an, die nach dem Referendariat auf den regulären Tarif umgestellt werden."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie hoch ist die Beihilfe in NRW?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ohne Kind oder mit einem Kind übernimmt die Beihilfe 50 Prozent, ab zwei berücksichtigungsfähigen Kindern 70 Prozent. Für Ihre Kinder sind es 80 Prozent, für Ihren Ehepartner 70 Prozent und im Ruhestand ebenfalls 70 Prozent. Sind beide Eltern beihilfeberechtigt, erhält nur einer den erhöhten Satz. Ihr Ehepartner ist nur berücksichtigungsfähig, wenn seine Einkünfte im Vorjahr unter einer festen Grenze liegen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was gilt bei der Gesundheitsprüfung und bei Vorerkrankungen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vor der Übernahme in das Beamtenverhältnis auf Probe prüft der amtsärztliche Dienst Ihre gesundheitliche Eignung, die Entscheidung trifft die Bezirksregierung. Machen Sie dort vollständige Angaben, denn ein verschwiegener Eingriff kann die Verbeamtung kosten. Mit Vorerkrankungen hilft die Öffnungsaktion der privaten Krankenversicherung. Sie werden ohne Leistungsausschlüsse aufgenommen, der Risikozuschlag beträgt höchstens 30 Prozent. Den Antrag stellen Sie innerhalb von sechs Monaten nach der ersten Verbeamtung."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Bleibt die Beihilfe in Teilzeit oder Elternzeit bestehen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Arbeiten Sie mindestens die Hälfte der regelmäßigen Arbeitszeit, erhalten Sie Beihilfe zum vollen Bemessungssatz. Bei weniger besteht grundsätzlich kein Anspruch, für Teilzeit während der Elternzeit gelten Sonderregeln. In einer Elternzeit ohne Bezüge bekommen Sie weiter Leistungen entsprechend der Beihilfe. Zusätzlich können Ihnen je nach Besoldung Beiträge zur Kranken- und Pflegeversicherung erstattet werden. Klären Sie die Einzelheiten vorab mit dem LBV NRW."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was gilt, wenn ich nicht verbeamtet werde?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ins Beamtenverhältnis auf Probe übernommen werden kann in NRW nur, wer das 42. Lebensjahr noch nicht vollendet hat. Die Grenze verschiebt sich um Zeiten der Kinderbetreuung, der Pflege oder des Wehrdienstes. Als angestellte Lehrkraft nach TV-L sind Sie in der Regel gesetzlich versichert und erhalten keine Beihilfe. An die Stelle der Dienstunfähigkeit tritt bei Ihnen die Erwerbsminderung, deshalb wird eine Berufsunfähigkeitsversicherung wichtig."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert, wenn ich in den ersten Dienstjahren dienstunfähig werde?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ein Ruhegehalt setzt in NRW mindestens fünf Jahre Dienstzeit voraus. Die Ausnahme ist eine Dienstunfähigkeit durch den Dienst, etwa nach einem Dienstunfall; das gilt ab der Probezeit. Im Referendariat werden Sie bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus anderen Gründen dienstunfähig, zum Beispiel durch eine Krankheit, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Die Beihilfe entfällt dann. Achten Sie darauf, dass Ihre Dienstunfähigkeitsversicherung schon für Beamte auf Widerruf und auf Probe leistet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wann hafte ich als Lehrkraft für Schäden?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Verletzen Sie die Aufsichtspflicht oder beschädigen Sie fremdes Eigentum, haftet gegenüber Dritten zunächst das Land. Bei Vorsatz oder grober Fahrlässigkeit kann es Sie nach § 48 Beamtenstatusgesetz in Regress nehmen. Für angestellte Lehrkräfte gilt über den TV-L dasselbe. Typische Fälle sind ein verlorener Generalschlüssel, der eine neue Schließanlage nötig macht, oder Schäden auf Klassenfahrten. Eine Diensthaftpflicht mit Schlüsselrisiko übernimmt solche Forderungen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungen für Lehrkräfte und Referendare | Team-Neudorf"} description={"Absicherung für Lehrkräfte und Referendare: beihilfekonforme private Krankenversicherung, Diensthaftpflicht für den Schulalltag, Dienstunfähigkeit, Vorsorge."} path="/lehramt.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Lehramt</nav>
+        <h1>Absicherung für Lehrkräfte &amp; Referendare</h1>
+        <p>Vom Referendariat über die Verbeamtung bis in den Ruhestand: Als Lehrkraft profitieren Sie von besonderen Vorteilen, wenn Sie sie richtig nutzen.</p>
+        </div>
+        <figure class="page-hero__media foto-lehramt">
+          <Picture src={imgSpartenLehramt} alt="Lehrer an einer grünen Tafel" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Lehramt</span>
+          <h2>Ihr Beruf bringt echte Vorteile mit</h2>
+          <p class="lead">Als Beamtin oder Beamter auf Widerruf, Probe oder Lebenszeit haben Sie Anspruch auf Beihilfe, sofern Sie mindestens die Hälfte der regelmäßigen Arbeitszeit arbeiten. Den Rest sichern Sie mit einer beihilfekonformen privaten Krankenversicherung ab.</p>
+          <p>Gleichzeitig sollten typische Risiken des Schulalltags abgesichert sein: von der Aufsichtspflicht bis zur Dienstunfähigkeit. Wir zeigen Ihnen, worauf es ankommt.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Beihilfe &amp; private Krankenversicherung</strong>Zum Referendariat gibt es Anwärtertarife, die danach umgestellt werden. Wir finden den passenden beihilfekonformen Tarif.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Diensthaftpflicht für den Schulalltag</strong>Schutz bei Aufsichtspflichtverletzungen, Schlüsselverlust und Sachschäden.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Dienstunfähigkeit absichern</strong>Gerade im Lehrberuf ein wichtiges Thema, mit einer passenden DU-Klausel.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Altersvorsorge &amp; Pensionslücke</strong>Wer nicht die volle Pension erreicht, sollte die Lücke rechtzeitig schließen.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Beihilfekonforme PKV zum Referendariat</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Diensthaftpflicht speziell für Lehrkräfte</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Dienstunfähigkeit im Schuldienst</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Altersvorsorge &amp; Pensionsplanung</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg></div>
+            <h3>Früh einsteigen lohnt sich</h3>
+            <p>Zum Referendariat sind Sie meist jung und gesund: ideale Voraussetzungen für eine günstige private Krankenversicherung mit guten Leistungen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg></div>
+            <h3>Haftung im Schulalltag</h3>
+            <p>Aufsichtspflicht, Klassenfahrten, Schlüssel für die Schule: Bei grober Fahrlässigkeit kann das Land Sie in Regress nehmen, etwa nach einem verlorenen Generalschlüssel. Eine Diensthaftpflicht übernimmt solche Forderungen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Dienstunfähigkeit absichern</h3>
+            <p>Wird eine Lehrkraft dienstunfähig, gibt es in den ersten fünf Dienstjahren in der Regel gar kein Ruhegehalt, und auch später fällt es oft niedriger aus als erwartet. Die richtige Absicherung fängt das ab.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Gut zu wissen:</strong> Beihilfesätze und Verbeamtungsregeln unterscheiden sich je nach Bundesland und Dienstverhältnis. Wir berücksichtigen Ihre konkrete Situation.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung im Lehramt</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Bin ich im Referendariat schon beihilfeberechtigt?</summary>
+            <p>Ja. In NRW leisten Sie den Vorbereitungsdienst als Beamtin oder Beamter auf Widerruf und erhalten Anwärterbezüge. Damit haben Sie Anspruch auf Beihilfe nach der Beihilfenverordnung NRW, in der Regel 50 Prozent. Die übrigen Kosten sichern Sie über eine beihilfekonforme private Krankenversicherung ab. Viele Versicherer bieten dafür Anwärtertarife an, die nach dem Referendariat auf den regulären Tarif umgestellt werden.</p>
+          </details>
+          <details>
+            <summary>Wie hoch ist die Beihilfe in NRW?</summary>
+            <p>Ohne Kind oder mit einem Kind übernimmt die Beihilfe 50 Prozent, ab zwei berücksichtigungsfähigen Kindern 70 Prozent. Für Ihre Kinder sind es 80 Prozent, für Ihren Ehepartner 70 Prozent und im Ruhestand ebenfalls 70 Prozent. Sind beide Eltern beihilfeberechtigt, erhält nur einer den erhöhten Satz. Ihr Ehepartner ist nur berücksichtigungsfähig, wenn seine Einkünfte im Vorjahr unter einer festen Grenze liegen.</p>
+          </details>
+          <details>
+            <summary>Was gilt bei der Gesundheitsprüfung und bei Vorerkrankungen?</summary>
+            <p>Vor der Übernahme in das Beamtenverhältnis auf Probe prüft der amtsärztliche Dienst Ihre gesundheitliche Eignung, die Entscheidung trifft die Bezirksregierung. Machen Sie dort vollständige Angaben, denn ein verschwiegener Eingriff kann die Verbeamtung kosten. Mit Vorerkrankungen hilft die Öffnungsaktion der privaten Krankenversicherung. Sie werden ohne Leistungsausschlüsse aufgenommen, der Risikozuschlag beträgt höchstens 30 Prozent. Den Antrag stellen Sie innerhalb von sechs Monaten nach der ersten Verbeamtung.</p>
+          </details>
+          <details>
+            <summary>Bleibt die Beihilfe in Teilzeit oder Elternzeit bestehen?</summary>
+            <p>Arbeiten Sie mindestens die Hälfte der regelmäßigen Arbeitszeit, erhalten Sie Beihilfe zum vollen Bemessungssatz. Bei weniger besteht grundsätzlich kein Anspruch, für Teilzeit während der Elternzeit gelten Sonderregeln. In einer Elternzeit ohne Bezüge bekommen Sie weiter Leistungen entsprechend der Beihilfe. Zusätzlich können Ihnen je nach Besoldung Beiträge zur Kranken- und Pflegeversicherung erstattet werden. Klären Sie die Einzelheiten vorab mit dem LBV NRW.</p>
+          </details>
+          <details>
+            <summary>Was gilt, wenn ich nicht verbeamtet werde?</summary>
+            <p>Ins Beamtenverhältnis auf Probe übernommen werden kann in NRW nur, wer das 42. Lebensjahr noch nicht vollendet hat. Die Grenze verschiebt sich um Zeiten der Kinderbetreuung, der Pflege oder des Wehrdienstes. Als angestellte Lehrkraft nach TV-L sind Sie in der Regel gesetzlich versichert und erhalten keine Beihilfe. An die Stelle der Dienstunfähigkeit tritt bei Ihnen die Erwerbsminderung, deshalb wird eine Berufsunfähigkeitsversicherung wichtig.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ich in den ersten Dienstjahren dienstunfähig werde?</summary>
+            <p>Ein Ruhegehalt setzt in NRW mindestens fünf Jahre Dienstzeit voraus. Die Ausnahme ist eine Dienstunfähigkeit durch den Dienst, etwa nach einem Dienstunfall; das gilt ab der Probezeit. Im Referendariat werden Sie bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus anderen Gründen dienstunfähig, zum Beispiel durch eine Krankheit, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Die Beihilfe entfällt dann. Achten Sie darauf, dass Ihre Dienstunfähigkeitsversicherung schon für Beamte auf Widerruf und auf Probe leistet.</p>
+          </details>
+          <details>
+            <summary>Wann hafte ich als Lehrkraft für Schäden?</summary>
+            <p>Verletzen Sie die Aufsichtspflicht oder beschädigen Sie fremdes Eigentum, haftet gegenüber Dritten zunächst das Land. Bei Vorsatz oder grober Fahrlässigkeit kann es Sie nach § 48 Beamtenstatusgesetz in Regress nehmen. Für angestellte Lehrkräfte gilt über den TV-L dasselbe. Typische Fälle sind ein verlorener Generalschlüssel, der eine neue Schließanlage nötig macht, oder Schäden auf Klassenfahrten. Eine Diensthaftpflicht mit Schlüsselrisiko übernimmt solche Forderungen.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Kostenlose Checkliste für Anwärterinnen und Anwärter in NRW:</strong> Alle wichtigen Schritte und Fristen zum Start ins Beamtenverhältnis auf zwei Seiten zum Abhaken, von der Krankenversicherung bis zur Dienstunfähigkeit.
+          <div class="u-mt-s"><a class="btn btn--accent" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download>Checkliste herunterladen (PDF)</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und speziell auf den Lehrberuf zugeschnitten.</p>
+</CtaBand>
+</Base>

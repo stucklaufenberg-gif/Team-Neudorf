@@ -1,0 +1,18 @@
+---
+// Automatisch aus legacy/danke.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+const jsonLd: unknown[] = [];
+---
+<Base title={"Danke | Team-Neudorf"} description={"Vielen Dank für Ihre Anfrage an Team-Neudorf. Wir melden uns zeitnah bei Ihnen."} path="/danke.html" noindex jsonLd={jsonLd}>
+<section class="section">
+      <div class="container text-center container--narrow">
+        <div class="card__icon success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="34" height="34"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+        </div>
+        <h1>Vielen Dank für Ihre Anfrage!</h1>
+        <p class="lead">Ihre Nachricht ist bei uns eingegangen. Wir melden uns zeitnah persönlich bei Ihnen, in der Regel innerhalb eines Werktags.</p>
+        <a class="btn btn--primary u-mt-s" href="/">Zurück zur Startseite</a>
+      </div>
+    </section>
+</Base>

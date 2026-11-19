@@ -1,0 +1,281 @@
+---
+// Automatisch aus legacy/bundespolizei.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenBundespolizei from '../assets/images/sparten/bundespolizei.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Bundespolizei",
+            "item": "https://www.team-neudorf.de/bundespolizei.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Wer erhält bei der Bundespolizei Heilfürsorge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nach § 70 Abs. 2 BBesG erhalten Polizeivollzugsbeamtinnen und Polizeivollzugsbeamte der Bundespolizei Heilfürsorge, solange sie Anspruch auf Besoldung haben. Das gilt schon in der Ausbildung. Ein Wahlrecht zwischen Heilfürsorge und Beihilfe gibt es nicht. Wer in der Verwaltung der Bundespolizei arbeitet, ist kein Vollzugsbeamter und fällt nicht darunter. Einzelheiten regelt die Bundespolizei-Heilfürsorgeverordnung (BPolHfV)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Muss ich bei der Heilfürsorge des Bundes etwas zuzahlen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Die BPolHfV orientiert sich an der gesetzlichen Krankenversicherung, Zuzahlungen und Belastungsgrenzen gelten entsprechend dem SGB V. Individuelle Gesundheitsleistungen zahlen Sie selbst. Im Krankenhaus haben Sie Anspruch auf die allgemeinen Krankenhausleistungen, privat vereinbarte Chefarztbehandlung tragen Sie selbst. Bei Zahnimplantaten übernimmt die Heilfürsorge die Hälfte. Solche Lücken lassen sich gezielt mit einer Zusatzversicherung schließen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was gilt bei Pflegebedürftigkeit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Die Heilfürsorge erbringt Pflegeleistungen nach dem SGB XI nur zur Hälfte. Für die andere Hälfte kommt die Pflegeversicherung auf, die Sie als Polizeivollzugsbeamtin oder Polizeivollzugsbeamter selbst abschließen. Achten Sie darauf, dass dieser Tarif genau auf die hälftige Leistung abgestimmt ist. Die Feststellung der Pflegebedürftigkeit übernimmt der medizinische Dienst Ihrer privaten Pflegeversicherung."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert mit der Heilfürsorge im Ruhestand?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Polizeivollzugsbeamtinnen und Polizeivollzugsbeamte der Bundespolizei treten mit Ende des Monats in den Ruhestand, in dem sie das 62. Lebensjahr vollenden (§ 5 BPolBG). Für ältere Jahrgänge gelten Übergangsregeln. Mit dem Ruhestand endet die Heilfürsorge. Danach erhalten Sie Beihilfe nach der Bundesbeihilfeverordnung mit 70 Prozent, die übrigen 30 Prozent sichern Sie über eine private Krankenversicherung ab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wann sollte ich eine Anwartschaft abschließen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Am besten gleich zu Beginn. Für Heilfürsorgeberechtigte gilt die Öffnungsaktion der PKV nur für eine Anwartschaft auf eine beihilfekonforme Krankenversicherung. Der Antrag muss innerhalb von sechs Monaten ab Beginn der Heilfürsorge gestellt werden, nicht erst beim Wechsel in die Beihilfe. Die Bedingungen der Anwartschaft gelten dann auch für den späteren Vollschutz."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie ist meine Familie abgesichert?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ihre Angehörigen haben keinen Anspruch auf Heilfürsorge, eine Familienversicherung wie in der gesetzlichen Krankenversicherung gibt es nicht. Berücksichtigungsfähige Ehegatten und Kinder erhalten aber Beihilfe nach der Bundesbeihilfeverordnung: 70 Prozent für Ehegatten, 80 Prozent für Kinder. Für Ehegatten gilt eine Einkommensgrenze. Den Rest sichern Sie über eine beihilfekonforme private Krankenversicherung ab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert bei Polizeidienstunfähigkeit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nach § 4 BPolBG sind Sie polizeidienstunfähig, wenn Sie den besonderen gesundheitlichen Anforderungen nicht mehr genügen und innerhalb von zwei Jahren keine volle Verwendungsfähigkeit zu erwarten ist. Dann prüft der Dienstherr eine anderweitige Verwendung. Ein Ruhegehalt gibt es grundsätzlich erst nach fünf Jahren Dienstzeit (§ 4 BeamtVG), außer bei einer Dienstbeschädigung. Eine Dienstunfähigkeitsversicherung mit PDU-Klausel schließt diese Lücke."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungen für die Bundespolizei | Team-Neudorf"} description={"Absicherung für die Bundespolizei: Heilfürsorge ergänzen, Polizeidienstunfähigkeit, Anwartschaft, Diensthaftpflicht, Rechtsschutz und Unfallschutz."} path="/bundespolizei.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Bundespolizei</nav>
+        <h1>Absicherung für die Bundespolizei</h1>
+        <p>Grenzschutz, Bahn- und Luftsicherheit, bundesweite Einsätze: Als Polizeivollzugsbeamtin oder Polizeivollzugsbeamter der Bundespolizei sind Sie Bundesbeamter, mit besonderen Ansprüchen und Risiken. Wir richten Ihre Absicherung genau darauf aus.</p>
+        </div>
+        <figure class="page-hero__media foto-bundespolizei">
+          <Picture src={imgSpartenBundespolizei} alt="Beamter der Bundespolizei in Uniform" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Bundespolizei</span>
+          <h2>Wer bundesweit einsteht, braucht verlässlichen Rückhalt</h2>
+          <p class="lead">Ob an der Grenze, am Bahnhof, am Flughafen oder in der Bereitschaftspolizei: Als Beamtin oder Beamter der Bundespolizei erhalten Sie im aktiven Dienst <strong>Heilfürsorge</strong> statt Beihilfe. Und die <strong>Polizeidienstunfähigkeit</strong> will besonders sorgfältig abgesichert sein.</p>
+          <p>Häufig wechselnde Einsatzorte, bundesweite Verwendung und Sondereinsätze bringen eigene Anforderungen mit. Wir stimmen Ihre Absicherung genau darauf ab, heute und mit Blick auf später.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Polizeidienstunfähigkeit (PDU) absichern</strong>Polizeidienstunfähigkeit kann einen Laufbahnwechsel bedeuten, in den ersten Dienstjahren ohne Dienstbeschädigung sogar das Aus ohne Pension. Die passende PDU-Klausel ist entscheidend.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Heilfürsorge richtig nutzen</strong>Im Polizeivollzugsdienst immer Heilfürsorge. Dazu eine Anwartschaft, damit später der Zugang zur privaten Krankenversicherung offensteht.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Diensthaftpflicht &amp; Einsatzrisiken</strong>Schutz bei Schäden an Dienstwaffe und Ausrüstung, Schlüsselverlust und Regressforderungen.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Straf- &amp; Dienstrechtsschutz</strong>Rückhalt bei Vorwürfen nach der Anwendung unmittelbaren Zwangs, auch wenn sie unbegründet sind.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Polizeidienstunfähigkeit (PDU)</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Heilfürsorgekonforme Absicherung &amp; Anwartschaft</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Diensthaftpflicht für den Einsatzdienst</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Straf-/Dienstrechtsschutz &amp; Unfallschutz</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Die richtige DU-Klausel</h3>
+            <p>Wie bei der Landespolizei entscheidet die passende Klausel zur Polizeidienstunfähigkeit darüber, ob im Ernstfall wirklich geleistet wird. Wir achten genau darauf.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+            <h3>Heilfürsorge &amp; danach</h3>
+            <p>Im Polizeivollzugsdienst erhalten Sie Heilfürsorge. Wir sorgen für den passenden Baustein und mit einer <a href="/anwartschaft.html">Anwartschaft</a> für den späteren Zugang zur privaten Krankenversicherung.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25l7.5 3v5.25c0 4.66-3.2 8.5-7.5 9.75-4.3-1.25-7.5-5.09-7.5-9.75V5.25l7.5-3z"/></svg></div>
+            <h3>Bundesweit im Einsatz</h3>
+            <p>Grenzschutz, Bahn- und Luftsicherheit, Sondereinsätze und wechselnde Einsatzorte: Wir denken auch an flexible Lösungen und einen Unfall- und Auslandsschutz, der überall mitgeht.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Landespolizei oder Zoll?</strong> Für die Landespolizei haben wir eine <a href="/polizei.html">eigene Seite</a>. Der <a href="/zoll.html">Zoll</a> ist ebenfalls Bundesbehörde, dort gilt aber <strong>Beihilfe</strong> statt Heilfürsorge. Die Regelungen unterscheiden sich je nach Dienstherr; Ihre konkrete Situation schauen wir uns gemeinsam an.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Speziell für den Einsatzdienst</span>
+          <h2>Zwei Risiken, die im Bundespolizei-Alltag oft unterschätzt werden</h2>
+          <p>Neben Krankenversicherung und Dienstunfähigkeit gibt es zwei Themen, die gerade im Vollzugsdienst richtig teuer werden können. Für beide gibt es passende Lösungen.</p>
+        </div>
+        <div class="grid grid--2">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z"/></svg></div>
+            <h3>Diensthaftpflicht: Dienstwaffe, Schlüssel &amp; Regress</h3>
+            <p>Als Beamtin oder Beamter haften Sie Ihrem Dienstherrn gegenüber bei Vorsatz und grober Fahrlässigkeit, und das kann schnell existenziell werden. Versicherbar ist die grobe Fahrlässigkeit.</p>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Verlust eines Dienst- oder Generalschlüssels: Der Austausch ganzer Schließanlagen geht schnell in die Tausende</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Schäden an Dienstwaffe, Dienstfahrzeug oder Einsatzausrüstung</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Regressforderungen des Dienstherrn bei grob fahrlässig verursachten Schäden</span></li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg></div>
+            <h3>Straf- &amp; Dienstrechtsschutz</h3>
+            <p>Wer im Einsatz Verantwortung übernimmt, kann selbst ins Visier geraten, manchmal auch zu Unrecht. Ein guter Rechtsschutz hält Ihnen den Rücken frei.</p>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Vorwürfe nach der Anwendung unmittelbaren Zwangs (z. B. Körperverletzung im Amt)</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Straf- und Disziplinarverfahren rund um die Dienstausübung</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Unterstützung bei Widerspruch und Klage in dienstrechtlichen Fragen</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung bei der Bundespolizei</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Wer erhält bei der Bundespolizei Heilfürsorge?</summary>
+            <p>Nach § 70 Abs. 2 BBesG erhalten Polizeivollzugsbeamtinnen und Polizeivollzugsbeamte der Bundespolizei Heilfürsorge, solange sie Anspruch auf Besoldung haben. Das gilt schon in der Ausbildung. Ein Wahlrecht zwischen Heilfürsorge und Beihilfe gibt es nicht. Wer in der Verwaltung der Bundespolizei arbeitet, ist kein Vollzugsbeamter und fällt nicht darunter. Einzelheiten regelt die Bundespolizei-Heilfürsorgeverordnung (BPolHfV).</p>
+          </details>
+          <details>
+            <summary>Muss ich bei der Heilfürsorge des Bundes etwas zuzahlen?</summary>
+            <p>Ja. Die BPolHfV orientiert sich an der gesetzlichen Krankenversicherung, Zuzahlungen und Belastungsgrenzen gelten entsprechend dem SGB V. Individuelle Gesundheitsleistungen zahlen Sie selbst. Im Krankenhaus haben Sie Anspruch auf die allgemeinen Krankenhausleistungen, privat vereinbarte Chefarztbehandlung tragen Sie selbst. Bei Zahnimplantaten übernimmt die Heilfürsorge die Hälfte. Solche Lücken lassen sich gezielt mit einer Zusatzversicherung schließen.</p>
+          </details>
+          <details>
+            <summary>Was gilt bei Pflegebedürftigkeit?</summary>
+            <p>Die Heilfürsorge erbringt Pflegeleistungen nach dem SGB XI nur zur Hälfte. Für die andere Hälfte kommt die Pflegeversicherung auf, die Sie als Polizeivollzugsbeamtin oder Polizeivollzugsbeamter selbst abschließen. Achten Sie darauf, dass dieser Tarif genau auf die hälftige Leistung abgestimmt ist. Die Feststellung der Pflegebedürftigkeit übernimmt der medizinische Dienst Ihrer privaten Pflegeversicherung.</p>
+          </details>
+          <details>
+            <summary>Was passiert mit der Heilfürsorge im Ruhestand?</summary>
+            <p>Polizeivollzugsbeamtinnen und Polizeivollzugsbeamte der Bundespolizei treten mit Ende des Monats in den Ruhestand, in dem sie das 62. Lebensjahr vollenden (§ 5 BPolBG). Für ältere Jahrgänge gelten Übergangsregeln. Mit dem Ruhestand endet die Heilfürsorge. Danach erhalten Sie Beihilfe nach der Bundesbeihilfeverordnung mit 70 Prozent, die übrigen 30 Prozent sichern Sie über eine private Krankenversicherung ab.</p>
+          </details>
+          <details>
+            <summary>Wann sollte ich eine Anwartschaft abschließen?</summary>
+            <p>Am besten gleich zu Beginn. Für Heilfürsorgeberechtigte gilt die Öffnungsaktion der PKV nur für eine Anwartschaft auf eine beihilfekonforme Krankenversicherung. Der Antrag muss innerhalb von sechs Monaten ab Beginn der Heilfürsorge gestellt werden, nicht erst beim Wechsel in die Beihilfe. Die Bedingungen der Anwartschaft gelten dann auch für den späteren Vollschutz.</p>
+          </details>
+          <details>
+            <summary>Wie ist meine Familie abgesichert?</summary>
+            <p>Ihre Angehörigen haben keinen Anspruch auf Heilfürsorge, eine Familienversicherung wie in der gesetzlichen Krankenversicherung gibt es nicht. Berücksichtigungsfähige Ehegatten und Kinder erhalten aber Beihilfe nach der Bundesbeihilfeverordnung: 70 Prozent für Ehegatten, 80 Prozent für Kinder. Für Ehegatten gilt eine Einkommensgrenze. Den Rest sichern Sie über eine beihilfekonforme private Krankenversicherung ab.</p>
+          </details>
+          <details>
+            <summary>Was passiert bei Polizeidienstunfähigkeit?</summary>
+            <p>Nach § 4 BPolBG sind Sie polizeidienstunfähig, wenn Sie den besonderen gesundheitlichen Anforderungen nicht mehr genügen und innerhalb von zwei Jahren keine volle Verwendungsfähigkeit zu erwarten ist. Dann prüft der Dienstherr eine anderweitige Verwendung. Ein Ruhegehalt gibt es grundsätzlich erst nach fünf Jahren Dienstzeit (§ 4 BeamtVG), außer bei einer Dienstbeschädigung. Eine Dienstunfähigkeitsversicherung mit PDU-Klausel schließt diese Lücke.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/zoll.html">Zoll</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/lehramt.html">Lehramt</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und speziell auf den Bundespolizeidienst zugeschnitten.</p>
+</CtaBand>
+</Base>

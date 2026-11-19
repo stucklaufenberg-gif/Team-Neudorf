@@ -1,0 +1,248 @@
+---
+// Automatisch aus legacy/versicherungsmakler-mechernich.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgStefanPortrait from '../assets/images/stefan-portrait.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "InsuranceAgency",
+        "name": "Team-Neudorf Versicherungen",
+        "url": "https://www.team-neudorf.de/",
+        "image": "https://www.team-neudorf.de/assets/images/logo-header.png",
+        "telephone": "+49 2256 9596141",
+        "email": "info@team-neudorf.de",
+        "founder": {
+          "@type": "Person",
+          "name": "Stefan Neudorf"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "An der Quelle 1",
+          "postalCode": "53894",
+          "addressLocality": "Mechernich",
+          "addressCountry": "DE"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Mechernich"
+          },
+          {
+            "@type": "City",
+            "name": "Euskirchen"
+          },
+          {
+            "@type": "City",
+            "name": "Zülpich"
+          },
+          {
+            "@type": "City",
+            "name": "Weilerswist"
+          },
+          {
+            "@type": "City",
+            "name": "Kall"
+          },
+          {
+            "@type": "City",
+            "name": "Schleiden"
+          },
+          {
+            "@type": "City",
+            "name": "Hellenthal"
+          },
+          {
+            "@type": "City",
+            "name": "Nettersheim"
+          },
+          {
+            "@type": "City",
+            "name": "Bad Münstereifel"
+          },
+          {
+            "@type": "City",
+            "name": "Blankenheim"
+          },
+          {
+            "@type": "City",
+            "name": "Swisttal"
+          },
+          {
+            "@type": "City",
+            "name": "Bonn"
+          },
+          {
+            "@type": "City",
+            "name": "Köln"
+          }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "09:00",
+            "closes": "14:00"
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Versicherungsmakler in Mechernich",
+            "item": "https://www.team-neudorf.de/versicherungsmakler-mechernich.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Muss ich für die Beratung nach Mechernich kommen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nein. Viele Gespräche führen wir per Video oder Telefon. Unterlagen tauschen wir sicher per E-Mail aus. Wer lieber persönlich spricht, ist nach Terminvereinbarung in meinem Büro in Mechernich herzlich willkommen. Gern komme ich auch zu Ihnen nach Hause."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was kostet die Beratung?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Das Erstgespräch ist kostenlos und unverbindlich. Für die Vermittlung erhält Team-Neudorf eine Courtage vom Versicherer. Sie ist bereits in Ihrem Versicherungsbeitrag enthalten, ein separates Honorar zahlen Sie dafür nicht."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Beraten Sie auch Privat- und Firmenkunden aus der Region?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. Neben dem Öffentlichen Dienst berate ich Familien, Privatpersonen und Betriebe aus Mechernich und dem Kreis Euskirchen, von der Haftpflicht über die Wohngebäudeversicherung bis zur betrieblichen Absicherung."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungsmakler in Mechernich, Euskirchen und der Eifel | Team-Neudorf"} description={"Ihr Versicherungsmakler in Mechernich für den Kreis Euskirchen, Bonn und Köln. Persönlich im Büro oder bei Ihnen zu Hause, per Video oder Telefon. Erstgespräch kostenlos."} path="/versicherungsmakler-mechernich.html" jsonLd={jsonLd}>
+<section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / Versicherungsmakler in Mechernich</nav>
+        <h1>Ihr Versicherungsmakler in Mechernich, Euskirchen und der Eifel</h1>
+        <p>Team-Neudorf Versicherungen ist mein Maklerbüro in Mechernich. Von hier aus berate ich Beamtinnen, Beamte und Beschäftigte im Öffentlichen Dienst, Familien und Betriebe aus der ganzen Region.</p>
+        <div class="chip-row u-mt-m">
+          <a class="btn btn--primary" href="/kontakt.html">Gespräch anfragen</a>
+          <a class="btn btn--accent" href="https://outlook.office.com/bookwithme/user/97a5ff73feed4b1e9a061a36c0169eaf@team-neudorf.de?anonymous&amp;ep=plink" target="_blank" rel="noopener">Termin online buchen</a>
+          <a class="btn btn--outline" href="tel:+4922569596141">02256 9596141</a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container about-grid">
+        <div class="prose u-max-none">
+          <span class="eyebrow">Hier berate ich Sie</span>
+          <h2 class="u-mt-xs">Zu Hause in der Region</h2>
+          <p>Ich lebe und arbeite in Mechernich und kenne die Wege in der Region. Aus diesen Orten erreichen Sie mich gut:</p>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Mechernich mit allen Ortsteilen, zum Beispiel Kommern, Satzvey und Firmenich</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Euskirchen, Zülpich und Weilerswist</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Kall, Schleiden, Hellenthal und Nettersheim</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Bad Münstereifel und Blankenheim</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Swisttal, Bonn und Köln</span></li>
+          </ul>
+          <p>Wohnen Sie weiter weg, beraten wir uns einfach per Video oder Telefon.</p>
+          <h3>So läuft die Beratung</h3>
+          <p><strong>Persönlich in meinem Büro:</strong> An der Quelle 1, 53894 Mechernich, nach Terminvereinbarung.</p>
+          <p><strong>Bei Ihnen zu Hause:</strong> in der Region, ebenfalls nach Terminvereinbarung.</p>
+          <p><strong>Per Video:</strong> ganz bequem von zu Hause aus.</p>
+          <p><strong>Am Telefon oder per WhatsApp:</strong> für kurze Fragen zwischendurch.</p>
+          <p>Das Erstgespräch ist kostenlos und unverbindlich.</p>
+        </div>
+        <div>
+          <Picture src={imgStefanPortrait} alt="Stefan Neudorf, Versicherungsmakler in Mechernich" formats={["avif", "webp"]} widths={[480, 900]} sizes="(max-width: 900px) 90vw, 420px" class="about-photo" loading="lazy" />
+          <aside class="hero__card u-mt-m">
+            <h2>Kontakt und Erreichbarkeit</h2>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span><strong>Büro:</strong> An der Quelle 1, 53894 Mechernich</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span><strong>Telefon:</strong> <a href="tel:+4922569596141">02256 9596141</a></span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span><strong>E-Mail:</strong> <a href="mailto:info@team-neudorf.de">info@team-neudorf.de</a></span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span><strong>Erreichbar:</strong> Montag bis Donnerstag 9 bis 17 Uhr, Freitag 9 bis 14 Uhr</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span><strong>Vor Ort:</strong> im Büro oder bei Ihnen, nach Terminvereinbarung</span></li>
+            </ul>
+            <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Gespräch anfragen</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container text-center container--narrow">
+        <span class="eyebrow">Öffentlicher Dienst in der Region</span>
+        <h2>Ich kenne Ihre Regeln</h2>
+        <p>Viele meiner Kundinnen und Kunden arbeiten im Öffentlichen Dienst hier vor Ort: bei der Polizei, in der Justiz und im Justizvollzug, bei der Feuerwehr, in Schulen, in der Kreis- und Stadtverwaltung oder an einem der Bundeswehrstandorte wie Mechernich, Euskirchen oder Nörvenich. Ich kenne die Regeln für Beihilfe, Heilfürsorge und Dienstunfähigkeit in NRW und beim Bund. Als ehemaliger Soldat kenne ich einen Teil des Öffentlichen Dienstes auch aus eigener Erfahrung.</p>
+        <div class="chip-row chip-row--center u-mt-m">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/lehramt.html">Lehramt</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/zoll.html">Zoll</a>
+        </div>
+        <p class="u-mt-m">Neben dem Öffentlichen Dienst berate ich auch <a href="/privatkunden.html">Privatkunden</a> und <a href="/firmenkunden.html">Firmenkunden</a> aus der Region.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Beratung in der Region</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Muss ich für die Beratung nach Mechernich kommen?</summary>
+            <p>Nein. Viele Gespräche führen wir per Video oder Telefon. Unterlagen tauschen wir sicher per E-Mail aus. Wer lieber persönlich spricht, ist nach Terminvereinbarung in meinem Büro in Mechernich herzlich willkommen. Gern komme ich auch zu Ihnen nach Hause.</p>
+          </details>
+          <details>
+            <summary>Was kostet die Beratung?</summary>
+            <p>Das Erstgespräch ist kostenlos und unverbindlich. Für die Vermittlung erhält Team-Neudorf eine Courtage vom Versicherer. Sie ist bereits in Ihrem Versicherungsbeitrag enthalten, ein separates Honorar zahlen Sie dafür nicht.</p>
+          </details>
+          <details>
+            <summary>Beraten Sie auch Privat- und Firmenkunden aus der Region?</summary>
+            <p>Ja. Neben dem Öffentlichen Dienst berate ich Familien, Privatpersonen und Betriebe aus Mechernich und dem Kreis Euskirchen, von der Haftpflicht über die Wohngebäudeversicherung bis zur betrieblichen Absicherung.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Persönlich in der Region" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lernen wir uns kennen</Fragment>
+<p>Ein erstes Gespräch ist unverbindlich, kostenlos und oft der wichtigste Schritt zu einer guten Absicherung.</p>
+</CtaBand>
+</Base>

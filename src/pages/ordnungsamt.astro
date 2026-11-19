@@ -1,0 +1,225 @@
+---
+// Automatisch aus legacy/ordnungsamt.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenOrdnungsamt from '../assets/images/sparten/ordnungsamt.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Ordnungsamt",
+            "item": "https://www.team-neudorf.de/ordnungsamt.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bin ich im Ordnungsamt verbeamtet oder tarifbeschäftigt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Beides kommt vor. Tarifbeschäftigte nach TVöD sind gesetzlich kranken- und rentenversichert und in der Zusatzversorgung bei der RZVK oder kvw. Beamtinnen und Beamte erhalten Beihilfe nach der Beihilfenverordnung NRW und später Ruhegehalt. Ihr Status entscheidet, welche Absicherung Sie wirklich brauchen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was gilt, wenn ich im Dienst angegriffen werde?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Tarifbeschäftigter ist das ein Arbeitsunfall, für den die Unfallkasse NRW zuständig ist. Sie zahlt Heilbehandlung, Reha, Verletztengeld und eine Verletztenrente, wenn Ihre Erwerbsfähigkeit über die 26. Woche hinaus um mindestens 20 Prozent gemindert ist. Schmerzensgeld zahlt sie nicht. Beamte erhalten Dienstunfallfürsorge. Zahlt der Täter kein Schmerzensgeld, kann der Dienstherr nach § 82a LBG NRW einspringen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hafte ich privat für Schäden im Außendienst?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, bei Vorsatz oder grober Fahrlässigkeit. Für Tarifbeschäftigte gelten über § 3 Abs. 7 TVöD dieselben Regeln wie für Beamte nach § 48 BeamtStG. Typische Fälle sind ein Unfall mit dem Dienstwagen, ein beschädigtes Dienstgerät oder ein verlorener Generalschlüssel mit teurem Schließanlagentausch. Eine Diensthaftpflicht übernimmt grobe Fahrlässigkeit, Vorsatz ist nie versichert."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wozu brauche ich einen Rechtsschutz?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wer Platzverweise durchsetzt oder Bußgelder verhängt, muss mit Beschwerden und Strafanzeigen rechnen, etwa wegen Nötigung oder Körperverletzung. Ein Strafrechtsschutz trägt Anwalts- und Verfahrenskosten. Bei einem Vorsatzvorwurf leistet er in der Regel, solange Sie nicht rechtskräftig wegen Vorsatzes verurteilt werden. Prüfen Sie vorher, welchen Rechtsschutz Ihre Gewerkschaft schon bietet, damit nichts doppelt läuft."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert, wenn ich den Außendienst gesundheitlich nicht mehr schaffe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wenn Sie noch im Innendienst oder in einer anderen Tätigkeit sechs Stunden täglich arbeiten können, gibt es als Tarifbeschäftigter keine Erwerbsminderungsrente. Eine Berufsunfähigkeitsversicherung ohne abstrakte Verweisung leistet, wenn Sie Ihren bisherigen Beruf in der Regel zu mindestens 50 Prozent nicht mehr ausüben können. Für Beamte gelten die Fünfjahresregel und die Dienstunfähigkeitsklausel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungen für das Ordnungsamt | Team-Neudorf"} description={"Absicherung für Ordnungsamt und kommunalen Ordnungsdienst: Beamte oder Tarif, Diensthaftpflicht, Straf- und Dienstrechtsschutz, Unfall- und Einkommensschutz."} path="/ordnungsamt.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Ordnungsamt</nav>
+        <h1>Absicherung für das Ordnungsamt</h1>
+        <p>Ob kommunaler Ordnungsdienst, Verkehrsüberwachung oder Gewerbeüberwachung: Sie sorgen für Sicherheit und Ordnung, oft im direkten Kontakt mit Bürgerinnen und Bürgern. Genau darauf stimmen wir Ihre Absicherung ab.</p>
+        </div>
+        <figure class="page-hero__media foto-ordnungsamt">
+          <Picture src={imgSpartenOrdnungsamt} alt="Belebte Innenstadt" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Ordnungsamt</span>
+          <h2>Verantwortung im Außendienst, gut abgesichert</h2>
+          <p class="lead">Im Ordnungsamt sind Sie je nach Kommune verbeamtet oder tarifbeschäftigt. Daraus ergibt sich, welche Absicherung für Sie sinnvoll ist. Der Außendienst bringt zudem eigene Risiken mit: Haftung, Konflikte und die Gefahr von Übergriffen.</p>
+          <p>Wir ordnen zuerst Ihren Status ein und bauen darauf einen Schutz, der wirklich zu Ihrem Alltag passt, ohne unnötige Doppelungen.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Status klären: Beamter oder Beschäftigter</strong>Beamte mit Beihilfe &amp; Pension, Tarifbeschäftigte mit gesetzlicher Absicherung und Zusatzversorgung (bei Kommunen im Rheinland die RZVK).</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Diensthaftpflicht für den Außendienst</strong>Schutz bei dienstlich verursachten Schäden, Schlüsselverlust und Regressforderungen.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Straf- &amp; Dienstrechtsschutz</strong>Rückhalt bei Vorwürfen, Widersprüchen und Konflikten rund um die Dienstausübung.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Unfallschutz &amp; Einkommen sichern</strong>Für Übergriffe und Unfälle im Außendienst und falls Sie Ihren Dienst gesundheitlich nicht mehr ausüben können.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Statusgerechte Kranken- &amp; Einkommensabsicherung</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Diensthaftpflicht inkl. Schlüssel &amp; Ausrüstung</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Straf- &amp; Dienstrechtsschutz für den Außendienst</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Unfallschutz &amp; Vorsorge</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21a.75.75 0 0 1 .75.75V21"/></svg></div>
+            <h3>Ihr Status entscheidet</h3>
+            <p>Verbeamtet oder tarifbeschäftigt? Davon hängt ab, ob Beihilfe und Pension oder gesetzliche Versicherung und Zusatzversorgung im Mittelpunkt stehen. Der erste Schritt ist immer die saubere Einordnung.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z"/></svg></div>
+            <h3>Haftung &amp; Recht im Außendienst</h3>
+            <p>Kontrollen, Platzverweise und Ordnungswidrigkeiten führen leicht zu Konflikten. Diensthaftpflicht und ein guter Straf- und Dienstrechtsschutz halten Ihnen bei Vorwürfen und Schäden den Rücken frei.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></div>
+            <h3>Übergriffe &amp; Einkommen</h3>
+            <p>Im Außendienst erleben Beschäftigte immer wieder Beleidigungen und Übergriffe. Gesetzlich sind Sie über die Unfallkasse NRW oder die Dienstunfallfürsorge geschützt. Ein privater Unfallschutz als Ergänzung und eine passende Absicherung Ihrer Arbeitskraft sorgen dafür, dass Sie finanziell abgesichert bleiben.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Gut zu wissen:</strong> Ob Sie im Ordnungsamt verbeamtet oder tarifbeschäftigt sind, ist je nach Kommune unterschiedlich und entscheidet über die sinnvolle Absicherung. Ihre konkrete Situation ordnen wir gemeinsam ein.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung im Ordnungsamt</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Bin ich im Ordnungsamt verbeamtet oder tarifbeschäftigt?</summary>
+            <p>Beides kommt vor. Tarifbeschäftigte nach TVöD sind gesetzlich kranken- und rentenversichert und in der Zusatzversorgung bei der RZVK oder kvw. Beamtinnen und Beamte erhalten Beihilfe nach der Beihilfenverordnung NRW und später Ruhegehalt. Ihr Status entscheidet, welche Absicherung Sie wirklich brauchen.</p>
+          </details>
+          <details>
+            <summary>Was gilt, wenn ich im Dienst angegriffen werde?</summary>
+            <p>Als Tarifbeschäftigter ist das ein Arbeitsunfall, für den die Unfallkasse NRW zuständig ist. Sie zahlt Heilbehandlung, Reha, Verletztengeld und eine Verletztenrente, wenn Ihre Erwerbsfähigkeit über die 26. Woche hinaus um mindestens 20 Prozent gemindert ist. Schmerzensgeld zahlt sie nicht. Beamte erhalten Dienstunfallfürsorge. Zahlt der Täter kein Schmerzensgeld, kann der Dienstherr nach § 82a LBG NRW einspringen.</p>
+          </details>
+          <details>
+            <summary>Hafte ich privat für Schäden im Außendienst?</summary>
+            <p>Ja, bei Vorsatz oder grober Fahrlässigkeit. Für Tarifbeschäftigte gelten über § 3 Abs. 7 TVöD dieselben Regeln wie für Beamte nach § 48 BeamtStG. Typische Fälle sind ein Unfall mit dem Dienstwagen, ein beschädigtes Dienstgerät oder ein verlorener Generalschlüssel mit teurem Schließanlagentausch. Eine Diensthaftpflicht übernimmt grobe Fahrlässigkeit, Vorsatz ist nie versichert.</p>
+          </details>
+          <details>
+            <summary>Wozu brauche ich einen Rechtsschutz?</summary>
+            <p>Wer Platzverweise durchsetzt oder Bußgelder verhängt, muss mit Beschwerden und Strafanzeigen rechnen, etwa wegen Nötigung oder Körperverletzung. Ein Strafrechtsschutz trägt Anwalts- und Verfahrenskosten. Bei einem Vorsatzvorwurf leistet er in der Regel, solange Sie nicht rechtskräftig wegen Vorsatzes verurteilt werden. Prüfen Sie vorher, welchen Rechtsschutz Ihre Gewerkschaft schon bietet, damit nichts doppelt läuft.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ich den Außendienst gesundheitlich nicht mehr schaffe?</summary>
+            <p>Wenn Sie noch im Innendienst oder in einer anderen Tätigkeit sechs Stunden täglich arbeiten können, gibt es als Tarifbeschäftigter keine Erwerbsminderungsrente. Eine Berufsunfähigkeitsversicherung ohne abstrakte Verweisung leistet, wenn Sie Ihren bisherigen Beruf in der Regel zu mindestens 50 Prozent nicht mehr ausüben können. Für Beamte gelten die Fünfjahresregel und die Dienstunfähigkeitsklausel.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/sozial-erziehungsdienst.html">Sozial- &amp; Erziehungsdienst</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und passend zu Ihrem Dienst im Ordnungsamt.</p>
+</CtaBand>
+</Base>

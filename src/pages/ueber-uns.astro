@@ -1,0 +1,98 @@
+---
+// Automatisch aus legacy/ueber-uns.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgStefanPortrait from '../assets/images/stefan-portrait.jpg';
+const jsonLd: unknown[] = [];
+---
+<Base title={"Über uns: Stefan Neudorf | Team-Neudorf Versicherungen"} description={"Stefan Neudorf, Versicherungsmakler in Mechernich: spezialisiert auf den Öffentlichen Dienst und ebenso für Privat- und Firmenkunden da."} path="/ueber-uns.html" jsonLd={jsonLd}>
+<section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / Über uns</nav>
+        <h1>Über Team-Neudorf</h1>
+        <p>Ein persönlicher Ansprechpartner, der die Welt des Öffentlichen Dienstes kennt und Ihre Absicherung so ehrlich plant, als wäre es die eigene.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container about-grid">
+        <div class="prose u-max-none">
+          <span class="eyebrow">Wer hinter Team-Neudorf steht</span>
+          <h2 class="u-mt-xs">Mein Name ist Stefan Neudorf</h2>
+          <p>Bevor ich mich für den Weg in die Versicherungsbranche entschieden habe, war ich Soldat bei der Bundeswehr und unter anderem im Auslandseinsatz in Afghanistan.</p>
+          <p>Diese Zeit hat mich geprägt. Sie hat mir gezeigt, wie wichtig Verantwortung, Verlässlichkeit und gegenseitiges Vertrauen sind. Gleichzeitig habe ich selbst erlebt, dass bestimmte Berufsgruppen besonderen Belastungen ausgesetzt sind und ihre persönliche Absicherung nicht immer so einfach zu verstehen ist.</p>
+          <h3>Mein Weg nach der Bundeswehr</h3>
+          <p>Nach meinem Ausscheiden aus der Bundeswehr absolvierte ich eine Ausbildung zum Kaufmann für Büromanagement in einem Autohaus. Nach meiner Ausbildung übernahm ich dort die Leitung einer Filiale. Dadurch durfte ich früh Verantwortung übernehmen und viele unterschiedliche Menschen kennenlernen.</p>
+          <p>Gerade der persönliche Kontakt war für mich dabei immer besonders wichtig. Ich wollte mein Gegenüber verstehen und nicht einfach irgendeine Lösung anbieten. Jeder Mensch befindet sich in einer anderen Lebenssituation, hat andere Ziele, Sorgen und Vorstellungen. Darauf einzugehen und gemeinsam einen passenden Weg zu finden, hat für mich schon immer eine gute Beratung ausgemacht.</p>
+          <p>Mit den Themen Absicherung und Vorsorge habe ich mich bereits seit längerer Zeit beschäftigt. Schließlich wurde mir bewusst, dass ich genau in diesem Bereich meine bisherigen Erfahrungen und meine persönliche Einstellung miteinander verbinden kann.</p>
+          <h3>Worauf es mir heute ankommt</h3>
+          <p>Heute möchte ich vor allem Familien, junge Menschen sowie Beschäftigte und Beamte im Öffentlichen Dienst dabei begleiten, wichtige Entscheidungen für ihre Zukunft zu treffen. Dabei geht es mir nicht darum, möglichst viele Versicherungen abzuschließen. Mir ist wichtig, verständlich zu erklären, ehrlich zu beraten und nur das abzusichern, was zur persönlichen Lebenssituation passt.</p>
+          <p>Durch meine eigene Zeit bei der Bundeswehr kenne ich einen Teil des Öffentlichen Dienstes nicht nur aus der Theorie. Ich weiß, dass hinter jedem Beruf ein Mensch mit einer eigenen Geschichte, einer Familie und persönlichen Zukunftsplänen steht.</p>
+          <p>Ich bin selbst verheiratet und Vater von drei Kindern. Familie und Zukunftssicherheit sind für mich also nicht nur berufliche Themen. Sie begleiten mich jeden Tag ganz persönlich.</p>
+          <p>Genau deshalb ist diese Arbeit für mich mehr als nur ein Beruf. Menschen dabei zu unterstützen, sich selbst und ihre Familie sinnvoll für die Zukunft abzusichern, ist für mich eine echte Herzensangelegenheit.</p>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Lernen Sie mich kennen</a>
+        </div>
+        <div>
+          <Picture src={imgStefanPortrait} alt="Stefan Neudorf, Versicherungsmakler bei Team-Neudorf" formats={["avif", "webp"]} widths={[480, 900]} sizes="(max-width: 900px) 90vw, 420px" class="about-photo" loading="lazy" />
+          <aside class="hero__card u-mt-m">
+          <h2>Auf einen Blick</h2>
+          <ul class="checklist">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Beruf:</strong> Versicherungsmakler</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Tätig seit:</strong> 2024</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Region:</strong> <a href="/versicherungsmakler-mechernich.html">Mechernich, Euskirchen, Bonn &amp; Köln</a></span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Beratung:</strong> vor Ort, telefonisch oder online</span>
+            </li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Kontakt aufnehmen</a>
+        </aside>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Wofür wir stehen</span>
+          <h2>Unsere Grundsätze</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg>
+            </div>
+            <h3>Auf Ihrer Seite</h3>
+            <p>Wir sind keinem einzelnen Anbieter verpflichtet, sondern Ihren Interessen. So entsteht eine ehrliche Empfehlung.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg>
+            </div>
+            <h3>Spezialisierung</h3>
+            <p>Beihilfe, Dienstunfähigkeit, Pension: Wir kennen die Besonderheiten des Öffentlichen Dienstes im Detail.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 0 1 1.037-.443 48.282 48.282 0 0 0 5.68-.494c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
+            </div>
+            <h3>Verlässlichkeit</h3>
+            <p>Wir bleiben Ihr Ansprechpartner, auch nach dem Abschluss und wenn sich im Leben etwas ändert.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Sympathie geweckt?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lernen wir uns kennen</Fragment>
+<p>Ein erstes Gespräch ist unverbindlich, kostenlos und oft der wichtigste Schritt zu einer guten Absicherung.</p>
+</CtaBand>
+</Base>

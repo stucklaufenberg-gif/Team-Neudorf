@@ -1,0 +1,285 @@
+---
+// Automatisch aus legacy/polizei.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenPolizei from '../assets/images/sparten/polizei.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Polizei",
+            "item": "https://www.team-neudorf.de/polizei.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Ab wann habe ich Anspruch auf freie Heilfürsorge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nach § 112 Abs. 2 LBG NRW besteht der Anspruch, solange Ihnen Besoldung zusteht. Anwärterbezüge zählen zur Besoldung, deshalb gilt das schon im Studium als Kommissaranwärterin oder Kommissaranwärter. Die Leistungen kommen als Sachleistung und richten sich grundsätzlich nach dem SGB V. Zuzahlungen wie in der gesetzlichen Krankenversicherung fallen nach der Polizei-Heilfürsorgeverordnung (FHVOPol) nicht an."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was ändert sich im Ruhestand?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Polizeivollzugsbeamtinnen und Polizeivollzugsbeamte auf Lebenszeit treten in NRW mit Ende des Monats in den Ruhestand, in dem sie das 62. Lebensjahr vollenden (§ 114 LBG NRW). Nach langjährigem Wechselschichtdienst kann die Grenze früher liegen. Mit dem Ruhestand endet die freie Heilfürsorge. Sie erhalten dann Beihilfe nach der BVO NRW mit 70 Prozent, die übrigen 30 Prozent sichern Sie privat ab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Warum sollte ich früh eine Anwartschaft abschließen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Eine Anwartschaft hält Ihnen den späteren Wechsel in eine beihilfekonforme private Krankenversicherung offen, und zwar zu den Bedingungen von heute. Heilfürsorgeberechtigte können die Öffnungsaktion der PKV nur für eine solche Anwartschaft nutzen, und nur innerhalb von sechs Monaten nach Beginn der Heilfürsorge. Wer erst kurz vor dem Ruhestand handelt, kann diesen erleichterten Zugang nicht mehr nutzen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ist meine Familie über die Heilfürsorge mitversichert?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nein, die freie Heilfürsorge gilt nur für Sie persönlich. Für berücksichtigungsfähige Angehörige können Sie Beihilfe nach der BVO NRW beantragen: 70 Prozent für Ehegatten oder eingetragene Lebenspartner, 80 Prozent für Kinder. Für Ehegatten gilt eine Einkommensgrenze. Den Rest decken Sie über eine beihilfekonforme private Krankenversicherung. Damit Ihre Angehörigen die Öffnungsaktion nutzen können, brauchen Sie selbst eine Anwartschaft."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Bekomme ich neben der Heilfürsorge auch Beihilfe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, aber nur nachrangig. Die Beihilfe beteiligt sich etwa an Mehrkosten für Zweibettzimmer und Chefarzt, an privatärztlichen Rechnungen, an Heilpraktikerkosten und an Zahnersatz, soweit die Heilfürsorge nicht leistet. Erstattet wird nur zu Ihrem persönlichen Bemessungssatz, bei Wahlleistungen zieht die Beihilfe zusätzlich einen Selbstbehalt ab. Diese Lücke können Sie mit einem passenden Ergänzungstarif schließen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was bedeutet Polizeidienstunfähigkeit konkret?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nach § 115 LBG NRW sind Sie polizeidienstunfähig, wenn Sie den besonderen gesundheitlichen Anforderungen des Vollzugsdienstes nicht mehr genügen. Hinzukommen muss, dass innerhalb von zwei Jahren keine volle Verwendungsfähigkeit zu erwarten ist. Das führt nicht automatisch in den Ruhestand. Ist eine andere Verwendung möglich, auch in einer anderen Laufbahn, hat sie Vorrang (§ 26 BeamtStG). Eine echte PDU-Klausel leistet schon bei Polizeidienstunfähigkeit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Warum ist die Absicherung in den ersten Dienstjahren so wichtig?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ein Ruhegehalt gibt es erst nach fünf Jahren Dienstzeit (§ 4 LBeamtVG NRW). Ausgenommen ist eine Dienstunfähigkeit durch Krankheit oder Verletzung, die Sie sich ohne grobes Verschulden im Dienst zugezogen haben; das gilt ab der Probezeit. Im Studium werden Sie bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus anderen Gründen dienstunfähig, erhalten Sie keine Pension. Im Studium und in der Probezeit schließt eine Dienstunfähigkeitsversicherung mit PDU-Klausel genau diese Lücke."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungen für die Polizei | Team-Neudorf"} description={"Absicherung für die Polizei: Polizeidienstunfähigkeit, Heilfürsorge ergänzen, Anwartschaft, Diensthaftpflicht für Dienstwaffe und Schlüssel, Rechtsschutz."} path="/polizei.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Polizei</nav>
+        <h1>Absicherung für den Polizeivollzugsdienst</h1>
+        <p>Sie sorgen jeden Tag für Sicherheit, oft in Situationen, die keiner planen kann. Genau deshalb verdienen Sie einen Schutz, der die besonderen Regeln des Polizeidienstes kennt.</p>
+        </div>
+        <figure class="page-hero__media foto-polizei">
+          <Picture src={imgSpartenPolizei} alt="Uniform von hinten mit dem Rückenaufdruck Polizei" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Polizei</span>
+          <h2>Wer täglich einsteht, braucht verlässlichen Rückhalt</h2>
+          <p class="lead">Ob Streifendienst, Kriminalpolizei oder Bereitschaftspolizei: Als Polizeivollzugsbeamtin oder -beamter erhalten Sie in NRW im aktiven Dienst freie <strong>Heilfürsorge</strong>. Beihilfe gibt es daneben nur ergänzend, etwa für Wahlleistungen und für Ihre Angehörigen. Und die <strong>Polizeidienstunfähigkeit</strong> will besonders sorgfältig abgesichert sein.</p>
+          <p>Standardlösungen greifen hier zu kurz. Wir stimmen Ihre Absicherung genau auf Ihren Dienst ab, heute und mit Blick auf später.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Polizeidienstunfähigkeit (PDU) absichern</strong>Polizeidienstunfähigkeit kann einen Laufbahnwechsel bedeuten, in den ersten Dienstjahren ohne Dienstbeschädigung sogar das Aus ohne Pension. Die passende PDU-Klausel ist entscheidend.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Heilfürsorge richtig nutzen</strong>In NRW im aktiven Dienst immer freie Heilfürsorge. Dazu eine Anwartschaft, damit später der Zugang zur privaten Krankenversicherung offensteht.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Diensthaftpflicht &amp; Einsatzrisiken</strong>Schutz bei Schäden an Dienstwaffe und Ausrüstung, Schlüsselverlust und Regressforderungen.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Straf- &amp; Dienstrechtsschutz</strong>Rückhalt bei Vorwürfen nach der Anwendung unmittelbaren Zwangs, auch wenn sie unbegründet sind.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Polizeidienstunfähigkeit (PDU)</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Heilfürsorgekonforme Absicherung &amp; Anwartschaft</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Diensthaftpflicht für den Streifen- &amp; Einsatzdienst</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Straf-/Dienstrechtsschutz &amp; Unfallschutz</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Die richtige DU-Klausel</h3>
+            <p>Bei der Polizei entscheidet die passende Klausel zur Polizeidienstunfähigkeit darüber, ob im Ernstfall wirklich geleistet wird. Wir achten genau darauf.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+            <h3>Heilfürsorge &amp; danach</h3>
+            <p>Im aktiven Dienst erhalten Sie in NRW freie Heilfürsorge. Wir sorgen für den passenden Baustein und mit einer <a href="/anwartschaft.html">Anwartschaft</a> für den späteren Zugang zur privaten Krankenversicherung.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25l7.5 3v5.25c0 4.66-3.2 8.5-7.5 9.75-4.3-1.25-7.5-5.09-7.5-9.75V5.25l7.5-3z"/></svg></div>
+            <h3>Einsatz &amp; Haftung</h3>
+            <p>Ob Sachschaden im Einsatz, Schlüsselverlust oder ein Vorwurf nach Zwangsanwendung: Die passende Diensthaftpflicht und ein guter Rechtsschutz nehmen Ihnen den Rücken frei.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Auch bei der Berufsfeuerwehr?</strong> Für den Einsatzdienst der Feuerwehr haben wir eine <a href="/berufsfeuerwehr.html">eigene Seite</a>. Und wenn Sie beim <a href="/zoll.html">Zoll</a> sind: Der Zoll ist Bundesbehörde mit Beihilfe (nicht Heilfürsorge). Die Heilfürsorge-Regelungen unterscheiden sich zudem je nach Dienstherr und Bundesland. Ihre konkrete Situation schauen wir uns gemeinsam an.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Speziell für den Einsatzdienst</span>
+          <h2>Zwei Risiken, die im Polizeialltag oft unterschätzt werden</h2>
+          <p>Neben Krankenversicherung und Dienstunfähigkeit gibt es zwei Themen, die gerade im Polizeidienst richtig teuer werden können. Für beide gibt es passende Lösungen.</p>
+        </div>
+        <div class="grid grid--2">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z"/></svg></div>
+            <h3>Diensthaftpflicht: Dienstwaffe, Schlüssel &amp; Regress</h3>
+            <p>Als Beamtin oder Beamter haften Sie Ihrem Dienstherrn gegenüber bei Vorsatz und grober Fahrlässigkeit, und das kann schnell existenziell werden. Versicherbar ist die grobe Fahrlässigkeit.</p>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Verlust eines Dienst- oder Generalschlüssels: Der Austausch ganzer Schließanlagen geht schnell in die Tausende</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Schäden an Dienstwaffe, Dienstfahrzeug oder Einsatzausrüstung</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Regressforderungen des Dienstherrn bei grob fahrlässig verursachten Schäden</span></li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg></div>
+            <h3>Straf- &amp; Dienstrechtsschutz</h3>
+            <p>Wer im Einsatz Verantwortung übernimmt, kann selbst ins Visier geraten, manchmal auch zu Unrecht. Ein guter Rechtsschutz hält Ihnen den Rücken frei.</p>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Vorwürfe nach der Anwendung unmittelbaren Zwangs (z. B. Körperverletzung im Amt)</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Straf- und Disziplinarverfahren rund um die Dienstausübung</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Unterstützung bei Widerspruch und Klage in dienstrechtlichen Fragen</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung bei der Polizei</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Ab wann habe ich Anspruch auf freie Heilfürsorge?</summary>
+            <p>Nach § 112 Abs. 2 LBG NRW besteht der Anspruch, solange Ihnen Besoldung zusteht. Anwärterbezüge zählen zur Besoldung, deshalb gilt das schon im Studium als Kommissaranwärterin oder Kommissaranwärter. Die Leistungen kommen als Sachleistung und richten sich grundsätzlich nach dem SGB V. Zuzahlungen wie in der gesetzlichen Krankenversicherung fallen nach der Polizei-Heilfürsorgeverordnung (FHVOPol) nicht an.</p>
+          </details>
+          <details>
+            <summary>Was ändert sich im Ruhestand?</summary>
+            <p>Polizeivollzugsbeamtinnen und Polizeivollzugsbeamte auf Lebenszeit treten in NRW mit Ende des Monats in den Ruhestand, in dem sie das 62. Lebensjahr vollenden (§ 114 LBG NRW). Nach langjährigem Wechselschichtdienst kann die Grenze früher liegen. Mit dem Ruhestand endet die freie Heilfürsorge. Sie erhalten dann Beihilfe nach der BVO NRW mit 70 Prozent, die übrigen 30 Prozent sichern Sie privat ab.</p>
+          </details>
+          <details>
+            <summary>Warum sollte ich früh eine Anwartschaft abschließen?</summary>
+            <p>Eine Anwartschaft hält Ihnen den späteren Wechsel in eine beihilfekonforme private Krankenversicherung offen, und zwar zu den Bedingungen von heute. Heilfürsorgeberechtigte können die Öffnungsaktion der PKV nur für eine solche Anwartschaft nutzen, und nur innerhalb von sechs Monaten nach Beginn der Heilfürsorge. Wer erst kurz vor dem Ruhestand handelt, kann diesen erleichterten Zugang nicht mehr nutzen.</p>
+          </details>
+          <details>
+            <summary>Ist meine Familie über die Heilfürsorge mitversichert?</summary>
+            <p>Nein, die freie Heilfürsorge gilt nur für Sie persönlich. Für berücksichtigungsfähige Angehörige können Sie Beihilfe nach der BVO NRW beantragen: 70 Prozent für Ehegatten oder eingetragene Lebenspartner, 80 Prozent für Kinder. Für Ehegatten gilt eine Einkommensgrenze. Den Rest decken Sie über eine beihilfekonforme private Krankenversicherung. Damit Ihre Angehörigen die Öffnungsaktion nutzen können, brauchen Sie selbst eine Anwartschaft.</p>
+          </details>
+          <details>
+            <summary>Bekomme ich neben der Heilfürsorge auch Beihilfe?</summary>
+            <p>Ja, aber nur nachrangig. Die Beihilfe beteiligt sich etwa an Mehrkosten für Zweibettzimmer und Chefarzt, an privatärztlichen Rechnungen, an Heilpraktikerkosten und an Zahnersatz, soweit die Heilfürsorge nicht leistet. Erstattet wird nur zu Ihrem persönlichen Bemessungssatz, bei Wahlleistungen zieht die Beihilfe zusätzlich einen Selbstbehalt ab. Diese Lücke können Sie mit einem passenden Ergänzungstarif schließen.</p>
+          </details>
+          <details>
+            <summary>Was bedeutet Polizeidienstunfähigkeit konkret?</summary>
+            <p>Nach § 115 LBG NRW sind Sie polizeidienstunfähig, wenn Sie den besonderen gesundheitlichen Anforderungen des Vollzugsdienstes nicht mehr genügen. Hinzukommen muss, dass innerhalb von zwei Jahren keine volle Verwendungsfähigkeit zu erwarten ist. Das führt nicht automatisch in den Ruhestand. Ist eine andere Verwendung möglich, auch in einer anderen Laufbahn, hat sie Vorrang (§ 26 BeamtStG). Eine echte PDU-Klausel leistet schon bei Polizeidienstunfähigkeit.</p>
+          </details>
+          <details>
+            <summary>Warum ist die Absicherung in den ersten Dienstjahren so wichtig?</summary>
+            <p>Ein Ruhegehalt gibt es erst nach fünf Jahren Dienstzeit (§ 4 LBeamtVG NRW). Ausgenommen ist eine Dienstunfähigkeit durch Krankheit oder Verletzung, die Sie sich ohne grobes Verschulden im Dienst zugezogen haben; das gilt ab der Probezeit. Im Studium werden Sie bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus anderen Gründen dienstunfähig, erhalten Sie keine Pension. Im Studium und in der Probezeit schließt eine Dienstunfähigkeitsversicherung mit PDU-Klausel genau diese Lücke.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Kostenlose Checkliste für Anwärterinnen und Anwärter in NRW:</strong> Alle wichtigen Schritte und Fristen zum Start ins Beamtenverhältnis auf zwei Seiten zum Abhaken, von der Krankenversicherung bis zur Dienstunfähigkeit.
+          <div class="u-mt-s"><a class="btn btn--accent" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download>Checkliste herunterladen (PDF)</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/zoll.html">Zoll</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/lehramt.html">Lehramt</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und speziell auf den Polizeidienst zugeschnitten.</p>
+</CtaBand>
+</Base>

@@ -1,0 +1,225 @@
+---
+// Automatisch aus legacy/sozial-erziehungsdienst.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenSozialErziehungsdienst from '../assets/images/sparten/sozial-erziehungsdienst.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Sozial- und Erziehungsdienst",
+            "item": "https://www.team-neudorf.de/sozial-erziehungsdienst.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Welcher Tarif und welche Zusatzversorgung gelten für mich?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Das hängt vom Träger ab. Bei Kommunen gilt der TVöD Sozial- und Erziehungsdienst mit den S-Entgeltgruppen, die Zusatzversorgung läuft über die RZVK oder kvw. Bei katholischen Trägern gelten meist die AVR Caritas mit der KZVK Köln, bei evangelischen die AVR Diakonie mit der KZVK Dortmund. Bei anderen freien Trägern entscheidet Ihr Arbeitsvertrag."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hafte ich, wenn sich ein Kind unter meiner Aufsicht verletzt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kinder in Kitas sind über die Unfallkasse NRW gesetzlich unfallversichert. Ihnen gegenüber haften Sie für Personenschäden nur bei Vorsatz. Bei grober Fahrlässigkeit kann die Unfallkasse ihre Kosten aber von Ihnen zurückfordern. Schäden an Sachen oder bei Dritten, etwa ein vom Kind zerkratztes Auto, deckt sie nicht. Eine Diensthaftpflicht oder Berufshaftpflicht für Angestellte schließt diese Lücken."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wer ist für mich zuständig, wenn ich selbst einen Unfall habe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bei Arbeits- und Wegeunfällen sind Sie gesetzlich unfallversichert: bei kommunalen Arbeitgebern über die Unfallkasse NRW, bei freien und kirchlichen Trägern über eine Berufsgenossenschaft. Dieser Schutz gilt nur im Dienst und auf dem Arbeitsweg. Eine Rente gibt es erst ab einer Minderung der Erwerbsfähigkeit von 20 Prozent über die 26. Woche hinaus. Freizeitunfälle sind nicht erfasst."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Warum ist die Berufsunfähigkeitsversicherung so wichtig?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stimme, Rücken und psychische Belastung sind in Ihrem Beruf ständig gefordert. Die Erwerbsminderungsrente zahlt erst, wenn Sie in keinem Beruf mehr sechs Stunden täglich arbeiten können. Die Zusatzversorgung richtet sich danach. Eine Berufsunfähigkeitsversicherung prüft dagegen Ihre konkrete Tätigkeit. Weil Versicherer nach Behandlungen der letzten Jahre fragen, auch psychotherapeutischen, lohnt sich ein früher Abschluss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Reicht die Zusatzversorgung im Alter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sie ist eine wertvolle Betriebsrente, die nach 60 Beitragsmonaten entsteht. Zusammen mit der gesetzlichen Rente ersetzt sie Ihr letztes Nettoeinkommen aber in der Regel nicht vollständig. Ihre Renteninformation der Deutschen Rentenversicherung und die Mitteilung Ihrer Zusatzversorgungskasse zeigen Ihren aktuellen Stand. Auf dieser Grundlage lässt sich die verbleibende Lücke gezielt planen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungen für Sozial- und Erziehungsdienst | Team-Neudorf"} description={"Absicherung für Erzieher und Sozialarbeiter: Berufsunfähigkeit, Diensthaftpflicht mit Aufsichtspflicht, Zusatzversorgung ergänzen, Unfallschutz."} path="/sozial-erziehungsdienst.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Sozial- &amp; Erziehungsdienst</nav>
+        <h1>Absicherung für den Sozial- &amp; Erziehungsdienst</h1>
+        <p>Erzieherinnen und Erzieher, Sozialarbeiter:innen und Sozialpädagog:innen tragen jeden Tag Verantwortung für andere Menschen. Damit Sie selbst gut abgesichert sind, schauen wir genau auf Ihre Situation.</p>
+        </div>
+        <figure class="page-hero__media foto-sozial-erziehungsdienst">
+          <Picture src={imgSpartenSozialErziehungsdienst} alt="Erwachsene Hand führt eine Kinderhand beim Malen" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Sozial- &amp; Erziehungsdienst</span>
+          <h2>Ihre Arbeitskraft ist Ihr größtes Kapital</h2>
+          <p class="lead">Ob in Kita, Jugendhilfe oder sozialer Einrichtung: Meist sind Sie tarifbeschäftigt, bei Kommunen nach TVöD Sozial- und Erziehungsdienst, bei kirchlichen Trägern meist nach AVR. Sie sind gesetzlich versichert und über eine Zusatzversorgung abgesichert (kommunal RZVK, kirchlich KZVK). Die Belastung ist hoch, körperlich wie psychisch.</p>
+          <p>Genau deshalb steht die Absicherung Ihrer Arbeitskraft im Mittelpunkt, ergänzt um Haftung, Vorsorge und Gesundheit.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Berufsunfähigkeit absichern</strong>Fällt Ihre Arbeitskraft weg, sichert die BU Ihr Einkommen. Gerade bei hoher körperlicher und psychischer Belastung ist das wichtig.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Diensthaftpflicht &amp; Aufsichtspflicht</strong>Schutz bei Schäden im Dienst: von der Aufsichtspflicht über anvertraute Sachen bis zum Schlüsselverlust.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Zusatzversorgung sinnvoll ergänzen</strong>Die Zusatzversorgung ist eine gute Basis. Wir prüfen, wo eine private Altersvorsorge die Lücke schließt.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Gesundheit &amp; Unfall</strong>Sinnvolle Zusatzbausteine zur gesetzlichen Kasse und ein Unfallschutz rund um die Uhr.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Berufsunfähigkeit für soziale &amp; erzieherische Berufe</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Diensthaftpflicht inkl. Aufsichtspflicht &amp; Schlüssel</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Zusatzversorgung &amp; private Vorsorge</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Krankenzusatz &amp; Unfallschutz</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Arbeitskraft schützen</h3>
+            <p>Körperlich anstrengend und emotional fordernd: Stimme, Rücken und Psyche sind ständig gefordert. Eine gute Berufsunfähigkeitsversicherung ist deshalb die wichtigste Absicherung.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg></div>
+            <h3>Aufsichtspflicht &amp; Haftung</h3>
+            <p>Wer mit Kindern und Schutzbefohlenen arbeitet, trägt eine besondere Verantwortung. Verletzt sich ein Kind, zahlt die Unfallkasse, sie kann bei grober Fahrlässigkeit aber Regress nehmen. Eine Diensthaftpflicht schützt davor sowie bei Sachschäden und Schlüsselverlust.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"/></svg></div>
+            <h3>Vorsorge mit Weitblick</h3>
+            <p>Die Zusatzversorgung (kommunal RZVK, kirchlich KZVK) ist wertvoll, ersetzt aber selten das volle Einkommen. Mit einer privaten Ergänzung schließen Sie die Lücke rechtzeitig.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Gut zu wissen:</strong> Die meisten Beschäftigten im Sozial- und Erziehungsdienst sind tarifbeschäftigt, bei Kommunen nach TVöD SuE, bei kirchlichen Trägern meist nach AVR. Für Sie stehen Arbeitskraft, Haftung und Vorsorge im Vordergrund. Was konkret sinnvoll ist, klären wir gemeinsam.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung im Sozial- und Erziehungsdienst</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Welcher Tarif und welche Zusatzversorgung gelten für mich?</summary>
+            <p>Das hängt vom Träger ab. Bei Kommunen gilt der TVöD Sozial- und Erziehungsdienst mit den S-Entgeltgruppen, die Zusatzversorgung läuft über die RZVK oder kvw. Bei katholischen Trägern gelten meist die AVR Caritas mit der KZVK Köln, bei evangelischen die AVR Diakonie mit der KZVK Dortmund. Bei anderen freien Trägern entscheidet Ihr Arbeitsvertrag.</p>
+          </details>
+          <details>
+            <summary>Hafte ich, wenn sich ein Kind unter meiner Aufsicht verletzt?</summary>
+            <p>Kinder in Kitas sind über die Unfallkasse NRW gesetzlich unfallversichert. Ihnen gegenüber haften Sie für Personenschäden nur bei Vorsatz. Bei grober Fahrlässigkeit kann die Unfallkasse ihre Kosten aber von Ihnen zurückfordern. Schäden an Sachen oder bei Dritten, etwa ein vom Kind zerkratztes Auto, deckt sie nicht. Eine Diensthaftpflicht oder Berufshaftpflicht für Angestellte schließt diese Lücken.</p>
+          </details>
+          <details>
+            <summary>Wer ist für mich zuständig, wenn ich selbst einen Unfall habe?</summary>
+            <p>Bei Arbeits- und Wegeunfällen sind Sie gesetzlich unfallversichert: bei kommunalen Arbeitgebern über die Unfallkasse NRW, bei freien und kirchlichen Trägern über eine Berufsgenossenschaft. Dieser Schutz gilt nur im Dienst und auf dem Arbeitsweg. Eine Rente gibt es erst ab einer Minderung der Erwerbsfähigkeit von 20 Prozent über die 26. Woche hinaus. Freizeitunfälle sind nicht erfasst.</p>
+          </details>
+          <details>
+            <summary>Warum ist die Berufsunfähigkeitsversicherung so wichtig?</summary>
+            <p>Stimme, Rücken und psychische Belastung sind in Ihrem Beruf ständig gefordert. Die Erwerbsminderungsrente zahlt erst, wenn Sie in keinem Beruf mehr sechs Stunden täglich arbeiten können. Die Zusatzversorgung richtet sich danach. Eine Berufsunfähigkeitsversicherung prüft dagegen Ihre konkrete Tätigkeit. Weil Versicherer nach Behandlungen der letzten Jahre fragen, auch psychotherapeutischen, lohnt sich ein früher Abschluss.</p>
+          </details>
+          <details>
+            <summary>Reicht die Zusatzversorgung im Alter?</summary>
+            <p>Sie ist eine wertvolle Betriebsrente, die nach 60 Beitragsmonaten entsteht. Zusammen mit der gesetzlichen Rente ersetzt sie Ihr letztes Nettoeinkommen aber in der Regel nicht vollständig. Ihre Renteninformation der Deutschen Rentenversicherung und die Mitteilung Ihrer Zusatzversorgungskasse zeigen Ihren aktuellen Stand. Auf dieser Grundlage lässt sich die verbleibende Lücke gezielt planen.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/lehramt.html">Lehramt</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/ordnungsamt.html">Ordnungsamt</a>
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und passend zu Ihrem Beruf im Sozial- &amp; Erziehungsdienst.</p>
+</CtaBand>
+</Base>

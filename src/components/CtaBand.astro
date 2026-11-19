@@ -1,0 +1,21 @@
+---
+import SilkLines from './SilkLines.astro';
+import { site } from '../data/site';
+interface Props { eyebrow?: string; href: string; label: string }
+const { eyebrow, href, label } = Astro.props;
+---
+<section class="cta-band">
+  <SilkLines variant="arc" class="cta-band__silk" />
+  <canvas class="halftone cta-band__dots" data-halftone aria-hidden="true"></canvas>
+  <div class="container cta-band__inner">
+    <div data-reveal>
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2><slot name="title" /></h2>
+      <div class="cta-band__text"><slot /></div>
+    </div>
+    <div class="cta-band__actions" data-reveal>
+      <a class="btn btn--primary btn--lg" href={href}>{label}</a>
+      <a class="cta-band__phone" href={site.phoneHref}><span>oder direkt anrufen</span>{site.phoneDisplay}</a>
+    </div>
+  </div>
+</section>

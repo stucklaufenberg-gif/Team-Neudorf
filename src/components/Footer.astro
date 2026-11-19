@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo-team-neudorf.png';
+import Icon from './Icon.astro';
+import { site, trust, berufsgruppen } from '../data/site';
+interface Props { showTrust?: boolean }
+const { showTrust = true } = Astro.props;
+---
+{showTrust && (
+  <aside class="trust-rail" aria-label="Warum Team-Neudorf">
+    <ul class="container trust-rail__list">
+      {trust.map((t, i) => (
+        <li>
+          <span class="label"><span class="idx">0{i + 1}</span>{t.label}</span>
+          {'href' in t ? <a href={t.href}>{t.text}</a> : <span>{t.text}</span>}
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a href="/" aria-label="Zur Startseite von Team-Neudorf">
+          <Image src={logo} alt={site.logoAlt} width={360} densities={[1, 2]} class="site-footer__logo" loading="lazy" />
+        </a>
+        <p class="site-footer__claim">Persönlich. Verständlich. Vor Ort.</p>
+        <address>
+          {site.name}<br />{site.street} · {site.zip} {site.city}<br />
+          <a href={site.phoneHref}>{site.phoneDisplay}</a> · <a href={`mailto:${site.email}`}>{site.email}</a>
+        </address>
+      </div>
+      <nav class="site-footer__col" aria-label="Seiten">
+        <h2 class="label">Seiten</h2>
+        <ul>
+          <li><a href="/oeffentlicher-dienst.html">Öffentlicher Dienst</a></li>
+          <li><a href="/privatkunden.html">Privatkunden</a></li>
+          <li><a href="/firmenkunden.html">Firmenkunden</a></li>
+          <li><a href="/ueber-uns.html">Über uns</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/schaden-melden.html">Schaden melden</a></li>
+          <li><a href="/aktuelles.html">Aktuelles</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__col" aria-label="Berufsgruppen">
+        <h2 class="label">Berufsgruppen</h2>
+        <ul class="site-footer__two">
+          {berufsgruppen.map((b) => <li><a href={b.href}>{b.label}</a></li>)}
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <h2 class="label">Folgen Sie uns</h2>
+        <ul>
+          <li><a href={site.social.facebook} target="_blank" rel="noopener" aria-label="Team-Neudorf auf Facebook (öffnet in neuem Fenster)"><Icon name="facebook" size={16} />Facebook</a></li>
+          <li><a href={site.social.instagram} target="_blank" rel="noopener" aria-label="Team-Neudorf auf Instagram (öffnet in neuem Fenster)"><Icon name="instagram" size={16} />Instagram</a></li>
+          <li><a href={site.social.linkedin} target="_blank" rel="noopener" aria-label="Stefan Neudorf auf LinkedIn (öffnet in neuem Fenster)"><Icon name="linkedin" size={16} />LinkedIn</a></li>
+          <li><a href={site.whatsapp} target="_blank" rel="noopener" aria-label="Team-Neudorf per WhatsApp schreiben (neues Fenster)"><Icon name="whatsapp" size={16} />WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© <span data-year>2026</span> {site.name}. Alle Rechte vorbehalten.</span>
+      <nav aria-label="Rechtliches">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <a href="/erstinformation.html">Erstinformation</a>
+      </nav>
+    </div>
+  </div>
+</footer>

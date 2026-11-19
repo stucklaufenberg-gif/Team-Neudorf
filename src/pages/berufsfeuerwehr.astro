@@ -1,0 +1,285 @@
+---
+// Automatisch aus legacy/berufsfeuerwehr.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenBerufsfeuerwehr from '../assets/images/sparten/berufsfeuerwehr.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Berufsfeuerwehr",
+            "item": "https://www.team-neudorf.de/berufsfeuerwehr.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bekommen Feuerwehrbeamte in NRW Beihilfe oder Heilfürsorge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In NRW erhalten Beamtinnen und Beamte der Feuerwehr Beihilfe, und zwar ab dem ersten Diensttag, auch als Brandmeisteranwärterin oder Brandmeisteranwärter. Freie Heilfürsorge gibt es in NRW nur bei der Polizei. Den Rest der Krankheitskosten sichern Sie über eine beihilfekonforme private Krankenversicherung ab, dazu kommt die private Pflegepflichtversicherung. In anderen Bundesländern kann das anders geregelt sein."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie hoch ist die Beihilfe in NRW?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mit keinem oder einem Kind übernimmt die Beihilfe 50 Prozent, ab zwei Kindern 70 Prozent. Für Ihre Kinder zahlt sie 80 Prozent, für Ihren Ehepartner 70 Prozent und im Ruhestand ebenfalls 70 Prozent. Ihr Ehepartner ist nur beihilfeberechtigt, wenn seine Einkünfte im Vorjahr unter einer festen Grenze liegen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ich war vorher gesetzlich versichert. Was muss ich beachten?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mit der Verbeamtung sind Sie nicht mehr gesetzlich versicherungspflichtig. Ihre Krankenkasse führt Sie aber zunächst als freiwilliges Mitglied weiter. Austreten können Sie nur innerhalb von zwei Wochen nach dem Hinweis Ihrer Kasse und mit einem Nachweis Ihrer privaten Krankenversicherung. Kümmern Sie sich deshalb früh darum."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was gilt bei Vorerkrankungen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Über die Öffnungsaktion der privaten Krankenversicherung werden Sie trotz Vorerkrankungen aufgenommen, ohne Leistungsausschlüsse und mit einem Risikozuschlag von höchstens 30 Prozent. Der Antrag muss innerhalb von sechs Monaten nach der ersten Verbeamtung gestellt werden. Das gilt auch für Anwärterinnen und Anwärter sowie für Partner und Kinder. Nicht jeder Versicherer nimmt teil."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert, wenn ich in den ersten Jahren dienstunfähig werde?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ein Anspruch auf Ruhegehalt besteht erst nach fünf Jahren Dienstzeit, die Ausbildung zählt mit. Ausnahme ist eine Dienstunfähigkeit durch den Dienst, etwa nach einem Dienstunfall; das gilt ab der Probezeit. Anwärterinnen und Anwärter werden bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus privaten Gründen dienstunfähig, etwa nach einem Freizeitunfall oder einer Krankheit, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Die Beihilfe entfällt dann. Eine Dienstunfähigkeitsversicherung schließt diese Lücke."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was bedeutet Feuerwehrdienstunfähigkeit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In NRW gibt es dafür keine eigene gesetzliche Regel wie bei der Polizei. Maßstab ist aber der Einsatzdienst, zum Beispiel das Tragen von schwerem Atemschutz. Wer nicht mehr atemschutztauglich ist, kann in den Ruhestand versetzt, entlassen oder in den Innendienst umgesetzt werden. Im Innendienst entfällt die Feuerwehrzulage, und eine einfache Dienstunfähigkeitsversicherung zahlt dann nicht. Achten Sie deshalb auf eine spezielle Feuerwehr-Klausel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Brauche ich eine Diensthaftpflicht?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bei grober Fahrlässigkeit kann Ihr Dienstherr Sie in Regress nehmen, zum Beispiel für einen Schaden am Einsatzfahrzeug oder den Verlust eines Generalschlüssels. Solche Forderungen sind nicht begrenzt. Eine Diensthaftpflicht mit Feuerwehrbezug übernimmt das. Prüfen Sie vorher, ob über Ihre Gewerkschaft schon ein Schutz besteht."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungen für die Berufsfeuerwehr | Team-Neudorf"} description={"Absicherung für die Berufsfeuerwehr: Feuerwehrdienstunfähigkeit, Beihilfe oder Heilfürsorge je nach Bundesland, Diensthaftpflicht, Rechtsschutz und Unfallschutz."} path="/berufsfeuerwehr.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Berufsfeuerwehr</nav>
+        <h1>Absicherung für die Berufsfeuerwehr</h1>
+        <p>Sie gehen dorthin, wo andere weglaufen. Genau deshalb verdienen Sie einen Schutz, der die besonderen Belastungen und Regeln des Feuerwehr-Einsatzdienstes kennt.</p>
+        </div>
+        <figure class="page-hero__media foto-berufsfeuerwehr">
+          <Picture src={imgSpartenBerufsfeuerwehr} alt="Feuerwehrmann als Silhouette vor einem Feuer" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Berufsfeuerwehr</span>
+          <h2>Wer täglich einsteht, braucht verlässlichen Rückhalt</h2>
+          <p class="lead">Brandbekämpfung, technische Hilfeleistung, Atemschutz und Rettungseinsätze fordern Körper und Gesundheit enorm. Als Beamtin oder Beamter der Berufsfeuerwehr erhalten Sie, je nach Bundesland und Dienstherr, entweder <strong>Beihilfe oder Heilfürsorge</strong>; in NRW ist es immer die Beihilfe. Und die <strong>Feuerwehrdienstunfähigkeit</strong> gehört besonders sorgfältig abgesichert.</p>
+          <p>Standardlösungen greifen hier zu kurz. Wir stimmen Ihre Absicherung genau auf Ihren Dienst ab, heute und mit Blick auf später.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Feuerwehrdienstunfähigkeit absichern</strong>Schon der Verlust der Feuerwehr- bzw. Atemschutztauglichkeit kann den Dienst beenden. Die passende DU-Klausel ist entscheidend.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Beihilfe oder Heilfürsorge (je nach Land)</strong>Bei Beihilfe die passende beihilfekonforme private Krankenversicherung; bei Heilfürsorge die sinnvolle Ergänzung plus Anwartschaft für später.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Diensthaftpflicht &amp; Einsatzrisiken</strong>Schutz bei Schäden an Fahrzeugen und Ausrüstung, Schlüsselverlust und Regressforderungen.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Unfallschutz rund um die Uhr</strong>Im Einsatz und privat: bei der hohen körperlichen Belastung ein wichtiger Baustein.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Feuerwehrdienstunfähigkeit &amp; Atemschutztauglichkeit</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Beihilfe- oder heilfürsorgekonforme Absicherung</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Diensthaftpflicht für den Einsatzdienst</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Unfall- und Hinterbliebenenschutz</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Die richtige DU-Klausel</h3>
+            <p>Der Einsatzdienst stellt hohe körperliche Anforderungen. Die passende Klausel zur Feuerwehrdienstunfähigkeit entscheidet, ob im Ernstfall wirklich geleistet wird.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+            <h3>Beihilfe oder Heilfürsorge?</h3>
+            <p>Ob Sie Beihilfe oder Heilfürsorge erhalten, hängt vom Bundesland und Dienstherrn ab. In NRW gibt es immer Beihilfe, andere Länder gewähren teils Heilfürsorge. Wir klären Ihren Status und finden die passende Krankenversicherung (bei Heilfürsorge zusätzlich mit Anwartschaft für später).</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.048 8.287 8.287 0 0 0 9 9.6a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18z"/></svg></div>
+            <h3>Einsatz &amp; Haftung</h3>
+            <p>Ob Schaden an Fahrzeug oder Ausrüstung, Schlüsselverlust oder ein Vorwurf rund um den Einsatz: Die passende Diensthaftpflicht und ein guter Rechtsschutz nehmen Ihnen den Rücken frei.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Wichtig: Beihilfe oder Heilfürsorge?</strong> Bei der Berufsfeuerwehr hängt das vom Bundesland und Dienstherrn ab (teils sogar innerhalb eines Landes). In NRW ist es immer die Beihilfe. Bei der <a href="/polizei.html">Polizei</a> gilt im aktiven Dienst dagegen fast überall Heilfürsorge, beim <a href="/zoll.html">Zoll</a> die Beihilfe. Ihre konkrete Situation schauen wir uns gemeinsam an.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Speziell für den Einsatzdienst</span>
+          <h2>Zwei Risiken, die im Feuerwehralltag oft unterschätzt werden</h2>
+          <p>Neben Krankenversicherung und Dienstunfähigkeit gibt es zwei Themen, die gerade im Einsatzdienst richtig teuer werden können. Für beide gibt es passende Lösungen.</p>
+        </div>
+        <div class="grid grid--2">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z"/></svg></div>
+            <h3>Diensthaftpflicht: Ausrüstung, Schlüssel &amp; Regress</h3>
+            <p>Als Beamtin oder Beamter haften Sie Ihrem Dienstherrn gegenüber bei grober Fahrlässigkeit, und das kann schnell existenziell werden.</p>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Verlust eines Dienst- oder Generalschlüssels: Der Austausch ganzer Schließanlagen geht schnell in die Tausende</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Schäden an Einsatzfahrzeugen, Geräten oder Schutzausrüstung</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Regressforderungen des Dienstherrn bei grob fahrlässig verursachten Schäden</span></li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg></div>
+            <h3>Straf- &amp; Dienstrechtsschutz</h3>
+            <p>Wer im Einsatz Verantwortung übernimmt, kann selbst ins Visier geraten, manchmal auch zu Unrecht. Ein guter Rechtsschutz hält Ihnen den Rücken frei.</p>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Vorwürfe im Zusammenhang mit Einsatzentscheidungen (z. B. bei technischer Hilfeleistung)</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Straf- und Disziplinarverfahren rund um die Dienstausübung</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Unterstützung bei Widerspruch und Klage in dienstrechtlichen Fragen</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung bei der Feuerwehr</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Bekommen Feuerwehrbeamte in NRW Beihilfe oder Heilfürsorge?</summary>
+            <p>In NRW erhalten Beamtinnen und Beamte der Feuerwehr Beihilfe, und zwar ab dem ersten Diensttag, auch als Brandmeisteranwärterin oder Brandmeisteranwärter. Freie Heilfürsorge gibt es in NRW nur bei der <a href="/polizei.html">Polizei</a>. Den Rest der Krankheitskosten sichern Sie über eine beihilfekonforme private Krankenversicherung ab, dazu kommt die private Pflegepflichtversicherung. In anderen Bundesländern kann das anders geregelt sein.</p>
+          </details>
+          <details>
+            <summary>Wie hoch ist die Beihilfe in NRW?</summary>
+            <p>Mit keinem oder einem Kind übernimmt die Beihilfe 50 Prozent, ab zwei Kindern 70 Prozent. Für Ihre Kinder zahlt sie 80 Prozent, für Ihren Ehepartner 70 Prozent und im Ruhestand ebenfalls 70 Prozent. Ihr Ehepartner ist nur beihilfeberechtigt, wenn seine Einkünfte im Vorjahr unter einer festen Grenze liegen.</p>
+          </details>
+          <details>
+            <summary>Ich war vorher gesetzlich versichert. Was muss ich beachten?</summary>
+            <p>Mit der Verbeamtung sind Sie nicht mehr gesetzlich versicherungspflichtig. Ihre Krankenkasse führt Sie aber zunächst als freiwilliges Mitglied weiter. Austreten können Sie nur innerhalb von zwei Wochen nach dem Hinweis Ihrer Kasse und mit einem Nachweis Ihrer privaten Krankenversicherung. Kümmern Sie sich deshalb früh darum.</p>
+          </details>
+          <details>
+            <summary>Was gilt bei Vorerkrankungen?</summary>
+            <p>Über die Öffnungsaktion der privaten Krankenversicherung werden Sie trotz Vorerkrankungen aufgenommen, ohne Leistungsausschlüsse und mit einem Risikozuschlag von höchstens 30 Prozent. Der Antrag muss innerhalb von sechs Monaten nach der ersten Verbeamtung gestellt werden. Das gilt auch für Anwärterinnen und Anwärter sowie für Partner und Kinder. Nicht jeder Versicherer nimmt teil.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ich in den ersten Jahren dienstunfähig werde?</summary>
+            <p>Ein Anspruch auf Ruhegehalt besteht erst nach fünf Jahren Dienstzeit, die Ausbildung zählt mit. Ausnahme ist eine Dienstunfähigkeit durch den Dienst, etwa nach einem Dienstunfall; das gilt ab der Probezeit. Anwärterinnen und Anwärter werden bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus privaten Gründen dienstunfähig, etwa nach einem Freizeitunfall oder einer Krankheit, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Die Beihilfe entfällt dann. Eine Dienstunfähigkeitsversicherung schließt diese Lücke.</p>
+          </details>
+          <details>
+            <summary>Was bedeutet Feuerwehrdienstunfähigkeit?</summary>
+            <p>In NRW gibt es dafür keine eigene gesetzliche Regel wie bei der Polizei. Maßstab ist aber der Einsatzdienst, zum Beispiel das Tragen von schwerem Atemschutz. Wer nicht mehr atemschutztauglich ist, kann in den Ruhestand versetzt, entlassen oder in den Innendienst umgesetzt werden. Im Innendienst entfällt die Feuerwehrzulage, und eine einfache Dienstunfähigkeitsversicherung zahlt dann nicht. Achten Sie deshalb auf eine spezielle Feuerwehr-Klausel.</p>
+          </details>
+          <details>
+            <summary>Brauche ich eine Diensthaftpflicht?</summary>
+            <p>Bei grober Fahrlässigkeit kann Ihr Dienstherr Sie in Regress nehmen, zum Beispiel für einen Schaden am Einsatzfahrzeug oder den Verlust eines Generalschlüssels. Solche Forderungen sind nicht begrenzt. Eine Diensthaftpflicht mit Feuerwehrbezug übernimmt das. Prüfen Sie vorher, ob über Ihre Gewerkschaft schon ein Schutz besteht.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Kostenlose Checkliste für Anwärterinnen und Anwärter in NRW:</strong> Alle wichtigen Schritte und Fristen zum Start ins Beamtenverhältnis auf zwei Seiten zum Abhaken, von der Krankenversicherung bis zur Dienstunfähigkeit.
+          <div class="u-mt-s"><a class="btn btn--accent" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download>Checkliste herunterladen (PDF)</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/zoll.html">Zoll</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/lehramt.html">Lehramt</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und speziell auf den Feuerwehr-Einsatzdienst zugeschnitten.</p>
+</CtaBand>
+</Base>

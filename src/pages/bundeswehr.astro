@@ -1,0 +1,266 @@
+---
+// Automatisch aus legacy/bundeswehr.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenBundeswehr from '../assets/images/sparten/bundeswehr.jpg';
+import imgStefanPortrait from '../assets/images/stefan-portrait.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Bundeswehr",
+            "item": "https://www.team-neudorf.de/bundeswehr.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Was deckt die truppenärztliche Versorgung ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Solange Sie als Berufssoldat oder Soldat auf Zeit Besoldung erhalten, werden Sie nach § 69a Bundesbesoldungsgesetz unentgeltlich truppenärztlich versorgt. Das umfasst medizinisch notwendige Leistungen wie Behandlung, Vorsorge und Impfungen. Leistungen von Heilpraktikern und alles, was keine Heilbehandlung ist, sind ausgeschlossen. Die Versorgung gilt nur für Sie selbst, nicht für Ihre Familie."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie sind mein Ehepartner und meine Kinder abgesichert?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Für Ihre Angehörigen sind Sie nach der Bundesbeihilfeverordnung beihilfeberechtigt. Die Beihilfe übernimmt für Ihren Ehepartner 70 Prozent und für Ihre Kinder 80 Prozent der beihilfefähigen Kosten. Für den Ehepartner gilt das nur, wenn seine Einkünfte unter einer festen Grenze liegen. Den Rest sichern Sie über eine beihilfekonforme private Krankenversicherung ab, es sei denn, Ihre Angehörigen sind selbst gesetzlich versichert."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie bin ich nach dem Dienstzeitende als Soldat auf Zeit krankenversichert?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mit dem Dienstverhältnis endet die truppenärztliche Versorgung. Beihilfe für Sie selbst gibt es danach in der Regel nicht. Innerhalb von drei Monaten nach dem Ausscheiden können Sie freiwillig in die gesetzliche Krankenversicherung eintreten. Solange Sie Übergangsgebührnisse beziehen, zahlt der Bund einen Zuschuss in Höhe der Hälfte Ihrer Beiträge zur Kranken- und Pflegeversicherung. Das gilt auch, wenn Sie privat versichert sind, dann bis zu einer Höchstgrenze."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wofür brauche ich eine Anwartschaft auf die private Krankenversicherung?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mit einer großen Anwartschaft sichern Sie Ihren heutigen Gesundheitszustand und Ihr Eintrittsalter für einen späteren Wechsel in die private Krankenversicherung. Erkrankungen während der Dienstzeit führen dann nicht zu Zuschlägen. Für Berufssoldaten ist das wichtig, weil im Ruhestand die Beihilfe 70 Prozent trägt und Sie den Rest privat versichern. Als Soldat auf Zeit lohnt sie sich vor allem, wenn Sie danach Beamter werden möchten."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert, wenn ich als Soldat auf Zeit dienstunfähig werde?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Werden Sie als Soldat auf Zeit dienstunfähig, werden Sie entlassen. Ein Ruhegehalt gibt es nicht. Sie erhalten Übergangsgebührnisse, deren Dauer von Ihrer Dienstzeit abhängt, und werden in der gesetzlichen Rentenversicherung nachversichert. Geht die Dienstunfähigkeit auf eine Wehrdienstbeschädigung zurück, kommen Leistungen nach dem Soldatenentschädigungsgesetz hinzu. Nach einer Krankheit oder einem Freizeitunfall bleibt eine Lücke, die eine Berufsunfähigkeitsversicherung mit Dienstunfähigkeitsklausel schließt."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie sind Berufssoldaten bei Dienstunfähigkeit versorgt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Berufssoldat treten Sie bei Dienstunfähigkeit in den Ruhestand, wenn Sie mindestens fünf Jahre gedient haben oder eine Wehrdienstbeschädigung die Ursache ist, die Sie nicht grob fahrlässig herbeigeführt haben. Trifft beides nicht zu, werden Sie entlassen. Die Anforderungen an die Dienstfähigkeit sind im Soldatenberuf hoch. Achten Sie deshalb bei einer Berufsunfähigkeitsversicherung auf eine echte Dienstunfähigkeitsklausel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hafte ich für Schäden an Fahrzeugen oder Gerät?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nach § 24 Soldatengesetz müssen Sie dem Dienstherrn Schäden ersetzen, die Sie vorsätzlich oder grob fahrlässig verursacht haben. Bei leichter Fahrlässigkeit haften Sie nicht. Gerade bei Fahrzeugen, Waffen oder technischem Gerät können Regressforderungen hoch ausfallen, und das Gesetz sieht keine Obergrenze vor. Eine Diensthaftpflicht, die grobe Fahrlässigkeit und den Verlust dienstlicher Schlüssel einschließt, übernimmt solche Forderungen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungen für Soldatinnen und Soldaten | Team-Neudorf"} description={"Absicherung für die Bundeswehr: truppenärztliche Versorgung ergänzen, Dienstunfähigkeit absichern, Übergang für Soldaten auf Zeit planen und vorsorgen."} path="/bundeswehr.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Bundeswehr</nav>
+        <h1>Absicherung für Soldatinnen und Soldaten</h1>
+        <p>Ob Soldat auf Zeit oder Berufssoldatin: Ihr Dienst bringt besondere Versorgungsregeln mit sich und wichtige Weichenstellungen für die Zeit danach.</p>
+        </div>
+        <figure class="page-hero__media foto-bundeswehr">
+          <Picture src={imgSpartenBundeswehr} alt="Uniformärmel in Flecktarn mit Deutschlandflagge" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container home-person">
+        <Picture src={imgStefanPortrait} alt="Stefan Neudorf, ehemaliger Soldat und Versicherungsmakler in Mechernich" formats={["avif", "webp"]} widths={[480, 900]} sizes="(max-width: 900px) 90vw, 420px" class="about-photo" loading="lazy" />
+        <div>
+          <span class="eyebrow">Persönlich</span>
+          <h2>Von einem, der selbst gedient hat</h2>
+          <p>Ich war selbst Soldat bei der Bundeswehr, unter anderem im Auslandseinsatz in Afghanistan. Diese Zeit hat mich geprägt.</p>
+          <p>Ich habe selbst erlebt, dass der Soldatenberuf besondere Belastungen mit sich bringt und die eigene Absicherung nicht immer leicht zu verstehen ist.</p>
+          <p>Heute berate ich Soldatinnen, Soldaten und Zivilbeschäftigte in Mechernich, Euskirchen, Nörvenich und Umgebung. Vor Ort, telefonisch oder per Video.</p>
+          <a class="btn btn--primary" href="/kontakt.html">Gespräch anfragen</a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Bundeswehr</span>
+          <h2>Vom Dienstantritt bis zum Übergang ins zivile Leben</h2>
+          <p class="lead">Während der Dienstzeit sind Sie selbst über die truppenärztliche Versorgung abgesichert, Ihre Familie über die Beihilfe. Doch was passiert danach? Und was, wenn Sie dienstunfähig werden?</p>
+          <p>Gerade als Soldatin oder Soldat auf Zeit lohnt es sich, früh die richtigen Weichen zu stellen: für die Krankenversicherung danach, für den Ernstfall und für die eigene Vorsorge.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Krankenversicherung für „danach" sichern</strong>Mit einer Anwartschaft bleibt der Zugang zur privaten Kranken­versicherung erhalten, mit Ihrem heutigen Gesundheitszustand und Eintrittsalter.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Dienstunfähigkeit &amp; Einsatzrisiken</strong>Absicherung, die zu den besonderen Belastungen des Soldatenberufs passt.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Übergang als Soldat auf Zeit planen</strong>Rechtzeitig vorbereiten, was nach der Dienstzeit kommt, finanziell und beim Versicherungsschutz.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Eigene Altersvorsorge aufbauen</strong>Besonders für SaZ wichtig, um später keine Versorgungslücke zu haben.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Anwartschaft wegen truppenärztlicher Versorgung</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Berufs-/Dienstunfähigkeit mit passenden Bedingungen</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Unfallschutz &amp; Absicherung der Familie</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Vorsorge für die Zeit nach der Dienstzeit</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+            <h3>Krankenversicherung überbrücken</h3>
+            <p>Während des Dienstes sind Sie truppenärztlich versorgt. Eine <a href="/anwartschaft.html">Anwartschaft</a> sichert Ihren Gesundheitszustand für eine spätere private Krankenversicherung. Das ist vor allem für Berufssoldaten wichtig und für alle, die später Beamte werden.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0"/></svg></div>
+            <h3>Soldat auf Zeit: den Übergang planen</h3>
+            <p>Nach der Dienstzeit endet die truppenärztliche Versorgung. Übergangsgebührnisse und ein Zuschuss zur Krankenversicherung helfen beim Übergang. Wer früh plant, steht beim Übergang ins zivile Leben finanziell deutlich sicherer da.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Ernstfall &amp; Familie</h3>
+            <p>Dienstunfähigkeit, Unfall oder Einsatzrisiken: Der passende Schutz sorgt dafür, dass Sie und Ihre Familie abgesichert bleiben.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Gut zu wissen:</strong> Für Berufssoldaten und Soldaten auf Zeit gelten unterschiedliche Versorgungsregeln. Wir richten Ihre Absicherung genau danach aus.
+        </div>
+        <div class="notice notice--info u-mt-s">
+          <strong>Auch für Zivilbeschäftigte und Beamte der Bundeswehr:</strong> Beamtinnen und Beamte der Bundeswehrverwaltung erhalten Beihilfe nach der Bundesbeihilfeverordnung und brauchen eine passende private Ergänzung. Tarifbeschäftigte sind in der Regel gesetzlich versichert, haben aber eigene Lücken, etwa bei Berufsunfähigkeit und Altersvorsorge.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung bei der Bundeswehr</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Was deckt die truppenärztliche Versorgung ab?</summary>
+            <p>Solange Sie als Berufssoldat oder Soldat auf Zeit Besoldung erhalten, werden Sie nach § 69a Bundesbesoldungsgesetz unentgeltlich truppenärztlich versorgt. Das umfasst medizinisch notwendige Leistungen wie Behandlung, Vorsorge und Impfungen. Leistungen von Heilpraktikern und alles, was keine Heilbehandlung ist, sind ausgeschlossen. Die Versorgung gilt nur für Sie selbst, nicht für Ihre Familie.</p>
+          </details>
+          <details>
+            <summary>Wie sind mein Ehepartner und meine Kinder abgesichert?</summary>
+            <p>Für Ihre Angehörigen sind Sie nach der Bundesbeihilfeverordnung beihilfeberechtigt. Die Beihilfe übernimmt für Ihren Ehepartner 70 Prozent und für Ihre Kinder 80 Prozent der beihilfefähigen Kosten. Für den Ehepartner gilt das nur, wenn seine Einkünfte unter einer festen Grenze liegen. Den Rest sichern Sie über eine beihilfekonforme private Krankenversicherung ab, es sei denn, Ihre Angehörigen sind selbst gesetzlich versichert.</p>
+          </details>
+          <details>
+            <summary>Wie bin ich nach dem Dienstzeitende als Soldat auf Zeit krankenversichert?</summary>
+            <p>Mit dem Dienstverhältnis endet die truppenärztliche Versorgung. Beihilfe für Sie selbst gibt es danach in der Regel nicht. Innerhalb von drei Monaten nach dem Ausscheiden können Sie freiwillig in die gesetzliche Krankenversicherung eintreten. Solange Sie Übergangsgebührnisse beziehen, zahlt der Bund einen Zuschuss in Höhe der Hälfte Ihrer Beiträge zur Kranken- und Pflegeversicherung. Das gilt auch, wenn Sie privat versichert sind, dann bis zu einer Höchstgrenze.</p>
+          </details>
+          <details>
+            <summary>Wofür brauche ich eine Anwartschaft auf die private Krankenversicherung?</summary>
+            <p>Mit einer großen Anwartschaft sichern Sie Ihren heutigen Gesundheitszustand und Ihr Eintrittsalter für einen späteren Wechsel in die private Krankenversicherung. Erkrankungen während der Dienstzeit führen dann nicht zu Zuschlägen. Für Berufssoldaten ist das wichtig, weil im Ruhestand die Beihilfe 70 Prozent trägt und Sie den Rest privat versichern. Als Soldat auf Zeit lohnt sie sich vor allem, wenn Sie danach Beamter werden möchten.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ich als Soldat auf Zeit dienstunfähig werde?</summary>
+            <p>Werden Sie als Soldat auf Zeit dienstunfähig, werden Sie entlassen. Ein Ruhegehalt gibt es nicht. Sie erhalten Übergangsgebührnisse, deren Dauer von Ihrer Dienstzeit abhängt, und werden in der gesetzlichen Rentenversicherung nachversichert. Geht die Dienstunfähigkeit auf eine Wehrdienstbeschädigung zurück, kommen Leistungen nach dem Soldatenentschädigungsgesetz hinzu. Nach einer Krankheit oder einem Freizeitunfall bleibt eine Lücke, die eine Berufsunfähigkeitsversicherung mit Dienstunfähigkeitsklausel schließt.</p>
+          </details>
+          <details>
+            <summary>Wie sind Berufssoldaten bei Dienstunfähigkeit versorgt?</summary>
+            <p>Als Berufssoldat treten Sie bei Dienstunfähigkeit in den Ruhestand, wenn Sie mindestens fünf Jahre gedient haben oder eine Wehrdienstbeschädigung die Ursache ist, die Sie nicht grob fahrlässig herbeigeführt haben. Trifft beides nicht zu, werden Sie entlassen. Die Anforderungen an die Dienstfähigkeit sind im Soldatenberuf hoch. Achten Sie deshalb bei einer Berufsunfähigkeitsversicherung auf eine echte Dienstunfähigkeitsklausel.</p>
+          </details>
+          <details>
+            <summary>Hafte ich für Schäden an Fahrzeugen oder Gerät?</summary>
+            <p>Nach § 24 Soldatengesetz müssen Sie dem Dienstherrn Schäden ersetzen, die Sie vorsätzlich oder grob fahrlässig verursacht haben. Bei leichter Fahrlässigkeit haften Sie nicht. Gerade bei Fahrzeugen, Waffen oder technischem Gerät können Regressforderungen hoch ausfallen, und das Gesetz sieht keine Obergrenze vor. Eine Diensthaftpflicht, die grobe Fahrlässigkeit und den Verlust dienstlicher Schlüssel einschließt, übernimmt solche Forderungen.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/lehramt.html">Lehramt</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und speziell auf den Soldatenberuf zugeschnitten.</p>
+</CtaBand>
+</Base>

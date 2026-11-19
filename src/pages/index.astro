@@ -1,0 +1,311 @@
+---
+// Startseite – neu gestaltet (Noema × Kelder). Texte stammen von der bestehenden Website
+// (index.html, ueber-uns.html, oeffentlicher-dienst.html, berufsgruppen.html) bzw. sind
+// bestätigte Markenaussagen („Versicherung. Aber persönlich.“, „Persönlich. Verständlich. Vor Ort.“).
+import Base from '../layouts/Base.astro';
+import { Picture } from 'astro:assets';
+import SilkLines from '../components/SilkLines.astro';
+import Icon from '../components/Icon.astro';
+import portrait from '../assets/images/stefan-portrait.jpg';
+import imgOed from '../assets/images/sparten/oeffentlicher-dienst.jpg';
+import imgPrivat from '../assets/images/sparten/privatkunden.jpg';
+import imgFirma from '../assets/images/sparten/firmenkunden.jpg';
+import { site, trust, berufsgruppen } from '../data/site';
+
+const title = 'Versicherungsmakler in Mechernich | Team-Neudorf Versicherungen';
+const description = 'Ihr Versicherungsmakler in Mechernich für den Öffentlichen Dienst, Privat- und Firmenkunden. Persönlich vor Ort oder digital, anbieterübergreifend.';
+
+const jsonLd = [{
+  '@context': 'https://schema.org',
+  '@type': 'InsuranceAgency',
+  name: site.name,
+  alternateName: site.short,
+  description: 'Versicherungsmakler in Mechernich, spezialisiert auf den Öffentlichen Dienst: anbieterübergreifende Beratung für Beamtinnen, Beamte sowie Privat- und Firmenkunden.',
+  url: site.url + '/',
+  logo: site.url + '/assets/images/logo-header.png',
+  image: site.url + '/assets/images/logo-header.png',
+  telephone: '+49 2256 9596141',
+  email: site.email,
+  sameAs: Object.values(site.social),
+  founder: { '@type': 'Person', name: site.owner },
+  address: { '@type': 'PostalAddress', streetAddress: site.street, postalCode: site.zip, addressLocality: site.city, addressCountry: 'DE' },
+  areaServed: 'Deutschland',
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'], opens: '09:00', closes: '17:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '09:00', closes: '14:00' },
+  ],
+}];
+
+const bereiche = [
+  { href: '/oeffentlicher-dienst.html', img: imgOed, alt: 'Reichstagsgebäude in Berlin mit Deutschlandflagge', title: 'Öffentlicher Dienst', tag: 'Schwerpunkt',
+    text: 'Absicherung für Beamtinnen, Beamte und Beschäftigte im öffentlichen Dienst: Beihilfe, Dienstunfähigkeit und Pension.',
+    topics: ['Beihilfe & Heilfürsorge', 'Dienst- & Berufsunfähigkeit', 'Altersvorsorge & Pensionslücke', 'Diensthaftpflicht & Recht'] },
+  { href: '/privatkunden.html', img: imgPrivat, alt: 'Familie blickt über die Hügellandschaft', title: 'Privatkunden', tag: 'Privat',
+    text: 'Von Haftpflicht und Hausrat über Kfz bis zur Altersvorsorge, abgestimmt auf Ihre Lebenssituation.',
+    topics: ['Haftpflicht & Hausrat', 'Wohngebäude & Kfz', 'Gesundheit & Berufsunfähigkeit', 'Altersvorsorge & Familie'] },
+  { href: '/firmenkunden.html', img: imgFirma, alt: 'Lkw auf einer Landstraße bei Sonnenaufgang', title: 'Firmenkunden', tag: 'Gewerbe',
+    text: 'Betriebliche und gewerbliche Absicherung für Ihr Unternehmen und Ihre Mitarbeiterinnen und Mitarbeiter.',
+    topics: ['Betriebliche Krankenversicherung', 'Betriebs- & Berufshaftpflicht', 'Cyber & Betriebsunterbrechung', 'Betriebliche Altersvorsorge'] },
+];
+
+const weg = [
+  { label: 'Bundeswehr', title: 'Soldat, unter anderem im Auslandseinsatz in Afghanistan', text: 'Diese Zeit hat mich geprägt. Sie hat mir gezeigt, wie wichtig Verantwortung, Verlässlichkeit und gegenseitiges Vertrauen sind.' },
+  { label: 'Ausbildung', title: 'Kaufmann für Büromanagement in einem Autohaus', text: 'Nach meinem Ausscheiden aus der Bundeswehr absolvierte ich eine Ausbildung zum Kaufmann für Büromanagement.' },
+  { label: 'Verantwortung', title: 'Leitung einer Filiale', text: 'Dadurch durfte ich früh Verantwortung übernehmen und viele unterschiedliche Menschen kennenlernen.' },
+  { label: 'Seit 2024', title: 'Versicherungsmakler in Mechernich', text: 'Team-Neudorf Versicherungen ist mein Maklerbüro in Mechernich. Seit 2024 bin ich als Versicherungsmakler tätig.' },
+];
+
+const grundsaetze = [
+  { title: 'Nur, was zu Ihnen passt', text: 'Mir geht es nicht darum, möglichst viele Versicherungen abzuschließen. Ich erkläre Ihre Möglichkeiten verständlich und empfehle nur, was zu Ihrer Lebenssituation passt.' },
+  { title: 'Viele Anbieter im Vergleich', text: 'Ich vergleiche die Tarife vieler Gesellschaften für Sie und sage Ihnen ehrlich, was ich empfehle und warum.' },
+  { title: 'Schwerpunkt Öffentlicher Dienst', text: 'Beihilfe, Dienstunfähigkeit und Pension haben eigene Regeln. Darauf habe ich mich spezialisiert. Durch meine Zeit bei der Bundeswehr kenne ich einen Teil des Öffentlichen Dienstes nicht nur aus der Theorie. Privat- und Firmenkunden berate ich ebenso.' },
+  { title: 'Auch nach dem Abschluss', text: 'Ich bleibe Ihr Ansprechpartner, auch nach dem Abschluss und wenn sich in Ihrem Leben etwas ändert.' },
+];
+
+const schritte = [
+  { title: 'Sie melden sich', text: 'Ein Anruf, eine Nachricht per WhatsApp oder ein paar Sätze im Kontaktformular genügen. Sie bekommen zeitnah eine Antwort.' },
+  { title: 'Ich höre zu', text: 'Wir sprechen über Ihre Situation und Ihre Ziele, vor Ort, am Telefon oder online.' },
+  { title: 'Sie entscheiden in Ruhe', text: 'Ich vergleiche anbieterübergreifend und erkläre Ihnen Ihre Möglichkeiten. Ob Sie etwas abschließen, entscheiden Sie.' },
+  { title: 'Ich bleibe an Ihrer Seite', text: 'Ich bleibe Ihr Ansprechpartner, auch nach dem Abschluss und wenn sich in Ihrem Leben etwas ändert.' },
+];
+
+const meldungen = [
+  { tag: 'Besoldung NRW', title: 'Besoldungsreform jetzt im Landtag', text: 'Ab 2027 sollen die Grundgehälter um weitere 1,68 Prozent steigen, der Familienzuschlag wird neu geordnet.' },
+  { tag: 'Krankenversicherung', title: 'Neue Grenzen für 2027 beschlossen', text: 'Die Versicherungspflichtgrenze soll auf 84.150 Euro im Jahr steigen. Für Beamte ändert sich beim PKV-Zugang nichts.' },
+  { tag: 'Tarifbeschäftigte', title: 'Zusatzbeitrag soll stabil bleiben', text: 'Der durchschnittliche Zusatzbeitrag der Krankenkassen soll 2027 bei 2,9 Prozent bleiben.' },
+];
+---
+<Base title={title} description={description} path="/index.html" jsonLd={jsonLd} home>
+
+  <!-- ============ 1 · HERO (Noema) ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__light" aria-hidden="true"><i></i><i></i><i></i></div>
+    <canvas class="halftone hero__dots" data-halftone aria-hidden="true"></canvas>
+
+    <figure class="hero__portrait">
+      <Picture src={portrait} alt="Stefan Neudorf, Versicherungsmakler in Mechernich" formats={['avif', 'webp']} widths={[480, 720, 900]} sizes="(max-width: 860px) 100vw, 46vw" loading="eager" fetchpriority="high" />
+      <figcaption>
+        <span class="label">Ihr Ansprechpartner</span>
+        <strong>Stefan Neudorf</strong>
+        <span>Versicherungsmakler · ehemaliger Soldat</span>
+      </figcaption>
+    </figure>
+
+    <div class="container hero__content">
+      <p class="eyebrow hero__eyebrow">Versicherungsmakler in Mechernich</p>
+      <h1 id="hero-title" class="hero__title">
+        <span class="hero__line"><span>Versicherung.</span></span>
+        <span class="hero__line hero__line--accent"><span><em>Aber persönlich.</em></span></span>
+      </h1>
+      <div class="hero__foot">
+        <p class="hero__lead">Ich bin Stefan Neudorf, ehemaliger Soldat und heute Ihr Versicherungsmakler in Mechernich. Den Öffentlichen Dienst kenne ich nicht nur aus der Theorie.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="/kontakt.html">Gespräch anfragen</a>
+          <a class="btn btn--ghost btn--lg" href="#bereiche">Bereiche entdecken</a>
+        </div>
+        <p class="hero__note">Erstes Gespräch kostenlos und unverbindlich · <a href={site.phoneHref}>{site.phoneDisplay}</a></p>
+      </div>
+    </div>
+
+    <ul class="hero__rail container" aria-label="Warum Team-Neudorf">
+      {trust.map((t, i) => (
+        <li>
+          <span class="label"><span class="idx">0{i + 1}</span>{t.label}</span>
+          {'href' in t ? <a href={t.href}>{t.text}</a> : <span>{t.text}</span>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ============ 2 · BEREICHE (Kelder) ============ -->
+  <section class="section areas" id="bereiche" aria-labelledby="bereiche-title">
+    <SilkLines variant="flow" class="areas__silk" />
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <span class="eyebrow">Wählen Sie Ihren Bereich</span>
+        <h2 id="bereiche-title">Drei Bereiche.<br /><em>Ein Ansprechpartner.</em></h2>
+        <p>Ich berate Sie anbieterübergreifend und verständlich, von der ersten Frage bis zum passenden Vertrag.</p>
+      </header>
+
+      <div class="area-grid">
+        {bereiche.map((b, i) => (
+          <a class:list={['area-card', { 'area-card--lead': i === 0 }]} href={b.href} data-reveal style={`--i:${i}`}>
+            <div class="area-card__media">
+              <Picture src={b.img} alt={b.alt} formats={['avif', 'webp']} widths={[480, 800, 1200]} sizes="(max-width: 860px) 100vw, 40vw" loading="lazy" />
+            </div>
+            <div class="area-card__body">
+              <div class="area-card__meta"><span class="idx">0{i + 1}</span><span class="label">{b.tag}</span></div>
+              <h3>{b.title}</h3>
+              <p>{b.text}</p>
+              <ul class="area-card__topics">
+                {b.topics.map((t) => <li>{t}</li>)}
+              </ul>
+              <span class="area-card__more">Zum Bereich <Icon name="arrow" size={18} /></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 · BERUFSGRUPPEN (Kelder-Index) ============ -->
+  <section class="section section--soft groups" aria-labelledby="gruppen-title">
+    <div class="container groups__grid">
+      <header class="section-head section-head--stack groups__head" data-reveal>
+        <span class="eyebrow">Für Ihre Laufbahn</span>
+        <h2 id="gruppen-title">Absicherung für Ihre Berufsgruppe</h2>
+        <p>Jede Laufbahn im Öffentlichen Dienst hat eigene Regeln. Wählen Sie Ihre Gruppe oder sehen Sie sich alle im Überblick an.</p>
+        <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen im Überblick</a>
+
+        <div class="download-card">
+          <span class="label">Für Anwärterinnen und Anwärter in NRW</span>
+          <p><strong>Kostenlose Checkliste:</strong> Alle wichtigen Schritte und Fristen zum Start ins Beamtenverhältnis auf zwei Seiten zum Abhaken, von der Krankenversicherung bis zur Dienstunfähigkeit.</p>
+          <a class="link-arrow" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download><Icon name="download" size={18} />Checkliste herunterladen (PDF)</a>
+        </div>
+      </header>
+
+      <ol class="index-list" data-reveal>
+        {berufsgruppen.map((g, i) => (
+          <li>
+            <a href={g.href}>
+              <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+              <span class="index-list__title">{g.label}</span>
+              <span class="index-list__text">{g.text.includes(': ') ? g.text.split(': ').slice(1).join(': ') : g.text}</span>
+              <Icon name="arrow" size={18} />
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 4 · BIOGRAFIE (Noema, helle Editorial-Fläche) ============ -->
+  <section class="section story" aria-labelledby="story-title">
+    <div class="container story__grid">
+      <div class="story__intro" data-reveal>
+        <span class="eyebrow">Wer hinter Team-Neudorf steht</span>
+        <h2 id="story-title">Mein Weg zum <em>eigenen Maklerbüro</em></h2>
+        <p class="story__lead">Schon damals war mir der persönliche Kontakt besonders wichtig: mein Gegenüber verstehen, statt einfach irgendeine Lösung anzubieten. So berate ich auch heute.</p>
+        <p>Ich bin verheiratet und Vater von drei Kindern. Familie und Vorsorge sind für mich also nicht nur berufliche Themen.</p>
+        <a class="btn btn--dark" href="/ueber-uns.html">Mehr über mich</a>
+      </div>
+
+      <ol class="timeline" data-reveal>
+        {weg.map((w, i) => (
+          <li style={`--i:${i}`}>
+            <span class="label">{w.label}</span>
+            <h3>{w.title}</h3>
+            <p>{w.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <blockquote class="container story__quote" data-reveal>
+      <p>„Ich weiß, dass hinter jedem Beruf ein Mensch mit einer eigenen Geschichte, einer Familie und persönlichen Zukunftsplänen steht.“</p>
+      <footer>Stefan Neudorf</footer>
+    </blockquote>
+  </section>
+
+  <!-- ============ 5 · GRUNDSÄTZE (Kelder-Raster) ============ -->
+  <section class="section" aria-labelledby="grundsaetze-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <span class="eyebrow">Warum Team-Neudorf</span>
+        <h2 id="grundsaetze-title">So berate ich Sie</h2>
+        <p>Vier Dinge sind mir in jeder Beratung wichtig.</p>
+      </header>
+      <div class="grid grid--4 principle-grid">
+        {grundsaetze.map((g, i) => (
+          <article class="card" data-reveal style={`--i:${i}`}>
+            <h3>{g.title}</h3>
+            <p>{g.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 · ABLAUF (Kelder, Silk-Line verbindet die Etappen) ============ -->
+  <section class="section section--soft process" aria-labelledby="ablauf-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <span class="eyebrow">Der erste Schritt</span>
+        <h2 id="ablauf-title">So läuft ein erstes Gespräch</h2>
+        <p>Das erste Gespräch ist kostenlos und unverbindlich. Für die Vermittlung erhält Team-Neudorf eine Courtage vom Versicherer. Sie ist bereits in Ihrem Versicherungsbeitrag enthalten, ein separates Honorar zahlen Sie dafür nicht.</p>
+      </header>
+      <div class="process__track">
+        <svg class="process__line" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-reveal>
+          <path d="M0 30 C 100 6, 210 54, 309 30 S 520 6, 619 30 S 830 54, 928 30 S 1110 10, 1200 30" pathLength="1" fill="none" stroke="#d9b25a" stroke-width="1" vector-effect="non-scaling-stroke" />
+        </svg>
+        <ol class="process__steps">
+          {schritte.map((s, i) => (
+            <li data-reveal style={`--i:${i}`}>
+              <span class="process__node" aria-hidden="true"></span>
+              <span class="idx">Schritt 0{i + 1}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7 · AKTUELLES ============ -->
+  <section class="section news" aria-labelledby="news-title">
+    <div class="container">
+      <header class="section-head" data-reveal>
+        <span class="eyebrow">Aktuelles</span>
+        <h2 id="news-title">Was sich gerade im Öffentlichen Dienst ändert</h2>
+        <p>Kurz erklärt und an der offiziellen Quelle geprüft. Stand: 26. Oktober 2026.</p>
+      </header>
+      <div class="grid grid--3">
+        {meldungen.map((m, i) => (
+          <a class="card card--link" href="/aktuelles.html" data-reveal style={`--i:${i}`}>
+            <span class="tag">{m.tag}</span>
+            <h3>{m.title}</h3>
+            <p>{m.text}</p>
+          </a>
+        ))}
+      </div>
+      <p class="u-mt-l"><a class="link-arrow" href="/aktuelles.html">Alle Meldungen ansehen <Icon name="arrow" size={18} /></a></p>
+    </div>
+  </section>
+
+  <!-- ============ 8 · KONTAKT / ABSCHLUSS ============ -->
+  <section class="closing" aria-labelledby="closing-title">
+    <SilkLines variant="rise" class="closing__silk" />
+    <canvas class="halftone closing__dots" data-halftone aria-hidden="true"></canvas>
+    <div class="container closing__grid">
+      <div class="closing__text" data-reveal>
+        <span class="eyebrow">Kontakt</span>
+        <h2 id="closing-title">Ein Gespräch, <em>ganz unkompliziert</em></h2>
+        <p class="closing__lead">Erzählen Sie mir kurz, worum es geht.</p>
+        <p>Ich berate in der <a href="/versicherungsmakler-mechernich.html">Region Mechernich, Euskirchen, Bonn und Köln</a>, im Büro, bei Ihnen zu Hause oder per Video.</p>
+        <div class="closing__actions">
+          <a class="btn btn--primary btn--lg" href="/kontakt.html">Gespräch anfragen</a>
+          <a class="btn btn--ghost btn--lg" href={site.booking} target="_blank" rel="noopener">Termin online buchen<span class="sr-only"> (öffnet Microsoft Bookings in neuem Fenster)</span></a>
+        </div>
+        <p class="hero__note">Die Online-Terminbuchung leitet zu Microsoft Bookings weiter (<a href="/datenschutz.html">Datenschutz</a>).</p>
+      </div>
+
+      <ul class="contact-panel" data-reveal>
+        <li>
+          <a href={site.phoneHref}><Icon name="phone" /><span><span class="label">Telefon</span><strong>{site.phoneDisplay}</strong></span></a>
+        </li>
+        <li>
+          <a href={site.whatsapp} target="_blank" rel="noopener" aria-label="Team-Neudorf per WhatsApp schreiben (neues Fenster)"><Icon name="whatsapp" /><span><span class="label">WhatsApp</span><strong>Per WhatsApp schreiben</strong></span></a>
+        </li>
+        <li>
+          <a href={`mailto:${site.email}`}><Icon name="mail" /><span><span class="label">E-Mail</span><strong>{site.email}</strong></span></a>
+        </li>
+        <li>
+          <div><Icon name="clock" /><span><span class="label">Erreichbarkeit</span><strong>Montag bis Donnerstag 9 bis 17 Uhr</strong><strong>Freitag 9 bis 14 Uhr</strong></span></div>
+        </li>
+        <li>
+          <div><Icon name="pin" /><span><span class="label">Büro</span><strong>{site.street}, {site.zip} {site.city}</strong></span></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</Base>

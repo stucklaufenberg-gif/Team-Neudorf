@@ -1,0 +1,253 @@
+---
+// Automatisch aus legacy/justiz.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenJustiz from '../assets/images/sparten/justiz.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Justiz",
+            "item": "https://www.team-neudorf.de/justiz.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bekomme ich im Justizvollzug in NRW Beihilfe oder Heilfürsorge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In NRW erhalten Sie im Justizvollzug Beihilfe, und zwar ab der Verbeamtung auf Widerruf. Freie Heilfürsorge gibt es in NRW nur bei der Polizei. Den Rest der Krankheitskosten sichern Sie über eine beihilfekonforme private Krankenversicherung ab. In wenigen anderen Ländern, etwa Baden-Württemberg, gibt es für den Justizvollzug Heilfürsorge."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ich beginne als Tarifbeschäftigte oder Tarifbeschäftigter. Was ist wichtig?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In NRW starten viele im allgemeinen Vollzugsdienst zunächst als Tarifbeschäftigte und sind dann gesetzlich versichert. Die Verbeamtung auf Widerruf folgt später, die Ausbildung beginnt immer am 1. Juli. Sinnvoll ist, schon vorher den eigenen Gesundheitszustand für die spätere private Krankenversicherung zu sichern, zum Beispiel über eine Anwartschaft. Das sollte vor der Untersuchung beim Amtsarzt geschehen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie hoch ist die Beihilfe in NRW?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mit keinem oder einem Kind übernimmt die Beihilfe 50 Prozent, ab zwei Kindern 70 Prozent. Für Ihre Kinder zahlt sie 80 Prozent, für Ihren Ehepartner 70 Prozent und im Ruhestand ebenfalls 70 Prozent. Ihr Ehepartner ist nur beihilfeberechtigt, wenn seine Einkünfte im Vorjahr unter einer festen Grenze liegen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was gilt bei Vorerkrankungen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Über die Öffnungsaktion der privaten Krankenversicherung werden Sie trotz Vorerkrankungen aufgenommen, mit einem Risikozuschlag von höchstens 30 Prozent. Der Antrag muss innerhalb von sechs Monaten nach der ersten Verbeamtung gestellt werden, bei einem Start am 1. Juli also bis Ende Dezember. Nicht jeder Versicherer nimmt teil."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wann gehe ich im Justizvollzug in den Ruhestand?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Im Justizvollzug in NRW gilt eine besondere Altersgrenze: Sie gehen mit 62 Jahren in den Ruhestand. Auf Antrag ist das schon ab 60 möglich, dann mit Abschlägen. Ihre Dienstunfähigkeitsversicherung und Ihre Altersvorsorge sollten deshalb auf das Alter 62 ausgerichtet sein."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert, wenn ich in den ersten Jahren dienstunfähig werde?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ein Anspruch auf Ruhegehalt besteht erst nach fünf Jahren Dienstzeit. Ausnahme ist eine Dienstunfähigkeit durch den Dienst, etwa nach einem Dienstunfall; das gilt ab der Probezeit. Anwärterinnen und Anwärter werden bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus anderen Gründen dienstunfähig, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Eine eigene gesetzliche Vollzugsdienstunfähigkeit wie bei der Polizei gibt es in NRW nicht. Achten Sie auf eine Klausel, die den Justizvollzug ausdrücklich nennt."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Brauche ich Diensthaftpflicht und Rechtsschutz?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bei grober Fahrlässigkeit kann Ihr Dienstherr Sie in Regress nehmen, etwa wenn ein Schlüssel verloren geht und eine Schließanlage getauscht werden muss. Das wird schnell teuer. Ein Strafrechtsschutz hilft, wenn Gefangene Vorwürfe gegen Sie erheben."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Versicherungen für Justiz und Justizvollzug | Team-Neudorf"} description={"Absicherung in der Justiz für Richter, Staatsanwälte, Rechtspfleger und Justizvollzug: Dienstunfähigkeit, Beihilfe und PKV, Diensthaftpflicht, Vorsorge."} path="/justiz.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Justiz</nav>
+        <h1>Absicherung in der Justiz</h1>
+        <p>Richterinnen, Staatsanwälte, Rechtspfleger und Justizvollzugsbeamte tragen große Verantwortung, teils unter besonderen Belastungen. Ihre Absicherung sollte das widerspiegeln.</p>
+        </div>
+        <figure class="page-hero__media foto-justiz">
+          <Picture src={imgSpartenJustiz} alt="Statue der Justitia vor blauem Hintergrund" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Justiz</span>
+          <h2>Verantwortung verdient verlässlichen Schutz</h2>
+          <p class="lead">Vom Gerichtssaal bis zum Justizvollzug: Die Laufbahnen in der Justiz sind vielfältig und bringen jeweils eigene Anforderungen an die Absicherung mit.</p>
+          <p>Als Beamtinnen und Beamte profitieren Sie von Beihilfe und Versorgung. Im Justizvollzug in NRW gibt es keine Heilfürsorge, sondern Beihilfe. Nur wenige Länder, etwa Baden-Württemberg, bieten dem Justizvollzug Heilfürsorge an; dann ist eine private Anwartschaft für die Zeit danach wichtig. Und der Vollzugsdienst bringt besondere Risiken mit, die eine passende Dienstunfähigkeitsabsicherung besonders wichtig machen.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Dienstunfähigkeit absichern</strong>Mit einer passenden Klausel, im Vollzugsdienst besonders relevant.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Beihilfe, Heilfürsorge &amp; Krankenversicherung</strong>Der Tarif, der zu Ihrem Anspruch passt, inklusive Anwartschaft, falls Sie Heilfürsorge erhalten.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Diensthaftpflicht &amp; Verantwortung</strong>Schutz bei dienstlich verursachten Schäden und besonderen Situationen.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Altersvorsorge &amp; Pensionsplanung</strong>Damit später keine Versorgungslücke bleibt.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Beihilfekonforme private Krankenversicherung</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Dienstunfähigkeit, auch im Justizvollzug</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Diensthaftpflicht für den Justizdienst</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Altersvorsorge &amp; Unfallschutz</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Vollzugsdienst: besondere Risiken</h3>
+            <p>Im Justizvollzug ist das Risiko der Dienstunfähigkeit erhöht. Eine passende Absicherung fängt genau diese Fälle zuverlässig ab.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+            <h3>Beihilfe optimal nutzen</h3>
+            <p>Mit dem richtigen beihilfekonformen Tarif schließen Sie die Lücke zwischen Beihilfe und tatsächlichen Kosten, ohne zu viel zu zahlen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg></div>
+            <h3>Verantwortung absichern</h3>
+            <p>Wer Entscheidungen mit Tragweite trifft, sollte auf der sicheren Seite sein: mit einer Diensthaftpflicht, die zu Ihrer Aufgabe passt.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Gut zu wissen:</strong> Richter, Rechtspfleger und Justizvollzug unterliegen teils unterschiedlichen Regeln. Wir stimmen Ihre Absicherung auf Ihre konkrete Laufbahn ab.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung im Justizvollzug</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Bekomme ich im Justizvollzug in NRW Beihilfe oder Heilfürsorge?</summary>
+            <p>In NRW erhalten Sie im Justizvollzug Beihilfe, und zwar ab der Verbeamtung auf Widerruf. Freie Heilfürsorge gibt es in NRW nur bei der <a href="/polizei.html">Polizei</a>. Den Rest der Krankheitskosten sichern Sie über eine beihilfekonforme private Krankenversicherung ab. In wenigen anderen Ländern, etwa Baden-Württemberg, gibt es für den Justizvollzug Heilfürsorge.</p>
+          </details>
+          <details>
+            <summary>Ich beginne als Tarifbeschäftigte oder Tarifbeschäftigter. Was ist wichtig?</summary>
+            <p>In NRW starten viele im allgemeinen Vollzugsdienst zunächst als Tarifbeschäftigte und sind dann gesetzlich versichert. Die Verbeamtung auf Widerruf folgt später, die Ausbildung beginnt immer am 1. Juli. Sinnvoll ist, schon vorher den eigenen Gesundheitszustand für die spätere private Krankenversicherung zu sichern, zum Beispiel über eine <a href="/anwartschaft.html">Anwartschaft</a>. Das sollte vor der Untersuchung beim Amtsarzt geschehen.</p>
+          </details>
+          <details>
+            <summary>Wie hoch ist die Beihilfe in NRW?</summary>
+            <p>Mit keinem oder einem Kind übernimmt die Beihilfe 50 Prozent, ab zwei Kindern 70 Prozent. Für Ihre Kinder zahlt sie 80 Prozent, für Ihren Ehepartner 70 Prozent und im Ruhestand ebenfalls 70 Prozent. Ihr Ehepartner ist nur beihilfeberechtigt, wenn seine Einkünfte im Vorjahr unter einer festen Grenze liegen.</p>
+          </details>
+          <details>
+            <summary>Was gilt bei Vorerkrankungen?</summary>
+            <p>Über die Öffnungsaktion der privaten Krankenversicherung werden Sie trotz Vorerkrankungen aufgenommen, mit einem Risikozuschlag von höchstens 30 Prozent. Der Antrag muss innerhalb von sechs Monaten nach der ersten Verbeamtung gestellt werden, bei einem Start am 1. Juli also bis Ende Dezember. Nicht jeder Versicherer nimmt teil.</p>
+          </details>
+          <details>
+            <summary>Wann gehe ich im Justizvollzug in den Ruhestand?</summary>
+            <p>Im Justizvollzug in NRW gilt eine besondere Altersgrenze: Sie gehen mit 62 Jahren in den Ruhestand. Auf Antrag ist das schon ab 60 möglich, dann mit Abschlägen. Ihre Dienstunfähigkeitsversicherung und Ihre Altersvorsorge sollten deshalb auf das Alter 62 ausgerichtet sein.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ich in den ersten Jahren dienstunfähig werde?</summary>
+            <p>Ein Anspruch auf Ruhegehalt besteht erst nach fünf Jahren Dienstzeit. Ausnahme ist eine Dienstunfähigkeit durch den Dienst, etwa nach einem Dienstunfall; das gilt ab der Probezeit. Anwärterinnen und Anwärter werden bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus anderen Gründen dienstunfähig, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Eine eigene gesetzliche Vollzugsdienstunfähigkeit wie bei der Polizei gibt es in NRW nicht. Achten Sie auf eine Klausel, die den Justizvollzug ausdrücklich nennt.</p>
+          </details>
+          <details>
+            <summary>Brauche ich Diensthaftpflicht und Rechtsschutz?</summary>
+            <p>Bei grober Fahrlässigkeit kann Ihr Dienstherr Sie in Regress nehmen, etwa wenn ein Schlüssel verloren geht und eine Schließanlage getauscht werden muss. Das wird schnell teuer. Ein Strafrechtsschutz hilft, wenn Gefangene Vorwürfe gegen Sie erheben.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Kostenlose Checkliste für Anwärterinnen und Anwärter in NRW:</strong> Alle wichtigen Schritte und Fristen zum Start ins Beamtenverhältnis auf zwei Seiten zum Abhaken, von der Krankenversicherung bis zur Dienstunfähigkeit.
+          <div class="u-mt-s"><a class="btn btn--accent" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download>Checkliste herunterladen (PDF)</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/lehramt.html">Lehramt</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und speziell auf den Justizdienst zugeschnitten.</p>
+</CtaBand>
+</Base>

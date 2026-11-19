@@ -1,0 +1,276 @@
+---
+// Automatisch aus legacy/oeffentlicher-dienst.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenOeffentlicherDienst from '../assets/images/sparten/oeffentlicher-dienst.jpg';
+const jsonLd: unknown[] = [];
+---
+<Base title={"Versicherungen für den Öffentlichen Dienst | Team-Neudorf"} description={"Ihr Versicherungsmakler für Beamtinnen, Beamte und Beschäftigte im Öffentlichen Dienst. Persönlich in Mechernich oder digital, verständlich und anbieterübergreifend."} path="/oeffentlicher-dienst.html" jsonLd={jsonLd}>
+<section class="hero hero--split">
+      <div class="container hero__grid">
+        <div class="hero__intro">
+          <div class="chip-row u-mb-m">
+            <span class="tag u-mb-0">Spezialisiert auf den Öffentlichen Dienst</span>
+            <a class="tag tag--gold" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Checkliste für Anwärter (PDF)</a>
+          </div>
+          <h1>Ihre Absicherung für den Öffentlichen Dienst: klar erklärt und ehrlich beraten.</h1>
+          <p class="hero__lead">Als Beamtin, Beamter oder Beschäftigte:r haben Sie besondere Vorteile, aber auch eigene Fragen. Wir erklären Ihnen alles verständlich und finden gemeinsam die Absicherung, die wirklich zu Ihnen passt.</p>
+          <div class="hero__actions">
+            <a class="btn btn--accent" href="/kontakt.html">Kostenloses Erstgespräch</a>
+            <a class="btn btn--outline" href="/leistungen.html">Leistungen ansehen</a>
+          </div>
+          <div class="hero__trust">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1f9d8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 13l4 4L19 7"/></svg>
+              Anbieterübergreifend
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1f9d8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 13l4 4L19 7"/></svg>
+              Persönliche Betreuung
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1f9d8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 13l4 4L19 7"/></svg>
+              Verständlich erklärt
+            </span>
+          </div>
+        </div>
+        <figure class="hero__media foto-oeffentlicher-dienst">
+          <Picture src={imgSpartenOeffentlicherDienst} alt="Reichstagsgebäude in Berlin mit Deutschlandflagge" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+      <div class="container">
+        <aside class="hero__card hero__card--wide" aria-label="Ihre Vorteile">
+          <h2>Ihre Vorteile auf einen Blick</h2>
+          <ul class="checklist">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Spezialwissen ÖD:</strong> Beihilfe, Dienstunfähigkeit &amp; Pension richtig eingeordnet.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Anbieterübergreifend:</strong> Wir vergleichen viele Anbieter, nicht nur einen.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Unverbindlich:</strong> Ein erstes Gespräch kostet Sie nichts.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Langfristig:</strong> Wir bleiben auch nach dem Abschluss an Ihrer Seite.</span>
+            </li>
+          </ul>
+          <a class="btn btn--primary" href="/kontakt.html">Jetzt Termin anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Für Ihre Laufbahn</span>
+          <h2>Absicherung für Ihre Berufsgruppe</h2>
+          <p>Jede Laufbahn im Öffentlichen Dienst hat eigene Regeln. Wählen Sie Ihre Gruppe oder sehen Sie sich alle im Überblick an.</p>
+        </div>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/zoll.html">Zoll</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/lehramt.html">Lehramt</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/ordnungsamt.html">Ordnungsamt</a>
+          <a class="btn btn--outline" href="/sozial-erziehungsdienst.html">Sozial- &amp; Erziehungsdienst</a>
+        </div>
+        <div class="text-center u-mt-m">
+          <a class="btn btn--accent" href="/berufsgruppen.html">Alle Berufsgruppen im Überblick</a>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Was für Sie wichtig ist</span>
+          <h2>Absicherung, die zum Öffentlichen Dienst passt</h2>
+          <p>Vom Berufsstart bis zur Pension begleiten wir Sie und kümmern uns um alles, was für Ihre Absicherung wirklich wichtig ist.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg>
+            </div>
+            <h3>Dienstunfähigkeit &amp; Berufsunfähigkeit</h3>
+            <p>Absicherung, falls Sie Ihren Dienst gesundheitlich nicht mehr ausüben können, mit passender Dienstunfähigkeitsklausel.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+            </div>
+            <h3>Krankenversicherung: Beihilfe &amp; Heilfürsorge</h3>
+            <p>Ob Beihilfe, freie Heilfürsorge (z. B. Polizei, Berufsfeuerwehr) oder truppenärztliche Versorgung bei der Bundeswehr: Wir sichern die passende Ergänzung und den Zugang zur privaten Krankenversicherung für später.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9.75h19.5m-16.5 4.5h6m-6 3h3M4.125 6h15.75c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125H4.125A1.125 1.125 0 0 1 3 16.875v-9.75C3 6.504 3.504 6 4.125 6Z"/></svg>
+            </div>
+            <h3>Altersvorsorge &amp; Pensionslücke</h3>
+            <p>Wie hoch fällt Ihre Pension aus? Und was fehlt? Wir planen Ihre Vorsorge mit Weitblick und Förderungen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg>
+            </div>
+            <h3>Diensthaftpflicht &amp; Recht</h3>
+            <p>Für Lehrkräfte, Polizei &amp; Co.: Schutz bei dienstlich verursachten Schäden und rechtlichen Auseinandersetzungen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75"/></svg>
+            </div>
+            <h3>Eigentum, Haftpflicht &amp; Alltagsschutz</h3>
+            <p>Der solide Grundschutz für den Alltag: Privat­haftpflicht, Hausrat, Wohngebäude und mehr, fair verglichen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+            </div>
+            <h3>Familie &amp; Hinterbliebenenschutz</h3>
+            <p>Damit Ihre Liebsten abgesichert sind: Risikolebensversicherung, Unfallschutz und Vorsorge für den Ernstfall.</p>
+          </article>
+        </div>
+        <div class="text-center u-mt-xl">
+          <a class="btn btn--outline" href="/leistungen.html">Alle Leistungen im Detail</a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="anwaerter-card">
+          <span class="eyebrow">Beamtenanwärter</span>
+          <h2>Am Anfang Ihrer Laufbahn legen Sie die Weichen für Jahrzehnte</h2>
+          <p class="lead">Als Anwärterin, Anwärter oder im Vorbereitungsdienst treffen Sie jetzt Entscheidungen, die Sie ein ganzes Berufsleben begleiten. Wer früh und richtig absichert, spart bares Geld und vermeidet gefährliche Lücken. Genau deshalb ist die Beratung <strong>gerade in dieser Phase</strong> so wichtig.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Dienstunfähigkeit ab dem ersten Tag</strong>Als Beamtin oder Beamter auf Widerruf haben Sie bei Dienstunfähigkeit meist noch keinen ausreichenden Versorgungsanspruch. Eine private Absicherung ist deshalb gerade jetzt entscheidend.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Jung &amp; gesund = dauerhaft günstig</strong>Eintrittsalter und Gesundheitszustand bestimmen Ihre Beiträge, oft für Jahrzehnte. Wer früh startet, sichert sich die besten Konditionen ohne Zuschläge oder Ausschlüsse.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Günstige Anwärtertarife nutzen</strong>Für die beihilfekonforme private Krankenversicherung gibt es besonders günstige Ausbildungs- und Anwärtertarife, ideal für den Start.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Jetzt als Anwärter beraten lassen</a>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Warum wir</span>
+          <h2>Beratung, die Ihre Berufswelt versteht</h2>
+          <p class="lead">Der Öffentliche Dienst hat eigene Regeln: bei Beihilfe, Dienstunfähigkeit und Versorgung. Genau darauf sind wir spezialisiert. Kein Fachchinesisch, keine Standardlösung von der Stange.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Spezialisiert auf den Öffentlichen Dienst</strong>Wir kennen die Besonderheiten Ihres Status, vom Referendariat bis zur Pension.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Viele Anbieter im Vergleich</strong>Wir vergleichen die Angebote vieler Gesellschaften und empfehlen, was zu Ihnen passt.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Verständlich &amp; auf Augenhöhe</strong>Wir erklären Ihre Optionen so, dass Sie eine gute Entscheidung treffen können.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Langfristige Betreuung</strong>Auch nach dem Abschluss sind wir für Sie da, bei Fragen und Veränderungen im Leben.</span>
+            </li>
+          </ul>
+        </div>
+        <aside class="hero__card">
+          <div class="card__icon u-mb-m">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="26" height="26"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg>
+          </div>
+          <h2>Unverbindlich starten</h2>
+          <p class="u-muted">Erzählen Sie uns kurz von Ihrer Situation. Im ersten Gespräch klären wir, wo Sie gut aufgestellt sind und wo es Handlungsbedarf gibt, kostenlos und ohne Verpflichtung.</p>
+          <a class="btn btn--accent btn--block" href="/kontakt.html">Erstgespräch vereinbaren</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">So einfach geht's</span>
+          <h2>In drei Schritten gut abgesichert</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <h3>Kennenlernen &amp; zuhören</h3>
+            <p>Wir sprechen über Ihre Situation, Ihren Status im Öffentlichen Dienst und Ihre Ziele.</p>
+          </div>
+          <div class="step">
+            <h3>Vergleichen &amp; empfehlen</h3>
+            <p>Wir analysieren Ihren Bedarf, vergleichen anbieterübergreifend und erklären Ihnen Ihre Optionen.</p>
+          </div>
+          <div class="step">
+            <h3>Umsetzen &amp; betreuen</h3>
+            <p>Sie entscheiden in Ruhe. Danach kümmern wir uns um die Umsetzung und bleiben an Ihrer Seite.</p>
+          </div>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Kostenlose Checkliste für Anwärterinnen und Anwärter in NRW:</strong> Alle wichtigen Schritte und Fristen zum Start ins Beamtenverhältnis auf zwei Seiten zum Abhaken, von der Krankenversicherung bis zur Dienstunfähigkeit.
+          <div class="u-mt-s"><a class="btn btn--accent" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download>Checkliste herunterladen (PDF)</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft" aria-labelledby="aktuelles-teaser">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Aktuelles</span>
+          <h2 id="aktuelles-teaser">Was sich gerade im Öffentlichen Dienst ändert</h2>
+          <p>Kurz erklärt und an der offiziellen Quelle geprüft. Stand: 26. Oktober 2026.</p>
+        </div>
+        <div class="grid grid--3">
+          <a class="card card--link" href="/aktuelles.html">
+            <span class="tag">Besoldung NRW</span>
+            <h3>Besoldungsreform jetzt im Landtag</h3>
+            <p>Ab 2027 sollen die Grundgehälter um weitere 1,68 Prozent steigen, der Familienzuschlag wird neu geordnet.</p>
+          </a>
+          <a class="card card--link" href="/aktuelles.html">
+            <span class="tag">Krankenversicherung</span>
+            <h3>Neue Grenzen für 2027 beschlossen</h3>
+            <p>Die Versicherungspflichtgrenze soll auf 84.150 Euro im Jahr steigen. Für Beamte ändert sich beim PKV-Zugang nichts.</p>
+          </a>
+          <a class="card card--link" href="/aktuelles.html">
+            <span class="tag">Tarifbeschäftigte</span>
+            <h3>Zusatzbeitrag soll stabil bleiben</h3>
+            <p>Der durchschnittliche Zusatzbeitrag der Krankenkassen soll 2027 bei 2,9 Prozent bleiben.</p>
+          </a>
+        </div>
+        <p class="text-center u-mt-m"><a class="btn btn--outline" href="/aktuelles.html">Alle Meldungen ansehen</a></p>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="privat-hinweis">
+      <div class="container">
+        <div class="privat-note">
+          <div class="privat-note__text">
+            <span class="eyebrow">Auch für Privatpersonen</span>
+            <h2 id="privat-hinweis">Nicht im Öffentlichen Dienst? Kein Problem.</h2>
+            <p>Als Versicherungsmakler betreuen wir auch ganz normale Privatpersonen: von Privathaftpflicht, Hausrat und Kfz bis zu Berufsunfähigkeit und Altersvorsorge. Anbieterübergreifend und mit derselben persönlichen Betreuung.</p>
+          </div>
+          <a class="btn btn--outline" href="/privatkunden.html">Zu den Privatkunden</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für den nächsten Schritt?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Ein unverbindliches Erstgespräch ist der einfachste Weg herauszufinden, ob Sie optimal aufgestellt sind.</p>
+</CtaBand>
+</Base>

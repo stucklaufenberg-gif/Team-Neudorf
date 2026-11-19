@@ -1,0 +1,116 @@
+---
+// Automatisch aus legacy/schaden-melden.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+const jsonLd: unknown[] = [];
+---
+<Base title={"Schaden melden: schnell & unkompliziert | Team-Neudorf"} description={"Melden Sie Ihren Schaden bequem online bei Team-Neudorf, schnell und unkompliziert. Wir kümmern uns um die Abwicklung."} path="/schaden-melden.html" noindex jsonLd={jsonLd}>
+<section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / Schaden melden</nav>
+        <h1>Schaden melden</h1>
+        <p>Ein Schaden ist ärgerlich genug. Melden Sie ihn uns hier in wenigen Minuten. Um alles Weitere kümmern wir uns.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow">So läuft es ab</span>
+          <h2>In drei Schritten gemeldet</h2>
+          <p class="lead">Sie schildern uns kurz, was passiert ist. Wir prüfen die Meldung und leiten alles Nötige in die Wege.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>1. Schaden schildern</strong>Was ist passiert, wann und wo? Ein paar Sätze genügen.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>2. Belege per E-Mail senden</strong>Fotos vom Schaden, Rechnungen oder Dokumente gern an <a href="mailto:info@team-neudorf.de?subject=Unterlagen%20zu%20meiner%20Schadenmeldung">info@team-neudorf.de</a>. Optional, aber hilfreich.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>3. Wir übernehmen</strong>Wir melden uns bei Ihnen und begleiten Sie bis zur Regulierung.</span>
+            </li>
+          </ul>
+          <div class="notice notice--info u-mt-m">
+            <strong>Im Notfall lieber anrufen:</strong> Bei dringenden Schäden (z. B. Wasserrohrbruch, Einbruch, Unfall) erreichen Sie uns direkt unter
+            <a href="tel:+4922569596141">02256 9596141</a>.
+          </div>
+        </div>
+        <div class="form-wrap">
+          <h2 class="u-mt-0">Ihre Schadenmeldung</h2>
+          <p class="u-muted">Felder mit <span class="req">*</span> sind Pflichtfelder.</p>
+          <div class="notice notice--warn" id="formular-fehler" role="alert" hidden></div>
+          <script is:inline>
+            (function () {
+              var m = /[?&]fehler=(\d)/.exec(location.search);
+              if (!m) return;
+              var texte = {
+                '1': '<strong>Bitte prüfen Sie Ihre Angaben.</strong> Füllen Sie bitte alle Pflichtfelder aus.',
+                '2': '<strong>Ihre Schadenmeldung konnte gerade nicht versendet werden.</strong> Bitte versuchen Sie es in einigen Minuten erneut, schreiben Sie uns an <a href="mailto:info@team-neudorf.de">info@team-neudorf.de</a> oder rufen Sie uns an: <a href="tel:+4922569596141">02256 9596141</a>.'
+              };
+              var box = document.getElementById('formular-fehler');
+              if (!texte[m[1]] || !box) return;
+              box.innerHTML = texte[m[1]];
+              box.hidden = false;
+              box.scrollIntoView({ block: 'center' });
+            })();
+          </script>
+          <form name="schadenmeldung" method="POST" action="/schaden.php">
+            <p class="hidden-field" aria-hidden="true">
+              <label>Bitte dieses Feld frei lassen: <input name="website" tabindex="-1" autocomplete="off"></label>
+            </p>
+            <div class="field">
+              <label for="name">Name <span class="req">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">E-Mail <span class="req">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="telefon">Telefon <span class="req">*</span></label>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel" required>
+            </div>
+            <div class="field">
+              <label for="vertragsnummer">Versicherungs-/Vertragsnummer (falls bekannt)</label>
+              <input type="text" id="vertragsnummer" name="vertragsnummer">
+            </div>
+            <div class="field">
+              <label for="sparte">Um welche Versicherung geht es?</label>
+              <select id="sparte" name="sparte">
+                <option value="">Bitte auswählen …</option>
+                <option>KFZ / Auto</option>
+                <option>Privathaftpflicht</option>
+                <option>Hausrat</option>
+                <option>Wohngebäude</option>
+                <option>Unfall</option>
+                <option>Rechtsschutz</option>
+                <option>Gewerbe / Firma</option>
+                <option>Sonstige / weiß nicht</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="schadentag">Wann ist der Schaden passiert?</label>
+              <input type="date" id="schadentag" name="schadentag">
+            </div>
+            <div class="field">
+              <label for="ort">Wo ist der Schaden passiert? (optional)</label>
+              <input type="text" id="ort" name="ort" placeholder="z. B. Adresse, Ort oder Strecke">
+            </div>
+            <div class="field">
+              <label for="hergang">Was ist passiert? <span class="req">*</span></label>
+              <textarea id="hergang" name="hergang" required placeholder="Schildern Sie kurz den Hergang: Was ist passiert, wie kam es dazu, was wurde beschädigt?"></textarea>
+            </div>
+            <p class="form-hint u-mt-0">Sie haben Fotos oder Dokumente zum Schaden? Senden Sie diese gern per E-Mail an <a href="mailto:info@team-neudorf.de?subject=Unterlagen%20zu%20meiner%20Schadenmeldung">info@team-neudorf.de</a>.</p>
+            <div class="field field--check">
+              <input type="checkbox" id="einwilligung" name="einwilligung" value="einverstanden" required>
+              <label for="einwilligung">Ich willige ein, dass meine Angaben, einschließlich ggf. darin enthaltener besonderer Kategorien personenbezogener Daten (z. B. Gesundheitsdaten, Art. 9 DSGVO), zur Bearbeitung meiner Schadenmeldung verarbeitet und, soweit erforderlich, an das zuständige Versicherungsunternehmen weitergegeben werden. Die <a href="/datenschutz.html">Datenschutzerklärung</a> habe ich gelesen. <span class="req">*</span></label>
+            </div>
+            <button type="submit" class="btn btn--accent btn--block">Schadenmeldung absenden</button>
+            <p class="form-hint">Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Schadenmeldung genutzt. Eine verschlüsselte Übertragung (TLS/SSL) erfolgt automatisch.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+</Base>

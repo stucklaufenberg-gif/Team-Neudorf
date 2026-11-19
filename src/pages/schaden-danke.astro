@@ -1,0 +1,22 @@
+---
+// Automatisch aus legacy/schaden-danke.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+const jsonLd: unknown[] = [];
+---
+<Base title={"Schadenmeldung eingegangen | Team-Neudorf"} description={"Vielen Dank! Ihre Schadenmeldung ist bei Team-Neudorf eingegangen. Wir melden uns zeitnah bei Ihnen."} path="/schaden-danke.html" noindex jsonLd={jsonLd}>
+<section class="section">
+      <div class="container text-center container--narrow">
+        <div class="notice notice--success">
+          <strong>Ihre Schadenmeldung ist eingegangen.</strong> Vielen Dank für Ihr Vertrauen.
+        </div>
+        <h1 class="u-mt-m">Wir kümmern uns darum</h1>
+        <p class="lead">Wir haben Ihre Meldung erhalten und melden uns zeitnah bei Ihnen. Bei dringenden Fällen erreichen Sie uns direkt unter <a href="tel:+4922569596141">02256 9596141</a>.</p>
+        <p>Sie haben Fotos oder Dokumente zum Schaden? Senden Sie diese gern per E-Mail an <a href="mailto:info@team-neudorf.de?subject=Unterlagen%20zu%20meiner%20Schadenmeldung">info@team-neudorf.de</a>.</p>
+        <p class="u-mt-m">
+          <a class="btn btn--accent" href="/">Zur Startseite</a>
+          <a class="btn btn--outline" href="/oeffentlicher-dienst.html">Zu den Leistungen</a>
+        </p>
+      </div>
+    </section>
+</Base>

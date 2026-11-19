@@ -1,0 +1,83 @@
+---
+// Automatisch aus legacy/aktuelles.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+const jsonLd: unknown[] = [];
+---
+<Base title={"Aktuelles aus dem Öffentlichen Dienst | Team-Neudorf"} description={"Neues zu Besoldung, Beihilfe, Tarif und Versorgung im Öffentlichen Dienst, kurz erklärt und an der offiziellen Quelle geprüft."} path="/aktuelles.html" jsonLd={jsonLd}>
+<section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / Aktuelles</nav>
+        <h1>Aktuelles aus dem Öffentlichen Dienst</h1>
+        <p>Besoldung, Beihilfe, Tarif und Versorgung ändern sich laufend. Hier finden Sie die wichtigsten Neuerungen kurz erklärt, mit Quelle und Datum. Jede Meldung prüfen wir vor der Veröffentlichung an der offiziellen Stelle.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Stand: 26. Oktober 2026</span>
+          <h2>Was sich zuletzt geändert hat</h2>
+          <p>Die Übersicht ersetzt keine Beratung im Einzelfall. Wenn Sie wissen möchten, was eine Änderung für Ihre Verträge bedeutet, sprechen Sie uns gern an.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <span class="tag">Besoldung · Nordrhein-Westfalen</span>
+            <h3>Besoldungsreform NRW: Gesetzentwurf liegt jetzt im Landtag</h3>
+            <p><strong>Gesetzentwurf, geplant ab 1. Januar 2027.</strong> Das Landeskabinett hat am 13. Oktober 2026 den überarbeiteten Gesetzentwurf zur Neuordnung der Besoldung beschlossen, am 15. Oktober wurde er in den Landtag eingebracht. Zum 1. Januar 2027 sollen die Grundgehälter aller Beamtinnen und Beamten um weitere 1,68 Prozent steigen. Dafür wird der bisherige Familienzuschlag der Stufe 1 in die Grundgehälter verlagert, und die Staffelung der Familienzuschläge nach Mietenstufen entfällt. Wer dadurch weniger Familienzuschlag erhält, bekommt eine Ausgleichszulage, die über zehn statt sieben Jahre abgebaut wird. Die zweite Lesung ist für Dezember geplant.</p>
+            <p><strong>Was das für Sie bedeutet:</strong> Ihre Bezüge setzen sich ab 2027 voraussichtlich anders zusammen. Prüfen Sie nach der ersten Abrechnung 2027, ob Ihre Dienstunfähigkeitsabsicherung noch zu Ihrem Einkommen passt.</p>
+            <p class="u-small u-mt-xs"><a href="https://www.finanzverwaltung.nrw.de/uebersicht-rubrik-aktuelles-und-presse/pressemitteilungen/besoldungsreform-landesregierung-staerkt" target="_blank" rel="noopener">Quelle: Ministerium der Finanzen NRW</a></p>
+          </article>
+          <article class="card">
+            <span class="tag">Gesundheit · Krankenversicherung</span>
+            <h3>Krankenversicherung 2027: Kabinett beschließt neue Grenzen</h3>
+            <p><strong>Vom Bundeskabinett am 7. Oktober 2026 beschlossen, Bundesrat steht noch aus.</strong> Die Versicherungspflichtgrenze in der Krankenversicherung soll 2027 von 77.400 Euro auf 84.150 Euro im Jahr steigen. Die Beitragsbemessungsgrenze in der Kranken- und Pflegeversicherung steigt von 5.812,50 Euro auf 6.375 Euro im Monat. In der Rentenversicherung steigt sie von 8.450 Euro auf 8.850 Euro im Monat.</p>
+            <p><strong>Was das für Sie bedeutet:</strong> Für Beamtinnen und Beamte ändert sich beim Zugang zur privaten Krankenversicherung nichts. Tarifbeschäftigte brauchen ab 2027 ein deutlich höheres Einkommen, um in die private Krankenversicherung wechseln zu können.</p>
+            <p class="u-small u-mt-xs"><a href="https://www.deutsche-rentenversicherung.de/DRV/DE/Ueber-uns-und-Presse/Presse/Meldungen/2026/261008-bundeskabinett-sv-rechengroessen-2027" target="_blank" rel="noopener">Quelle: Deutsche Rentenversicherung</a></p>
+          </article>
+          <article class="card">
+            <span class="tag">Gesundheit · Tarifbeschäftigte</span>
+            <h3>Krankenkassen 2027: Durchschnittlicher Zusatzbeitrag soll bei 2,9 Prozent bleiben</h3>
+            <p><strong>Schätzung vom 14. Oktober 2026.</strong> Der GKV-Schätzerkreis hat seine Prognose für das kommende Jahr vorgelegt. Danach liegt der rechnerische durchschnittliche Zusatzbeitragssatz 2027 unverändert bei 2,9 Prozent. Das Bundesgesundheitsministerium gibt den Wert bis zum 1. November 2026 offiziell bekannt. Wie hoch der Zusatzbeitrag Ihrer eigenen Krankenkasse ist, entscheidet jede Kasse selbst.</p>
+            <p><strong>Was das für Sie bedeutet:</strong> Als gesetzlich versicherte Tarifbeschäftigte sollten Sie zum Jahresende auf die Post Ihrer Krankenkasse achten: Erhöht sie den Zusatzbeitrag, haben Sie ein Sonderkündigungsrecht. Ergänzende Leistungen lassen sich über eine Zusatzversicherung absichern.</p>
+            <p class="u-small u-mt-xs"><a href="https://www.bundesamtsozialesicherung.de/de/service/newsroom/detail/gkv-schaetzerkreis-schaetzt-die-finanziellen-rahmenbedingungen-der-gesetzlichen-krankenversicherung-fuer-die-jahre-2026-und-2027" target="_blank" rel="noopener">Quelle: Bundesamt für Soziale Sicherung</a> · <a href="https://www.bundesgesundheitsministerium.de/presse/pressemitteilungen/ergebnisse-gkv-schaetzerkreis-zusatzbeitragssatz" target="_blank" rel="noopener">Bundesministerium für Gesundheit</a></p>
+          </article>
+          <article class="card">
+            <span class="tag">Beihilfe · Nordrhein-Westfalen</span>
+            <h3>Beihilfe in NRW: Verbesserungen bei Reha und Hilfsmitteln</h3>
+            <p><strong>Seit 1. Januar 2026.</strong> Mit der 18. Änderungsverordnung wurde die Beihilfenverordnung NRW an mehreren Stellen entschärft. Für Rehabilitationsmaßnahmen entfällt die amtsärztliche Untersuchung. Bewilligte Maßnahmen müssen nicht mehr innerhalb von sechs, sondern innerhalb von zwölf Monaten angetreten werden. Für Beförderungskosten gibt es einen einheitlichen Zuschuss von 200 Euro. Bei Hörgeräten ist für eine Folgebeschaffung nach fünf Jahren keine ärztliche Verordnung mehr nötig, die Feststellung durch den Hörgeräteakustiker genügt. Die Heilmittel in Anlage 5 wurden vollständig überarbeitet. Die aktuelle Fassung der Verordnung gilt seit dem 4. August 2026.</p>
+            <p><strong>Was das für Sie bedeutet:</strong> Ihre private Krankenversicherung sollte zur Beihilfe passen. Ändert sich die Beihilfe, kann in Ihrem Tarif eine Lücke entstehen oder ein Baustein überflüssig werden. Ein kurzer Blick in den Vertrag lohnt sich.</p>
+            <p class="u-small u-mt-xs"><a href="https://www.finanzverwaltung.nrw.de/dienststellen/landesamt-fur-besoldung-und-versorgung-nrw/anderungen-der-beihilfeverordnung-zum-01042023" target="_blank" rel="noopener">Quelle: Landesamt für Besoldung und Versorgung NRW</a> · <a href="https://recht.nrw.de/lrgv/rechtsverordnung/04082026-beihilfenverordnung-nrw-bvo-nrw/" target="_blank" rel="noopener">Verordnungstext bei RECHT.NRW.DE</a></p>
+          </article>
+          <article class="card">
+            <span class="tag">Besoldung · Nordrhein-Westfalen</span>
+            <h3>Mehr Geld für Beamte in NRW: 3,36 Prozent seit April</h3>
+            <p><strong>Seit 1. April 2026, ausgezahlt mit den Juli-Bezügen.</strong> Das Land überträgt das Tarifergebnis auf Beamtinnen, Beamte, Richterinnen, Richter und Versorgungsempfänger. Die Grundgehälter stiegen zum 1. April 2026 um 3,36 Prozent, Familienzuschläge und weitere Bestandteile um 2,8 Prozent. Anwärterbezüge stiegen um 60 Euro. Die nächsten Schritte stehen bereits fest: zum 1. März 2027 noch einmal 2,0 Prozent (Anwärter plus 60 Euro) und zum 1. Januar 2028 weitere 1,0 Prozent (Anwärter plus 30 Euro).</p>
+            <p><strong>Was das für Sie bedeutet:</strong> Ihre Absicherung wächst nicht automatisch mit. Steigt die Besoldung, steigt auch der Betrag, den Sie im Ernstfall ersetzen müssten. Prüfen Sie deshalb, ob die Höhe Ihrer Dienstunfähigkeitsabsicherung noch zu Ihrem heutigen Einkommen passt.</p>
+            <p class="u-small u-mt-xs"><a href="https://www.finanzverwaltung.nrw.de/dienststellen/landesamt-fur-besoldung-und-versorgung-nrw/informationen-zur-besoldungs-und-versorgungserhohung-fur-die-jahre-2026-2027-und-2028" target="_blank" rel="noopener">Quelle: Landesamt für Besoldung und Versorgung NRW</a></p>
+          </article>
+          <article class="card">
+            <span class="tag">Tarif · TV-L und TVöD</span>
+            <h3>Tarifbeschäftigte: 5,8 Prozent mehr bei den Ländern</h3>
+            <p><strong>Abschluss vom 14. Februar 2026.</strong> Für die Beschäftigten der Länder steigen die Entgelte in drei Schritten um insgesamt 5,8 Prozent: 2,8 Prozent seit dem 1. April 2026 (mindestens 100 Euro), 2,0 Prozent ab dem 1. März 2027 und 1,0 Prozent ab dem 1. Januar 2028. Die Laufzeit beträgt 27 Monate bis zum 31. Januar 2028. Auszubildende und andere Nachwuchskräfte bekommen insgesamt 150 Euro mehr, ebenfalls in drei Schritten. Bei Bund und Kommunen war die zweite Stufe des Abschlusses von 2025 fällig: Die Entgelte stiegen dort zum 1. Mai 2026 um 2,8 Prozent, der Vertrag läuft bis zum 31. März 2027.</p>
+            <p><strong>Was das für Sie bedeutet:</strong> Als Tarifbeschäftigte haben Sie keine Beihilfe und keine Pension. Umso wichtiger sind eine Berufsunfähigkeitsabsicherung und die Zusatzversorgung. Auch hier gilt: Die Absicherung sollte zum aktuellen Gehalt passen.</p>
+            <p class="u-small u-mt-xs"><a href="https://www.verdi.de/presse/pressemitteilungen/tarifrunde-oeffentlicher-dienst-laender-beschaeftigte-erhalten-58-prozent-mehr-geld-mindestens-100" target="_blank" rel="noopener">Quelle: ver.di zum Abschluss der Länder</a> · <a href="https://www.bmi.bund.de/DE/themen/oeffentlicher-dienst/tvoed/tarifverhandlungen/tarifverhandlungen-2025-node.html" target="_blank" rel="noopener">Bundesinnenministerium zum TVöD</a></p>
+          </article>
+          <article class="card">
+            <span class="tag">Bundeswehr</span>
+            <h3>Neuer Wehrdienst: seit Januar gelten neue Regeln</h3>
+            <p><strong>In Kraft seit 1. Januar 2026.</strong> Der neue Wehrdienst ist freiwillig. Alle 18-Jährigen bekommen einen Fragebogen, für junge Männer ist das Ausfüllen verpflichtend. Für Männer, die ab dem 1. Januar 2008 geboren sind, ist die Musterung wieder Pflicht. Wer dient, kann sich für sechs bis elf Monate verpflichten oder ab zwölf Monaten als Soldat auf Zeit. Die Bezahlung liegt bei mindestens 2.600 Euro brutto im Monat, als Soldat auf Zeit ab zwölf Monaten bei 2.700 Euro brutto.</p>
+            <p><strong>Was das für Sie bedeutet:</strong> Während der Dienstzeit gilt die truppenärztliche Versorgung, danach nicht mehr. Wer einsteigt, sollte früh an eine Anwartschaft für die spätere Krankenversicherung denken und bestehende Verträge auf Einschränkungen bei Auslandseinsätzen prüfen.</p>
+            <p class="u-small u-mt-xs"><a href="https://www.bmvg.de/de/neuer-wehrdienst" target="_blank" rel="noopener">Quelle: Bundesministerium der Verteidigung</a></p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Hinweis:</strong> Alle Angaben haben wir zuletzt am 26. Oktober 2026 an den genannten Quellen geprüft und stark vereinfacht. Maßgeblich sind immer die Gesetzes- und Verordnungstexte sowie die Auskunft Ihrer Beihilfestelle oder Ihres Dienstherrn. Diese Seite ist keine Rechtsberatung.
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Was heißt das für Ihre Verträge?" href="/kontakt.html" label="Beratung anfragen">
+<Fragment slot="title">Wir schauen gemeinsam nach</Fragment>
+<p>Im unverbindlichen Erstgespräch klären wir, ob eine dieser Änderungen Ihre Absicherung betrifft.</p>
+</CtaBand>
+</Base>

@@ -1,0 +1,174 @@
+---
+// Automatisch aus legacy/firmenkunden.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenFirmenkunden from '../assets/images/sparten/firmenkunden.jpg';
+const jsonLd: unknown[] = [];
+---
+<Base title={"Gewerbeversicherung für Firmen in Mechernich | Team-Neudorf"} description={"Gewerbliche Versicherungen für Unternehmen in Mechernich und Umgebung: Betriebshaftpflicht, Inhalt und Gebäude, Cyber, betriebliche Krankenversicherung, Vorsorge."} path="/firmenkunden.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / Firmenkunden</nav>
+        <h1>Versicherungen für Ihr Unternehmen</h1>
+        <p>Ob Selbstständige, Handwerksbetrieb oder Mittelstand: Wir sorgen dafür, dass Ihr Betrieb, Ihre Werte und Ihr Team gut geschützt sind, passend zu Ihrer Branche und ganz ohne Fachchinesisch.</p>
+        </div>
+        <figure class="page-hero__media foto-firmenkunden">
+          <Picture src={imgSpartenFirmenkunden} alt="Lkw auf einer Landstraße bei Sonnenaufgang" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Im Fokus für Arbeitgeber</span>
+          <h2>Betriebliche Krankenversicherung (bKV): gesunde Mitarbeitende, starke Vorteile</h2>
+          <p>Mit einer betrieblichen Krankenversicherung schenken Sie Ihrem Team echte Gesundheitsleistungen und werden zum attraktiven Arbeitgeber. Das Beste: Schon kleine Beiträge haben eine große Wirkung, und steuerlich lässt sich das clever gestalten.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+            <h3>Warum sie sich lohnt</h3>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Fachkräfte gewinnen und langfristig binden</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Gesundheit &amp; Motivation im Team fördern</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Krankheitsbedingte Ausfälle spürbar senken</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Als moderner, wertschätzender Arbeitgeber punkten</span></li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg></div>
+            <h3>Ihre Steuervorteile</h3>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Als Sachbezug bis <strong>50 € pro Mitarbeitendem im Monat steuer- und sozialabgabenfrei</strong></span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Die Beiträge sind für Ihr Unternehmen als <strong>Betriebsausgabe absetzbar</strong></span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Netto bleibt beim Team oft mehr übrig als bei einer Gehaltserhöhung</span></li>
+            </ul>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg></div>
+            <h3>Vorteile als Arbeitgeber</h3>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Ein starkes Signal der Wertschätzung, das die Bindung stärkt</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Oft ganz ohne Gesundheitsprüfung und ohne Wartezeiten</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Planbare, überschaubare Kosten</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Hebt Sie im Wettbewerb um Fachkräfte spürbar ab</span></li>
+            </ul>
+          </article>
+        </div>
+        <div class="text-center u-mt-xl">
+          <p class="u-muted u-mb-m"><strong>Typische Leistungen einer bKV (je nach Tarif), z. B.:</strong></p>
+          <div class="chip-row chip-row--center">
+            <span class="tag">Zahnersatz &amp; Zahnbehandlung</span>
+            <span class="tag">Chefarztbehandlung</span>
+            <span class="tag">Ein- oder Zweibettzimmer</span>
+            <span class="tag">Sehhilfen &amp; Brille</span>
+            <span class="tag">Vorsorge &amp; Gesundheits-Check-ups</span>
+            <span class="tag">Heilpraktiker &amp; Naturheilkunde</span>
+            <span class="tag">Schnelle Facharzt-Termine</span>
+            <span class="tag">Schutz auf Auslandsreisen</span>
+          </div>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Gut zu wissen:</strong> Die bKV gehört zu den beliebtesten Mitarbeiter-Benefits. Wie sie für Ihr Unternehmen steuerlich optimal gestaltet wird, schauen wir uns gemeinsam an. Die konkrete steuerliche Behandlung stimmen Sie bitte mit Ihrer Steuerberatung ab.
+        </div>
+        <div class="text-center u-mt-l">
+          <a class="btn btn--accent" href="/kontakt.html">Betriebliche Krankenversicherung anfragen</a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Rundum abgesichert</span>
+          <h2>Vom Betriebsrisiko bis zur Mitarbeitervorsorge</h2>
+          <p>Ein Schaden im Betrieb kann schnell teuer werden. Wir schauen uns gemeinsam Ihre Risiken an und bauen einen Schutz, der wirklich zu Ihrem Unternehmen passt, ohne teure Doppelungen und ohne Lücken.</p>
+        </div>
+        <span class="eyebrow u-block u-mb-m">Haftung &amp; Recht</span>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Betriebs- &amp; Berufshaftpflicht</h3>
+            <p>Der zentrale Schutz Ihres Betriebs: Sie deckt Personen- und Sachschäden ab, die Ihr Unternehmen Dritten zufügt.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg></div>
+            <h3>Vermögensschadenhaftpflicht</h3>
+            <p>Für beratende und planende Berufe: Schutz bei reinen Vermögensschäden, die Ihren Kunden durch einen Fehler entstehen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg></div>
+            <h3>Firmen-Rechtsschutz</h3>
+            <p>Setzen Sie Ihr gutes Recht durch: bei Streit im Arbeits-, Vertrags- oder Verkehrsrecht, ohne das Kostenrisiko zu fürchten.</p>
+          </article>
+        </div>
+        <span class="eyebrow u-block u-mt-xl u-mb-m">Betrieb &amp; Sachwerte</span>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/></svg></div>
+            <h3>Inhalts- &amp; Geschäftsversicherung</h3>
+            <p>Schützt Einrichtung, Waren und Maschinen gegen Feuer, Einbruch, Leitungswasser und Sturm.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18 0V3.375c0-.621.504-1.125 1.125-1.125h9.75c.621 0 1.125.504 1.125 1.125V21m4.5 0V9.375c0-.621-.504-1.125-1.125-1.125H18M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21"/></svg></div>
+            <h3>Gewerbliche Gebäudeversicherung</h3>
+            <p>Für Eigentümer von Betriebsgebäuden: Schutz gegen Feuer, Sturm, Leitungswasser und Elementarschäden.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg></div>
+            <h3>Betriebsunterbrechung</h3>
+            <p>Steht der Betrieb nach einem Schaden still, laufen die Kosten weiter. Diese Versicherung sichert Ihren Ertrag ab.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <span class="eyebrow u-block u-mb-m">Digitale &amp; besondere Risiken</span>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg></div>
+            <h3>Cyber-Versicherung</h3>
+            <p>Schutz bei Hackerangriffen, Datenschutzvorfällen und IT-Ausfällen, inklusive Soforthilfe im Ernstfall.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"/></svg></div>
+            <h3>Elektronik &amp; Maschinen</h3>
+            <p>Technik ist teuer: Diese Versicherung schützt Ihre Geräte, Anlagen und Maschinen gegen Beschädigung und Ausfall.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"/></svg></div>
+            <h3>D&amp;O-Versicherung</h3>
+            <p>Geschäftsführer und Vorstände haften persönlich. Die D&amp;O schützt das Privatvermögen bei Managementfehlern.</p>
+          </article>
+        </div>
+        <span class="eyebrow u-block u-mt-xl u-mb-m">Mitarbeiter &amp; Vorsorge</span>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"/></svg></div>
+            <h3>Betriebliche Altersvorsorge</h3>
+            <p>Mitarbeiter binden und steuerlich gefördert vorsorgen: ein starkes Argument im Wettbewerb um Fachkräfte.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+            <h3>Betriebliche Krankenversicherung</h3>
+            <p>Ein attraktiver Benefit: Gesundheitsleistungen für Ihr Team, die Wertschätzung zeigen und die Bindung stärken.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg></div>
+            <h3>Gruppenunfallversicherung</h3>
+            <p>Sichert Ihre Mitarbeitenden rund um die Uhr ab: im Beruf und in der Freizeit, im In- und Ausland.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-xl">
+          <strong>Ihre Branche hat besondere Anforderungen?</strong> Als Makler finden wir passende Lösungen, vom Einzelunternehmen bis zum wachsenden Mittelstand. Sprechen Sie uns an.
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Persönlich &amp; branchengerecht" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihren Betrieb sprechen</Fragment>
+<p>In einem unverbindlichen Erstgespräch schauen wir gemeinsam auf Ihre Risiken und darauf, wo Ihr Unternehmen noch besser aufgestellt sein könnte.</p>
+</CtaBand>
+</Base>

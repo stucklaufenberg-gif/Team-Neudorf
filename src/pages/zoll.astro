@@ -1,0 +1,237 @@
+---
+// Automatisch aus legacy/zoll.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgSpartenZoll from '../assets/images/sparten/zoll.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Berufsgruppen",
+            "item": "https://www.team-neudorf.de/berufsgruppen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Zoll",
+            "item": "https://www.team-neudorf.de/zoll.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bekommen Zollbeamte Beihilfe oder Heilfürsorge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Zollbeamtinnen und Zollbeamte sind Bundesbeamte und erhalten Beihilfe nach der Bundesbeihilfeverordnung, auch im Zollvollzugsdienst. Freie Heilfürsorge wie bei der Bundespolizei gibt es beim Zoll nicht. Den Teil der Krankheitskosten, den die Beihilfe nicht übernimmt, sichern Sie über eine beihilfekonforme private Krankenversicherung ab."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie hoch ist die Beihilfe beim Zoll?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Im aktiven Dienst übernimmt die Beihilfe in der Regel 50 Prozent der beihilfefähigen Kosten. Mit zwei oder mehr berücksichtigungsfähigen Kindern steigt der Satz auf 70 Prozent, im Ruhestand beträgt er ebenfalls 70 Prozent. Für Ihre Kinder zahlt die Beihilfe 80 Prozent. Ihre private Krankenversicherung muss genau den Rest abdecken, und dieser Anteil ändert sich im Laufe Ihres Lebens."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Welche Krankenversicherung brauche ich als Anwärterin oder Anwärter beim Zoll?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Schon in der Ausbildung als Beamtin oder Beamter auf Widerruf erhalten Sie Beihilfe. Viele Versicherer bieten dafür günstige Ausbildungstarife an. Wichtig ist, dass der Tarif nach der Ausbildung in der Regel ohne neue Gesundheitsprüfung umgestellt werden kann und die Leistungen dann zu Ihnen passen. Die Tarife unterscheiden sich hier deutlich."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was gilt bei Vorerkrankungen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Für Beamtinnen und Beamte gibt es die Öffnungsaktion der privaten Krankenversicherung. Wer innerhalb von sechs Monaten nach der ersten Verbeamtung einen Antrag stellt, wird trotz Vorerkrankungen aufgenommen. Der Risikozuschlag ist auf höchstens 30 Prozent begrenzt. Nicht jeder Versicherer nimmt teil. Wir prüfen gemeinsam mit Ihnen, welcher Weg für Sie günstiger ist."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Brauche ich als Zollbeamtin oder Zollbeamter eine Dienstunfähigkeitsversicherung?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ein Anspruch auf Ruhegehalt besteht erst nach fünf Jahren Dienstzeit. Eine Ausnahme gilt, wenn Sie wegen einer Erkrankung oder Verletzung dienstunfähig werden, die Sie sich bei der Ausübung des Dienstes zugezogen haben. Werden Sie vorher aus anderen Gründen dienstunfähig, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Das reicht meist nicht zum Leben. Eine Dienstunfähigkeitsversicherung mit passender Klausel schließt diese Lücke, gerade im Zollvollzugsdienst."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wofür brauche ich eine Diensthaftpflicht?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wer im Dienst vorsätzlich oder grob fahrlässig handelt, muss dem Dienstherrn den Schaden ersetzen. Das kann beim Verlust von Dienstschlüsseln oder bei Schäden an Fahrzeugen und Ausrüstung schnell teuer werden. Eine Diensthaftpflicht übernimmt grob fahrlässig verursachte Schäden. Vorsatz ist nicht versicherbar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie läuft die Beratung bei Team-Neudorf ab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Zoll: private Krankenversicherung und Absicherung | Team-Neudorf"} description={"Absicherung für den Zoll: beihilfekonforme private Krankenversicherung für Bundesbeamte, Dienstunfähigkeit, Diensthaftpflicht und Rechtsschutz im Vollzugsdienst."} path="/zoll.html" jsonLd={jsonLd}>
+<section class="page-hero page-hero--split">
+      <div class="container page-hero__grid">
+        <div class="page-hero__text">
+          <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/berufsgruppen.html">Berufsgruppen</a> / Zoll</nav>
+        <h1>Absicherung für den Zoll</h1>
+        <p>Vom Innendienst bis zum Zollvollzugsdienst: Als Zollbeamtin oder Zollbeamter sind Sie Bundesbeamter mit besonderen Ansprüchen und mit besonderen Risiken, wenn Sie im Einsatz sind.</p>
+        </div>
+        <figure class="page-hero__media foto-zoll">
+          <Picture src={imgSpartenZoll} alt="Frachtschiff im Hamburger Hafen in der Dämmerung" formats={["avif", "webp"]} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Zoll</span>
+          <h2>Bundesbeamter mit Beihilfe, richtig abgesichert</h2>
+          <p class="lead">Der Zoll ist eine Bundesbehörde und damit klar Öffentlicher Dienst. Als Zollbeamtin oder -beamter erhalten Sie <strong>Beihilfe</strong> und Beamtenversorgung, anders als Polizei oder Berufsfeuerwehr, die meist Heilfürsorge bekommen. Im Zollvollzugsdienst kommen zudem echte Einsatzrisiken hinzu.</p>
+          <p>Wir stimmen Ihre Absicherung genau auf Ihren Beihilfeanspruch und Ihren Dienst ab, im Innendienst wie im Vollzug.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Beihilfe &amp; private Krankenversicherung</strong>Die beihilfekonforme PKV, die genau den Teil ergänzt, den die Beihilfe nicht übernimmt.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Dienstunfähigkeit absichern</strong>Schutz mit passender Dienstunfähigkeitsklausel, gerade im Zollvollzugsdienst wichtig.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Diensthaftpflicht &amp; Straf-Rechtsschutz</strong>Rückhalt bei Schäden, Schlüssel- oder Ausrüstungsverlust und bei Vorwürfen nach Kontrollen und Zwangsmaßnahmen.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Altersvorsorge &amp; Pensionslücke</strong>Wer nicht die volle Pension erreicht, sollte die Lücke rechtzeitig schließen.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Kostenloses Erstgespräch</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Typische Themen</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Beihilfekonforme private Krankenversicherung</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Dienstunfähigkeit im Zollvollzugsdienst</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Diensthaftpflicht &amp; Straf-/Dienstrechtsschutz</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Altersvorsorge &amp; Pensionslücke</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Worauf es ankommt</span>
+          <h2>Diese Punkte sollten Sie kennen</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></div>
+            <h3>Beihilfe, nicht Heilfürsorge</h3>
+            <p>Zollbeamtinnen und -beamte erhalten Beihilfe (nicht die Heilfürsorge wie Polizei oder Berufsfeuerwehr). Entscheidend ist deshalb die passende beihilfekonforme private Krankenversicherung.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Zollvollzugsdienst &amp; Einsatzrisiken</h3>
+            <p>Kontrollen, Fahndung und der Umgang mit der Dienstwaffe bringen besondere Risiken mit sich. Eine passende Dienstunfähigkeits- und Unfallabsicherung gehört deshalb dazu.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/></svg></div>
+            <h3>Haftung &amp; Recht</h3>
+            <p>Ob Schlüsselverlust, Schäden an der Ausrüstung oder Vorwürfe nach einer Zwangsmaßnahme: Diensthaftpflicht und Straf-/Dienstrechtsschutz halten Ihnen den Rücken frei.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Gut zu wissen:</strong> Der Zoll gehört zur Bundesfinanzverwaltung und ist damit eindeutig Öffentlicher Dienst. Zollbeamtinnen und -beamte erhalten Beihilfe und Beamtenversorgung; im Zollvollzugsdienst kommen besondere Einsatzrisiken hinzu. Ihre konkrete Situation schauen wir uns gemeinsam an.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Absicherung beim Zoll</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Bekommen Zollbeamte Beihilfe oder Heilfürsorge?</summary>
+            <p>Zollbeamtinnen und Zollbeamte sind Bundesbeamte und erhalten Beihilfe nach der Bundesbeihilfeverordnung, auch im Zollvollzugsdienst. Freie Heilfürsorge wie bei der <a href="/bundespolizei.html">Bundespolizei</a> gibt es beim Zoll nicht. Den Teil der Krankheitskosten, den die Beihilfe nicht übernimmt, sichern Sie über eine beihilfekonforme private Krankenversicherung ab.</p>
+          </details>
+          <details>
+            <summary>Wie hoch ist die Beihilfe beim Zoll?</summary>
+            <p>Im aktiven Dienst übernimmt die Beihilfe in der Regel 50 Prozent der beihilfefähigen Kosten. Mit zwei oder mehr berücksichtigungsfähigen Kindern steigt der Satz auf 70 Prozent, im Ruhestand beträgt er ebenfalls 70 Prozent. Für Ihre Kinder zahlt die Beihilfe 80 Prozent. Ihre private Krankenversicherung muss genau den Rest abdecken, und dieser Anteil ändert sich im Laufe Ihres Lebens.</p>
+          </details>
+          <details>
+            <summary>Welche Krankenversicherung brauche ich als Anwärterin oder Anwärter beim Zoll?</summary>
+            <p>Schon in der Ausbildung als Beamtin oder Beamter auf Widerruf erhalten Sie Beihilfe. Viele Versicherer bieten dafür günstige Ausbildungstarife an. Wichtig ist, dass der Tarif nach der Ausbildung in der Regel ohne neue Gesundheitsprüfung umgestellt werden kann und die Leistungen dann zu Ihnen passen. Die Tarife unterscheiden sich hier deutlich.</p>
+          </details>
+          <details>
+            <summary>Was gilt bei Vorerkrankungen?</summary>
+            <p>Für Beamtinnen und Beamte gibt es die Öffnungsaktion der privaten Krankenversicherung. Wer innerhalb von sechs Monaten nach der ersten Verbeamtung einen Antrag stellt, wird trotz Vorerkrankungen aufgenommen. Der Risikozuschlag ist auf höchstens 30 Prozent begrenzt. Nicht jeder Versicherer nimmt teil. Wir prüfen gemeinsam mit Ihnen, welcher Weg für Sie günstiger ist.</p>
+          </details>
+          <details>
+            <summary>Brauche ich als Zollbeamtin oder Zollbeamter eine Dienstunfähigkeitsversicherung?</summary>
+            <p>Ein Anspruch auf Ruhegehalt besteht erst nach fünf Jahren Dienstzeit. Eine Ausnahme gilt, wenn Sie wegen einer Erkrankung oder Verletzung dienstunfähig werden, die Sie sich bei der Ausübung des Dienstes zugezogen haben. Werden Sie vorher aus anderen Gründen dienstunfähig, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Das reicht meist nicht zum Leben. Eine Dienstunfähigkeitsversicherung mit passender Klausel schließt diese Lücke, gerade im Zollvollzugsdienst.</p>
+          </details>
+          <details>
+            <summary>Wofür brauche ich eine Diensthaftpflicht?</summary>
+            <p>Wer im Dienst vorsätzlich oder grob fahrlässig handelt, muss dem Dienstherrn den Schaden ersetzen. Das kann beim Verlust von Dienstschlüsseln oder bei Schäden an Fahrzeugen und Ausrüstung schnell teuer werden. Eine Diensthaftpflicht übernimmt grob fahrlässig verursachte Schäden. Vorsatz ist nicht versicherbar.</p>
+          </details>
+          <details>
+            <summary>Wie läuft die Beratung bei Team-Neudorf ab?</summary>
+            <p>Als Versicherungsmakler vergleichen wir die Tarife vieler Anbieter und erklären Ihnen die Unterschiede verständlich. Das Erstgespräch ist kostenlos und unverbindlich, persönlich in Mechernich oder per Video.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container text-center">
+        <span class="eyebrow">Weitere Berufsgruppen</span>
+        <h2 class="u-mb-m">Auch interessant für Sie</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/verwaltung.html">Verwaltung</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/berufsgruppen.html">Alle Berufsgruppen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Bereit für Klarheit?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+<p>Unverbindlich, verständlich und passend zu Ihrem Dienst beim Zoll.</p>
+</CtaBand>
+</Base>

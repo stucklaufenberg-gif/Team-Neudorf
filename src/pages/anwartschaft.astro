@@ -1,0 +1,281 @@
+---
+// Automatisch aus legacy/anwartschaft.html migriert (scripts/migrate-legacy.py).
+// Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import imgStefanPortrait from '../assets/images/stefan-portrait.jpg';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Leistungen",
+            "item": "https://www.team-neudorf.de/leistungen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Anwartschaftsversicherung",
+            "item": "https://www.team-neudorf.de/anwartschaft.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Was ist eine Anwartschaftsversicherung?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Eine Anwartschaftsversicherung hält Ihnen den Platz in der privaten Krankenversicherung frei, solange Sie sie noch nicht brauchen. Ihr Gesundheitszustand wird beim Abschluss festgehalten. Wenn Sie die Versicherung später aktivieren, zählt dieser Stand. Erkrankungen aus der Zwischenzeit spielen dann keine Rolle mehr."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wer braucht eine Anwartschaftsversicherung?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vor allem Beamtinnen und Beamte mit Heilfürsorge oder truppenärztlicher Versorgung, etwa bei Polizei, Bundespolizei, Bundeswehr und je nach Bundesland bei Berufsfeuerwehr oder Justizvollzug. Spätestens im Ruhestand endet diese Versorgung, und dann brauchen Sie eine private Krankenversicherung zur Beihilfe. Sinnvoll ist sie auch, wenn Sie Ihre private Krankenversicherung vorübergehend nicht benötigen, zum Beispiel bei einem längeren Auslandsaufenthalt."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was ist der Unterschied zwischen kleiner und großer Anwartschaft?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Die kleine Anwartschaft sichert Ihren Gesundheitszustand. Der spätere Beitrag richtet sich aber nach Ihrem dann erreichten Alter. Die große Anwartschaft sichert zusätzlich Ihr Eintrittsalter und baut Alterungsrückstellungen auf. Sie kostet in der Anwartschaftszeit mehr, dafür ist der Beitrag später spürbar niedriger, besonders im Ruhestand."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was kostet eine Anwartschaftsversicherung?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Die kleine Anwartschaft kostet meist nur einen kleinen Teil des späteren vollen Beitrags. Die große Anwartschaft ist teurer, weil sie für das Alter vorsorgt. Die genaue Höhe hängt von Versicherer, Tarif, Alter und gewünschtem Umfang ab. Wir vergleichen das für Sie bei vielen Anbietern."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wann sollte ich eine Anwartschaft abschließen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "So früh wie möglich: am besten direkt zu Beginn Ihrer Dienstzeit, solange Sie jung und gesund sind. Beim Abschluss werden einmalig Gesundheitsfragen gestellt. Je gesünder Sie dann sind, desto besser sind die Bedingungen, die Sie sich für später sichern."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Muss ich für die Anwartschaft Gesundheitsfragen beantworten?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, einmalig beim Abschluss. Diese Fragen sollten Sie sorgfältig und vollständig beantworten, damit Ihr Schutz später auch wirklich hält. Wir gehen die Fragen gemeinsam mit Ihnen durch. Danach gibt es beim Aktivieren der Versicherung keine neue Gesundheitsprüfung mehr."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+---
+<Base title={"Anwartschaftsversicherung für Beamte | Team-Neudorf"} description={"Anwartschaft einfach erklärt: warum Polizei, Bundeswehr und Feuerwehr mit Heilfürsorge sie brauchen, kleine oder große Variante und der richtige Zeitpunkt."} path="/anwartschaft.html" jsonLd={jsonLd}>
+<section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/leistungen.html">Leistungen</a> / Anwartschaftsversicherung</nav>
+        <h1>Anwartschaftsversicherung: Heute gesund, später gut versichert</h1>
+        <p>Sie haben Heilfürsorge oder truppenärztliche Versorgung? Dann ist jetzt der beste Moment, an später zu denken. Mit einer Anwartschaft sichern Sie sich schon heute Ihren Platz in der privaten Krankenversicherung, zu den Bedingungen von heute.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <span class="eyebrow">Kurz erklärt</span>
+          <h2>Was ist eine Anwartschaftsversicherung?</h2>
+          <p class="lead">Stellen Sie sich die Anwartschaft wie eine <strong>Reservierung</strong> vor: Sie halten sich einen Platz in der privaten Krankenversicherung frei, bis Sie ihn brauchen.</p>
+          <p>Beim Abschluss wird Ihr <strong>Gesundheitszustand festgehalten</strong>. Wird die Versicherung später aktiviert, zählt genau dieser Stand. Was in der Zwischenzeit gesundheitlich passiert (Rückenprobleme, eine Operation, eine chronische Erkrankung), spielt dann keine Rolle mehr. Keine neue Gesundheitsprüfung, keine Risikozuschläge wegen neuer Diagnosen, keine Ablehnung.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Gesundheit „einfrieren“</strong>Sie werden später so versichert, wie Sie heute gesund sind.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Sicherer Weg zur Beihilfe-Absicherung</strong>Wenn Heilfürsorge oder truppenärztliche Versorgung enden, steht Ihr passender Tarif bereit.</span>
+            </li>
+            <li>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Kleiner Beitrag, große Wirkung</strong>Die Anwartschaft kostet nur einen Bruchteil einer vollen Krankenversicherung.</span>
+            </li>
+          </ul>
+          <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Anwartschaft prüfen lassen</a>
+        </div>
+        <aside class="hero__card">
+          <h2>Für wen ist das wichtig?</h2>
+          <ul class="checklist">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Polizei &amp; Bundespolizei mit Heilfürsorge</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Soldatinnen &amp; Soldaten der Bundeswehr</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Berufsfeuerwehr &amp; Justizvollzug (je nach Bundesland)</span></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Alle, die ihre private Krankenversicherung eine Zeit lang pausieren, z. B. bei längerem Auslandsaufenthalt</span></li>
+          </ul>
+          <a class="btn btn--outline btn--block u-mt-m" href="/kontakt.html">Beratung anfragen</a>
+        </aside>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Warum der Zeitpunkt zählt</span>
+          <h2>Heilfürsorge endet spätestens im Ruhestand</h2>
+          <p>Solange Sie im aktiven Dienst sind, übernimmt der Dienstherr Ihre Gesundheitskosten. Doch diese Versorgung endet, spätestens mit dem Ruhestand. Ab dann erhalten Sie in der Regel <strong>Beihilfe</strong> und brauchen für den Rest eine <strong>private Krankenversicherung</strong>. Und genau dann wird gefragt: Wie gesund sind Sie?</p>
+        </div>
+        <div class="grid grid--2">
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/></svg></div>
+            <h3>Ohne Anwartschaft</h3>
+            <p>Sie beantragen die private Krankenversicherung erst mit Mitte 50 oder 60. Nach vielen Dienstjahren gibt es oft Diagnosen: Knie, Rücken, Blutdruck. Die Folge können <strong>Risikozuschläge, Leistungsausschlüsse oder sogar eine Ablehnung</strong> sein. Und der Beitrag wird nach dem hohen Eintrittsalter berechnet.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6 12 12 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.75a11.96 11.96 0 0 1-8.402-3.286Z"/></svg></div>
+            <h3>Mit Anwartschaft</h3>
+            <p>Sie haben mit Mitte 20, jung und gesund, eine Anwartschaft abgeschlossen. Beim Wechsel in den Ruhestand wird sie einfach aktiviert: <strong>ohne neue Gesundheitsprüfung</strong>, mit Ihrem Gesundheitszustand von damals. Mit der großen Anwartschaft profitieren Sie zusätzlich von einem niedrigeren Beitrag.</p>
+          </article>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Gut zu wissen:</strong> Die Regeln zu Heilfürsorge und Beihilfe unterscheiden sich je nach Dienstherr und Bundesland. Bei Soldatinnen und Soldaten auf Zeit endet die truppenärztliche Versorgung mit dem Dienstzeitende. Welche Lösung zu Ihrer Laufbahn passt, schauen wir uns gemeinsam an.
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Zwei Varianten</span>
+          <h2>Kleine oder große Anwartschaft?</h2>
+          <p>Beide sichern Ihren Gesundheitszustand. Der Unterschied zeigt sich beim Beitrag, vor allem im Alter.</p>
+        </div>
+        <div class="grid grid--2">
+          <article class="card">
+            <h3>Kleine Anwartschaft</h3>
+            <p>Sichert Ihren <strong>Gesundheitszustand</strong>.</p>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Sehr günstiger Beitrag in der Anwartschaftszeit</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Späterer Beitrag nach dem dann erreichten Alter</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Gut, wenn vor allem der Zugang gesichert sein soll</span></li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Große Anwartschaft</h3>
+            <p>Sichert <strong>Gesundheitszustand und Eintrittsalter</strong> und baut Alterungsrückstellungen auf.</p>
+            <ul class="checklist">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Höherer Beitrag in der Anwartschaftszeit</span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Dafür <strong>spürbar niedrigerer Beitrag im Ruhestand</strong></span></li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Ideal, wenn der Weg in den Ruhestand mit Beihilfe klar ist</span></li>
+            </ul>
+          </article>
+        </div>
+        <p class="text-center u-mt-m">Welche Variante sich für Sie mehr lohnt, rechnen wir in Ruhe gemeinsam durch. Oft ist auch ein Wechsel von klein auf groß möglich.</p>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">So einfach geht's</span>
+          <h2>In drei Schritten zu Ihrer Anwartschaft</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <h3>Kostenloses Erstgespräch</h3>
+            <p>Wir klären Ihre Situation (Dienstherr, Laufbahn, Heilfürsorge oder Beihilfe) und was Sie später brauchen.</p>
+          </div>
+          <div class="step">
+            <h3>Tarife vergleichen</h3>
+            <p>Als Makler vergleichen wir Tarife verschiedener Versicherer und gehen die Gesundheitsfragen sorgfältig mit Ihnen durch.</p>
+          </div>
+          <div class="step">
+            <h3>Abschließen &amp; entspannen</h3>
+            <p>Ihre Anwartschaft läuft im Hintergrund. Wenn es so weit ist, kümmern wir uns gemeinsam um die Umstellung.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-head">
+          <span class="eyebrow">Häufige Fragen</span>
+          <h2>Ihre Fragen zur Anwartschaftsversicherung</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Was ist eine Anwartschaftsversicherung?</summary>
+            <p>Eine Anwartschaftsversicherung hält Ihnen den Platz in der privaten Krankenversicherung frei, solange Sie sie noch nicht brauchen. Ihr Gesundheitszustand wird beim Abschluss festgehalten. Wenn Sie die Versicherung später aktivieren, zählt dieser Stand. Erkrankungen aus der Zwischenzeit spielen dann keine Rolle mehr.</p>
+          </details>
+          <details>
+            <summary>Wer braucht eine Anwartschaftsversicherung?</summary>
+            <p>Vor allem Beamtinnen und Beamte mit Heilfürsorge oder truppenärztlicher Versorgung, etwa bei <a href="/polizei.html">Polizei</a>, <a href="/bundespolizei.html">Bundespolizei</a>, <a href="/bundeswehr.html">Bundeswehr</a> und je nach Bundesland bei <a href="/berufsfeuerwehr.html">Berufsfeuerwehr</a> oder <a href="/justiz.html">Justizvollzug</a>. Spätestens im Ruhestand endet diese Versorgung, und dann brauchen Sie eine private Krankenversicherung zur Beihilfe. Sinnvoll ist sie auch, wenn Sie Ihre private Krankenversicherung vorübergehend nicht benötigen, zum Beispiel bei einem längeren Auslandsaufenthalt.</p>
+          </details>
+          <details>
+            <summary>Was ist der Unterschied zwischen kleiner und großer Anwartschaft?</summary>
+            <p>Die kleine Anwartschaft sichert Ihren Gesundheitszustand. Der spätere Beitrag richtet sich aber nach Ihrem dann erreichten Alter. Die große Anwartschaft sichert zusätzlich Ihr Eintrittsalter und baut Alterungsrückstellungen auf. Sie kostet in der Anwartschaftszeit mehr, dafür ist der Beitrag später spürbar niedriger, besonders im Ruhestand.</p>
+          </details>
+          <details>
+            <summary>Was kostet eine Anwartschaftsversicherung?</summary>
+            <p>Die kleine Anwartschaft kostet meist nur einen kleinen Teil des späteren vollen Beitrags. Die große Anwartschaft ist teurer, weil sie für das Alter vorsorgt. Die genaue Höhe hängt von Versicherer, Tarif, Alter und gewünschtem Umfang ab. Wir vergleichen das für Sie bei vielen Anbietern.</p>
+          </details>
+          <details>
+            <summary>Wann sollte ich eine Anwartschaft abschließen?</summary>
+            <p>So früh wie möglich: am besten direkt zu Beginn Ihrer Dienstzeit, solange Sie jung und gesund sind. Beim Abschluss werden einmalig Gesundheitsfragen gestellt. Je gesünder Sie dann sind, desto besser sind die Bedingungen, die Sie sich für später sichern.</p>
+          </details>
+          <details>
+            <summary>Muss ich für die Anwartschaft Gesundheitsfragen beantworten?</summary>
+            <p>Ja, einmalig beim Abschluss. Diese Fragen sollten Sie sorgfältig und vollständig beantworten, damit Ihr Schutz später auch wirklich hält. Wir gehen die Fragen gemeinsam mit Ihnen durch. Danach gibt es beim Aktivieren der Versicherung keine neue Gesundheitsprüfung mehr.</p>
+          </details>
+        </div>
+        <div class="notice notice--info u-mt-l">
+          <strong>Kostenlose Checkliste für Anwärterinnen und Anwärter in NRW:</strong> Alle wichtigen Schritte und Fristen zum Start ins Beamtenverhältnis auf zwei Seiten zum Abhaken, von der Krankenversicherung bis zur Dienstunfähigkeit.
+          <div class="u-mt-s"><a class="btn btn--accent" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download>Checkliste herunterladen (PDF)</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section section--soft">
+      <div class="container split">
+        <div>
+          <Picture src={imgStefanPortrait} alt="Stefan Neudorf, Versicherungsmakler bei Team-Neudorf" formats={["avif", "webp"]} widths={[480, 900]} sizes="(max-width: 900px) 90vw, 420px" class="about-photo" loading="lazy" />
+        </div>
+        <div>
+          <span class="eyebrow">Ihr Ansprechpartner</span>
+          <h2>Stefan Neudorf, Makler für den Öffentlichen Dienst</h2>
+          <p class="lead">Ich bin auf die Absicherung von Beamtinnen und Beamten spezialisiert. Ich kenne die Besonderheiten von Heilfürsorge, Beihilfe und Dienstunfähigkeit und erkläre sie so, dass Sie verstehen, was Sie abschließen.</p>
+          <p>Als Versicherungsmakler bin ich an keinen einzelnen Versicherer gebunden. Ich vergleiche für Sie und empfehle nur, was wirklich zu Ihrer Laufbahn passt. Persönlich in Mechernich oder bequem per Video.</p>
+          <a class="btn btn--accent" href="/kontakt.html">Kostenloses Erstgespräch vereinbaren</a>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container text-center">
+        <span class="eyebrow">Passend zu Ihrem Dienst</span>
+        <h2 class="u-mb-m">Mehr zu Ihrer Berufsgruppe</h2>
+        <div class="chip-row chip-row--center">
+          <a class="btn btn--outline" href="/polizei.html">Polizei</a>
+          <a class="btn btn--outline" href="/bundespolizei.html">Bundespolizei</a>
+          <a class="btn btn--outline" href="/bundeswehr.html">Bundeswehr</a>
+          <a class="btn btn--outline" href="/berufsfeuerwehr.html">Berufsfeuerwehr</a>
+          <a class="btn btn--outline" href="/justiz.html">Justiz</a>
+          <a class="btn btn--outline" href="/leistungen.html">Alle Leistungen</a>
+        </div>
+      </div>
+    </section>
+    <CtaBand eyebrow="Heute an morgen denken" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+<Fragment slot="title">Sichern Sie sich Ihre Gesundheit von heute</Fragment>
+<p>Unverbindlich und verständlich: Wir prüfen, ob und welche Anwartschaft für Sie sinnvoll ist.</p>
+</CtaBand>
+</Base>

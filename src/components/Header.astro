@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo-team-neudorf.png';
+import Icon from './Icon.astro';
+import { site, mainNav, berufsgruppen, oedThemen, oedPaths } from '../data/site';
+interface Props { path: string }
+const { path } = Astro.props;
+const isCurrent = (href: string, mega?: boolean) => path === href || (mega && oedPaths.includes(path));
+---
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Zur Startseite von Team-Neudorf">
+      <Image src={logo} alt={site.logoAlt} width={420} densities={[1, 2]} loading="eager" class="brand__logo" />
+    </a>
+
+    <nav class="nav" aria-label="Hauptnavigation">
+      <ul class="nav__list">
+        {mainNav.map((item) => (
+          <li class:list={['nav__item', { 'nav__item--mega': 'mega' in item }]}>
+            <a class="nav__link" href={item.href} aria-current={isCurrent(item.href, 'mega' in item) ? 'page' : undefined}>{item.label}</a>
+            {'mega' in item && (
+              <>
+                <button class="nav__caret" type="button" aria-expanded="false" aria-controls="mega-oed" aria-label="Untermenü Öffentlicher Dienst öffnen" data-mega-toggle>
+                  <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3.5 5 7.5 9 3.5" fill="none" stroke="currentColor" stroke-width="1.4" /></svg>
+                </button>
+                <div class="mega" id="mega-oed" data-mega>
+                  <div class="mega__col">
+                    <span class="label">Berufsgruppen</span>
+                    <ul class="mega__grid">
+                      {berufsgruppen.map((b) => <li><a href={b.href} aria-current={path === b.href ? 'page' : undefined}>{b.label}</a></li>)}
+                    </ul>
+                  </div>
+                  <div class="mega__col mega__col--side">
+                    <span class="label">Themen</span>
+                    <ul>
+                      {oedThemen.map((t) => <li><a href={t.href} aria-current={path === t.href ? 'page' : undefined}>{t.label}</a></li>)}
+                    </ul>
+                  </div>
+                </div>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="site-header__phone" href={site.phoneHref} aria-label={`Team-Neudorf anrufen: ${site.phoneDisplay}`}>
+        <Icon name="phone" size={16} /><span>{site.phoneDisplay}</span>
+      </a>
+      <a class="btn btn--primary btn--sm" href="/kontakt.html">Beratung anfragen</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" data-menu hidden>
+  <div class="mobile-menu__inner container">
+    <nav aria-label="Mobile Navigation">
+      <ul class="mobile-menu__main">
+        {mainNav.map((item, i) => (
+          <li style={`--i:${i}`}>
+            <a href={item.href} aria-current={isCurrent(item.href, 'mega' in item) ? 'page' : undefined}><span class="idx">0{i + 1}</span>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+      <span class="label">Berufsgruppen</span>
+      <ul class="mobile-menu__chips">
+        {berufsgruppen.map((b) => <li><a href={b.href}>{b.label}</a></li>)}
+      </ul>
+      <ul class="mobile-menu__sub">
+        <li><a href="/leistungen.html">Leistungen</a></li>
+        <li><a href="/anwartschaft.html">Anwartschaft</a></li>
+        <li><a href="/aktuelles.html">Aktuelles</a></li>
+        <li><a href="/schaden-melden.html">Schaden melden</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__contact">
+      <a class="btn btn--primary btn--block" href="/kontakt.html">Beratung anfragen</a>
+      <a class="btn btn--outline btn--block" href={site.phoneHref}><Icon name="phone" size={16} />{site.phoneDisplay}</a>
+    </div>
+  </div>
+</div>
