@@ -8,3 +8,4 @@ dist/
 references/
 # lokale Test-Screenshots
 /screenshots/
+.wrangler/
