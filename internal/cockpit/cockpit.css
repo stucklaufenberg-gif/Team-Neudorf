@@ -1,0 +1,87 @@
+/* Internes Cockpit – nüchterne Arbeitsoberfläche in den Markenfarben. */
+:root { --navy: #011d37; --navy-2: #0b2440; --navy-3: #143d6b; --gold: #d9b25a; --ivory: #f6f4ef; --line: #e2dccf; --ink: #171a20; --muted: #5a616b; --warn: #8a5a00; --err: #a12b2b; --ok: #1f6b4f; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: var(--ink); background: var(--ivory); }
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; margin: 0; line-height: 1.15; }
+code { font: 0.86em ui-monospace, Menlo, Consolas, monospace; background: #ece7dc; padding: 0.1em 0.35em; border-radius: 3px; }
+.top { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: end; justify-content: space-between; padding: 1.4rem clamp(1rem, 3vw, 2.5rem) 0; background: var(--navy); color: #fff; }
+.kicker { margin: 0 0 0.3rem; font: 600 0.7rem/1.4 ui-monospace, Menlo, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+h1 { font-size: 1.9rem; padding-bottom: 1.1rem; }
+h1 span { font: 600 0.7rem ui-monospace, Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 0.25rem 0.5rem; border-radius: 3px; vertical-align: middle; margin-left: 0.6rem; }
+.tabs { display: flex; gap: 0.25rem; }
+.tabs button { border: 0; background: transparent; color: #cfe0f2; font: inherit; font-weight: 600; padding: 0.75rem 1.1rem; border-radius: 6px 6px 0 0; cursor: pointer; }
+.tabs button[aria-selected='true'] { background: var(--ivory); color: var(--navy); }
+.storage-note { margin: 0; padding: 0.7rem clamp(1rem, 3vw, 2.5rem); background: #efe6d2; border-bottom: 1px solid var(--line); font-size: 0.88rem; }
+main { padding: 1.5rem clamp(1rem, 3vw, 2.5rem) 4rem; max-width: 1400px; margin: 0 auto; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; align-items: end; margin-bottom: 1rem; }
+.toolbar label { display: grid; gap: 0.25rem; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+.toolbar .grow { flex: 1 1 220px; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-left: auto; }
+input, select, textarea, button, .filebtn { font: inherit; }
+input, select, textarea { padding: 0.55rem 0.65rem; border: 1px solid #c9c2b2; border-radius: 6px; background: #fff; color: var(--ink); min-height: 40px; width: 100%; }
+textarea { resize: vertical; }
+button, .filebtn { display: inline-flex; align-items: center; min-height: 40px; padding: 0.5rem 0.9rem; border: 1px solid #b9b2a2; border-radius: 6px; background: #fff; color: var(--ink); font-weight: 600; cursor: pointer; }
+button:hover, .filebtn:hover { border-color: var(--navy); }
+.primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+.quiet { background: transparent; }
+.danger { color: var(--err); border-color: #d9a5a5; }
+.filebtn { position: relative; overflow: hidden; }
+.filebtn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; min-height: 0; }
+:focus-visible, .filebtn:focus-within { outline: 3px solid var(--gold); outline-offset: 2px; }
+.count { margin: 0 0 0.8rem; color: var(--muted); font-size: 0.88rem; }
+.empty { padding: 2.5rem 1.5rem; border: 1px dashed #c9c2b2; border-radius: 10px; text-align: center; color: var(--muted); background: #fbfaf6; max-width: 70ch; margin: 1rem auto; }
+.report { margin: 0 0 1rem; padding: 0.9rem 1.1rem; border-radius: 8px; border: 1px solid; font-size: 0.9rem; }
+.report ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+.report.error { background: #fbeaea; border-color: #e3b5b5; color: var(--err); }
+.report.warn { background: #fdf3dc; border-color: #ecd49a; color: var(--warn); }
+.report.ok { background: #e6f3ec; border-color: #b4d8c5; color: var(--ok); }
+.toast { position: fixed; right: 1rem; bottom: 1rem; z-index: 20; padding: 0.7rem 1rem; background: var(--navy); color: #fff; border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
+.cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); }
+.card { display: flex; flex-direction: column; gap: 0.6rem; padding: 1.1rem 1.2rem 1.2rem; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--navy-3); border-radius: 10px; }
+.card[data-saeule='person'] { border-top-color: var(--gold); }
+.card[data-saeule='einblicke'] { border-top-color: #4d8f86; }
+.card h3 { font-size: 1.25rem; }
+.card p { margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.chip { font: 600 0.68rem/1.5 ui-monospace, Menlo, monospace; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 999px; background: #ece7dc; color: #3f4650; }
+.chip.status-freigabe-offen { background: #fdf0cf; color: var(--warn); }
+.chip.status-freigegeben, .chip.status-veroeffentlicht { background: #dcefe5; color: var(--ok); }
+.card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.8rem; font-size: 0.86rem; }
+.card dt { color: var(--muted); }
+.card dd { margin: 0; overflow-wrap: anywhere; }
+.card ol { margin: 0; padding-left: 1.2rem; font-size: 0.88rem; color: #3f4650; }
+.card details summary { cursor: pointer; font-weight: 600; font-size: 0.88rem; }
+.card .hint { font-size: 0.82rem; color: var(--warn); }
+.card .card-actions { margin-top: auto; padding-top: 0.5rem; }
+.demo-banner { margin: 0 0 1rem; padding: 0.9rem 1.1rem; background: #fde9a8; border: 2px solid #c8960a; border-radius: 8px; color: #4a3600; }
+.kpis { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-bottom: 1rem; }
+.kpi { position: relative; padding: 1.1rem 1.2rem; background: var(--navy); color: #fff; border-radius: 10px; }
+.kpi .label { font: 600 0.7rem ui-monospace, Menlo, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.kpi .value { font: 500 2.4rem/1.1 Georgia, serif; margin-top: 0.4rem; }
+.demo-tag { position: absolute; top: 0.7rem; right: 0.7rem; font: 700 0.62rem ui-monospace, Menlo, monospace; letter-spacing: 0.1em; background: #fde9a8; color: #4a3600; padding: 0.15rem 0.4rem; border-radius: 3px; }
+.rates { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-bottom: 1.5rem; }
+.rate { padding: 1rem 1.2rem; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+.rate .value { font: 500 1.9rem/1.1 Georgia, serif; color: var(--navy); }
+.rate .formula { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+.panel { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 1.2rem; margin-bottom: 1.2rem; }
+.panel h2 { font-size: 1.3rem; margin-bottom: 0.9rem; }
+.panel h3 { font-size: 1.1rem; margin: 1.4rem 0 0.5rem; }
+.prose { max-width: 90ch; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { text-align: right; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child, .prose th, .prose td { text-align: left; white-space: normal; }
+th { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.chart { margin-bottom: 1rem; }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart text { font: 11px ui-monospace, Menlo, monospace; fill: var(--muted); }
+dialog { width: min(760px, calc(100vw - 2rem)); border: 0; border-radius: 12px; padding: 0; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); }
+dialog::backdrop { background: rgba(1, 29, 55, 0.6); }
+dialog form { display: grid; gap: 0.8rem; padding: 1.4rem; }
+dialog label { display: grid; gap: 0.25rem; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+.grid2 { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.dialog-actions { display: flex; gap: 0.5rem; margin-top: 0.4rem; }
+.spacer { flex: 1; }
+[hidden] { display: none !important; }
+.toolbar label.filebtn { display: inline-flex; font-size: inherit; color: var(--ink); }
+.toolbar label.filebtn.primary { color: #fff; }

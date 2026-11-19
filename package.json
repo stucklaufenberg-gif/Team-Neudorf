@@ -8,7 +8,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "migrate": "python3 scripts/migrate-legacy.py"
+    "migrate": "python3 scripts/migrate-legacy.py",
+    "cockpit": "node internal/serve.mjs",
+    "test:cockpit": "node internal/cockpit/lib.test.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

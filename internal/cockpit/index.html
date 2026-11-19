@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Team-Neudorf Cockpit (intern)</title>
+  <link rel="stylesheet" href="cockpit.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="kicker">Team-Neudorf · Digital Vision</p>
+      <h1>Cockpit <span>intern · nur lokal</span></h1>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Bereiche">
+      <button role="tab" id="tab-content" aria-controls="view-content" aria-selected="true">Content</button>
+      <button role="tab" id="tab-perf" aria-controls="view-perf" aria-selected="false" tabindex="-1">Performance</button>
+      <button role="tab" id="tab-plan" aria-controls="view-plan" aria-selected="false" tabindex="-1">Messplan</button>
+    </nav>
+  </header>
+
+  <p class="storage-note" role="note"><strong>Nicht synchronisiert:</strong> Änderungen werden nur in diesem Browser auf diesem Gerät gespeichert. Zum Sichern oder Weitergeben bitte exportieren. Es wird nichts automatisch veröffentlicht oder gepostet.</p>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- ================= CONTENT ================= -->
+  <main id="view-content" role="tabpanel" aria-labelledby="tab-content">
+    <section class="toolbar" aria-label="Filter und Aktionen">
+      <label>Zielgruppe <select id="f-zielgruppe"></select></label>
+      <label>Säule <select id="f-saeule"></select></label>
+      <label>Status <select id="f-status"></select></label>
+      <label class="grow">Suche <input id="f-suche" type="search" placeholder="Hook, Kernaussage, id" /></label>
+      <div class="actions">
+        <button id="b-new" class="primary">Neues Briefing</button>
+        <button id="b-export">JSON exportieren</button>
+        <label class="filebtn">JSON importieren<input id="b-import" type="file" accept="application/json,.json" /></label>
+        <button id="b-reset" class="quiet">Auf Repository-Stand zurücksetzen</button>
+      </div>
+    </section>
+    <div id="import-report" class="report" hidden></div>
+    <p id="content-count" class="count"></p>
+    <div id="content-list" class="cards"></div>
+    <p id="content-empty" class="empty" hidden></p>
+  </main>
+
+  <!-- ================= PERFORMANCE ================= -->
+  <main id="view-perf" role="tabpanel" aria-labelledby="tab-perf" hidden>
+    <div id="demo-banner" class="demo-banner" role="alert" hidden><strong>DEMO-DATEN · keine echten Zahlen.</strong> Diese Werte sind frei erfundene Beispieldaten zur Veranschaulichung der Ansicht und sagen nichts über die tatsächliche Leistung der Website aus.</div>
+    <section class="toolbar" aria-label="Daten und Filter">
+      <label>Von <input id="p-von" type="date" /></label>
+      <label>Bis <input id="p-bis" type="date" /></label>
+      <label>Kanal <select id="p-kanal"></select></label>
+      <label>Landingpage <select id="p-lp"></select></label>
+      <div class="actions">
+        <label class="filebtn primary">CSV importieren<input id="p-import" type="file" accept=".csv,text/csv" /></label>
+        <button id="p-template">CSV-Vorlage</button>
+        <button id="p-demo">Demo-Daten laden</button>
+        <button id="p-clear" class="quiet">Daten löschen</button>
+      </div>
+    </section>
+    <div id="perf-report" class="report" hidden></div>
+    <p id="perf-empty" class="empty" hidden></p>
+    <div id="perf-body" hidden>
+      <p id="perf-source" class="count"></p>
+      <section class="kpis" id="kpis" aria-label="Kennzahlen"></section>
+      <section class="rates" id="rates" aria-label="Conversion-Raten"></section>
+      <section class="panel">
+        <h2>Verlauf nach Datum</h2>
+        <div id="chart" class="chart"></div>
+        <div class="table-wrap"><table id="t-datum"></table></div>
+      </section>
+      <section class="panel">
+        <h2>Nach Landingpage</h2>
+        <div class="table-wrap"><table id="t-lp"></table></div>
+      </section>
+      <section class="panel">
+        <h2>Nach Kanal</h2>
+        <div class="table-wrap"><table id="t-kanal"></table></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ================= MESSPLAN ================= -->
+  <main id="view-plan" role="tabpanel" aria-labelledby="tab-plan" hidden>
+    <section class="panel prose">
+      <h2>Was gemessen würde – und was nicht</h2>
+      <p><strong>Aktueller Stand: Auf der Website ist keine Besuchermessung aktiv.</strong> Die Ereignisse unten sind im Code definiert (<code>src/lib/tracking.ts</code>), der Schalter steht auf „aus“. Es liegen deshalb keine echten Website- oder Conversion-Daten vor.</p>
+      <table>
+        <thead><tr><th>Ereignis</th><th>Bedeutung</th><th>KPI im Dashboard</th></tr></thead>
+        <tbody>
+          <tr><td><code>landingpage_view</code></td><td>Aufruf einer Landingpage</td><td>Website-Besuche</td></tr>
+          <tr><td><code>contact_click</code></td><td>Klick auf den Weg zur Kontaktseite</td><td rowspan="5">Kontakt-Klicks</td></tr>
+          <tr><td><code>tel_click</code></td><td>Klick auf die Telefonnummer</td></tr>
+          <tr><td><code>email_click</code></td><td>Klick auf die E-Mail-Adresse</td></tr>
+          <tr><td><code>whatsapp_click</code></td><td>Klick auf WhatsApp</td></tr>
+          <tr><td><code>booking_click</code></td><td>Klick auf die Online-Terminbuchung (keine bestätigte Buchung)</td></tr>
+          <tr><td><code>download_click</code></td><td>Download, z. B. Anwärter-Checkliste</td><td>–</td></tr>
+          <tr><td><code>contact_success</code></td><td>Nur nach vom Server bestätigtem Formularversand</td><td>Terminanfragen (Teilmenge)</td></tr>
+        </tbody>
+      </table>
+      <h3>Woher die vier Kennzahlen später kommen können</h3>
+      <ul>
+        <li><strong>Website-Besuche, Kontakt-Klicks:</strong> aus einer freigegebenen, datenschutzkonformen Website-Messung (Anbieter noch offen).</li>
+        <li><strong>Terminanfragen:</strong> aus bestätigten Formularversänden, Microsoft Bookings und von Hand gezählten Anrufen/WhatsApp-Anfragen.</li>
+        <li><strong>Qualifizierte Leads:</strong> Stefans eigene Einschätzung je Anfrage – nur als Anzahl, ohne Namen.</li>
+        <li><strong>Kanal:</strong> aus Kampagnen-Links (<code>?utm_source=instagram</code>) bzw. aus den Statistiken der Plattformen.</li>
+      </ul>
+      <p>Bis eine Messung freigegeben ist, werden Zahlen von Hand als CSV zusammengetragen und hier importiert. Importiert werden ausschließlich Summen – keine Namen, Kontaktdaten, Gesundheits- oder Vertragsangaben.</p>
+    </section>
+  </main>
+
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form method="dialog" id="editor-form" novalidate>
+      <h2 id="editor-title">Briefing bearbeiten</h2>
+      <div id="editor-errors" class="report error" role="alert" hidden></div>
+      <div class="grid2">
+        <label>id<input name="id" required /></label>
+        <label>Zielgruppe<input name="zielgruppe" required list="dl-zielgruppe" /></label>
+        <label>Säule<select name="saeule"></select></label>
+        <label>Status<select name="status"></select></label>
+      </div>
+      <label>Hook<input name="hook" required /></label>
+      <label>Kernaussage<textarea name="kernaussage" rows="3" required></textarea></label>
+      <div class="grid2">
+        <label>Format<input name="format" required /></label>
+        <label>CTA<input name="cta" required /></label>
+        <label>Ziel-URL (intern)<input name="zielUrl" required placeholder="/kontakt.html" /></label>
+        <label>Veröffentlichungsdatum (optional)<input name="veroeffentlichung" type="date" /></label>
+      </div>
+      <label>Szenenfolge (eine Szene je Zeile)<textarea name="szenen" rows="5"></textarea></label>
+      <label>Benötigte Original-Assets (eines je Zeile)<textarea name="originalAssets" rows="3"></textarea></label>
+      <label>Quelle der Fachaussagen<input name="quelle" /></label>
+      <label>Freigabe-Hinweis<textarea name="freigabeHinweis" rows="2"></textarea></label>
+      <datalist id="dl-zielgruppe"></datalist>
+      <div class="dialog-actions">
+        <button type="button" id="e-delete" class="danger">Löschen</button>
+        <span class="spacer"></span>
+        <button type="button" id="e-cancel">Abbrechen</button>
+        <button type="submit" class="primary">Speichern</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

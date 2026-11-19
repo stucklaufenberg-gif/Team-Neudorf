@@ -51,6 +51,7 @@ export const oedThemen = [
   { href: '/oeffentlicher-dienst.html', label: 'Überblick Öffentlicher Dienst' },
   { href: '/berufsgruppen.html', label: 'Alle Berufsgruppen' },
   { href: '/leistungen.html', label: 'Leistungen' },
+  { href: '/referendariat-nrw.html', label: 'Referendariat & Anwärter NRW' },
   { href: '/anwartschaft.html', label: 'Anwartschaft' },
   { href: '/aktuelles.html', label: 'Aktuelles' },
 ] as const;

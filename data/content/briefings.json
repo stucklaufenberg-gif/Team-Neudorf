@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "hinweis": "Redaktionsbriefings für Stefans Personal Brand. Quelle der Themen: Digital Vision (Säulen Person/Wissen/Einblicke, vier Reel-Ideen). Fachaussagen dürfen nur aus freigegebenen Website-Texten stammen. Kein automatisches Posting.",
+  "briefings": [
+    {
+      "id": "reel-01-bundeswehr-makler",
+      "zielgruppe": "Alle (Schwerpunkt Öffentlicher Dienst)",
+      "saeule": "person",
+      "hook": "Warum ich nach der Bundeswehr Versicherungsmakler wurde.",
+      "kernaussage": "Stefan war Soldat, unter anderem im Auslandseinsatz in Afghanistan, machte danach eine Ausbildung zum Kaufmann für Büromanagement, leitete eine Filiale und ist seit 2024 Versicherungsmakler. Verantwortung, Verlässlichkeit und Vertrauen prägen seine Beratung.",
+      "format": "Reel, 30–45 s, Stefan spricht direkt in die Kamera",
+      "cta": "Mehr über mich auf der Website",
+      "zielUrl": "/ueber-uns.html",
+      "status": "freigabe-offen",
+      "originalAssets": ["Stefan vor der Kamera (Original-Dreh)", "Optional: eigene Fotos aus der Bundeswehrzeit, nur mit Stefans Freigabe"],
+      "veroeffentlichung": "",
+      "szenen": [
+        "Einstieg: Stefan nennt den Hook in einem Satz.",
+        "Bundeswehr: Was ihn diese Zeit gelehrt hat (Verantwortung, Verlässlichkeit, Vertrauen).",
+        "Der Weg danach: Ausbildung, Filialleitung, persönlicher Kontakt.",
+        "Heute: Warum er Menschen im Öffentlichen Dienst versteht.",
+        "Abschluss: Hinweis auf die Über-uns-Seite."
+      ],
+      "quelle": "ueber-uns.html (bestehende Website)",
+      "freigabeHinweis": "Nur belegte biografische Angaben verwenden. Keine Details zum Einsatz ergänzen, die nicht von Stefan stammen."
+    },
+    {
+      "id": "reel-02-referendariat",
+      "zielgruppe": "Referendariat / Beamtenanwärter NRW",
+      "saeule": "wissen",
+      "hook": "Referendariat startet: Welche Fragen solltest du vorher klären?",
+      "kernaussage": "Zum Start als Anwärterin oder Anwärter werden Entscheidungen getroffen, die lange wirken: Beihilfe und Krankenversicherung, Dienstunfähigkeit ab dem ersten Tag, früher Einstieg. Die Checkliste fasst Schritte und Fristen zusammen.",
+      "format": "Reel, 30–40 s, Stefan + eingeblendete Stichpunkte",
+      "cta": "Checkliste und Antworten auf der Landingpage",
+      "zielUrl": "/referendariat-nrw.html",
+      "status": "freigabe-offen",
+      "originalAssets": ["Stefan vor der Kamera (Original-Dreh)", "Checkliste Beamtenanwärter NRW (PDF, vorhanden)"],
+      "veroeffentlichung": "",
+      "szenen": [
+        "Einstieg: Hook als Frage.",
+        "Drei Stichpunkte einblenden: Krankenversicherung/Beihilfe, Dienstunfähigkeit, früh starten.",
+        "Stefan: Warum gerade diese Phase wichtig ist.",
+        "Checkliste zeigen.",
+        "Abschluss: Hinweis auf die Landingpage."
+      ],
+      "quelle": "oeffentlicher-dienst.html, lehramt.html (bestehende Website)",
+      "freigabeHinweis": "Keine Beihilfesätze, Fristen oder Termine im Video nennen, die nicht wörtlich freigegeben sind. Regeln unterscheiden sich je nach Laufbahn und Dienstherr."
+    },
+    {
+      "id": "reel-03-beihilfe-heilfuersorge",
+      "zielgruppe": "Öffentlicher Dienst (Beamte mit Beihilfe oder Heilfürsorge)",
+      "saeule": "wissen",
+      "hook": "Beihilfe oder Heilfürsorge? Erst einmal den Unterschied verstehen.",
+      "kernaussage": "Bei Beihilfe übernimmt der Dienstherr einen Teil der Krankheitskosten, den Rest deckt eine private Krankenversicherung. Bei Heilfürsorge sind die Gesundheitskosten im aktiven Dienst gedeckt (etwa bei Polizei oder Berufsfeuerwehr), im Ruhestand greift die Beihilfe.",
+      "format": "Erklärfilm, 40–60 s, Stefan + einfache Gegenüberstellung",
+      "cta": "Überblick für den Öffentlichen Dienst",
+      "zielUrl": "/oeffentlicher-dienst.html",
+      "status": "freigabe-offen",
+      "originalAssets": ["Stefan vor der Kamera (Original-Dreh)", "Einfache Texttafeln im Markendesign"],
+      "veroeffentlichung": "",
+      "szenen": [
+        "Einstieg: Hook.",
+        "Beihilfe in einem Satz.",
+        "Heilfürsorge in einem Satz.",
+        "Was das für die eigene Absicherung bedeutet (Anwartschaft erwähnen).",
+        "Abschluss: Hinweis auf die Seite Öffentlicher Dienst."
+      ],
+      "quelle": "berufsgruppen.html, Abschnitt „Welcher Status trifft auf Sie zu?“ (bestehende Website)",
+      "freigabeHinweis": "Formulierungen eng am Website-Text halten; Heilfürsorge-Regeln unterscheiden sich je nach Dienstherr und Bundesland."
+    },
+    {
+      "id": "reel-04-bkv",
+      "zielgruppe": "Firmenkunden / Arbeitgeber",
+      "saeule": "wissen",
+      "hook": "Mitarbeiterbenefits: Was ist eigentlich eine bKV?",
+      "kernaussage": "Mit einer betrieblichen Krankenversicherung schenken Sie Ihrem Team echte Gesundheitsleistungen und werden zum attraktiven Arbeitgeber. Die konkrete steuerliche Behandlung stimmen Sie bitte mit Ihrer Steuerberatung ab.",
+      "format": "Reel, 30–40 s, Stefan direkt in die Kamera",
+      "cta": "Mehr zur bKV auf der Firmenkunden-Seite",
+      "zielUrl": "/firmenkunden.html",
+      "status": "idee",
+      "originalAssets": ["Stefan vor der Kamera (Original-Dreh)"],
+      "veroeffentlichung": "",
+      "szenen": [
+        "Einstieg: Hook.",
+        "bKV in einem Satz erklären.",
+        "Für wen sie interessant ist.",
+        "Abschluss: Hinweis auf die Firmenkunden-Seite."
+      ],
+      "quelle": "firmenkunden.html, Abschnitt bKV (bestehende Website)",
+      "freigabeHinweis": "Steuervorteile und Leistungsumfang nur mit wörtlich freigegebenem Text nennen; vor Dreh fachlich prüfen."
+    },
+    {
+      "id": "einblick-01-erstes-gespraech",
+      "zielgruppe": "Alle",
+      "saeule": "einblicke",
+      "hook": "So läuft ein erstes Gespräch bei mir ab.",
+      "kernaussage": "Sie melden sich, Stefan hört zu, vergleicht anbieterübergreifend und erklärt die Möglichkeiten. Ob etwas abgeschlossen wird, entscheiden Sie. Das erste Gespräch ist kostenlos und unverbindlich.",
+      "format": "Reel, 30 s, Einblick ins Büro, Stefan erklärt die Schritte",
+      "cta": "Gespräch anfragen",
+      "zielUrl": "/kontakt.html",
+      "status": "idee",
+      "originalAssets": ["Stefan im Büro (Original-Dreh)", "Keine Kundinnen oder Kunden im Bild ohne schriftliche Zustimmung"],
+      "veroeffentlichung": "",
+      "szenen": [
+        "Einstieg: Hook.",
+        "Schritt 1: Sie melden sich.",
+        "Schritt 2: Ich höre zu.",
+        "Schritt 3: Sie entscheiden in Ruhe.",
+        "Abschluss: Kontaktwege nennen."
+      ],
+      "quelle": "index.html, Abschnitt „So läuft ein erstes Gespräch“ (bestehende Website)",
+      "freigabeHinweis": "Diese Idee stammt nicht aus den vier Reels der Vision, sondern füllt die Säule Einblicke mit vorhandenem Website-Inhalt."
+    }
+  ]
+}

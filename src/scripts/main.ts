@@ -2,6 +2,7 @@
 // 1 Header · 2 Mobiles Menü · 3 Mega-Menü · 4 Reveal · 5 Halftone · 6 Formulare · 7 Jahr
 
 import { initMotion } from './motion';
+import { initTracking, markFormSuccess } from '../lib/tracking';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -181,6 +182,7 @@ document.querySelectorAll<HTMLFormElement>('form[action$=".php"]').forEach((form
       const target = new URL(res.url);
       const isHtmlPage = (res.headers.get('content-type') ?? '').includes('text/html');
       if (res.ok && isHtmlPage && (target.pathname.includes('danke') || target.search.includes('fehler='))) {
+        if (target.pathname.includes('danke')) markFormSuccess(); // Server hat den Versand bestätigt
         window.location.assign(res.url);
         return;
       }
@@ -203,3 +205,6 @@ document.querySelectorAll<HTMLElement>('[data-year]').forEach((el) => (el.textCo
 
 /* 8 · Signature Motion (Tiefe, Scroll-Kopplung, Karten) – nur ohne reduced-motion */
 if (!reduceMotion.matches) initMotion();
+
+/* 9 · Messgrundlage: CTA-Kennzeichnung; Erfassung nur mit Feature-Flag (Standard: aus) */
+initTracking();

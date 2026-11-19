@@ -833,6 +833,21 @@ form[aria-busy='true'] button[type='submit'] { opacity: 0.6; pointer-events: non
 .u-mb-0 { margin-bottom: 0 !important; }
 .u-mb-m { margin-bottom: 1.4rem; }
 
+/* Landingpage-Bausteine */
+.numbered-grid { counter-reset: principle; }
+.numbered-grid .card { counter-increment: principle; }
+.numbered-grid .card h3::before { content: counter(principle, decimal-leading-zero); display: block; font: 500 0.72rem var(--font-mono); letter-spacing: 0.14em; color: var(--gold); margin-bottom: 1.8rem; }
+.faq__src { display: inline-block; margin-left: 0.6rem; padding: 0.15rem 0.45rem; border: 1px solid var(--line-strong); border-radius: 2px; font: 500 0.62rem/1.4 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--haze); vertical-align: middle; }
+.lp-person, .lp-contact { display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+@media (min-width: 960px) { .lp-person { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); } .lp-contact { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; } }
+.lp-person__figure { position: relative; margin: 0; max-width: 420px; isolation: isolate; }
+.lp-person__figure img { width: 100%; border: 1px solid var(--line-strong); }
+.lp-person__figure::before { content: ''; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid var(--line-gold); z-index: -1; }
+@media (max-width: 959px) { .lp-person__figure::before { inset: 10px -8px -10px 10px; } }
+.lp-person .steps { margin-top: 1.2rem; }
+.download-card .link-arrow { display: flex; }
+.editorial-flag { display: inline-block; margin: 0 0 1rem; padding: 0.35rem 0.6rem; font: 500 0.66rem/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy-950); background: #f3c98b; border-radius: 3px; }
+
 /* Testumgebung (nur im Vorschau-Build vorhanden) */
 .preview-flag { position: fixed; left: 0.75rem; bottom: 0.75rem; z-index: 70; margin: 0; padding: 0.4rem 0.7rem; font: 500 0.68rem/1.3 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-950); background: #f3c98b; border-radius: 3px; pointer-events: none; opacity: 0.92; }
 @media (max-width: 860px) { .preview-flag { bottom: auto; top: calc(var(--header-h) + 0.4rem); font-size: 0.6rem; padding: 0.3rem 0.5rem; } }

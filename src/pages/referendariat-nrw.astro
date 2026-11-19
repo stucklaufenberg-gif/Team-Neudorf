@@ -1,0 +1,265 @@
+---
+// Pilot-Landingpage „Referendariat / Beamtenanwärter in NRW“ (Digital Vision, Build Sprint 01).
+// REDAKTIONELL FREIGABEPFLICHTIG: Die Seite ist eine neue Zusammenstellung. Alle Fachaussagen stammen
+// wörtlich von bestehenden Seiten der Website (Quelle jeweils im Kommentar); neu sind nur
+// Zwischenüberschriften und Überleitungen (Liste in docs/DIGITAL_VISION_IMPLEMENTATION.md).
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import { Picture } from 'astro:assets';
+import imgLehramt from '../assets/images/sparten/lehramt.jpg';
+import portrait from '../assets/images/stefan-portrait.jpg';
+import { site } from '../data/site';
+import { isPreview } from '../data/env';
+
+const title = 'Referendariat & Beamtenanwärter in NRW: Absicherung zum Start | Team-Neudorf';
+const description = 'Start ins Referendariat oder als Beamtenanwärterin und Beamtenanwärter in NRW: Beihilfe, Dienstunfähigkeit und die ersten Schritte, verständlich erklärt. Mit kostenloser Checkliste.';
+const jsonLd: unknown[] = [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Start",
+            "item": "https://www.team-neudorf.de/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Öffentlicher Dienst",
+            "item": "https://www.team-neudorf.de/oeffentlicher-dienst.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Referendariat & Beamtenanwärter NRW",
+            "item": "https://www.team-neudorf.de/referendariat-nrw.html"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Bin ich im Referendariat schon beihilfeberechtigt?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja. In NRW leisten Sie den Vorbereitungsdienst als Beamtin oder Beamter auf Widerruf und erhalten Anwärterbezüge. Damit haben Sie Anspruch auf Beihilfe nach der Beihilfenverordnung NRW, in der Regel 50 Prozent. Die übrigen Kosten sichern Sie über eine beihilfekonforme private Krankenversicherung ab. Viele Versicherer bieten dafür Anwärtertarife an, die nach dem Referendariat auf den regulären Tarif umgestellt werden."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie hoch ist die Beihilfe in NRW?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ohne Kind oder mit einem Kind übernimmt die Beihilfe 50 Prozent, ab zwei berücksichtigungsfähigen Kindern 70 Prozent. Für Ihre Kinder sind es 80 Prozent, für Ihren Ehepartner 70 Prozent und im Ruhestand ebenfalls 70 Prozent. Sind beide Eltern beihilfeberechtigt, erhält nur einer den erhöhten Satz. Ihr Ehepartner ist nur berücksichtigungsfähig, wenn seine Einkünfte im Vorjahr unter einer festen Grenze liegen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was gilt bei der Gesundheitsprüfung und bei Vorerkrankungen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vor der Übernahme in das Beamtenverhältnis auf Probe prüft der amtsärztliche Dienst Ihre gesundheitliche Eignung, die Entscheidung trifft die Bezirksregierung. Machen Sie dort vollständige Angaben, denn ein verschwiegener Eingriff kann die Verbeamtung kosten. Mit Vorerkrankungen hilft die Öffnungsaktion der privaten Krankenversicherung. Sie werden ohne Leistungsausschlüsse aufgenommen, der Risikozuschlag beträgt höchstens 30 Prozent. Den Antrag stellen Sie innerhalb von sechs Monaten nach der ersten Verbeamtung."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was passiert, wenn ich in den ersten Dienstjahren dienstunfähig werde?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ein Ruhegehalt setzt in NRW mindestens fünf Jahre Dienstzeit voraus. Die Ausnahme ist eine Dienstunfähigkeit durch den Dienst, etwa nach einem Dienstunfall; das gilt ab der Probezeit. Im Referendariat werden Sie bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus anderen Gründen dienstunfähig, zum Beispiel durch eine Krankheit, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Die Beihilfe entfällt dann. Achten Sie darauf, dass Ihre Dienstunfähigkeitsversicherung schon für Beamte auf Widerruf und auf Probe leistet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ab wann habe ich Anspruch auf freie Heilfürsorge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nach § 112 Abs. 2 LBG NRW besteht der Anspruch, solange Ihnen Besoldung zusteht. Anwärterbezüge zählen zur Besoldung, deshalb gilt das schon im Studium als Kommissaranwärterin oder Kommissaranwärter. Die Leistungen kommen als Sachleistung und richten sich grundsätzlich nach dem SGB V. Zuzahlungen wie in der gesetzlichen Krankenversicherung fallen nach der Polizei-Heilfürsorgeverordnung (FHVOPol) nicht an."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Warum sollte ich früh eine Anwartschaft abschließen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Eine Anwartschaft hält Ihnen den späteren Wechsel in eine beihilfekonforme private Krankenversicherung offen, und zwar zu den Bedingungen von heute. Heilfürsorgeberechtigte können die Öffnungsaktion der PKV nur für eine solche Anwartschaft nutzen, und nur innerhalb von sechs Monaten nach Beginn der Heilfürsorge. Wer erst kurz vor dem Ruhestand handelt, kann diesen erleichterten Zugang nicht mehr nutzen."
+            }
+          }
+        ]
+      }
+    ]
+  }
+];
+
+// Quelle: oeffentlicher-dienst.html, Abschnitt „Beamtenanwärter“ (wörtlich)
+const weichen = [
+  { title: 'Dienstunfähigkeit ab dem ersten Tag', text: 'Als Beamtin oder Beamter auf Widerruf haben Sie bei Dienstunfähigkeit meist noch keinen ausreichenden Versorgungsanspruch. Eine private Absicherung ist deshalb gerade jetzt entscheidend.' },
+  { title: 'Jung & gesund = dauerhaft günstig', text: 'Eintrittsalter und Gesundheitszustand bestimmen Ihre Beiträge, oft für Jahrzehnte. Wer früh startet, sichert sich die besten Konditionen ohne Zuschläge oder Ausschlüsse.' },
+  { title: 'Günstige Anwärtertarife nutzen', text: 'Für die beihilfekonforme private Krankenversicherung gibt es besonders günstige Ausbildungs- und Anwärtertarife, ideal für den Start.' },
+];
+// Quelle: index.html, Abschnitt „So läuft ein erstes Gespräch“ (wörtlich)
+const gespraech = [
+  { title: 'Sie melden sich', text: 'Ein Anruf, eine Nachricht per WhatsApp oder ein paar Sätze im Kontaktformular genügen. Sie bekommen zeitnah eine Antwort.' },
+  { title: 'Ich höre zu', text: 'Wir sprechen über Ihre Situation und Ihre Ziele, vor Ort, am Telefon oder online.' },
+  { title: 'Sie entscheiden in Ruhe', text: 'Ich vergleiche anbieterübergreifend und erkläre Ihnen Ihre Möglichkeiten. Ob Sie etwas abschließen, entscheiden Sie.' },
+];
+const laufbahnen = [
+  { href: '/lehramt.html', label: 'Lehramt & Referendariat' },
+  { href: '/polizei.html', label: 'Polizei' },
+  { href: '/verwaltung.html', label: 'Verwaltung' },
+  { href: '/justiz.html', label: 'Justiz' },
+  { href: '/berufsfeuerwehr.html', label: 'Berufsfeuerwehr' },
+  { href: '/zoll.html', label: 'Zoll' },
+  { href: '/anwartschaft.html', label: 'Anwartschaft erklärt' },
+];
+---
+<Base title={title} description={description} path="/referendariat-nrw.html" jsonLd={jsonLd} landingpage="referendariat-nrw">
+
+  <!-- 1 · Situation -->
+  <section class="page-hero page-hero--split">
+    <div class="container page-hero__grid">
+      <div class="page-hero__text">
+        <nav class="breadcrumbs" aria-label="Brotkrümel"><a href="/">Start</a> / <a href="/oeffentlicher-dienst.html">Öffentlicher Dienst</a> / Referendariat &amp; Anwärter NRW</nav>
+        {isPreview && <p class="editorial-flag">Redaktionell freigabepflichtig · Fachtexte von bestehenden Seiten übernommen</p>}
+        <span class="tag">Referendariat · Beamtenanwärter in NRW</span>
+        <!-- Quelle H1 + Einleitung: oeffentlicher-dienst.html, Abschnitt „Beamtenanwärter“ (wörtlich) -->
+        <h1>Am Anfang Ihrer Laufbahn legen Sie die Weichen für Jahrzehnte</h1>
+        <p>Als Anwärterin, Anwärter oder im Vorbereitungsdienst treffen Sie jetzt Entscheidungen, die Sie ein ganzes Berufsleben begleiten. Wer früh und richtig absichert, spart bares Geld und vermeidet gefährliche Lücken. Genau deshalb ist die Beratung gerade in dieser Phase so wichtig.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/kontakt.html" data-cta-id="lp-referendariat-hero">Jetzt als Anwärter beraten lassen</a>
+          <a class="btn btn--outline" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download data-cta-id="lp-referendariat-checkliste-hero">Checkliste herunterladen (PDF)</a>
+        </div>
+      </div>
+      <figure class="page-hero__media">
+        <Picture src={imgLehramt} alt="Lehrer an einer grünen Tafel" formats={['avif', 'webp']} widths={[640, 1000, 1400, 1920]} sizes="(max-width: 900px) 100vw, 50vw" loading="eager" fetchpriority="high" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Ihre Situation</span>
+        <h2>Drei Weichen, die Sie jetzt stellen</h2>
+      </div>
+      <div class="grid grid--3 numbered-grid">
+        {weichen.map((w) => (
+          <article class="card">
+            <h3>{w.title}</h3>
+            <p>{w.text}</p>
+          </article>
+        ))}
+      </div>
+      <!-- Quelle: Checklisten-Hinweis der Berufsgruppen-Seiten (wörtlich) -->
+      <div class="notice notice--info u-mt-l">
+        <strong>Kostenlose Checkliste für Anwärterinnen und Anwärter in NRW:</strong> Alle wichtigen Schritte und Fristen zum Start ins Beamtenverhältnis auf zwei Seiten zum Abhaken, von der Krankenversicherung bis zur Dienstunfähigkeit.
+        <div class="u-mt-s"><a class="btn btn--accent" href="/assets/downloads/checkliste-beamtenanwaerter-nrw.pdf" download data-cta-id="lp-referendariat-checkliste">Checkliste herunterladen (PDF)</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Relevante Fragen (wörtlich aus lehramt.html und polizei.html, Quelle je Frage angegeben) -->
+  <section class="section section--soft" id="fragen">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <span class="eyebrow">Häufige Fragen</span>
+        <h2>Welche Fragen sollten Sie vor dem Start klären?</h2>
+        <p>Die Antworten stammen von unseren Seiten für Lehramt und Polizei. Regeln unterscheiden sich je nach Laufbahn und Dienstherr.</p>
+      </div>
+      <div class="faq">
+          <details>
+            <summary>Bin ich im Referendariat schon beihilfeberechtigt? <span class="faq__src">Lehramt</span></summary>
+            <p>Ja. In NRW leisten Sie den Vorbereitungsdienst als Beamtin oder Beamter auf Widerruf und erhalten Anwärterbezüge. Damit haben Sie Anspruch auf Beihilfe nach der Beihilfenverordnung NRW, in der Regel 50 Prozent. Die übrigen Kosten sichern Sie über eine beihilfekonforme private Krankenversicherung ab. Viele Versicherer bieten dafür Anwärtertarife an, die nach dem Referendariat auf den regulären Tarif umgestellt werden.</p>
+          </details>
+          <details>
+            <summary>Wie hoch ist die Beihilfe in NRW? <span class="faq__src">Lehramt</span></summary>
+            <p>Ohne Kind oder mit einem Kind übernimmt die Beihilfe 50 Prozent, ab zwei berücksichtigungsfähigen Kindern 70 Prozent. Für Ihre Kinder sind es 80 Prozent, für Ihren Ehepartner 70 Prozent und im Ruhestand ebenfalls 70 Prozent. Sind beide Eltern beihilfeberechtigt, erhält nur einer den erhöhten Satz. Ihr Ehepartner ist nur berücksichtigungsfähig, wenn seine Einkünfte im Vorjahr unter einer festen Grenze liegen.</p>
+          </details>
+          <details>
+            <summary>Was gilt bei der Gesundheitsprüfung und bei Vorerkrankungen? <span class="faq__src">Lehramt</span></summary>
+            <p>Vor der Übernahme in das Beamtenverhältnis auf Probe prüft der amtsärztliche Dienst Ihre gesundheitliche Eignung, die Entscheidung trifft die Bezirksregierung. Machen Sie dort vollständige Angaben, denn ein verschwiegener Eingriff kann die Verbeamtung kosten. Mit Vorerkrankungen hilft die Öffnungsaktion der privaten Krankenversicherung. Sie werden ohne Leistungsausschlüsse aufgenommen, der Risikozuschlag beträgt höchstens 30 Prozent. Den Antrag stellen Sie innerhalb von sechs Monaten nach der ersten Verbeamtung.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ich in den ersten Dienstjahren dienstunfähig werde? <span class="faq__src">Lehramt</span></summary>
+            <p>Ein Ruhegehalt setzt in NRW mindestens fünf Jahre Dienstzeit voraus. Die Ausnahme ist eine Dienstunfähigkeit durch den Dienst, etwa nach einem Dienstunfall; das gilt ab der Probezeit. Im Referendariat werden Sie bei Dienstunfähigkeit immer entlassen und erhalten nach einem Dienstunfall einen Unterhaltsbeitrag. Werden Sie vorher aus anderen Gründen dienstunfähig, zum Beispiel durch eine Krankheit, werden Sie entlassen und in der gesetzlichen Rentenversicherung nachversichert. Die Beihilfe entfällt dann. Achten Sie darauf, dass Ihre Dienstunfähigkeitsversicherung schon für Beamte auf Widerruf und auf Probe leistet.</p>
+          </details>
+          <details>
+            <summary>Ab wann habe ich Anspruch auf freie Heilfürsorge? <span class="faq__src">Polizei</span></summary>
+            <p>Nach § 112 Abs. 2 LBG NRW besteht der Anspruch, solange Ihnen Besoldung zusteht. Anwärterbezüge zählen zur Besoldung, deshalb gilt das schon im Studium als Kommissaranwärterin oder Kommissaranwärter. Die Leistungen kommen als Sachleistung und richten sich grundsätzlich nach dem SGB V. Zuzahlungen wie in der gesetzlichen Krankenversicherung fallen nach der Polizei-Heilfürsorgeverordnung (FHVOPol) nicht an.</p>
+          </details>
+          <details>
+            <summary>Warum sollte ich früh eine Anwartschaft abschließen? <span class="faq__src">Polizei</span></summary>
+            <p>Eine Anwartschaft hält Ihnen den späteren Wechsel in eine beihilfekonforme private Krankenversicherung offen, und zwar zu den Bedingungen von heute. Heilfürsorgeberechtigte können die Öffnungsaktion der PKV nur für eine solche Anwartschaft nutzen, und nur innerhalb von sechs Monaten nach Beginn der Heilfürsorge. Wer erst kurz vor dem Ruhestand handelt, kann diesen erleichterten Zugang nicht mehr nutzen.</p>
+          </details>
+      </div>
+      <!-- Quelle: lehramt.html, Hinweis „Gut zu wissen“ (wörtlich) -->
+      <div class="notice notice--info u-mt-l">
+        <strong>Gut zu wissen:</strong> Beihilfesätze und Verbeamtungsregeln unterscheiden sich je nach Bundesland und Dienstverhältnis. Wir berücksichtigen Ihre konkrete Situation.
+      </div>
+      <h3 class="u-mt-xl">Mehr zu Ihrer Laufbahn</h3>
+      <div class="chip-row u-mt-s">
+        {laufbahnen.map((l) => <a class="btn btn--outline" href={l.href}>{l.label}</a>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Vertrauen: Stefan als persönlicher Ansprechpartner -->
+  <section class="section">
+    <div class="container lp-person">
+      <figure class="lp-person__figure">
+        <Picture src={portrait} alt="Stefan Neudorf, Versicherungsmakler in Mechernich" formats={['avif', 'webp']} widths={[480, 900]} sizes="(max-width: 900px) 90vw, 420px" loading="lazy" />
+      </figure>
+      <div>
+        <span class="eyebrow">Ihr Ansprechpartner</span>
+        <!-- Quelle: index.html, Begrüßung (wörtlich) -->
+        <h2>Ich bin Stefan Neudorf</h2>
+        <p class="lead">Ich bin Stefan Neudorf, ehemaliger Soldat und heute Ihr Versicherungsmakler in Mechernich. Den Öffentlichen Dienst kenne ich nicht nur aus der Theorie.</p>
+        <h3 class="u-mt-l">So läuft ein erstes Gespräch</h3>
+        <div class="steps">
+          {gespraech.map((g) => (
+            <div class="step">
+              <h3>{g.title}</h3>
+              <p>{g.text}</p>
+            </div>
+          ))}
+        </div>
+        <p class="u-mt-m u-muted u-small">Das erste Gespräch ist kostenlos und unverbindlich. Für die Vermittlung erhält Team-Neudorf eine Courtage vom Versicherer. Sie ist bereits in Ihrem Versicherungsbeitrag enthalten, ein separates Honorar zahlen Sie dafür nicht.</p>
+        <p><a class="link-arrow" href="/ueber-uns.html">Mehr über mich <Icon name="arrow" size={18} /></a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Kontakt: nur real funktionierende Wege -->
+  <section class="section section--soft" id="kontakt">
+    <div class="container lp-contact">
+      <div>
+        <span class="eyebrow">Kontakt</span>
+        <h2>Ein Gespräch, ganz unkompliziert</h2>
+        <p class="lead">Erzählen Sie mir kurz, worum es geht.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/kontakt.html" data-cta-id="lp-referendariat-kontakt">Gespräch anfragen</a>
+          <a class="btn btn--outline" href={site.booking} target="_blank" rel="noopener" data-cta-id="lp-referendariat-termin">Termin online buchen<span class="sr-only"> (öffnet Microsoft Bookings in neuem Fenster)</span></a>
+        </div>
+        <p class="u-small u-muted u-mt-s">Die Online-Terminbuchung leitet zu Microsoft Bookings weiter (<a href="/datenschutz.html">Datenschutz</a>).</p>
+      </div>
+      <ul class="contact-panel">
+        <li><a href={site.phoneHref} data-cta-id="lp-referendariat-telefon"><Icon name="phone" /><span><span class="label">Telefon</span><strong>{site.phoneDisplay}</strong></span></a></li>
+        <li><a href={site.whatsapp} target="_blank" rel="noopener" aria-label="Team-Neudorf per WhatsApp schreiben (neues Fenster)" data-cta-id="lp-referendariat-whatsapp"><Icon name="whatsapp" /><span><span class="label">WhatsApp</span><strong>Per WhatsApp schreiben</strong></span></a></li>
+        <li><a href={`mailto:${site.email}`} data-cta-id="lp-referendariat-email"><Icon name="mail" /><span><span class="label">E-Mail</span><strong>{site.email}</strong></span></a></li>
+        <li><div><Icon name="clock" /><span><span class="label">Erreichbarkeit</span><strong>Montag bis Donnerstag 9 bis 17 Uhr</strong><strong>Freitag 9 bis 14 Uhr</strong></span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand eyebrow="Bereit für den nächsten Schritt?" href="/kontakt.html" label="Jetzt Kontakt aufnehmen">
+    <Fragment slot="title">Lassen Sie uns über Ihre Absicherung sprechen</Fragment>
+    <p>Ein unverbindliches Erstgespräch ist der einfachste Weg herauszufinden, ob Sie optimal aufgestellt sind.</p>
+  </CtaBand>
+</Base>

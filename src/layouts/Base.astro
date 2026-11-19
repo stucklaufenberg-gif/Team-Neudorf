@@ -19,8 +19,10 @@ interface Props {
   noindex?: boolean;
   jsonLd?: unknown[];
   home?: boolean;
+  /** Kennung, falls die Seite eine Kampagnen-Landingpage ist (für landingpage_view). */
+  landingpage?: string;
 }
-const { title, description, path, noindex = false, jsonLd = [], home = false } = Astro.props;
+const { title, description, path, noindex = false, jsonLd = [], home = false, landingpage } = Astro.props;
 const canonical = site.url + (path === '/index.html' ? '/' : path);
 // Schnellkontakt (mobil) entfällt auf Seiten, die selbst Formular bzw. Bestätigung sind.
 const quick = !['/kontakt.html', '/schaden-melden.html', '/danke.html', '/schaden-danke.html', '/404.html'].includes(path);
@@ -48,7 +50,7 @@ const ogImage = site.url + '/assets/images/logo-header.png';
     {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
-  <body class:list={[{ 'is-home': home }]}>
+  <body class:list={[{ 'is-home': home }]} data-landingpage={landingpage}>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
     {isPreview && <p class="preview-flag" role="note">Testumgebung · nicht öffentlich</p>}
     <Header path={path} />
