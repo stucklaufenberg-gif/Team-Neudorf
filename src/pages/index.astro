@@ -79,9 +79,10 @@ const meldungen = [
 
   <!-- ============ 1 · HERO (Noema) ============ -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__light" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="hero__light" aria-hidden="true"><i></i><i></i><i></i><b class="hero__glow"></b></div>
     <canvas class="halftone hero__dots" data-halftone aria-hidden="true"></canvas>
 
+    <span class="hero__frame" aria-hidden="true"></span>
     <figure class="hero__portrait">
       <Picture src={portrait} alt="Stefan Neudorf, Versicherungsmakler in Mechernich" formats={['avif', 'webp']} widths={[480, 720, 900]} sizes="(max-width: 860px) 100vw, 46vw" loading="eager" fetchpriority="high" />
       <figcaption>
@@ -119,7 +120,8 @@ const meldungen = [
 
   <!-- ============ 2 · BEREICHE (Kelder) ============ -->
   <section class="section areas" id="bereiche" aria-labelledby="bereiche-title">
-    <SilkLines variant="flow" class="areas__silk" />
+    <span class="areas__horizon" aria-hidden="true" data-scrub></span>
+    <SilkLines variant="flow" class="areas__silk" scrub />
     <div class="container">
       <header class="section-head" data-reveal>
         <span class="eyebrow">Wählen Sie Ihren Bereich</span>
@@ -190,9 +192,9 @@ const meldungen = [
         <a class="btn btn--dark" href="/ueber-uns.html">Mehr über mich</a>
       </div>
 
-      <ol class="timeline" data-reveal>
+      <ol class="timeline" data-story>
         {weg.map((w, i) => (
-          <li style={`--i:${i}`}>
+          <li style={`--i:${i}`} data-chapter>
             <span class="label">{w.label}</span>
             <h3>{w.title}</h3>
             <p>{w.text}</p>
@@ -233,13 +235,13 @@ const meldungen = [
         <h2 id="ablauf-title">So läuft ein erstes Gespräch</h2>
         <p>Das erste Gespräch ist kostenlos und unverbindlich. Für die Vermittlung erhält Team-Neudorf eine Courtage vom Versicherer. Sie ist bereits in Ihrem Versicherungsbeitrag enthalten, ein separates Honorar zahlen Sie dafür nicht.</p>
       </header>
-      <div class="process__track">
-        <svg class="process__line" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true" data-reveal>
+      <div class="process__track" data-scrub data-steps>
+        <svg class="process__line" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0 30 C 100 6, 210 54, 309 30 S 520 6, 619 30 S 830 54, 928 30 S 1110 10, 1200 30" pathLength="1" fill="none" stroke="#d9b25a" stroke-width="1" vector-effect="non-scaling-stroke" />
         </svg>
         <ol class="process__steps">
           {schritte.map((s, i) => (
-            <li data-reveal style={`--i:${i}`}>
+            <li style={`--i:${i}`}>
               <span class="process__node" aria-hidden="true"></span>
               <span class="idx">Schritt 0{i + 1}</span>
               <h3>{s.title}</h3>
@@ -274,7 +276,7 @@ const meldungen = [
 
   <!-- ============ 8 · KONTAKT / ABSCHLUSS ============ -->
   <section class="closing" aria-labelledby="closing-title">
-    <SilkLines variant="rise" class="closing__silk" />
+    <SilkLines variant="rise" class="closing__silk" scrub />
     <canvas class="halftone closing__dots" data-halftone aria-hidden="true"></canvas>
     <div class="container closing__grid">
       <div class="closing__text" data-reveal>

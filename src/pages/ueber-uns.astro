@@ -1,5 +1,6 @@
 ---
-// Automatisch aus legacy/ueber-uns.html migriert (scripts/migrate-legacy.py).
+// Aus legacy/ueber-uns.html migriert und von Hand zur scrollgeführten Geschichte umgebaut
+// (Texte unverändert; die drei Stationen entsprechen den drei bestehenden Überschriften).
 // Inhalte stammen wörtlich von der bestehenden Website www.team-neudorf.de.
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
@@ -15,27 +16,48 @@ const jsonLd: unknown[] = [];
         <p>Ein persönlicher Ansprechpartner, der die Welt des Öffentlichen Dienstes kennt und Ihre Absicherung so ehrlich plant, als wäre es die eigene.</p>
       </div>
     </section>
-    <section class="section">
-      <div class="container about-grid">
-        <div class="prose u-max-none">
+    <section class="section story-scroll" data-story>
+      <div class="container story-scroll__grid">
+        <div class="story-scroll__aside">
+          <figure class="story-scroll__figure">
+            <Picture src={imgStefanPortrait} alt="Stefan Neudorf, Versicherungsmakler bei Team-Neudorf" formats={["avif", "webp"]} widths={[480, 900]} sizes="(max-width: 960px) 90vw, 440px" loading="eager" />
+          </figure>
+          <nav class="story-scroll__nav" aria-label="Stationen">
+            <ol>
+<li><a href="#station-1"><span class="idx">01</span>Mein Name ist Stefan Neudorf</a></li>
+<li><a href="#station-2"><span class="idx">02</span>Mein Weg nach der Bundeswehr</a></li>
+<li><a href="#station-3"><span class="idx">03</span>Worauf es mir heute ankommt</a></li>
+            </ol>
+          </nav>
+        </div>
+        <div class="story-scroll__chapters">
           <span class="eyebrow">Wer hinter Team-Neudorf steht</span>
-          <h2 class="u-mt-xs">Mein Name ist Stefan Neudorf</h2>
+          <div class="story-scroll__track" aria-hidden="true"><i></i></div>
+<article class="chapter" id="station-1" data-chapter>
+<span class="idx">01</span>
+<h2>Mein Name ist Stefan Neudorf</h2>
           <p>Bevor ich mich für den Weg in die Versicherungsbranche entschieden habe, war ich Soldat bei der Bundeswehr und unter anderem im Auslandseinsatz in Afghanistan.</p>
           <p>Diese Zeit hat mich geprägt. Sie hat mir gezeigt, wie wichtig Verantwortung, Verlässlichkeit und gegenseitiges Vertrauen sind. Gleichzeitig habe ich selbst erlebt, dass bestimmte Berufsgruppen besonderen Belastungen ausgesetzt sind und ihre persönliche Absicherung nicht immer so einfach zu verstehen ist.</p>
-          <h3>Mein Weg nach der Bundeswehr</h3>
+</article>
+<article class="chapter" id="station-2" data-chapter>
+<span class="idx">02</span>
+<h2>Mein Weg nach der Bundeswehr</h2>
           <p>Nach meinem Ausscheiden aus der Bundeswehr absolvierte ich eine Ausbildung zum Kaufmann für Büromanagement in einem Autohaus. Nach meiner Ausbildung übernahm ich dort die Leitung einer Filiale. Dadurch durfte ich früh Verantwortung übernehmen und viele unterschiedliche Menschen kennenlernen.</p>
           <p>Gerade der persönliche Kontakt war für mich dabei immer besonders wichtig. Ich wollte mein Gegenüber verstehen und nicht einfach irgendeine Lösung anbieten. Jeder Mensch befindet sich in einer anderen Lebenssituation, hat andere Ziele, Sorgen und Vorstellungen. Darauf einzugehen und gemeinsam einen passenden Weg zu finden, hat für mich schon immer eine gute Beratung ausgemacht.</p>
           <p>Mit den Themen Absicherung und Vorsorge habe ich mich bereits seit längerer Zeit beschäftigt. Schließlich wurde mir bewusst, dass ich genau in diesem Bereich meine bisherigen Erfahrungen und meine persönliche Einstellung miteinander verbinden kann.</p>
-          <h3>Worauf es mir heute ankommt</h3>
+</article>
+<article class="chapter" id="station-3" data-chapter>
+<span class="idx">03</span>
+<h2>Worauf es mir heute ankommt</h2>
           <p>Heute möchte ich vor allem Familien, junge Menschen sowie Beschäftigte und Beamte im Öffentlichen Dienst dabei begleiten, wichtige Entscheidungen für ihre Zukunft zu treffen. Dabei geht es mir nicht darum, möglichst viele Versicherungen abzuschließen. Mir ist wichtig, verständlich zu erklären, ehrlich zu beraten und nur das abzusichern, was zur persönlichen Lebenssituation passt.</p>
           <p>Durch meine eigene Zeit bei der Bundeswehr kenne ich einen Teil des Öffentlichen Dienstes nicht nur aus der Theorie. Ich weiß, dass hinter jedem Beruf ein Mensch mit einer eigenen Geschichte, einer Familie und persönlichen Zukunftsplänen steht.</p>
           <p>Ich bin selbst verheiratet und Vater von drei Kindern. Familie und Zukunftssicherheit sind für mich also nicht nur berufliche Themen. Sie begleiten mich jeden Tag ganz persönlich.</p>
           <p>Genau deshalb ist diese Arbeit für mich mehr als nur ein Beruf. Menschen dabei zu unterstützen, sich selbst und ihre Familie sinnvoll für die Zukunft abzusichern, ist für mich eine echte Herzensangelegenheit.</p>
           <a class="btn btn--accent u-mt-xs" href="/kontakt.html">Lernen Sie mich kennen</a>
+</article>
         </div>
-        <div>
-          <Picture src={imgStefanPortrait} alt="Stefan Neudorf, Versicherungsmakler bei Team-Neudorf" formats={["avif", "webp"]} widths={[480, 900]} sizes="(max-width: 900px) 90vw, 420px" class="about-photo" loading="lazy" />
-          <aside class="hero__card u-mt-m">
+        <div class="story-scroll__facts">
+          <aside class="hero__card">
           <h2>Auf einen Blick</h2>
           <ul class="checklist">
             <li>

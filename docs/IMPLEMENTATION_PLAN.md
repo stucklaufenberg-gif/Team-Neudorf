@@ -43,3 +43,25 @@ Start · Öffentlicher Dienst · Berufsgruppen (+ 10 Berufsgruppen-Seiten) · Le
 
 ## 7. Bewusst nicht enthalten
 Social Media (Phase 2), Analytics/Dashboard (Phase 3), neue Lebenssituations-Landingpages (z. B. Referendariat/Anwärter – benötigen fachlich freigegebene neue Texte).
+
+## 8. Erweiterung 03 – Signature Motion (Stand 19. November 2026, lokal, nicht gepusht)
+Umsetzung ohne neue Abhängigkeit: CSS-Transforms, SVG und ein kleines Skript (`src/scripts/motion.ts`). Three.js/WebGL wurde bewusst nicht eingesetzt – die Tiefe entsteht aus versetzten Ebenen, Perspektive und Licht; ein 3D-Framework hätte hier nur Ladezeit gekostet.
+
+**Vorher (gemessen):** Hero-Einstieg, driftendes Licht, Halftone, Reveal, zeitgesteuerte Silk-Lines, Karten-Hover (Zoom) funktionierten. Es fehlten: Pointer-/Scroll-Reaktion im Hero, räumliche Karten, scrollgekoppelter Zeitstrahl/Ablauf, Menü-Übergang; „Über uns“ war Fließtext.
+
+**Ergänzt**
+- Hero: sechs Ebenen (Licht, Goldrahmen, Porträt, Halftone, Headline, Bildlegende) mit eigener Tiefe; Pointer-Parallaxe und leichte Perspektivdrehung (Desktop), sanfte Eigenbewegung (Touch), Scroll-Parallaxe; Einstieg: Porträt aus der Unschärfe, Rahmen zeichnet sich, Zeilen steigen auf.
+- Übergang Hero → Bereiche: Horizontlinie und Silk-Lines zeichnen sich an den Scrollfortschritt gekoppelt; Überschriften erscheinen in der Reihenfolge Eyebrow → Headline (Maske) → Text; Karten gestaffelt mit Bildvorhang.
+- Bereichskarten: Neigung max. 3° (große Karte 1,6°), Licht folgt dem Zeiger, Schatten wandert mit; gleichwertiger Zustand bei Tastatur-Fokus; Bild-Parallaxe.
+- Über uns: scrollgeführte Geschichte aus den drei bestehenden Abschnitten (Texte unverändert), mitlaufendes Porträt, Fortschrittslinie, Stationsnavigation. Startseiten-Zeitstrahl ebenfalls scrollgekoppelt.
+- Beratungsweg: Linie folgt dem Scrollen, Knoten/Etappen werden nacheinander aktiv. Buttons mit Lichtkante, Pressed- und Fokuszustand; Kontaktzeilen mit Richtungs-Feedback; mobiles Menü als weicher Vorhang; mobiler Schnellkontakt (Anrufen · WhatsApp · Gespräch anfragen) zwischen Hero und Abschluss.
+
+**Geprüft (lokal, Chromium headless ohne Grafikkarte)**
+- `astro check` 0 Fehler, Build 28 Seiten, 84 Seitenaufrufe (28 × 390/768/1440) ohne horizontalen Überlauf und ohne Konsolenfehler.
+- Hero bei 390×844, 768×1024, 1440×900: Headline, Gesicht und primärer CTA vollständig im ersten Bildschirm, CTA nicht verdeckt.
+- `prefers-reduced-motion`: keine laufenden Animationen, keine Parallaxe, alle Inhalte sichtbar. Ohne JavaScript: alle Inhalte sichtbar, Linien gezeichnet.
+- Tastatur: Fokusreihenfolge Header → Hero-CTAs → Karten, überall sichtbarer Fokus. Touch: Karten ohne Hover nutzbar, Schnellkontakt erscheint/verschwindet korrekt.
+- Lighthouse (mobil, lokale Vorschau, daher ohne echte Netzlatenz): Start 100/100/100/100, Über uns 99/100/100/100, Polizei 99/100/100/100, Kontakt 100/100/100/100 (Performance/Accessibility/Best Practices/SEO); CLS 0–0,001.
+- Bildrate im Headless-Browser ohne GPU: Desktop-Hero ca. 30 fps (vor Optimierung 11), 390 px 60 fps. **Nicht gemessen:** echte Geräte mit Grafikkarte, Safari/Firefox, Screenreader.
+
+**Neue Kurztexte zur Freigabe:** Schnellkontakt-Beschriftungen „Anrufen“, „WhatsApp“, „Gespräch anfragen“; Navigationsbezeichnung „Stationen“.

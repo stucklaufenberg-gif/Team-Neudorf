@@ -1,6 +1,8 @@
 // Team-Neudorf – Interaktionen. Kein Framework, keine externen Dienste, kein Tracking.
 // 1 Header · 2 Mobiles Menü · 3 Mega-Menü · 4 Reveal · 5 Halftone · 6 Formulare · 7 Jahr
 
+import { initMotion } from './motion';
+
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 /* 1 · Header: Zustand beim Scrollen ----------------------------------- */
@@ -15,16 +17,25 @@ if (header) {
 const menuToggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
 const menu = document.querySelector<HTMLElement>('[data-menu]');
 if (menuToggle && menu) {
+  let closeTimer = 0;
   const setMenu = (open: boolean) => {
-    menu.hidden = !open;
+    window.clearTimeout(closeTimer);
     menuToggle.setAttribute('aria-expanded', String(open));
     menuToggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
     document.documentElement.classList.toggle('menu-open', open);
-    if (open) menu.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
+    if (open) {
+      menu.hidden = false;
+      void menu.offsetWidth; // Übergang auslösen
+      menu.classList.add('is-open');
+      menu.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
+    } else {
+      menu.classList.remove('is-open');
+      closeTimer = window.setTimeout(() => (menu.hidden = true), reduceMotion.matches ? 0 : 420);
+    }
   };
-  menuToggle.addEventListener('click', () => setMenu(menu.hidden === true));
+  menuToggle.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
   document.addEventListener('keydown', (e) => {
-    if (menu.hidden) return;
+    if (!menu.classList.contains('is-open')) return;
     if (e.key === 'Escape') { setMenu(false); menuToggle.focus(); return; }
     if (e.key !== 'Tab') return;
     const items = [menuToggle, ...menu.querySelectorAll<HTMLElement>('a, button')];
@@ -63,10 +74,13 @@ document.querySelectorAll<HTMLElement>(
   if (siblings.length) el.style.setProperty('--i', String(siblings.indexOf(el) % 4));
 });
 const revealEls = document.querySelectorAll<HTMLElement>('[data-reveal]');
+// Erreichbarkeit vor Effekt: Was den Fokus erhält oder bereits oberhalb des Sichtfelds liegt
+// (Sprungmarke, Seite neu geladen), wird sofort sichtbar – unabhängig von der Animation.
+document.addEventListener('focusin', (e) => (e.target as Element).closest?.('[data-reveal]')?.classList.add('is-in'));
 if ('IntersectionObserver' in window && !reduceMotion.matches) {
   const io = new IntersectionObserver(
     (entries) => entries.forEach((en) => {
-      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      if (en.isIntersecting || en.boundingClientRect.top < 0) { en.target.classList.add('is-in'); io.unobserve(en.target); }
     }),
     { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
   );
@@ -175,3 +189,6 @@ document.querySelectorAll<HTMLFormElement>('form[action$=".php"]').forEach((form
 
 /* 7 · Jahr im Footer ------------------------------------------------------ */
 document.querySelectorAll<HTMLElement>('[data-year]').forEach((el) => (el.textContent = String(new Date().getFullYear())));
+
+/* 8 · Signature Motion (Tiefe, Scroll-Kopplung, Karten) – nur ohne reduced-motion */
+if (!reduceMotion.matches) initMotion();

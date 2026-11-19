@@ -7,6 +7,7 @@ import '@fontsource/jetbrains-mono/latin-500.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -20,6 +21,8 @@ interface Props {
 }
 const { title, description, path, noindex = false, jsonLd = [], home = false } = Astro.props;
 const canonical = site.url + (path === '/index.html' ? '/' : path);
+// Schnellkontakt (mobil) entfällt auf Seiten, die selbst Formular bzw. Bestätigung sind.
+const quick = !['/kontakt.html', '/schaden-melden.html', '/danke.html', '/schaden-danke.html', '/404.html'].includes(path);
 const ogImage = site.url + '/assets/images/logo-header.png';
 ---
 <!doctype html>
@@ -51,6 +54,13 @@ const ogImage = site.url + '/assets/images/logo-header.png';
       <slot />
     </main>
     <Footer showTrust={!home} />
+    {quick && (
+      <nav class="quickbar" data-quickbar aria-label="Schnellkontakt">
+        <a href={site.phoneHref}><Icon name="phone" size={18} />Anrufen</a>
+        <a href={site.whatsapp} target="_blank" rel="noopener" aria-label="Team-Neudorf per WhatsApp schreiben (neues Fenster)"><Icon name="whatsapp" size={18} />WhatsApp</a>
+        <a class="quickbar__primary" href="/kontakt.html">Gespräch anfragen</a>
+      </nav>
+    )}
     <script>
       import '../scripts/main.ts';
     </script>

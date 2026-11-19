@@ -19,7 +19,7 @@ OUT = ROOT / "src" / "pages"
 # Startseite ist neu gestaltet (src/pages/index.astro) und wird nie generiert.
 SKIP = {"index.html"}
 # Seiten, die nach der Migration von Hand weiterentwickelt wurden.
-HAND_EDITED: set[str] = set()
+HAND_EDITED: set[str] = {"ueber-uns.html"}
 
 
 def style_to_classes(style: str) -> list[str]:

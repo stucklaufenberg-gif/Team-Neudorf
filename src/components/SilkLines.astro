@@ -1,8 +1,9 @@
 ---
 // Kelder-Motiv: hauchdünne „Silk-Lines“, die sich beim Erscheinen selbst zeichnen.
 // Rein dekorativ (aria-hidden). Animation per CSS, bei reduced-motion statisch sichtbar.
-interface Props { variant?: 'flow' | 'arc' | 'rise'; class?: string; count?: number }
-const { variant = 'flow', class: cls = '', count = 7 } = Astro.props;
+// scrub: Linien zeichnen sich an den Scrollfortschritt gekoppelt (statt einmalig beim Erscheinen).
+interface Props { variant?: 'flow' | 'arc' | 'rise'; class?: string; count?: number; scrub?: boolean }
+const { variant = 'flow', class: cls = '', count = 7, scrub = false } = Astro.props;
 const id = 'silk-' + variant + '-' + Math.random().toString(36).slice(2, 7);
 const paths: string[] = [];
 for (let i = 0; i < count; i++) {
@@ -12,7 +13,7 @@ for (let i = 0; i < count; i++) {
   else paths.push(`M-40 ${300 - o * 0.3} C 380 ${320 - o}, 640 ${120 + o * 1.6}, 980 ${150 + o * 0.5} S 1320 ${60 + o}, 1480 ${20 + o * 1.6}`);
 }
 ---
-<svg class:list={['silk', cls]} viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true" focusable="false" data-reveal>
+<svg class:list={['silk', cls]} viewBox="0 0 1440 360" preserveAspectRatio="none" aria-hidden="true" focusable="false" data-reveal={scrub ? undefined : ''} data-scrub={scrub ? '' : undefined}>
   <defs>
     <linearGradient id={id} x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#d9b25a" stop-opacity="0" />
