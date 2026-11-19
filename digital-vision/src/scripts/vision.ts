@@ -1,6 +1,7 @@
 // Digital Vision & Growth – Interaktion und Bewegung. Kein Framework, kein Tracking, keine externen Dienste.
 // 1 Scroll-Engine · 2 Hero · 3 Reveal · 4 Kapitel & Schritte · 5 Präsentationsmodus & Tastatur ·
-// 6 Tabs (Säulen, Reels, Journey, Roadmap) · 7 Schalter (Vergleich, Zuständigkeit, Anzeige, Geschichten) · 8 Halftone
+// 6 Tabs (Zielgruppen, Formate, Säulen, Kampagnen, Journey, Roadmap) · 7 Schalter und Demonstrationen
+// (Vergleich, Redaktionskalender, Produktionsprozess, Drehtag, Anfragewege, Cockpit) · 8 Halftone
 
 const root = document.documentElement;
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -155,7 +156,7 @@ document.addEventListener('keydown', (e) => {
   else if ((key === 'ArrowLeft' && !inTabs) || key === 'PageUp') { e.preventDefault(); goTo(window.scrollY > stops[stopIndex].y + 40 ? stopIndex : stopIndex - 1); }
   else if (key === 'Home') { e.preventDefault(); goTo(0); }
   else if (key === 'End') { e.preventDefault(); goTo(stops.length - 1); }
-  else if (/^[1-6]$/.test(key)) { const c = chapterEls[Number(key) - 1]; if (c) { e.preventDefault(); const s = stops.findIndex((st) => st.chapter === c.dataset.chapter); goTo(s); } }
+  else if (/^[0-9]$/.test(key)) { const c = chapterEls[key === '0' ? 9 : Number(key) - 1]; if (c) { e.preventDefault(); const s = stops.findIndex((st) => st.chapter === c.dataset.chapter); goTo(s); } }
   else if (key === 'g' || key === 'G') { e.preventDefault(); openIndex(); }
   else if (key === 'p' || key === 'P') { e.preventDefault(); setPresenting(!presenting); }
   else if (key === 'f' || key === 'F') { e.preventDefault(); if (document.fullscreenElement) document.exitFullscreen?.(); else root.requestFullscreen?.().catch(() => {}); }
@@ -182,43 +183,108 @@ function tabs(list: HTMLElement, onSelect?: (tab: HTMLElement, i: number, all: H
   const initial = all.find((t) => t.getAttribute('aria-selected') === 'true') ?? all[0];
   if (initial) onSelect?.(initial, all.indexOf(initial), all);
 }
+// Einfache Tab-Gruppen: Zielgruppen, Videoformate
+for (const sel of ['[data-segments]', '[data-reels]']) { const el = $(sel); if (el) tabs($('[role="tablist"]', el)!); }
 // Content-Säulen ↔ Profil-Mockup
 const pillarsRoot = $('[data-pillars]');
 if (pillarsRoot) tabs($('[role="tablist"]', pillarsRoot)!, (tab) => $('.phone', pillarsRoot)?.setAttribute('data-active-pillar', tab.dataset.pillar ?? ''));
-// Reel-Fächer
-const reelsRoot = $('[data-reels]');
-if (reelsRoot) tabs($('[role="tablist"]', reelsRoot)!);
-// Journey und Roadmap: Linie füllt sich bis zum gewählten Schritt
-for (const sel of ['[data-journey] .journey', '[data-roadmap] .roadmap']) {
-  const el = $(sel);
-  if (el) tabs($('[role="tablist"]', el)!, (_t, i, all) => { el.style.setProperty('--a', String(i)); all.forEach((b, k) => b.classList.toggle('is-reached', k <= i)); });
+// Roadmap: Linie füllt sich bis zum gewählten Schritt
+const fillLine = (el: HTMLElement) => (_t: HTMLElement, i: number, all: HTMLElement[]) => { el.style.setProperty('--a', String(i)); all.forEach((b, k) => b.classList.toggle('is-reached', k <= i)); };
+const roadmapEl = $('[data-roadmap] .roadmap');
+if (roadmapEl) tabs($('[role="tablist"]', roadmapEl)!, fillLine(roadmapEl));
+
+/* ---------- 7 · Schalter und Demonstrationen ---------- */
+const pressGroup = (buttons: HTMLElement[], active: HTMLElement) => buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === active)));
+const setText = (sel: string, value: string | undefined, scope: ParentNode = document) => { const el = $(sel, scope); if (el) el.textContent = value ?? ''; };
+const replay = (el: HTMLElement, cls: string) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); };
+// Vergleiche (Differenzierung, organisch/bezahlt)
+$$('[data-compare]').forEach((cmp) => { const btns = $$('[data-mode]', $('.switch', cmp)!); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); $('.compare', cmp)?.setAttribute('data-mode', b.dataset.mode ?? 'both'); })); });
+
+// Demo 1 · Redaktionskalender: Filter nach Art, Auswahl zeigt die Details
+const cal = $('[data-cal]');
+if (cal) {
+  const items = $$('.cal__item', cal), filters = $$('[data-cal-filter]', cal);
+  const show = (it: HTMLElement) => { pressGroup(items, it); for (const k of ['when', 'kind', 'title', 'format', 'goal', 'cta']) setText(`[data-cal-${k}]`, it.dataset[k], cal); const d = $('.cal__detail', cal); if (d) replay(d, 'is-swapping'); };
+  items.forEach((it) => it.addEventListener('click', () => show(it)));
+  filters.forEach((f) => f.addEventListener('click', () => {
+    pressGroup(filters, f); const t = f.dataset.calFilter;
+    items.forEach((it) => it.classList.toggle('is-dim', t !== 'alle' && it.dataset.calType !== t));
+    const current = items.find((it) => it.getAttribute('aria-pressed') === 'true');
+    if (t !== 'alle' && current?.classList.contains('is-dim')) { const first = items.find((it) => !it.classList.contains('is-dim')); if (first) show(first); }
+  }));
 }
 
-/* ---------- 7 · Schalter ---------- */
-const pressGroup = (buttons: HTMLElement[], active: HTMLElement) => buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === active)));
-// Organisch / Bezahlt
-const cmp = $('[data-compare]');
-if (cmp) { const btns = $$('[data-mode]', $('.switch', cmp)!); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); $('.compare', cmp)?.setAttribute('data-mode', b.dataset.mode ?? 'both'); })); }
-// Zuständigkeit im Produktionsablauf
-const who = $('[data-who]');
-if (who) { const btns = $$('[data-who-filter]', who); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); const f = b.dataset.whoFilter; $$('[data-who-item]', who).forEach((li) => li.classList.toggle('is-dim', f !== 'alle' && li.dataset.whoItem !== f)); })); }
-// Anzeigen-Entwurf: Motiv und Format
+// Produktionsprozess: Art der Arbeit hervorheben
+const pipe = $('[data-pipeline]');
+if (pipe) { const btns = $$('[data-level-filter]', pipe); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); const f = b.dataset.levelFilter; $$('[data-level]', pipe).forEach((li) => li.classList.toggle('is-dim', f !== 'alle' && li.dataset.level !== f)); setText('[data-level-note]', b.dataset.note, pipe); })); }
+
+// Demo 2 · Drehtag: aus n Themen werden Formate für mehrere Wochen (Rechenbeispiel)
+const shoot = $('[data-shoot]');
+if (shoot) {
+  const input = $<HTMLInputElement>('[data-shoot-input]', shoot)!;
+  const render = () => {
+    const n = Number(input.value), karussells = Math.ceil(n / 2), feed = n + karussells, weeks = Math.floor(feed / 3);
+    const out: Record<string, number> = { reels: n, stories: n, karussells, zitate: n, ads: Math.min(3, n), feed, weeks };
+    setText('[data-shoot-n]', String(n), shoot);
+    for (const [k, v] of Object.entries(out)) $$(`[data-out="${k}"]`, shoot).forEach((el) => { if (el.textContent !== String(v)) { el.textContent = String(v); replay(el, 'is-bump'); } });
+    $$('[data-topic]', shoot).forEach((li) => li.classList.toggle('is-on', Number(li.dataset.topic) < n));
+    $$('[data-week]', shoot).forEach((li) => li.classList.toggle('is-on', Number(li.dataset.week) <= weeks));
+    input.style.setProperty('--fill', `${((n - 3) / 5) * 100}%`);
+  };
+  input.addEventListener('input', render); render();
+}
+
+// Demo 3 · Kampagnen: Auswahl tauscht Anzeige und Steckbrief, Format wechselt Feed/Story
 const adRoot = $('[data-ad]');
 if (adRoot) {
-  const ad = $('.ad', adRoot)!;
-  const variants = $$('[data-ad-variant]', adRoot), formats = $$('[data-ad-format]', adRoot);
-  variants.forEach((b) => b.addEventListener('click', () => {
-    pressGroup(variants, b);
-    for (const [k, target] of [['headline', '[data-ad-headline]'], ['sub', '[data-ad-sub]'], ['text', '[data-ad-text]'], ['cta', '[data-ad-cta]']] as const) { const el = $(target, ad); if (el) el.textContent = b.dataset[k] ?? ''; }
-    ad.classList.remove('is-swapping'); void ad.offsetWidth; ad.classList.add('is-swapping');
-  }));
-  formats.forEach((b) => b.addEventListener('click', () => { pressGroup(formats, b); ad.dataset.format = b.dataset.adFormat ?? 'feed'; }));
+  const ad = $('.ad', adRoot)!, formatBtns = $$('[data-ad-format]', adRoot);
+  let first = true;
+  tabs($('[role="tablist"]', adRoot)!, (tab) => {
+    for (const k of ['headline', 'sub', 'text', 'cta']) setText(`[data-ad-${k}]`, tab.dataset[k], ad);
+    $$('[data-ad-img]', ad).forEach((im) => (im.hidden = im.dataset.adImg !== tab.dataset.campaign));
+    if (!first) replay(ad, 'is-swapping');
+    first = false;
+  });
+  formatBtns.forEach((b) => b.addEventListener('click', () => { pressGroup(formatBtns, b); ad.dataset.format = b.dataset.adFormat ?? 'feed'; }));
 }
-// Storyboard je Reel
-const boards = $('[data-boards]');
-if (boards) { const btns = $$('[data-board-btn]', boards); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); $$('[data-board]', boards).forEach((d) => (d.hidden = d.dataset.board !== b.dataset.boardBtn)); })); }
-// Geschichten auf- und zuklappen
-$$('[data-story]').forEach((b) => b.addEventListener('click', () => b.setAttribute('aria-expanded', String(b.getAttribute('aria-expanded') !== 'true'))));
+// Wege zur Anfrage
+const paths = $('[data-paths]');
+if (paths) { const btns = $$('[data-path]', $('.switch', paths)!); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); $('.paths', paths)?.setAttribute('data-path', b.dataset.path ?? ''); })); }
+
+// Demo 4 · Lead Journey: Stationen als Tabs, auf Wunsch läuft der Ablauf Schritt für Schritt durch
+const journeyEl = $('[data-journey] .journey');
+if (journeyEl) {
+  const list = $('[role="tablist"]', journeyEl)!, steps = $$('[role="tab"]', list);
+  const playBtn = $<HTMLButtonElement>('[data-journey-play]', journeyEl);
+  let timer = 0, auto = false;
+  const stop = () => { window.clearInterval(timer); timer = 0; playBtn?.setAttribute('aria-pressed', 'false'); journeyEl.classList.remove('is-playing'); setText('[data-journey-play-label]', 'Ablauf abspielen', journeyEl); };
+  tabs(list, (t, i, all) => { fillLine(journeyEl)(t, i, all); if (!auto && timer) stop(); });
+  playBtn?.addEventListener('click', () => {
+    if (timer) return stop();
+    let i = steps.findIndex((st) => st.getAttribute('aria-selected') === 'true');
+    if (i >= steps.length - 1) i = -1;
+    const next = () => { i += 1; auto = true; steps[i].click(); auto = false; if (i >= steps.length - 1) stop(); };
+    playBtn.setAttribute('aria-pressed', 'true'); journeyEl.classList.add('is-playing'); setText('[data-journey-play-label]', 'Anhalten', journeyEl);
+    timer = window.setInterval(next, 2400); next();
+  });
+}
+
+// Demo 5 · Performance-Cockpit mit Demo-Daten
+const dash = $('[data-dash]');
+if (dash) {
+  interface Row { id: string; spend: number; leads: number; qualified: number; booked: number; attended: number; customers: number; verdict: string; action: string }
+  const rows: Row[] = JSON.parse(dash.dataset.dash ?? '[]');
+  const eur = (v: number) => v.toLocaleString('de-DE', { maximumFractionDigits: 0 }) + ' €';
+  const btns = $$('[data-dash-set]', dash);
+  const render = (r: Row) => {
+    const kpi: Record<string, string> = { spend: eur(r.spend), qualified: String(r.qualified), cpl: r.qualified ? eur(r.spend / r.qualified) : '–', booked: String(r.booked), attended: String(r.attended), customers: String(r.customers) };
+    for (const [k, v] of Object.entries(kpi)) setText(`[data-kpi="${k}"]`, v, dash);
+    $$('[data-funnel]', dash).forEach((li) => { const v = r[li.dataset.funnel as 'leads']; li.style.setProperty('--w', String(r.leads ? v / r.leads : 0)); setText('b', String(v), li); });
+    setText('[data-dash-verdict]', r.verdict, dash); setText('[data-dash-action]', r.action, dash);
+  };
+  btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); const r = rows.find((x) => x.id === b.dataset.dashSet); if (r) render(r); }));
+  if (rows[0]) render(rows[0]);
+}
 
 /* ---------- 8 · Halftone: Punktraster, dessen Punktgröße langsam pulsiert ---------- */
 function halftone(canvas: HTMLCanvasElement) {
