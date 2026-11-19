@@ -1,0 +1,14 @@
+# Netlify: reine Vorschau/Testumgebung. Der Vorschau-Modus (noindex, Kennzeichnung,
+# Formulare ohne Versand) wird hier ausdrücklich eingeschaltet.
+# Für einen späteren Livegang auf Netlify: PUBLIC_PREVIEW=false setzen und den Header unten entfernen.
+[build]
+  command = "PUBLIC_PREVIEW=true npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
