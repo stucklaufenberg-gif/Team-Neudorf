@@ -19,8 +19,10 @@ Hinweis „Storyboard · Video folgt“. Die Storyboards sind auch ohne Video vo
 - Kosten laut Schätzung je Clip (10 s, 9:16, ohne Ton), Modell `cinematic_studio_3_0`:
   - 50 Credits in 720p
   - 130 Credits in 1080p
-- Alternative `kling_4_0_flash`: 30 Credits.
-- Für alle drei Beispiele in 720p: rund 150 Credits.
+- Alternative `kling_4_0_flash`: 30 Credits, nur 720p, schneller, weniger filmisch.
+- Für alle drei Beispiele in 720p: 150 Credits.
+- Erneut geprüft am 20.11.2026: gleiches Guthaben, gleiche Modellgrenzen.
+- Die fertigen Aufträge stehen in `higgsfield-auftraege.json`, inklusive Nachbearbeitung.
 
 ## Produktionsregeln
 
@@ -78,7 +80,7 @@ Hinweis „Storyboard · Video folgt“. Die Storyboards sind auch ohne Video vo
 
 ## Einbindung in die Präsentation
 
-1. Clip als MP4 (H.264, ohne Ton, max. 1080 × 1920, Ziel unter 3 MB) speichern unter
+1. Clip mit dem `postprocessing`-Befehl aus `higgsfield-auftraege.json` auf 720 × 1280, H.264, ohne Ton, Faststart bringen (Ziel unter 3 MB) und speichern unter
    `digital-vision/public/media/reels/<id>.mp4`, Vorschaubild als `<id>.jpg`.
 2. In `digital-vision/src/data/vision.ts` beim passenden Konzept `video: '/media/reels/<id>.mp4'` und
    `poster: '/media/reels/<id>.jpg'` eintragen.

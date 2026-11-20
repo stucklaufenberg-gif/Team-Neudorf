@@ -68,14 +68,20 @@ Fachliche Aussagen in Station 04, 05 und 08 stammen aus Stefans „Checkliste Be
 **Einschränkung:** Die Quellen waren aus der Entwicklungsumgebung nicht im Volltext abrufbar. Alle Angaben
 stammen aus Suchergebnis-Auszügen und sind vor dem Termin im Original zu prüfen. Keine rechtliche Prüfung.
 
-Station 02, Reichweiten (Stichtag 02.06.2026, Auswertung eines Maklerunternehmens):
+Station 02, Reichweiten: im Original geprüft am 20.11.2026, alle Werte aus einem Erhebungsstand (20.10.2026,
+gerundete Instagram-Anzeige), keine Mischung mit der Erstauswertung vom 02.06.2026.
 
-- https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands
-- https://versicherungsmonitor.de/2026/06/05/383-000-follower/
-- finanzexperten_fuer_lehrer: Wert in den Auszügen widersprüchlich, deshalb „nicht eindeutig belegt“.
-
-Station 02, Ausgangspunkt von Stefan: 11 Beiträge und 109 Follower laut bereitgestelltem
-Profil-Screenshot (Aufnahmedatum unbekannt).
+- Quelle: https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands
+  (Studie eines Maklerunternehmens, 34 Accounts, „Aktualisiert am 19. November 2026“)
+- Werte:
+  - finance_made_simple_ 379.000
+  - versicherungenmitkopf 342.000
+  - finanzexperten_fuer_lehrer 59.600
+  - beamtenhahn 51.300
+  - beamtenberater_com 9.800
+  - der.finanzcop 5.700
+- Die Studie nennt beamtenhahn und beamtenberater_com als Accounts für Beamte, der.finanzcop für Polizisten.
+- Stefans eigene Followerzahl ist entfernt: Sie war nur aus einem undatierten Screenshot bekannt.
 
 Station 03, Referenzen für Content-Mechanik (ohne Versicherungsbezug):
 
@@ -142,18 +148,39 @@ Liegt der Fokus in einer Auswahl (Tabs), wechseln die Pfeiltasten dort den Eintr
 Bei `prefers-reduced-motion` entfallen Parallaxe, Zeigerbewegung und Einblendungen; der Inhalt bleibt
 vollständig. Ohne JavaScript ist die Seite als durchgehendes Dokument lesbar.
 
-## Deployment
+## Deployment (bevorzugt: Netlify)
 
-Eigenes Cloudflare-Projekt, getrennt von der Versicherungswebsite. Zwei Wege:
+Eigene Site, getrennt von der Versicherungswebsite. Die Konfiguration liegt in `digital-vision/netlify.toml`.
 
-- **Mit GitHub verbunden:** Projekt `team-neudorf-digital-vision`, Branch `claude/busy-hopper-kebr8h`,
-  **Root directory `digital-vision`**, Build `npm run build`, Deploy `npx wrangler deploy`.
-- **Direkter Upload:** `npm run build`, dann den Inhalt von `dist/` bei Cloudflare Pages hochladen.
+**Neues Netlify-Projekt:** Add new project → Import an existing project → GitHub →
+`stucklaufenberg-gif/Team-Neudorf`.
 
-Aus der Entwicklungssitzung besteht kein Cloudflare-Zugang. Push und Deployment brauchen eine
-ausdrückliche Freigabe.
+| Feld | Wert |
+|---|---|
+| Branch to deploy | `claude/busy-hopper-kebr8h` |
+| Base directory | `digital-vision` |
+| Package directory | leer lassen |
+| Build command | `npm run build` (kommt auch aus `digital-vision/netlify.toml`) |
+| Publish directory | `dist` (relativ zum Base directory, also `digital-vision/dist`) |
+| Projektname | z. B. `team-neudorf-digital-vision` |
 
-## Geprüft (Final Pitch, 20.11.2026)
+**Warum das die Verwechslung verhindert:**
+
+- Mit Base directory `digital-vision` sucht Netlify die `netlify.toml` zuerst dort.
+- Die Stamm-Datei mit der Website-Konfiguration greift erst, wenn dort keine liegt.
+- Ein `base` in einer Stamm-`netlify.toml` würde die UI überschreiben. Die vorhandene Stamm-Datei setzt keins.
+  Das muss so bleiben.
+
+**Prüfung nach dem ersten Deploy:**
+
+- Titel „Digital Vision & Growth · Stefan Neudorf“
+- `<meta name="dv-build">` enthält den Commit (Netlify-Variable `COMMIT_REF`)
+- `robots.txt` mit `Disallow: /`
+- `/polizei` liefert 404
+
+Cloudflare bleibt als Alternative konfiguriert (`wrangler.jsonc`, Root directory `digital-vision`).
+
+## Geprüft (Finalisierung, 20.11.2026)
 
 - `npm run check`: 0 Fehler. `npm run build`: 2 Seiten, gesamt 1,3 MB
 - Chromium bei 390, 768, 1440 und 1920 px:
@@ -167,16 +194,18 @@ ausdrückliche Freigabe.
   - Präsentationsmodus mit allen 15 Stopps, Tastatur, Übersicht
 - Videoplayer mit einem Testclip geprüft: Start nur auf Klick, stumm, ohne Vorabladen, stoppt beim Konzeptwechsel.
   Der Testclip ist wieder entfernt.
+- iPhone 15 Pro per Emulation in Chromium: alle Stationen, Content-Lab, Konzepte, Kampagnen, Routen und Übersicht
+  bedienbar, kein Überlauf, keine Fehler. Echtes Safari (WebKit) ist in der Entwicklungsumgebung nicht verfügbar
+  und deshalb **nicht geprüft**.
 - Screenshots liegen lokal unter `screenshots/digital-vision/final/` (nicht im Repository).
 
 Nicht geprüft: Safari und Firefox, echte Mobilgeräte, Beamer-Auflösungen unter 1280 px Breite.
 
 ## Offene Freigaben und Punkte
 
-1. **Push und Deployment.** Vorher im Cloudflare-Projekt `team-neudorf-digital-vision` das Root directory
-   `digital-vision` bestätigen.
-2. **Higgsfield-Musterclips:** etwa 150 Credits für drei Clips in 720p, siehe `media/MUSTERPRODUKTION.md`.
-3. **Recherche im Original prüfen:** Reichweiten in Station 02, Plattformregeln in Station 09.
+1. **Push und Deployment** über Netlify (Einstellungen siehe oben).
+2. **Higgsfield-Musterclips:** 150 Credits für drei Clips in 720p. Die Aufträge sind vorbereitet in `media/higgsfield-auftraege.json`.
+3. **Recherche:** Reichweiten in Station 02 sind im Original geprüft. Plattformregeln in Station 09 stammen weiterhin aus Suchergebnis-Auszügen.
 4. **Fachliche Freigabe** der Aussagen aus der Checkliste in Station 04, 05 und 08 durch Stefan.
 5. **Rechtliche Prüfung** von Datenschutzhinweisen, Einwilligungstexten, Erstinformation und Werbeaussagen
    durch eine Fachperson vor jedem echten Start.
@@ -184,5 +213,5 @@ Nicht geprüft: Safari und Firefox, echte Mobilgeräte, Beamer-Auflösungen unte
 7. **Absender:** Agenturname und Kontaktdaten fehlen bewusst, sie wurden nicht erfunden.
 8. **Preise:** Die Präsentation nennt keine Beträge. Die Cockpit-Werte sind Demo-Daten.
 9. **Werkzeuge:** Für CRM, Terminbuchung und Automatisierung ist noch nichts ausgewählt oder eingerichtet.
-10. **Fehlende Recherche-Grundlagen:** Branchenrecherche, Creator-Class-Aufnahme und Reel-Analysebericht
-    bitte bereitstellen, falls sie in den Pitch einfließen sollen.
+10. **Research-Handoff-ZIP** (README, Original-Checkliste, Reel-Analyse mit neun Bildbelegen) ist in der
+    Entwicklungsumgebung nicht angekommen und deshalb noch nicht ausgewertet.

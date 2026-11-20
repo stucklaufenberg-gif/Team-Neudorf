@@ -1,0 +1,17 @@
+"$schema" = "https://open-api.netlify.com/netlify.schema.json"
+
+# Netlify-Konfiguration der Digital-Vision-Präsentation (eigene Site, getrennt von der Versicherungswebsite).
+# Voraussetzung im Netlify-Projekt: Base directory = digital-vision.
+# Netlify sucht diese Datei dann zuerst hier und nicht im Repository-Stamm (dort liegt die Website-Konfiguration).
+# Pfade sind relativ zum Base directory: Build läuft in digital-vision/, veröffentlicht wird digital-vision/dist.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+  environment = { NODE_VERSION = "22" }
+
+# Konzeptpräsentation: nicht indexieren (zusätzlich zu public/_headers und robots.txt).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

@@ -13,7 +13,7 @@ Content-Idee bis zur Beratungsanfrage. Du bleibst der Experte.“
 | Nr. | Station | Was du sagst | Was du zeigst |
 |---|---|---|---|
 | 01 | Einstieg | Wir sind nicht hier, um deine Geschichte nachzuerzählen. Wir zeigen, wie aus deinem Wissen Anfragen werden. | Hero, dann weiter |
-| 02 | Marktpotenzial | Andere Makler erreichen sechsstellige Follower mit Versicherungswissen. Für dich zählt nicht die größte Reichweite, sondern die richtige: Beamte und Anwärter in NRW. | Benchmarks mit Stichtag, dein Ausgangspunkt |
+| 02 | Marktpotenzial | Andere Makler erreichen sechsstellige Follower mit Versicherungswissen. Für dich zählt nicht die größte Reichweite, sondern die richtige: Beamte und Anwärter in NRW. | Sechs Accounts mit einheitlichem Stand 20.10.2026, darunter drei für Beamte und Polizei |
 | 03 | Differenzierung | Creator-Agenturen können Hooks, Versicherer können Fachwissen. Wir verbinden beides und denken jeden Inhalt bis zur Anfrage. | Die vier Felder, du in der Mitte |
 | 04 | Content-Lab | In den ersten drei Sekunden entscheidet sich alles. Wir arbeiten mit drei Ebenen gleichzeitig. | Ebenen einzeln ausschalten, dann Varianten wechseln |
 | 05 | Drei Reel-Konzepte | Diese Themen kommen aus deiner eigenen Checkliste. Fertige Storyboards, die fachliche Aussage kommt von dir. | Konzept A, B, C, Storyboard-Leiste |

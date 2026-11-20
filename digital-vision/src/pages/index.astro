@@ -18,7 +18,7 @@ import reelC from '../assets/reel-c.jpg';
 import reelD from '../assets/reel-d.jpg';
 import reelE from '../assets/reel-e.jpg';
 import {
-  chapters, tagLabel, brands, startPoint, potentialTakeaways, pillarsOfPitch, mechanicRefs, hookFacts, hookLayers, hookTopic, hookVariants,
+  chapters, tagLabel, brands, potentialTakeaways, pillarsOfPitch, mechanicRefs, hookFacts, hookLayers, hookTopic, hookVariants,
   concepts, pillars, tiles, shootTopics, shootOutputs, calTypes, calTypeName, days, calendar, campaigns, adRules, pathNodes, routes,
   levels, workflows, roles, dashData, kpiSources, roadmap, costTypes, questions,
 } from '../data/vision';
@@ -29,9 +29,10 @@ const firstCal = calendar[0].items[0];
 const calCount = calendar.reduce((n, w) => n + w.items.length, 0);
 const d0 = dashData[0];
 const c0 = campaigns[0];
-// Build-Kennung: zeigt online, aus welchem Commit diese Fassung gebaut wurde (Cloudflare Workers Builds setzt die Variable).
+// Build-Kennung: zeigt online, aus welchem Commit diese Fassung gebaut wurde.
+// Netlify setzt COMMIT_REF, Cloudflare Workers Builds WORKERS_CI_COMMIT_SHA. Lokal steht dort „lokal“.
 declare const process: { env: Record<string, string | undefined> };
-const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
+const buildCommit = (process.env.COMMIT_REF ?? process.env.WORKERS_CI_COMMIT_SHA)?.slice(0, 7) ?? 'lokal';
 ---
 <!doctype html>
 <html lang="de">
@@ -137,13 +138,11 @@ const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
             ))}
           </ul>
           <aside class="market__side" data-reveal style="--i:2">
-            <p class="label label--gold">Stefans Ausgangspunkt</p>
-            <p class="market__start"><b>{startPoint.posts}</b> Beiträge · <b>{startPoint.followers}</b> Follower</p>
-            <p class="market__note">{startPoint.note}</p>
+            <p class="label label--gold">Was wir daraus ableiten</p>
             <ul class="takeaways">{potentialTakeaways.map((t) => <li>{t}</li>)}</ul>
           </aside>
         </div>
-        <p class="fine" data-reveal><span class="tag tag--quelle">{tagLabel.quelle}</span> Reichweiten aus der Auswertung „Die besten Versicherungs-Instagrammer Deutschlands 2026“ eines Maklerunternehmens (Stichtag 02.06.2026), recherchiert über Suchergebnisse. Vor dem Termin im Original prüfen. Über Anfragen oder Abschlüsse dieser Accounts ist nichts bekannt.</p>
+        <p class="fine" data-reveal><span class="tag tag--quelle">{tagLabel.quelle}</span> Alle Werte aus <a href="https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands" target="_blank" rel="noopener noreferrer">„Die besten Versicherungs-Instagrammer Deutschlands 2026“</a> eines Maklerunternehmens, ein einheitlicher Erhebungsstand: 20.10.2026, gerundete Instagram-Anzeige. Im Original geprüft am 20.11.2026. Über Anfragen oder Abschlüsse dieser Accounts ist nichts bekannt.</p>
       </section>
 
       <!-- ========== 03 · DIFFERENZIERUNG ========== -->
@@ -203,7 +202,7 @@ const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
         </div>
         <ul class="facts-mini" data-reveal>
           {hookFacts.map((f) => <li><span class="tag tag--doku">{tagLabel.doku}</span>{f.text} <a href={f.url} target="_blank" rel="noopener noreferrer">{f.source}</a></li>)}
-          <li><span class="tag tag--idee">Praxisregel</span>Drei gleichzeitige Hook-Ebenen sind eine Faustregel aus der Creator-Praxis, keine Plattformvorgabe. Wir testen sie gegeneinander.</li>
+          <li><span class="tag tag--idee">Beobachtete Mechanik</span>Drei gleichzeitige Hook-Ebenen sind eine Faustregel aus der Creator-Praxis, keine Plattformvorgabe. Die Varianten oben sind unser eigenes Formatkonzept; Performance-Daten gibt es erst nach Tests.</li>
         </ul>
       </section>
 
@@ -234,13 +233,16 @@ const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
             </div>
             <div class="concept-card__body">
               <h3>{c.title}</h3>
-              <p class="concept-card__spoken">„{c.spoken}“</p>
+              <p class="concept-card__meta"><span class="tag tag--idee">Eigenes Formatkonzept</span>Ziel: {c.goal}. Noch keine Performance-Daten.</p>
+              <dl class="hook3">
+                <div><dt>Visual Hook</dt><dd>{c.opening}</dd></div>
+                <div><dt>Spoken Hook</dt><dd>„{c.spoken}“</dd></div>
+                <div><dt>Text Hook</dt><dd>{c.hook}</dd></div>
+              </dl>
               <ol class="board">
-                {c.board.map((b, k) => <li><span class="idx">0{k + 1}</span>{b}</li>)}
+                {c.board.map((b, k) => <li><span class="idx">{c.times[k]}</span>{b}</li>)}
               </ol>
               <dl class="facts facts--two">
-                <div><dt>Eröffnung</dt><dd>{c.opening}</dd></div>
-                <div><dt>Ziel</dt><dd>{c.goal}</dd></div>
                 <div class="facts__wide"><dt>Kernaussage</dt><dd>{c.core} <span class="tag tag--check">{tagLabel.check}</span></dd></div>
                 <div><dt>Handlungsaufruf</dt><dd>{c.cta}</dd></div>
               </dl>

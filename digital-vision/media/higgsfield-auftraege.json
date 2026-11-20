@@ -1,0 +1,64 @@
+{
+  "_hinweis": "Vorbereitete Higgsfield-Aufträge. Nicht ausführen ohne Kostenfreigabe (je 50 Credits, gesamt 150).",
+  "model_check": "2026-11-20: cinematic_studio_3_0, 9:16, 4-15 s, 720p, generate_audio optional",
+  "jobs": [
+    {
+      "id": "polizei-lehramt",
+      "concept": "a",
+      "title": "Polizei vs. Lehramt",
+      "params": {
+        "model": "cinematic_studio_3_0",
+        "prompt": "Vertical 9:16 documentary split-screen, two equal halves divided by a thin warm gold line. Left half: a young officer seen from behind putting on a plain dark navy jacket next to the open door of a patrol car at dusk, soft blue ambient light, no insignia, no text, no logos. Right half: a young teacher seen from behind at a green chalkboard in a calm classroom, warm daylight, chalk lines without readable writing. Slow synchronized push-in on both halves. Natural light, realistic skin and fabric, subtle film grain, deep navy shadows with gold highlights. No faces facing camera, no readable text anywhere.",
+        "aspect_ratio": "9:16",
+        "duration": 10,
+        "resolution": "720p",
+        "generate_audio": false,
+        "genre": "drama"
+      },
+      "estimated_credits": 50,
+      "target_files": {
+        "video": "public/media/reels/polizei-lehramt.mp4",
+        "poster": "public/media/reels/polizei-lehramt.jpg"
+      }
+    },
+    {
+      "id": "erster-diensttag",
+      "concept": "b",
+      "title": "Der erste Diensttag",
+      "params": {
+        "model": "cinematic_studio_3_0",
+        "prompt": "Vertical 9:16 cinematic editorial macro sequence on a dark navy desk. A hand places an envelope of documents next to a paper wall calendar; a gold pen circles one date. Cut to a close-up of a printed checklist with three empty boxes, a pen tip hovering over the first box. Slow precise camera slide, shallow depth of field, soft window light, gold accents on navy. All paper shows only abstract lines, no readable words or numbers, no logos, no official seals.",
+        "aspect_ratio": "9:16",
+        "duration": 10,
+        "resolution": "720p",
+        "generate_audio": false,
+        "genre": "drama"
+      },
+      "estimated_credits": 50,
+      "target_files": {
+        "video": "public/media/reels/erster-diensttag.mp4",
+        "poster": "public/media/reels/erster-diensttag.jpg"
+      }
+    },
+    {
+      "id": "dienstschluessel",
+      "concept": "c",
+      "title": "Der verlorene Dienstschlüssel",
+      "params": {
+        "model": "cinematic_studio_3_0",
+        "prompt": "Vertical 9:16 cinematic slow motion: a single plain metal key on a simple ring falls onto a dark wooden office desk and bounces once. Hold on the still key for a beat of silence. Then the camera tilts up to an empty office chair and a half-open drawer in soft evening light. Navy shadows, warm gold desk lamp highlights, realistic metal reflections, no people, no text, no logos, no tags with writing.",
+        "aspect_ratio": "9:16",
+        "duration": 10,
+        "resolution": "720p",
+        "generate_audio": false,
+        "genre": "drama"
+      },
+      "estimated_credits": 50,
+      "target_files": {
+        "video": "public/media/reels/dienstschluessel.mp4",
+        "poster": "public/media/reels/dienstschluessel.jpg"
+      }
+    }
+  ],
+  "postprocessing": "ffmpeg -i <download>.mp4 -an -vf scale=720:1280 -c:v libx264 -crf 26 -preset slow -pix_fmt yuv420p -movflags +faststart <id>.mp4 ; ffmpeg -ss 1 -i <id>.mp4 -frames:v 1 -q:v 4 <id>.jpg"
+}

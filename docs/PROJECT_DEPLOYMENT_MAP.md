@@ -1,6 +1,7 @@
 # Projektkarte: Was liegt wo und was wird wohin deployt?
 
-Ein Repository, zwei unabhängige Anwendungen, zwei Cloudflare-Worker.
+Ein Repository, zwei unabhängige Anwendungen. Bevorzugte Plattform ab 20.11.2026: **Netlify** (zwei Sites).
+Cloudflare (zwei Worker) bleibt als Alternative dokumentiert.
 
 ```
 stucklaufenberg-gif/Team-Neudorf            (Branch: claude/busy-hopper-kebr8h)
@@ -10,6 +11,22 @@ stucklaufenberg-gif/Team-Neudorf            (Branch: claude/busy-hopper-kebr8h)
 │   └── wrangler.jsonc   (name: team-neudorf-digital-vision)
 └── docs/                                            → wird von keinem Projekt gebaut
 ```
+
+## Netlify (bevorzugt)
+
+| | Versicherungswebsite | Digital Vision |
+|---|---|---|
+| Netlify-Projekt | `team-neudorf-vorschau` (vorhanden, noch ohne erfolgreichen Deploy) | noch anzulegen, z. B. `team-neudorf-digital-vision` |
+| Base directory | leer (Repository-Stamm) | `digital-vision` |
+| Package directory | leer | leer |
+| Konfiguration | `netlify.toml` im Stamm: `PUBLIC_PREVIEW=true npm run build`, Publish `dist`, `noindex` | `digital-vision/netlify.toml`: `npm run build`, Publish `dist`, Node 22, `noindex` |
+| Erkennbar an | Titel „Versicherungsmakler in Mechernich …“ | Titel „Digital Vision & Growth · Stefan Neudorf“, `dv-build` |
+
+Netlify sucht die `netlify.toml` in dieser Reihenfolge: Package directory → Base directory → Stamm. Eine
+`netlify.toml` hat Vorrang vor der UI, ein `base` in der Stamm-Datei überschreibt das Base directory der UI.
+Deshalb darf die Stamm-`netlify.toml` kein `base` bekommen.
+
+Quelle: https://docs.netlify.com/build/configure-builds/monorepos/
 
 ## A · Versicherungswebsite
 

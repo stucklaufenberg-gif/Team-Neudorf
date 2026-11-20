@@ -27,16 +27,17 @@ export const chapters = [
 // Wird aus der Recherche befüllt. Jede Zahl braucht Quelle und Datum; ohne Beleg steht „nicht belegt“.
 export interface Brand { name: string; handle: string; platform: string; focus: string; reach: string; date: string; source: string; sourceLabel: string }
 export const brands: Brand[] = [
-  { name: 'Florian Hörning', handle: 'finance_made_simple_', platform: 'Instagram', focus: 'Makler, Finanzen und Versicherungen', reach: 'ca. 383.000', date: '02.06.2026', source: 'https://versicherungsmonitor.de/2026/06/05/383-000-follower/', sourceLabel: 'VMK-Auswertung, berichtet von Versicherungsmonitor' },
-  { name: 'Bastian Kunkel', handle: 'versicherungenmitkopf', platform: 'Instagram', focus: 'Makler, Versicherungen erklärt', reach: 'ca. 343.000', date: '02.06.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Auswertung (eigene Studie)' },
-  { name: 'Marco Schmich', handle: 'finanzglas', platform: 'Instagram', focus: 'Finanzen und Versicherungen', reach: 'ca. 147.000', date: '02.06.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Auswertung (eigene Studie)' },
-  { name: 'Finanzexperten für Lehrer', handle: 'finanzexperten_fuer_lehrer', platform: 'Instagram', focus: 'Makler mit Zielgruppe Lehrkräfte', reach: 'nicht eindeutig belegt', date: 'unklar', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'In der VMK-Auswertung gelistet' },
+  { name: 'Platz 1 im Ranking', handle: 'finance_made_simple_', platform: 'Instagram', focus: 'Versicherungsmakler', reach: '379.000', date: '20.10.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Studie' },
+  { name: 'Platz 2 im Ranking', handle: 'versicherungenmitkopf', platform: 'Instagram', focus: 'Versicherungsmakler', reach: '342.000', date: '20.10.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Studie' },
+  { name: 'Zielgruppe Lehrkräfte', handle: 'finanzexperten_fuer_lehrer', platform: 'Instagram', focus: 'Versicherungsmakler', reach: '59.600', date: '20.10.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Studie' },
+  { name: 'Zielgruppe Beamte', handle: 'beamtenhahn', platform: 'Instagram', focus: 'Versicherungsvertreter (DBV)', reach: '51.300', date: '20.10.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Studie' },
+  { name: 'Zielgruppe Beamte', handle: 'beamtenberater_com', platform: 'Instagram', focus: 'Versicherungsmakler', reach: '9.800', date: '20.10.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Studie' },
+  { name: 'Zielgruppe Polizei', handle: 'der.finanzcop', platform: 'Instagram', focus: 'Versicherungsmakler', reach: '5.700', date: '20.10.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Studie' },
 ];
-export const startPoint = { posts: '11', followers: '109', note: 'Laut bereitgestelltem Profil-Screenshot (Aufnahmedatum nicht bekannt)' };
 export const potentialTakeaways = [
-  'Versicherungswissen lässt sich als Personenmarke erzählen: mit Gesicht, Fragen und klaren Antworten.',
-  'Reichweite entsteht über Serien und Wiederholung, nicht über einzelne Beiträge.',
-  'Für Stefan zählt nicht die größte Reichweite, sondern die richtige: Beamte und Anwärter in NRW.',
+  'Die Studie zählt 34 deutschsprachige Versicherungs-Accounts, neun davon mit 100.000 Followern oder mehr.',
+  'Berufsgruppen sind eigene Nischen: Lehrkräfte, Beamte und Polizei haben bereits eigene Accounts.',
+  'Für NRW-Beamte mit einem Berater vor Ort ist der Platz noch frei. Das ist unsere Einschätzung, keine Marktzahl.',
 ];
 
 /* ---------- 03 · Differenzierung ---------- */
@@ -76,7 +77,8 @@ export const concepts = [
     hook: 'Gleicher Beamtenstatus. Gleiche Absicherung?',
     spoken: 'Warum unterscheiden sich die Versicherungsfragen beim Polizeistart und im Lehramtsreferendariat?',
     opening: 'Split-Screen, zwei Berufswelten, ein Schnitt auf Stefan.',
-    board: ['Split-Screen: Polizei links, Klassenraum rechts', 'Text-Hook erscheint, kurze Pause', 'Stefan: „Polizei NRW bekommt Heilfürsorge, Lehramt Beihilfe.“', 'Zwei Spalten: was jeweils dazu nötig ist', 'Hinweis auf die Checkliste'],
+    times: ['0–1 s', '1–3 s', '3–12 s', '12–25 s', '25–30 s'],
+    board: ['Visual Hook: Split-Screen, Einsatzalltag links, Klassenraum rechts', 'Text Hook steht, Spoken Hook von Stefan aus dem Off', 'Schnitt auf Stefan: „Polizei NRW bekommt Heilfürsorge, Lehramt Beihilfe.“', 'Zwei Spalten im Bild: was jeweils dazu nötig ist', 'Handlungsaufruf: Checkliste im Profil'],
     core: 'Im Polizeivollzugsdienst NRW gibt es freie Heilfürsorge, im Lehramt in der Regel 50 Prozent Beihilfe plus private Krankenversicherung. Wer Heilfürsorge hat, denkt an eine Anwartschaft für später.',
     cta: 'Checkliste ansehen', goal: 'Reichweite bei Anwärtern, Einstieg in die Checkliste',
   },
@@ -85,7 +87,8 @@ export const concepts = [
     hook: 'Deine Verbeamtung steht bevor?',
     spoken: 'Drei Dinge, die du vor deinem ersten Diensttag prüfen solltest.',
     opening: 'Detailaufnahmen: Unterlagen, Kalender, ein markierter Termin, Checkliste.',
-    board: ['Kalender, ein Termin wird markiert', 'Text-Hook, Stefan im Bild', 'Punkt 1: Leistungsauszug der Krankenkasse anfordern', 'Punkt 2: Beginn der privaten Krankenversicherung auf den Ernennungstag legen', 'Punkt 3: Austritt aus der gesetzlichen Kasse fristgerecht erklären'],
+    times: ['0–1 s', '1–3 s', '3–12 s', '12–21 s', '21–30 s'],
+    board: ['Visual Hook: Kalender, ein Termin wird gold markiert', 'Text Hook im Bild, Stefan spricht den Spoken Hook in die Kamera', 'Punkt 1: Leistungsauszug der Krankenkasse anfordern', 'Punkt 2: private Krankenversicherung ab dem Ernennungstag', 'Punkt 3: Austritt aus der gesetzlichen Kasse fristgerecht, dann Hinweis auf die Checkliste'],
     core: 'Leistungsauszug nach § 305 SGB V anfordern, die private Krankenversicherung ab dem Tag der Ernennungsurkunde beginnen lassen und den Austritt aus der gesetzlichen Kasse innerhalb von zwei Wochen nach deren Hinweis erklären.',
     cta: 'Ganze Checkliste holen', goal: 'Vertrauen durch konkreten Nutzen, Download der Checkliste',
   },
@@ -94,7 +97,8 @@ export const concepts = [
     hook: 'Dienstschlüssel verloren. Was jetzt?',
     spoken: 'Wann kann ein verlorener Dienstschlüssel eigentlich teuer werden?',
     opening: 'Ein Schlüssel fällt auf den Schreibtisch. Stille. Perspektivwechsel.',
-    board: ['Schlüssel fällt, Nahaufnahme, kurze Stille', 'Text-Hook', 'Stefan: Wann der Dienstherr Regress nehmen kann', 'Was eine Diensthaftpflicht abdeckt und was die Gewerkschaft schon regelt', 'Einladung zum Gespräch'],
+    times: ['0–1 s', '1–3 s', '3–14 s', '14–24 s', '24–30 s'],
+    board: ['Visual Hook: Schlüssel fällt, Aufprall, kurze Stille', 'Text Hook erscheint, Stefan stellt die Frage als Spoken Hook', 'Stefan: wann der Dienstherr Regress nehmen kann', 'Was eine Diensthaftpflicht abdeckt, was die Gewerkschaft schon regelt', 'Handlungsaufruf: Gespräch anfragen'],
     core: 'Regress droht bei Vorsatz und grober Fahrlässigkeit (§ 48 BeamtStG). Versicherbar ist die grobe Fahrlässigkeit über eine Diensthaftpflicht. Vorher prüfen, was die Gewerkschaft schon abdeckt.',
     cta: 'Gespräch anfragen', goal: 'Beratungsbedarf wecken, Kontaktaufnahme',
   },
