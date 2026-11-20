@@ -1,2 +1,15 @@
+# Konzeptpräsentation: nicht für Suchmaschinen.
+# Ausnahme: Dienste für Linkvorschauen dürfen Seite und Vorschaubild abrufen.
+# Die Nichtindexierung bleibt über X-Robots-Tag und <meta name="robots"> bestehen.
+User-agent: WhatsApp
+User-agent: facebookexternalhit
+User-agent: Facebot
+User-agent: Twitterbot
+User-agent: LinkedInBot
+User-agent: Slackbot-LinkExpanding
+User-agent: TelegramBot
+User-agent: Discordbot
+Allow: /
+
 User-agent: *
 Disallow: /
