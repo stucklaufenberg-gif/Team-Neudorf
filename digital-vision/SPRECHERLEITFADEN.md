@@ -12,21 +12,22 @@ Content-Idee bis zur Beratungsanfrage. Du bleibst der Experte.“
 
 | Nr. | Station | Was du sagst | Was du zeigst |
 |---|---|---|---|
-| 01 | Einstieg | Wir sind nicht hier, um deine Geschichte nachzuerzählen. Wir zeigen, wie aus deinem Wissen Anfragen werden. | Hero, dann weiter |
-| 02 | Marktpotenzial | Andere Makler erreichen sechsstellige Follower mit Versicherungswissen. Für dich zählt nicht die größte Reichweite, sondern die richtige: Beamte und Anwärter in NRW. | Sechs Accounts mit einheitlichem Stand 20.10.2026, darunter drei für Beamte und Polizei |
-| 03 | Differenzierung | Creator-Agenturen können Hooks, Versicherer können Fachwissen. Wir verbinden beides und denken jeden Inhalt bis zur Anfrage. | Vier Felder, darunter drei beobachtete Formate mit Timecode und unser eigenes Format |
-| 04 | Content-Lab | In den ersten drei Sekunden entscheidet sich alles. Wir arbeiten mit drei Ebenen gleichzeitig. | Ebenen einzeln ausschalten, dann Varianten wechseln |
-| 05 | Drei Reel-Konzepte | Diese Themen kommen aus deiner eigenen Checkliste. Fertige Storyboards, die fachliche Aussage kommt von dir. | Konzept A, B, C, Storyboard-Leiste |
-| 06 | Content-Säulen | Reichweite holt neue Leute, Vertrauen zeigt Kompetenz, Conversion löst Anfragen aus. | Säulen umschalten, Profil reagiert |
-| 07 | Ein Drehtag | Ein Termin mit dir reicht für Wochen. | Regler von 3 auf 8 schieben |
-| 08 | Vier Wochen | Jede Woche hat ein Thema, und alles läuft auf die Checkliste oder ein Gespräch zu. | Einen Handlungsaufruf anklicken |
-| 09 | Paid Advertising | Drei Kampagnen, je zwei Creatives. Wir testen, bevor wir skalieren. | Kampagne B, Creative 2, Story-Format |
-| 10 | Weg zur Anfrage | Niemand muss Daten abgeben, um die Checkliste zu bekommen. Wer bereit ist, bucht direkt. | Route „Direkt zum Termin“ |
-| 11 | Automatisierung | Routine automatisieren wir, Entscheidungen bleiben bei Menschen. Nichts davon läuft schon, wir bauen es auf. | Content-, dann Lead-Workflow |
-| 12 | Dein Anteil | **Hauptargument.** Vier Dinge machst du, alles andere übernehmen wir. | Die vier Punkte links langsam durchgehen |
-| 13 | Erfolgsmessung | Wir messen Gespräche und Kunden, nicht Likes. Die Zahlen hier sind Demo, echte gibt es im Pilot. | Kampagne A gegen B |
-| 14 | 90-Tage-Pilot | Drei Monate, klare Aufgaben auf beiden Seiten, danach entscheidest du. | Phasen durchklicken, Kostenarten |
-| – | Einladung | Lass es uns gemeinsam umsetzen. | Die drei Fragen offen stellen |
+| 01 | Einstieg | Wir können dein Marketing starten, bevor du vor einer Kamera stehen musst. | Hero |
+| 02 | Marktpotenzial | Versicherungswissen hat ein Publikum, auch in Nischen wie Beamte und Polizei. | Sechs Accounts, Stand 20.10.2026 |
+| 03 | Differenzierung | Wir übersetzen Creator-Mechanik in Beamten-Formate. | Drei Beobachtungen mit Timecode |
+| 04 | KI-first | Acht Schritte von deiner Checkliste bis zur Auswertung. Du bist nur an zwei Stellen gefragt. | Schritt 04 und 06 anklicken |
+| 05 | Content-Lab | Ein Thema, drei Einstiege. Wir testen, was wirkt. | Varianten wechseln |
+| 06 | Sechs Muster-Reels | **Höhepunkt.** Sechs Themen, sechs Formate, ein System. | Reels durchklicken, ggf. Film starten |
+| 07 | Personal Brand | Sofort sichtbar mit KI, dann Schritt für Schritt deine eigene Marke. | Phase A → B → C |
+| 08 | Eine Quelle, viele Inhalte | Aus einer Checkliste entsteht Content für Wochen. | Regler auf 8 |
+| 09 | Vier Wochen | Jede Woche führt zur Checkliste oder zu dir. | Einen Handlungsaufruf |
+| 10 | Paid Advertising | Drei Kampagnen, je zwei Creatives. Testen vor Skalieren. | Kampagne B, Creative 2 |
+| 11 | Weg zur Anfrage | Jedes Reel hat eine Aufgabe: Reichweite, Vertrauen, Kompetenz oder Beratung. | Route „Direkt zum Termin“ |
+| 12 | Automatisierung | Routine automatisieren wir, Entscheidungen bleiben bei Menschen. | Lead-Workflow |
+| 13 | Dein Zeitaufwand | **Hauptargument.** Du bleibst Experte, nicht Vollzeit-Creator. | Vier gegen zehn Aufgaben |
+| 14 | Erfolgsmessung | Wir messen Gespräche, nicht Likes. Demo-Zahlen. | Kampagne A gegen B |
+| 15 | 90-Tage-Pilot | KI-first starten, nach 90 Tagen gemeinsam entscheiden. | Phasen |
+| – | Einladung | Lass es uns gemeinsam umsetzen. | Drei Fragen |
 
 ## Hypothesen für den Pilot (keine Prognosen)
 
@@ -41,7 +42,8 @@ Entscheidungsregel: Ein Format kommt in Serie, wenn es relevante Folgeschritte a
 
 ## Antworten auf typische Einwände
 
-- **„Ich habe keine Zeit.“** Station 12: vier Aufgaben, gebündelte Drehtermine, Freigaben per Nachricht.
+- **„Ich habe keine Zeit.“** Station 07 und 13: Phase A braucht keinen Dreh, nur Freigaben. Ab Phase B ein gebündelter Drehtermin pro Monat.
+- **„Ist KI-Content nicht unpersönlich?“** Station 07: KI-Content ist der Start, deine echten Videos tragen zunehmend das Vertrauen.
 - **„Was kostet das?“** Kostenarten in Station 14. Die Beträge legen wir nach dem Umfang gemeinsam fest. Nenne keine Zahl, die nicht abgestimmt ist.
 - **„Was bringt das?“** Keine Garantie. Nach 90 Tagen liegen echte Zahlen vor: Anfragen, Gespräche, Kosten je Anfrage.
 - **„Ist das rechtlich sauber?“** Werbe- und Datenschutzfragen prüft vor dem Start eine Fachperson. Lead-Formulare fragen keine Gesundheits- oder Vertragsdaten ab.

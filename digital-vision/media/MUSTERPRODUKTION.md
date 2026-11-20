@@ -1,5 +1,8 @@
 # Musterproduktion: drei Reel-Beispiele (Higgsfield)
 
+> **Überholt seit 20.11.2026:** Die Muster-Reels werden jetzt als sechs Filme extern produziert. Maßgeblich ist
+> `REELS_MANIFEST.md`. Dieses Dokument bleibt als Archiv der ersten Briefings erhalten.
+
 Pitch-Mockups für die Präsentation, keine Veröffentlichung. Jedes Asset bleibt als Konzept gekennzeichnet.
 
 ## Stand

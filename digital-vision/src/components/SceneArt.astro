@@ -34,5 +34,24 @@ const { scene } = Astro.props;
       <i class="art__shadow"></i>
     </>
   )}
+  {scene === 'tree' && (
+    <>
+      <i class="art__node art__node--root">?</i>
+      <i class="art__branch art__branch--l"></i><i class="art__branch art__branch--m"></i><i class="art__branch art__branch--r"></i>
+      <i class="art__leaf art__leaf--l">Status</i><i class="art__leaf art__leaf--m">Ursache</i><i class="art__leaf art__leaf--r">Absicherung</i>
+    </>
+  )}
+  {scene === 'doc' && (
+    <>
+      <i class="art__sheet">{Array.from({ length: 9 }, (_, k) => <b class={k === 5 ? 'is-mark' : ''} style={`--k:${k}`}></b>)}</i>
+      <i class="art__lens"></i>
+    </>
+  )}
+  {scene === 'timeline' && (
+    <>
+      <i class="art__line"></i>
+      {['Ernennung', 'Beförderung', 'Familie'].map((t, k) => <i class="art__stage" style={`--k:${k}`}><b></b><span>{t}</span></i>)}
+    </>
+  )}
   {scene === 'person' && <Image src={reelC} alt="" width={420} loading="lazy" class="art__photo" />}
 </div>

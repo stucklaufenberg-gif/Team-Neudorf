@@ -30,27 +30,30 @@ npm run preview   # gebauten Stand ansehen, http://localhost:4500
 
 Node 22 (siehe `.nvmrc`).
 
-## Stationen
+## Stationen (KI-first-Fassung, 20.11.2026)
 
 | Nr. | Station | Kern | Interaktion |
 |---|---|---|---|
-| 01 | Einstieg | Deine Expertise verdient mehr Sichtbarkeit. | – |
-| 02 | Marktpotenzial | Versicherungs-Personal-Brands mit datierten Reichweiten | – |
-| 03 | Differenzierung | Creator-Mechanik, Versicherungswissen, Kundengewinnung, Produktion | – |
-| 04 | Content-Lab | Visual, Spoken und Text Hook, drei Varianten zu einem Thema | Varianten, Ebenen an/aus |
-| 05 | Drei Reel-Konzepte | Polizei vs. Lehramt · Drei Prüfpunkte · Dienstschlüssel | Konzepte, Videoplayer |
-| 06 | Content-Säulen | Reichweite, Vertrauen, Conversion | Säulen ↔ Profil |
-| 07 | Ein Drehtag | Ein Termin, viele Formate (illustrativ) | Regler |
-| 08 | Vier Wochen Content | Redaktionsplan aus Themen der Checkliste | Filter, Details |
-| 09 | Paid Advertising | Drei Kampagnen, je zwei Creatives | Kampagne, Creative, Format |
-| 10 | Weg zur Anfrage | Mehrere Einstiege, keine Pflichtschritte | Routen |
-| 11 | Automatisierung | Content- und Lead-Workflow, nicht eingerichtet | Workflow-Wechsel |
-| 12 | Dein Anteil | Vier Aufgaben für Stefan, acht für die Agentur | – |
-| 13 | Erfolgsmessung | Cockpit mit Demo-Daten | Kampagnenwechsel |
-| 14 | 90-Tage-Pilot | Phasen mit Verantwortlichkeiten, Kostenarten, Einladung | Phasen |
+| 01 | Einstieg | Wir starten, bevor du vor einer Kamera stehen musst. | – |
+| 02 | Marktpotenzial | Versicherungs-Personal-Brands, ein Erhebungsstand (20.10.2026) | – |
+| 03 | Differenzierung | Vier Kompetenzen, drei beobachtete Creator-Formate | – |
+| 04 | **KI-first** (neu) | Achtstufige Produktionskette: Higgsfield, Code-Postproduktion, Freigabe | Schritte |
+| 05 | Content-Lab | Ein Thema, drei Einstiege | Varianten, Ebenen |
+| 06 | **Sechs Muster-Reels** (neu) | Galerie mit großem Smartphone, Steckbrief und Storyboard je Reel | Auswahl, Player |
+| 07 | **Personal Brand** (neu) | Phase A KI-first → B Expertenvideos → C Hybrid | Phasen, Mix-Balken |
+| 08 | **Eine Quelle, viele Inhalte** (umgebaut) | Aus der Checkliste: Reels, Hooks, Storys, Carousels, Anzeigen, CTAs | Regler |
+| 09 | Vier Wochen Content | Redaktionsplan aus Themen der Checkliste | Filter, Details |
+| 10 | Paid Advertising | Drei Kampagnen, je zwei Creatives | Kampagne, Creative, Format |
+| 11 | Weg zur Anfrage | Vom Reel zum Termin, Rolle jedes Reels | Routen |
+| 12 | Automatisierung | Content- und Lead-Workflow, nicht eingerichtet | Workflow-Wechsel |
+| 13 | **Dein Zeitaufwand** (umgebaut) | Vier Aufgaben für Stefan, zehn für die Agentur | – |
+| 14 | Erfolgsmessung | Cockpit mit Demo-Daten | Kampagnenwechsel |
+| 15 | 90-Tage-Pilot | KI-first starten, auswerten, entscheiden | Phasen |
 
-Fachliche Aussagen in Station 04, 05 und 08 stammen aus Stefans „Checkliste Beamtenanwärter NRW“
-(auf team-neudorf.de) und brauchen vor jeder Veröffentlichung seine Freigabe.
+Entfallen: „Drei Reel-Konzepte“ (in der Galerie aufgegangen), „Content-Säulen“ (die Rollen der Formate stehen jetzt
+in Galerie und Station 11) und „Ein Drehtag“ (ersetzt durch Station 08).
+
+Die sechs Muster-Reels liefert das Team extern. Ablage, Dateinamen und Verhalten: `media/REELS_MANIFEST.md`.
 
 ## Kennzeichnung der Aussagen
 
@@ -115,7 +118,7 @@ verbundenen Google Drive.
 | `src/data/vision.ts` | Sämtliche Texte und Strukturen aller Kapitel und Demonstrationen |
 | `src/pages/index.astro` | Die Präsentation: 14 Stationen, Bedienelemente |
 | `src/components/SceneArt.astro` | Gezeichnete Platzhalter-Szenen für Reel-Konzepte |
-| `public/media/reels/` | Ort für freigegebene Musterclips (noch leer, siehe `media/MUSTERPRODUKTION.md`) |
+| `public/media/reels/` | Ablage der sechs Muster-Reels (siehe `media/REELS_MANIFEST.md`) |
 | `src/styles/vision.css` | Gestaltung, Bewegung, Präsentationsmodus, Responsive, reduzierte Bewegung |
 | `src/scripts/vision.ts` | Scroll-Steuerung, Navigation, Präsentationsmodus, Tastatur, Demonstrationen |
 | `src/assets/` | Porträt, Logo und daraus abgeleitete Platzhalter-Motive |
@@ -204,7 +207,7 @@ Nicht geprüft: Safari und Firefox, echte Mobilgeräte, Beamer-Auflösungen unte
 ## Offene Freigaben und Punkte
 
 1. **Push und Deployment** über Netlify (Einstellungen siehe oben).
-2. **Higgsfield-Musterclips:** 150 Credits für drei Clips in 720p. Die Aufträge sind vorbereitet in `media/higgsfield-auftraege.json`.
+2. **Muster-Reels:** Die sechs Filme werden extern produziert und unter `public/media/reels/` abgelegt (siehe `media/REELS_MANIFEST.md`). Die älteren Higgsfield-Aufträge in `media/higgsfield-auftraege.json` sind damit überholt.
 3. **Recherche:** Reichweiten in Station 02 sind im Original geprüft. Plattformregeln in Station 09 stammen weiterhin aus Suchergebnis-Auszügen.
 4. **Fachliche Freigabe** der Aussagen aus der Checkliste in Station 04, 05 und 08 durch Stefan.
 5. **Rechtliche Prüfung** von Datenschutzhinweisen, Einwilligungstexten, Erstinformation und Werbeaussagen

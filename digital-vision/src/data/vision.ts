@@ -7,20 +7,21 @@ export const tagLabel = { ist: 'Ist-Stand', quelle: 'Mit Quelle', doku: 'Laut Pl
 export type Tag = keyof typeof tagLabel;
 
 export const chapters = [
-  { id: 's1', n: '01', title: 'Einstieg', line: 'Deine Expertise verdient mehr Sichtbarkeit.' },
+  { id: 's1', n: '01', title: 'Einstieg', line: 'Wir starten, bevor du vor einer Kamera stehen musst.' },
   { id: 's2', n: '02', title: 'Marktpotenzial', line: 'Was Personenmarken in der Branche heute erreichen.' },
   { id: 's3', n: '03', title: 'Unsere Differenzierung', line: 'Creator-Mechanik trifft Versicherungswissen.' },
-  { id: 's4', n: '04', title: 'Das Content-Lab', line: 'Der dreifache Hook, live umgeschaltet.' },
-  { id: 's5', n: '05', title: 'Drei Reel-Konzepte', line: 'Aus deiner Checkliste, fertig zum Drehen.' },
-  { id: 's6', n: '06', title: 'Content-Säulen', line: 'Reichweite, Vertrauen, Conversion.' },
-  { id: 's7', n: '07', title: 'Ein Drehtag', line: 'Ein Termin, viele Inhalte.' },
-  { id: 's8', n: '08', title: 'Vier Wochen Content', line: 'Ein Plan, der auf Beratung zuläuft.' },
-  { id: 's9', n: '09', title: 'Paid Advertising', line: 'Drei Kampagnen, je zwei Creatives.' },
-  { id: 's10', n: '10', title: 'Weg zur Anfrage', line: 'Mehrere Einstiege, keine Pflichtschritte.' },
-  { id: 's11', n: '11', title: 'Automatisierung', line: 'Zwei Workflows, die wir aufbauen.' },
-  { id: 's12', n: '12', title: 'Dein Anteil', line: 'Was du tust und was wir übernehmen.' },
-  { id: 's13', n: '13', title: 'Erfolgsmessung', line: 'Wir zählen Gespräche, nicht Likes.' },
-  { id: 's14', n: '14', title: '90-Tage-Pilot', line: 'Testen, messen, gemeinsam entscheiden.' },
+  { id: 's4', n: '04', title: 'KI-first', line: 'Dein Marketing startet vor dem ersten Drehtag.' },
+  { id: 's5', n: '05', title: 'Das Content-Lab', line: 'Ein Thema, drei Einstiege.' },
+  { id: 's6', n: '06', title: 'Sechs Muster-Reels', line: 'Sechs Themen, sechs Formate, ein System.' },
+  { id: 's7', n: '07', title: 'Personal Brand', line: 'Von KI-Content zur Expertenmarke.' },
+  { id: 's8', n: '08', title: 'Eine Quelle, viele Inhalte', line: 'Wiederverwendung statt Neuanfang.' },
+  { id: 's9', n: '09', title: 'Vier Wochen Content', line: 'Ein Plan, der auf Beratung zuläuft.' },
+  { id: 's10', n: '10', title: 'Paid Advertising', line: 'Drei Kampagnen, je zwei Creatives.' },
+  { id: 's11', n: '11', title: 'Weg zur Anfrage', line: 'Vom Reel zum Beratungstermin.' },
+  { id: 's12', n: '12', title: 'Automatisierung', line: 'Zwei Workflows, die wir aufbauen.' },
+  { id: 's13', n: '13', title: 'Dein Zeitaufwand', line: 'Was du tust und was wir übernehmen.' },
+  { id: 's14', n: '14', title: 'Erfolgsmessung', line: 'Wir zählen Gespräche, nicht Likes.' },
+  { id: 's15', n: '15', title: '90-Tage-Pilot', line: 'KI-first starten, messen, entscheiden.' },
 ] as const;
 
 /* ---------- 02 · Marktpotenzial ---------- */
@@ -73,65 +74,6 @@ export const hookVariants = [
   { id: 'vergleich', label: 'Berufsvergleich', scene: 'cards', visual: 'Stefan steht zwischen zwei Karten „POLIZEI“ und „LEHRAMT“, kurzer Split-Frame ab dem ersten Bild.', spoken: '„Zwei Leute starten als Beamtenanwärter in NRW. Aber die Krankenversicherung ist nicht automatisch gleich geregelt.“', text: 'POLIZEI ≠ LEHRAMT?', cta: 'Checkliste im Profil', why: 'Format „Berufsgruppen-Duell“, abgeleitet aus dem beobachteten Split-Screen-Reel.' },
   { id: 'frage', label: 'Frage / Denkfehler', scene: 'person', visual: 'Stefan direkt in die Kamera, Blickkontakt, eine große Untertitelzeile.', spoken: '„Du denkst, als Beamter ist die Krankenversicherung überall gleich geregelt? Polizei und Lehramt starten unterschiedlich.“', text: 'Überall gleich geregelt?', cta: 'Frage in die Kommentare', why: 'Format „Die unerwartete Konsequenz“: eine verbreitete Annahme, sachlich aufgelöst, ohne Panik.' },
   { id: 'check', label: 'Checkliste', scene: 'detail', visual: 'Die gedruckte NRW-Checkliste in der Hand, ein Punkt wird angestrichen.', spoken: '„Punkt zwei meiner Checkliste klärt, ob für dich Heilfürsorge oder Beihilfe gilt.“', text: 'Heilfürsorge oder Beihilfe? Punkt 2.', cta: 'Checkliste holen', why: 'Format „Der Beamten-Check“: Serie mit einem Punkt pro Folge, das Dokument als sichtbarer Beleg.' },
-] as const;
-
-/* ---------- 05 · Drei Reel-Konzepte ---------- */
-export const concepts = [
-  {
-    id: 'a', tab: 'A', title: 'Polizei vs. Lehramt', scene: 'cards', video: '', poster: '', length: '25–35 s', format: 'Berufsgruppen-Duell', origin: 'Split-Screen-Reel, Aufnahme 00:50–01:06',
-    hook: 'Gleiche Verbeamtung. Gleiche Absicherung?',
-    spoken: 'Du wirst Beamtenanwärter in NRW. Aber weißt du, welche Krankenversicherungsregeln für deine Laufbahn gelten?',
-    opening: 'Zwei Akten nebeneinander: „POLIZEI“ und „LEHRAMT“, Stefan dazwischen.',
-    times: ['0–4 s', '4–15 s', '15–20 s', '20–25 s', '25–35 s'],
-    board: ['Visual Hook: zwei Akten, Text Hook steht, Stefan stellt die Frage', 'Stefan: Polizeivollzugsdienst NRW mit Heilfürsorge, Lehramt mit Beihilfe', 'Die gedruckte Checkliste in die Kamera', 'Drei Fragen eingeblendet: Welche Laufbahn? Welcher Status? Wann beginnt der Dienst?', 'CTA: „Die NRW-Checkliste findest du über mein Profil.“'],
-    core: 'Im Polizeivollzugsdienst NRW gibt es freie Heilfürsorge, im Lehramt in der Regel 50 Prozent Beihilfe plus private Krankenversicherung. Wer Heilfürsorge hat, denkt an eine Anwartschaft für später.',
-    cta: 'Checkliste ansehen', goal: 'Reichweite bei Anwärtern, Einstieg in die Checkliste',
-  },
-  {
-    id: 'b', tab: 'B', title: 'Drei Prüfpunkte vor dem ersten Diensttag', scene: 'detail', video: '', poster: '', length: '25–40 s', format: 'Countdown mit drei Karten', origin: 'Talking Head mit eingeblendeten Belegen, Aufnahme 01:12–02:16',
-    hook: 'Verbeamtung in Sicht?',
-    spoken: 'Bevor du deine Ernennungsurkunde bekommst: Diese drei Fragen würde ich zuerst prüfen.',
-    opening: 'Kalenderblatt mit markierter „Ernennung“, Stefan legt drei Karten auf den Tisch.',
-    times: ['0–4 s', '4–12 s', '12–20 s', '20–28 s', '28–40 s'],
-    board: ['Visual Hook: Kalender und drei Karten, Text Hook, Stefans Frage', 'Karte 1: bestehende Verträge nicht vorschnell kündigen', 'Karte 2: Gesundheitsfragen vorbereiten, Leistungsauszug anfordern', 'Karte 3: private Krankenversicherung ab dem Tag der Ernennungsurkunde', 'CTA: „Die ausführliche Checkliste gibt es kostenlos, gern gehen wir sie gemeinsam durch.“'],
-    core: 'Bestehende Verträge wie eine Berufsunfähigkeitsversicherung nicht kündigen, bevor die neue Absicherung steht. Für die Gesundheitsfragen den Leistungsauszug nach § 305 SGB V anfordern. Die private Krankenversicherung auf den Tag der Ernennungsurkunde legen.',
-    cta: 'Ganze Checkliste holen', goal: 'Vertrauen durch konkreten Nutzen, Download der Checkliste',
-  },
-  {
-    id: 'c', tab: 'C', title: 'Der verlorene Dienstschlüssel', scene: 'key', video: '', poster: '', length: '30–40 s', format: 'Die unerwartete Konsequenz', origin: 'Kontroverse These mit konkretem Beispiel, Aufnahme 03:03–03:47',
-    hook: 'Dienstschlüssel verloren. Was jetzt?',
-    spoken: 'Wann kann ein verlorener Dienstschlüssel eigentlich teuer werden?',
-    opening: 'Ein Schlüssel fällt auf den Schreibtisch. Stille. Perspektivwechsel auf Stefan.',
-    times: ['0–2 s', '2–5 s', '5–18 s', '18–32 s', '32–40 s'],
-    board: ['Visual Hook: Schlüssel fällt, Aufprall, eine Sekunde Stille', 'Text Hook, Stefan stellt die Frage', 'Drei Fragen auf der Tafel: Was ist passiert? Wie fahrlässig? Was ist schon abgesichert?', 'Einordnung ohne Pauschalaussage: wann Regress droht, was die Diensthaftpflicht abdeckt', 'CTA: „Wenn du unsicher bist, lass uns kurz drüber sprechen.“'],
-    core: 'Regress droht bei Vorsatz und grober Fahrlässigkeit (§ 48 BeamtStG). Versicherbar ist die grobe Fahrlässigkeit über eine Diensthaftpflicht. Vorher prüfen, was die Gewerkschaft schon abdeckt.',
-    cta: 'Gespräch anfragen', goal: 'Beratungsbedarf wecken, Kontaktaufnahme',
-  },
-] as const;
-
-/* ---------- 06 · Content-Säulen ---------- */
-export const pillars = [
-  { id: 'reichweite', n: '01', title: 'Reichweite', effect: 'Neue Menschen erreichen', text: 'Fragen, Vergleiche und Alltagssituationen, die jeder im Dienst kennt.', formats: ['Polizei vs. Lehramt', 'Dienstschlüssel verloren', 'Was ändert sich am ersten Diensttag?'] },
-  { id: 'vertrauen', n: '02', title: 'Vertrauen', effect: 'Kompetenz zeigen', text: 'Fachwissen verständlich erklärt, dazu persönliche Einblicke.', formats: ['Kurz erklärt: Öffnungsaktion', 'Frag Stefan', 'So läuft ein Erstgespräch'] },
-  { id: 'conversion', n: '03', title: 'Conversion', effect: 'Anfragen auslösen', text: 'Checklisten, konkrete Beratungsfragen und passende Terminangebote.', formats: ['Checkliste für den Start in NRW', 'Drei Fragen vor dem Antrag', 'Termin für Anwärter'] },
-] as const;
-export const tiles = [
-  { img: 'd', pillar: 'reichweite', text: 'Polizei vs. Lehramt' },
-  { img: 'b', pillar: 'vertrauen', text: 'Kurz erklärt: Öffnungsaktion' },
-  { img: 'ad', pillar: 'conversion', text: 'Checkliste für NRW' },
-  { img: 'e', pillar: 'reichweite', text: 'Dienstschlüssel verloren' },
-  { img: 'c', pillar: 'vertrauen', text: 'So läuft ein Erstgespräch' },
-  { img: 'a', pillar: 'conversion', text: 'Termin für Anwärter' },
-] as const;
-
-/* ---------- 07 · Ein Drehtag ---------- */
-export const shootTopics = ['Polizei vs. Lehramt', 'Drei Prüfpunkte', 'Dienstschlüssel', 'Öffnungsaktion', 'Dienstunfähigkeit', 'So läuft ein Erstgespräch', 'Frag Stefan', 'Freizeitunfall'];
-export const shootOutputs = [
-  { id: 'reels', label: 'Reels', hint: 'je Thema ein Video', shape: 'tall' },
-  { id: 'hooks', label: 'Hook-Varianten', hint: 'drei Einstiege je Reel', shape: 'tall3' },
-  { id: 'stories', label: 'Story-Ausschnitte', hint: 'Kurzfassungen', shape: 'tall3' },
-  { id: 'karussells', label: 'Carousels', hint: 'aus den Skripten', shape: 'stack' },
-  { id: 'ads', label: 'Anzeigen-Creatives', hint: 'für freigegebene Kampagnen', shape: 'ad' },
 ] as const;
 
 /* ---------- 08 · Vier Wochen Content ---------- */
@@ -248,17 +190,6 @@ export const workflows = [
   ] },
 ] as const;
 
-/* ---------- 12 · Dein Anteil ---------- */
-export const roles = {
-  stefan: [
-    { title: 'Expertise', text: 'Dein Wissen ist der Inhalt.' },
-    { title: 'Kameraauftritte', text: 'Gebündelt, mit Regie, an wenigen Terminen.' },
-    { title: 'Fachliche Freigaben', text: 'Nichts geht ohne dein OK online.' },
-    { title: 'Persönliche Beratung', text: 'Die Gespräche führst du.' },
-  ],
-  wir: ['Strategie', 'Research', 'Content-Ideen', 'Skripte', 'Produktion und Schnitt', 'Kampagnensteuerung', 'Publishing-Vorbereitung', 'Auswertung und Optimierung'],
-};
-
 /* ---------- 13 · Erfolgsmessung (Demo-Daten, frei erfunden) ---------- */
 export const dashData = [
   { id: 'a', name: 'Kampagne A', spend: 450, leads: 38, qualified: 14, booked: 9, attended: 7, customers: 2, verdict: 'Viele Anfragen, aber nur jede dritte ist qualifiziert.', action: 'Zielgruppe enger fassen, eine Frage zum Anlass ergänzen.' },
@@ -269,10 +200,109 @@ export const kpiSources = { spend: 'Werbekonto', qualified: 'CRM, von Stefan bes
 
 /* ---------- 14 · 90-Tage-Pilot ---------- */
 export const roadmap = [
-  { days: 'Tag 1–30', title: 'Aufbauen', wir: ['Positionierung und Themenplan', 'Skripte für den ersten Drehtag', 'Lead-Weg und Messung einrichten'], stefan: ['Themen freigeben', 'Erster Drehtag'], result: 'Ein abgestimmter Plan, erstes Material, ein getesteter Anfrageweg.' },
-  { days: 'Tag 31–60', title: 'Veröffentlichen', wir: ['Regelmäßige Beiträge nach Plan', 'Erste freigegebene Kampagnentests', 'Zweiter Drehtag'], stefan: ['Beiträge freigeben', 'Anfragen beantworten'], result: 'Ein sichtbarer Kanal und die ersten echten Anfragen.' },
-  { days: 'Tag 61–90', title: 'Auswerten', wir: ['Kampagnen vergleichen und verbessern', 'Kosten je qualifizierter Anfrage ermitteln'], stefan: ['Rückmeldung zu den Gesprächen'], result: 'Echte Zahlen statt Annahmen.' },
-  { days: 'Tag 90', title: 'Entscheiden', wir: ['Ergebnisbericht und Empfehlung'], stefan: ['Entscheidung: ausbauen, anpassen oder beenden'], result: 'Eine gemeinsame Entscheidung. Ohne Erfolgsgarantie, aber mit Zahlen.' },
+  { days: 'Tag 1–30', title: 'KI-first starten', wir: ['Strategie, Themen aus der Checkliste', 'Erste KI-Reels produzieren', 'Lead-Weg und Messung einrichten'], stefan: ['Themen und Inhalte freigeben', 'Zugänge freigeben'], result: 'Die ersten freigegebenen Reels sind bereit, ohne Drehtag.' },
+  { days: 'Tag 31–60', title: 'Sichtbar werden', wir: ['Regelmäßige Veröffentlichung nach Plan', 'Erste freigegebene Kampagnentests', 'Ersten Drehtermin vorbereiten'], stefan: ['Beiträge freigeben', 'Optional: erster Drehtermin'], result: 'Ein sichtbarer Kanal und die ersten echten Anfragen.' },
+  { days: 'Tag 61–90', title: 'Auswerten', wir: ['Formate und Kampagnen vergleichen', 'Kosten je qualifizierter Anfrage ermitteln'], stefan: ['Rückmeldung zu den Gesprächen'], result: 'Echte Zahlen statt Annahmen.' },
+  { days: 'Tag 90', title: 'Entscheiden', wir: ['Ergebnisbericht und Empfehlung für Phase B'], stefan: ['Entscheidung: ausbauen, anpassen oder beenden'], result: 'Eine gemeinsame Entscheidung. Ohne Erfolgsgarantie, aber mit Zahlen.' },
 ];
 export const costTypes = ['Agenturleistung für den Pilot (Umfang und Honorar legen wir gemeinsam fest)', 'Werbebudget, direkt an die Plattform', 'Werkzeuge für CRM und Terminbuchung', 'Rechtliche Prüfung von Datenschutz und Werbeaussagen'];
 export const questions = ['Welche Zielgruppe soll zuerst wachsen?', 'Wie viele Drehtage passen in dein Quartal?', 'Wie kommen Anfragen heute bei dir an?'];
+
+/* =====================================================================
+   KI-FIRST-ERWEITERUNG (20.11.2026)
+   ===================================================================== */
+
+/* ---------- KI-first: Produktionskette ---------- */
+export const aiChain = [
+  { n: '01', title: 'Themen', tool: 'Checkliste und Kundenfragen', who: 'stefan', text: 'Themen kommen aus Stefans NRW-Beamten-Checkliste und den Fragen, die er in der Beratung hört.', out: 'Themenliste mit fachlichem Kern' },
+  { n: '02', title: 'Recherche', tool: 'Creator-Analyse', who: 'wir', text: 'Welche Content-Mechaniken halten Aufmerksamkeit? Wir übertragen Formate, keine fremden Inhalte.', out: 'Formatwahl je Thema' },
+  { n: '03', title: 'Hooks und Storyboard', tool: 'Konzeption', who: 'wir', text: 'Visual Hook, Text Hook und Szenenfolge für 35 bis 45 Sekunden.', out: 'Storyboard mit Zeitmarken' },
+  { n: '04', title: 'KI-Filmszenen', tool: 'Higgsfield', who: 'wir', text: 'Filmische Szenen, Bewegung und Bildsprache in Navy und Gold, ohne Logos und ohne Stefan-Double.', out: 'Szenen-Clips im Hochformat' },
+  { n: '05', title: 'Typografie und Schnitt', tool: 'Code-Postproduktion (z. B. Remotion)', who: 'wir', text: 'Animierte Hooks, Schnitt, Übergänge, Untertitelstil und Sounddesign. Zunächst ohne Voice-over.', out: 'Fertige MP4-Datei' },
+  { n: '06', title: 'Fachliche Freigabe', tool: 'Stefan', who: 'stefan', text: 'Jede Versicherungs- und Rechtsaussage wird vor der Veröffentlichung von Stefan geprüft.', out: 'Freigegebener Beitrag' },
+  { n: '07', title: 'Geplante Veröffentlichung', tool: 'Redaktionsplan', who: 'wir', text: 'Freigegebene Beiträge werden für Instagram und Facebook eingeplant. Nichts geht ohne Freigabe online.', out: 'Termin im Redaktionsplan' },
+  { n: '08', title: 'Auswertung', tool: 'Reporting', who: 'wir', text: 'Was hält Aufmerksamkeit, was führt zu Anfragen? Die Erkenntnisse fließen in die nächste Runde.', out: 'Monatlicher Bericht' },
+] as const;
+export const aiPrinciples = [
+  { title: 'Higgsfield', role: 'Bild und Bewegung', text: 'Filmische Szenen, Kamerabewegung, Licht und Bildsprache.' },
+  { title: 'Code-Postproduktion', role: 'Text und Schnitt', text: 'Präzise Typografie, animierte Hooks, Übergänge und finale MP4-Dateien, z. B. mit Remotion.' },
+  { title: 'Sounddesign', role: 'Ton ohne Stimme', text: 'Zunächst keine Voice-overs. Später echte Stefan-Aufnahmen, optional eine professionelle Sprachproduktion.' },
+];
+
+/* ---------- Reel-Galerie: sechs Musterproduktionen ---------- */
+// Dateien in public/media/reels/. Fehlt eine Datei, zeigt die Galerie das Storyboard.
+export const reels = [
+  {
+    id: 'reel-01', n: '01', file: 'reel-01-dienstschluessel', scene: 'key', title: 'Dienstschlüssel verloren',
+    hook: 'Dienstschlüssel weg. Wer haftet?', audience: 'Beamte in Polizei, Verwaltung und Justiz', mechanic: 'Spannende Alltagssituation mit sachlicher Auflösung',
+    visual: 'Ein Schlüssel fällt auf den Schreibtisch, eine Sekunde Stille, Perspektivwechsel.', topic: 'Diensthaftpflicht, Regress bei grober Fahrlässigkeit, vorhandene Absicherung', goal: 'Beratungsbedarf sichtbar machen', role: 'Beratung',
+    board: [['0–3 s', 'Schlüssel fällt, Text Hook'], ['3–12 s', 'Frage: Wer haftet?'], ['12–24 s', 'Einordnung: Vorsatz und grobe Fahrlässigkeit'], ['24–34 s', 'Was eine Diensthaftpflicht abdeckt'], ['34–40 s', 'CTA: Absicherung prüfen lassen']],
+    status: 'Testfilm mit 32,5 s vorhanden, wird extern weiterentwickelt',
+  },
+  {
+    id: 'reel-02', n: '02', file: 'reel-02-polizei-lehramt', scene: 'cards', title: 'Polizei vs. Lehramt',
+    hook: 'Beide verbeamtet. Gleiche Absicherung?', audience: 'Anwärter bei Polizei und im Lehramt in NRW', mechanic: 'Split-Screen und überraschender Berufsgruppenvergleich',
+    visual: 'Zwei Akten, „POLIZEI“ und „LEHRAMT“, im Split-Screen.', topic: 'Heilfürsorge, Beihilfe und private Krankenversicherung', goal: 'Reichweite in zwei Berufsgruppen', role: 'Reichweite',
+    board: [['0–3 s', 'Split-Screen, Text Hook'], ['3–12 s', 'Beide starten verbeamtet'], ['12–24 s', 'Polizei: Heilfürsorge · Lehramt: Beihilfe'], ['24–34 s', 'Was jeweils dazu nötig ist'], ['34–40 s', 'CTA: Checkliste im Profil']],
+    status: 'Musterproduktion',
+  },
+  {
+    id: 'reel-03', n: '03', file: 'reel-03-erster-diensttag', scene: 'detail', title: 'Der erste Diensttag',
+    hook: 'Verbeamtung in Sicht? Prüfe diese drei Dinge.', audience: 'Anwärter kurz vor der Ernennung', mechanic: 'Countdown und visuelle Checkliste',
+    visual: 'Kalender mit markiertem Termin, drei Karten werden aufgedeckt.', topic: 'Versicherungsbeginn, bestehende Verträge, Gesundheitsfragen', goal: 'Nutzen zeigen, Checkliste verbreiten', role: 'Kompetenz',
+    board: [['0–3 s', 'Kalender, Text Hook'], ['3–14 s', 'Karte 1: bestehende Verträge'], ['14–25 s', 'Karte 2: Gesundheitsfragen vorbereiten'], ['25–36 s', 'Karte 3: Versicherungsbeginn am Ernennungstag'], ['36–42 s', 'CTA: ganze Checkliste']],
+    status: 'Musterproduktion',
+  },
+  {
+    id: 'reel-04', n: '04', file: 'reel-04-dienstunfaehigkeit', scene: 'tree', title: 'Dienstunfähig während der Ausbildung?',
+    hook: 'Du bist noch Anwärter. Was passiert, wenn du ausfällst?', audience: 'Beamte auf Widerruf und auf Probe', mechanic: 'Was-wäre-wenn-Szenario und Entscheidungsbaum',
+    visual: 'Ein Entscheidungsbaum baut sich auf: Status, Ursache, vorhandene Absicherung.', topic: 'Dienstunfähigkeit, Beamtenstatus, Klausel der Absicherung', goal: 'Kompetenz zeigen, Gespräch anregen', role: 'Vertrauen',
+    board: [['0–3 s', 'Frage als Text Hook'], ['3–14 s', 'Ast 1: Welchen Status hast du?'], ['14–25 s', 'Ast 2: Was ist die Ursache?'], ['25–36 s', 'Ast 3: Was ist schon abgesichert?'], ['36–42 s', 'CTA: persönlich einschätzen lassen']],
+    status: 'Musterproduktion',
+  },
+  {
+    id: 'reel-05', n: '05', file: 'reel-05-gesundheitsfragen', scene: 'doc', title: 'Gesundheitsfragen vor dem PKV-Antrag',
+    hook: 'PKV-Antrag? Schau vorher in deine Behandlungshistorie.', audience: 'Anwärter vor dem Antrag auf private Krankenversicherung', mechanic: 'Dokumenten-Reveal und praktischer Expertenhinweis',
+    visual: 'Ein Dokument wird Zeile für Zeile aufgedeckt, eine Zeile markiert.', topic: 'Gesundheitsfragen, Leistungsauszug der Krankenkasse, anonyme Voranfrage', goal: 'Expertenwissen zeigen, Fehler vermeiden helfen', role: 'Kompetenz',
+    board: [['0–3 s', 'Dokument, Text Hook'], ['3–14 s', 'Warum die Historie zählt'], ['14–25 s', 'Leistungsauszug anfordern'], ['25–36 s', 'Bei Vorerkrankungen: erst anonym anfragen'], ['36–42 s', 'CTA: vor dem Antrag sprechen']],
+    status: 'Musterproduktion',
+  },
+  {
+    id: 'reel-06', n: '06', file: 'reel-06-lebensphasen', scene: 'timeline', title: 'Dein Leben verändert sich',
+    hook: 'Beförderung. Familie. Und deine Versicherungen?', audience: 'Beamte nach der Ausbildung, Familien', mechanic: 'Lebensphasen, Vorher-Nachher und Karriere-Timeline',
+    visual: 'Eine Zeitleiste läuft: Ernennung, Beförderung, Familie.', topic: 'Anpassung bei Beförderung und Familie, Nachversicherung', goal: 'Bestandskunden und Empfehlungen ansprechen', role: 'Beratung',
+    board: [['0–3 s', 'Zeitleiste, Text Hook'], ['3–14 s', 'Ernennung: der Start'], ['14–25 s', 'Beförderung: passt die Absicherung noch?'], ['25–36 s', 'Familie: wer ist mitversichert?'], ['36–42 s', 'CTA: Check-up-Termin']],
+    status: 'Musterproduktion',
+  },
+] as const;
+export const reelRoles = { Reichweite: 'Reichweite erzeugen', Vertrauen: 'Vertrauen aufbauen', Kompetenz: 'Fachkompetenz zeigen', Beratung: 'Beratung anbieten' } as const;
+
+/* ---------- Personal Brand Roadmap ---------- */
+export const brandPhases = [
+  { id: 'a', tab: 'Phase A', title: 'KI-first', ai: 85, text: 'Wir starten mit hochwertigen KI-Reels auf Basis deines Fachwissens. Ein Videodreh ist dafür nicht nötig.', stefan: ['Inhalte fachlich prüfen und freigeben', 'Zugänge und Veröffentlichungen freigeben'], output: 'Sichtbarkeit vom ersten Monat an' },
+  { id: 'b', tab: 'Phase B', title: 'Persönliche Expertenmarke', ai: 55, text: 'Ein gebündelter Drehtermin pro Monat, zum Beispiel in deinem Büro. Daraus entstehen Statements, Antworten auf Kundenfragen und Serien.', stefan: ['Freigaben', 'Ein Drehtermin pro Monat, mit Regie und vorbereiteten Skripten'], output: 'Dein Gesicht, deine Stimme, deine Serien' },
+  { id: 'c', tab: 'Phase C', title: 'Hybride Content-Marke', ai: 35, text: 'KI-Visuals, deine Aufnahmen, programmierte Animationen und Kampagnen greifen ineinander. Deine echten Videos tragen zunehmend das Vertrauen.', stefan: ['Freigaben', 'Regelmäßige Drehtermine', 'Beratungsgespräche'], output: 'Reichweite, Vertrauen und Wiedererkennung' },
+] as const;
+
+/* ---------- Zeitaufwand ---------- */
+export const effort = {
+  stefan: [
+    { title: 'Fachwissen und Kundenfragen', text: 'Du gibst die Themen, wir machen Content daraus.' },
+    { title: 'Fachliche Freigaben', text: 'Nichts geht ohne dein OK online.' },
+    { title: 'Später ein Drehtermin pro Monat', text: 'Gebündelt, vorbereitet, mit Regie.' },
+    { title: 'Beratungsgespräche', text: 'Die Gespräche führst du persönlich.' },
+  ],
+  wir: ['Markt- und Themenrecherche', 'Redaktionsplanung', 'Hook-Entwicklung', 'Skripte und Storyboards', 'KI-Videoproduktion', 'Schnitt und Motion Design', 'Veröffentlichungsvorbereitung', 'Anzeigenkonzepte und Kampagnen', 'Einrichtung zulässiger Automatisierungen', 'Lead-Prozess und Reporting'],
+};
+
+/* ---------- Wiederverwendung: aus einer Checkliste viele Inhalte ---------- */
+export const reuseTopics = ['Polizei vs. Lehramt', 'Erster Diensttag', 'Dienstschlüssel', 'Dienstunfähigkeit', 'Gesundheitsfragen', 'Lebensphasen', 'Öffnungsaktion', 'Freizeitunfall'];
+export const reuseOutputs = [
+  { id: 'reels', label: 'Reels', hint: 'je Thema ein Film', shape: 'tall' },
+  { id: 'hooks', label: 'Hook-Varianten', hint: 'drei Einstiege je Thema', shape: 'tall3' },
+  { id: 'stories', label: 'Storys', hint: 'Kurzfassungen', shape: 'tall3' },
+  { id: 'karussells', label: 'Carousels', hint: 'aus den Skripten', shape: 'stack' },
+  { id: 'ads', label: 'Anzeigenvarianten', hint: 'für freigegebene Kampagnen', shape: 'ad' },
+  { id: 'ctas', label: 'Checklisten-CTAs', hint: 'je Thema ein Verweis', shape: 'square' },
+] as const;
+export const reuseAssets = ['Themen aus der Checkliste', 'Szenen und Filmaufnahmen', 'Gestaltungsvorlagen in Navy und Gold'];

@@ -212,18 +212,30 @@ if (lab) {
   }));
 }
 
-// Reel-Konzepte: Tabs; Musterclips spielen nur auf Klick, stumm, ohne Autoplay
-const conceptsRoot = $('[data-concepts]');
+// Musterclips: starten nur auf Klick und zunächst stumm; Ton nur auf ausdrücklichen Wunsch.
+// Lässt sich eine Datei nicht laden, bleibt das Storyboard sichtbar (kein leerer Player).
 const stopVideos = (scope: ParentNode) => $$<HTMLVideoElement>('video[data-reel-video]', scope).forEach((v) => { v.pause(); v.closest('[data-reel-player]')?.classList.remove('is-playing'); });
-if (conceptsRoot) {
-  tabs($('[role="tablist"]', conceptsRoot)!, () => stopVideos(conceptsRoot));
-  $$('[data-reel-play]', conceptsRoot).forEach((btn) => btn.addEventListener('click', () => {
-    const player = btn.closest<HTMLElement>('[data-reel-player]')!, video = $<HTMLVideoElement>('video', player);
-    if (!video) return;
-    if (video.paused) { video.play().then(() => player.classList.add('is-playing')).catch(() => player.classList.add('has-error')); btn.setAttribute('aria-label', 'Muster-Reel anhalten'); }
-    else { video.pause(); player.classList.remove('is-playing'); btn.setAttribute('aria-label', 'Muster-Reel abspielen'); }
-  }));
-}
+$$('[data-reel-player]').forEach((player) => {
+  const video = $<HTMLVideoElement>('video[data-reel-video]', player), play = $('[data-reel-play]', player), sound = $('[data-reel-sound]', player);
+  if (!video) return;
+  const fail = () => { player.classList.add('has-error'); video.hidden = true; if (play) play.hidden = true; if (sound) sound.hidden = true; };
+  video.addEventListener('error', fail);
+  video.addEventListener('ended', () => player.classList.remove('is-playing'));
+  play?.addEventListener('click', () => {
+    if (video.paused) { video.play().then(() => player.classList.add('is-playing')).catch(fail); play.setAttribute('aria-label', 'Muster-Reel anhalten'); }
+    else { video.pause(); player.classList.remove('is-playing'); play.setAttribute('aria-label', 'Muster-Reel abspielen'); }
+  });
+  sound?.addEventListener('click', () => { video.muted = !video.muted; sound.setAttribute('aria-pressed', String(!video.muted)); sound.textContent = video.muted ? 'Ton an' : 'Ton aus'; });
+});
+// KI-first: Produktionskette, Linie füllt sich bis zum gewählten Schritt
+const aiRoot = $('[data-aichain] .chain8');
+if (aiRoot) tabs($('[role="tablist"]', aiRoot)!, (_t, i, all) => { aiRoot.style.setProperty('--a', String(i)); all.forEach((el, k) => el.classList.toggle('is-reached', k <= i)); });
+// Reel-Galerie: Auswahl zeigt Smartphone-Slot und Steckbrief, laufende Videos stoppen
+const gallery = $('[data-gallery]');
+if (gallery) tabs($('[role="tablist"]', gallery)!, (tab) => { stopVideos(gallery); $$('[data-slot]', gallery).forEach((sl) => (sl.hidden = sl.dataset.slot !== tab.dataset.reel)); });
+// Personal Brand: Phasen verschieben den Mix aus KI-Content und eigenen Aufnahmen
+const brandRoot = $('[data-brand]');
+if (brandRoot) tabs($('[role="tablist"]', brandRoot)!, (tab) => $('.brandmap__mix', brandRoot)?.style.setProperty('--ai', tab.dataset.ai ?? '50'));
 
 // Redaktionskalender: Filter nach Art, Auswahl zeigt die Details
 const cal = $('[data-cal]');
@@ -245,7 +257,7 @@ if (shoot) {
   const input = $<HTMLInputElement>('[data-shoot-input]', shoot)!;
   const render = () => {
     const n = Number(input.value), karussells = Math.ceil(n / 2), feed = n + karussells, weeks = Math.floor(feed / 3);
-    const out: Record<string, number> = { reels: n, hooks: n * 3, stories: n, karussells, ads: Math.min(4, n), feed, weeks };
+    const out: Record<string, number> = { reels: n, hooks: n * 3, stories: n, karussells, ads: Math.min(4, n), ctas: n, feed, weeks };
     setText('[data-shoot-n]', String(n), shoot);
     for (const [k, v] of Object.entries(out)) $$(`[data-out="${k}"]`, shoot).forEach((el) => { if (el.textContent !== String(v)) { el.textContent = String(v); replay(el, 'is-bump'); } });
     $$('[data-topic]', shoot).forEach((li) => li.classList.toggle('is-on', Number(li.dataset.topic) < n));
