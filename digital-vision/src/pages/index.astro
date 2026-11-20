@@ -32,7 +32,7 @@ const c0 = campaigns[0];
 // Build-Kennung: zeigt online, aus welchem Commit diese Fassung gebaut wurde.
 // Netlify setzt COMMIT_REF, Cloudflare Workers Builds WORKERS_CI_COMMIT_SHA. Lokal steht dort „lokal“.
 declare const process: { env: Record<string, string | undefined> };
-const buildCommit = (process.env.COMMIT_REF ?? process.env.WORKERS_CI_COMMIT_SHA)?.slice(0, 7) ?? 'lokal';
+const buildCommit = (process.env.COMMIT_REF || process.env.WORKERS_CI_COMMIT_SHA || 'lokal').slice(0, 7);
 ---
 <!doctype html>
 <html lang="de">
