@@ -1,0 +1,3 @@
+# Vertrauliches Kundenangebot: nicht indexieren.
+User-agent: *
+Disallow: /

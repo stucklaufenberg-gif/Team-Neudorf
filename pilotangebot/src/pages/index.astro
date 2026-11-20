@@ -1,0 +1,352 @@
+---
+// 90-Tage-Pilotangebot für Team Neudorf Versicherungen – eigenständiges Dokument zur Präsentation „Digital Vision & Growth“.
+// Platzhalter in eckigen Klammern [ … ] müssen vor dem Versand ausgefüllt werden (Liste im README).
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource/instrument-serif/latin-400.css';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-500.css';
+import '../styles/angebot.css';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import avatar from '../assets/avatar.png';
+
+const P = (t: string) => `[${t}]`; // sichtbarer Platzhalter
+
+const budget = [
+  { kind: 'Agenturhonorar', tag: 'Fest vereinbart', month: '750 € netto', total: '2.250 € netto', note: 'Unser Honorar für die vereinbarten Leistungen. Zuzüglich gesetzlicher Umsatzsteuer, sofern sie anfällt.', fixed: true },
+  { kind: 'Technikbudget', tag: 'Variabel · Obergrenze', month: 'max. 350 €', total: 'max. 1.050 €', note: 'Projektbezogene KI-, Software- und Automatisierungskosten. Nur tatsächlich angefallene, vorher vereinbarte Kosten.', fixed: false },
+  { kind: 'Meta-Werbebudget', tag: 'Variabel · Obergrenze', month: 'max. 300 €', total: 'max. 900 €', note: 'Tatsächliche Werbeausgaben, möglichst direkt über dein eigenes Meta-Werbekonto. Start nur nach Freigabe.', fixed: false },
+];
+
+const services = [
+  {
+    n: '01', title: 'Strategie und Aufbau', items: [
+      'Gemeinsamer Kick-off',
+      'Zielgruppen und Kommunikationsziele festlegen',
+      'Positionierung als Experte für Versicherungen, insbesondere für Beamte und den öffentlichen Dienst in NRW',
+      'Content-Strategie und Redaktionsplanung',
+      'Aufbau und Konfiguration der notwendigen Produktionsprozesse',
+      'Vorbereitung eines einfachen Prozesses zur Lead-Erfassung',
+    ],
+  },
+  {
+    n: '02', title: 'KI-gestützte Content-Produktion', items: [
+      'Ab Monat 2 geplanter Umfang pro Monat: bis zu 8 KI-gestützte Kurzvideos/Reels',
+      'Ab Monat 2 geplanter Umfang pro Monat: bis zu 4 ergänzende Grafik- oder Karussellbeiträge',
+      'Skripte, Hooks, Beitragstexte und grundlegender Schnitt',
+      'Vorbereitung und Veröffentlichung nach deiner Freigabe',
+      'Produktion nach der KI-first-Methodik aus der Präsentation',
+    ],
+    note: 'Monat 1 ist Aufbauphase mit geringerem Veröffentlichungsumfang. Die sechs vorhandenen Muster-Reels dienen als kreative und technische Referenz; sie sind keine veröffentlichten Kampagnenergebnisse.',
+  },
+  {
+    n: '03', title: 'Social Media', items: [
+      'Betreuung eines gemeinsam festgelegten Hauptkanals',
+      'Redaktionsplanung',
+      'Veröffentlichung freigegebener Beiträge',
+      'Grundlegende Performance-Auswertung',
+      'Anpassung der Inhalte anhand erster Erkenntnisse',
+    ],
+  },
+  {
+    n: '04', title: 'Lead-Erfassung und Automatisierung', items: [
+      'Konzeption und Einrichtung eines einfachen Lead-Einstiegs',
+      'Anbindung an eine geeignete Kontaktverwaltung bzw. ein CRM',
+      'Benachrichtigung über neue Anfragen',
+      'Einbindung einer Terminbuchung, sofern technisch und organisatorisch sinnvoll',
+      'Grundlegende Funktionstests',
+    ],
+  },
+  {
+    n: '05', title: 'Meta-Werbung', items: [
+      'Vorbereitung einer einfachen Testkampagne',
+      'Bis zu zwei Anzeigen-Creatives',
+      'Abstimmung von Zielgruppe, Werbebotschaft und Budget',
+      'Grundlegende Auswertung der Testkampagne',
+    ],
+    note: 'Die Schaltung setzt deine gesonderte Freigabe und die Erfüllung aller rechtlichen und technischen Voraussetzungen voraus. Weitere Kampagnenkonzepte aus der Präsentation sind nicht automatisch Teil des Pilots.',
+  },
+  {
+    n: '06', title: 'Reporting und Abstimmung', items: [
+      'Monatliche Übersicht über erbrachte Leistungen und verfügbare Kennzahlen',
+      'Ein monatliches Abstimmungs- und Strategiegespräch von bis zu 60 Minuten',
+      'Abschließende Auswertung nach 90 Tagen',
+    ],
+  },
+];
+
+const excluded = [
+  'Zusätzliche Sonderproduktionen und unbegrenzte Überarbeitungen',
+  'Umfangreiche externe Dreharbeiten',
+  'Tägliche Community-Betreuung und aktive Kaltakquise',
+  'Komplexe KI-Chatbots und automatisierte Versicherungsberatung',
+  'Umfangreiche individuelle CRM-Entwicklungen',
+  'Dauerhafte, umfassende Performance-Marketing-Betreuung',
+  'Weitere Kanäle über den vereinbarten Hauptkanal hinaus',
+  'Rechtliche Prüfung oder Rechtsberatung',
+];
+
+const months = [
+  { tag: 'Monat 1', title: 'Strategie, Aufbau und erste Inhalte', items: ['Woche 1–2: Onboarding, Strategie, Zugänge, Freigabeprozess, technische Einrichtung', 'Danach: erste Veröffentlichungen in reduziertem Umfang', 'Gegebenenfalls ein freigegebener Werbetest'], out: 'Strategie, Prozesse und erste Inhalte stehen.' },
+  { tag: 'Monat 2', title: 'Regelbetrieb und erste Optimierungen', items: ['Regelmäßige Content-Produktion im geplanten Umfang', 'Veröffentlichung nach Freigabe', 'Auswertung und Optimierung des Lead-Prozesses'], out: 'Ein laufender Kanal und erste Erkenntnisse.' },
+  { tag: 'Monat 3', title: 'Fortführung, Auswertung und Entscheidung', items: ['Fortführung der vereinbarten Leistungen', 'Abschließende Analyse', 'Gemeinsames Auswertungsgespräch zur möglichen Zukunft'], out: 'Eine fundierte Entscheidung auf Basis echter Erfahrungen.' },
+];
+
+const approval = [
+  { t: 'Wir erstellen', d: 'Wir erstellen den Content und übermitteln ihn gebündelt.' },
+  { t: 'Du prüfst', d: 'Du prüfst möglichst innerhalb von zwei Werktagen.' },
+  { t: 'Eine Korrekturschleife', d: 'Eine gebündelte Korrekturschleife ist enthalten.' },
+  { t: 'Erst dann online', d: 'Veröffentlichung erst nach deiner ausdrücklichen Freigabe.' },
+];
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>90-Tage-Pilotpartnerschaft · Team Neudorf</title>
+    <meta name="description" content="Angebot für eine 90-tägige Pilotpartnerschaft: KI-gestütztes Marketing- und Content-System für Team Neudorf Versicherungen." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#011D37" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap top__inner">
+        <Image src={logo} alt="Team-Neudorf Versicherungen" width={300} densities={[1, 2]} loading="eager" class="top__logo" />
+        <button class="btn" type="button" onclick="window.print()">Als PDF speichern</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Deckblatt -->
+      <section class="cover page">
+        <div class="wrap cover__grid">
+          <div>
+            <p class="eyebrow">Angebot · 90-Tage-Pilotpartnerschaft</p>
+            <h1>Die Grundlage für deine <em>digitale Sichtbarkeit.</em></h1>
+            <p class="lead">Wir entwickeln in den ersten 90 Tagen gemeinsam die Grundlage für deine digitale Sichtbarkeit und Kundengewinnung – zu einem einmaligen Pilotpreis von <strong>750 € netto monatlich</strong>. Die tatsächlich erforderlichen KI- und Softwarekosten sowie freigegebene Werbeausgaben trägst du zusätzlich und transparent.</p>
+          </div>
+          <figure class="cover__avatar"><Image src={avatar} alt="Stefan Neudorf" width={360} densities={[1, 2]} loading="eager" /></figure>
+        </div>
+        <dl class="wrap meta">
+          <div><dt>Für</dt><dd>Stefan Neudorf<br />Team-Neudorf Versicherungen, Mechernich</dd></div>
+          <div><dt>Von</dt><dd class="ph">{P('Agenturname, Anschrift, Ansprechpartner')}</dd></div>
+          <div><dt>Angebot</dt><dd><span class="ph">{P('Angebotsnummer')}</span><br />vom <span class="ph">{P('Datum')}</span></dd></div>
+          <div><dt>Gültig bis</dt><dd class="ph">{P('Datum')}</dd></div>
+        </dl>
+      </section>
+
+      <!-- 1 Ausgangslage -->
+      <section class="block">
+        <div class="wrap">
+          <p class="eyebrow">01 · Ausgangslage und Ziel</p>
+          <h2>Von der Vision <em>in die Praxis.</em></h2>
+          <div class="two">
+            <p>In der Präsentation „Digital Vision & Growth“ haben wir unsere langfristige Vision für dein digitales Wachstum gezeigt: KI-gestützte Inhalte, eine wachsende Personal Brand und ein System, das zu qualifizierten Beratungsanfragen führt.</p>
+            <p>Dieses Angebot legt fest, was davon in den <strong>ersten 90 Tagen tatsächlich enthalten ist</strong>. Ziel ist es, ein KI-gestütztes Marketing- und Content-System aufzubauen und zu erproben, erste Ergebnisse zu messen und gemeinsam herauszufinden, wie eine langfristige Zusammenarbeit aussehen könnte.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 Leistungen -->
+      <section class="block">
+        <div class="wrap">
+          <p class="eyebrow">02 · Leistungsumfang</p>
+          <h2>Was in 90 Tagen <em>enthalten ist.</em></h2>
+          <div class="services">
+            {services.map((s) => (
+              <article class="card">
+                <p class="idx">{s.n}</p>
+                <h3>{s.title}</h3>
+                <ul class="list">{s.items.map((i) => <li>{i}</li>)}</ul>
+                {s.note && <p class="card__note">{s.note}</p>}
+              </article>
+            ))}
+          </div>
+          <div class="excluded">
+            <p class="label">Nicht enthalten</p>
+            <ul>{excluded.map((e) => <li>{e}</li>)}</ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 Zeitplan -->
+      <section class="block">
+        <div class="wrap">
+          <p class="eyebrow">03 · Zeitplan</p>
+          <h2>Drei Monate. <em>Ein klarer Ablauf.</em></h2>
+          <ol class="roadmap">
+            {months.map((m) => (
+              <li>
+                <span class="roadmap__dot" aria-hidden="true"></span>
+                <p class="label label--gold">{m.tag}</p>
+                <h3>{m.title}</h3>
+                <ul class="list">{m.items.map((x) => <li>{x}</li>)}</ul>
+                <p class="roadmap__out">{m.out}</p>
+              </li>
+            ))}
+          </ol>
+          <p class="fine">Die Laufzeit beginnt mit dem vereinbarten Projektstart bzw. Kick-off am <span class="ph">{P('Datum Kick-off')}</span>, nicht erst mit der ersten Veröffentlichung.</p>
+        </div>
+      </section>
+
+      <!-- 4 Investition -->
+      <section class="block block--price page">
+        <div class="wrap">
+          <p class="eyebrow">04 · Investition</p>
+          <h2>Drei getrennte Positionen. <em>Volle Transparenz.</em></h2>
+          <div class="prices">
+            {budget.map((b) => (
+              <article class:list={['price', { 'price--fixed': b.fixed }]}>
+                <p class="price__tag">{b.tag}</p>
+                <h3>{b.kind}</h3>
+                <p class="price__month">{b.month}<small>pro Monat</small></p>
+                <p class="price__total">{b.total} für 3 Monate</p>
+                <p class="price__note">{b.note}</p>
+              </article>
+            ))}
+          </div>
+          <p class="label">Budgetübersicht</p>
+          <table class="table">
+            <thead><tr><th scope="col">Kostenart</th><th scope="col">Monatlich</th><th scope="col">Für 3 Monate</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Agenturhonorar</th><td>750 € netto</td><td>2.250 € netto</td></tr>
+              <tr><th scope="row">Technikbudget, maximal</th><td>350 €</td><td>1.050 €</td></tr>
+              <tr><th scope="row">Meta-Werbebudget, maximal</th><td>300 €</td><td>900 €</td></tr>
+            </tbody>
+            <tfoot><tr><th scope="row">Rechnerisches Gesamtbudget</th><td>1.400 €</td><td>4.200 €</td></tr></tfoot>
+          </table>
+          <div class="callout">
+            <p><strong>Wichtig:</strong> 1.400 € monatlich bzw. 4.200 € für drei Monate sind nur die rechnerischen Budgetwerte bei vollständiger Ausschöpfung aller Positionen – keine feste Gesamtrechnung. Fest vereinbart ist ausschließlich das Agenturhonorar. Technik- und Werbeausgaben sind variable, separat zu tragende Kosten.</p>
+          </div>
+          <p class="fine">Steuerlicher Hinweis: Das Agenturhonorar versteht sich netto zuzüglich gesetzlicher Umsatzsteuer, sofern sie anfällt. Bei Drittanbieterkosten (Software, KI-Dienste, Meta) richtet sich die steuerliche Behandlung nach der jeweiligen Abrechnung des Anbieters. Strategie- und Aufbauphase sind im Honorar enthalten, ein zusätzliches Setup-Honorar fällt für den vereinbarten Pilotumfang nicht an.</p>
+        </div>
+      </section>
+
+      <!-- 5 Kostenregeln -->
+      <section class="block">
+        <div class="wrap">
+          <p class="eyebrow">05 · Regeln für Technik- und Werbebudget</p>
+          <h2>Du zahlst nur, <em>was wirklich anfällt.</em></h2>
+          <div class="rules">
+            <article class="card">
+              <p class="label label--gold">Technikbudget · max. 350 € pro Monat</p>
+              <p>Für projektbezogene Kosten, zum Beispiel KI-Video und -Bild (etwa Higgsfield), KI-Assistenten (etwa Claude, ChatGPT), Automatisierung (etwa Make oder n8n), CRM und Terminbuchung, API-Nutzung, zusätzliche Credits und gegebenenfalls Hosting. Die Auswahl erfolgt bedarfsorientiert; nicht jedes Werkzeug wird benötigt.</p>
+              <ul class="list">
+                <li>Obergrenze, keine Pauschale</li>
+                <li>Nur tatsächlich erforderliche, vereinbarte und nachvollziehbare projektbezogene Kosten</li>
+                <li>Möglichst direkt über deine eigenen Kundenkonten</li>
+                <li>Vor der ersten Buchung eines kostenpflichtigen Tools holen wir deine Zustimmung ein</li>
+                <li>Mehrausgaben über der Obergrenze nur nach ausdrücklicher vorheriger Freigabe</li>
+                <li>Allgemeine Agenturabonnements werden nicht ohne gesondert vereinbarte Kostenbeteiligung weiterberechnet</li>
+                <li>Nicht ausgeschöpftes Budget wird nicht berechnet</li>
+              </ul>
+              <p class="card__note">Softwarepreise können sich ändern. Wir nennen deshalb keine festen Anbieterpreise.</p>
+            </article>
+            <article class="card">
+              <p class="label label--gold">Meta-Werbebudget · max. 300 € pro Monat</p>
+              <p>Für die tatsächlichen Werbeausgaben einer überschaubaren Testkampagne mit bis zu zwei Creatives.</p>
+              <ul class="list">
+                <li>Du trägst die tatsächlichen Werbeausgaben</li>
+                <li>Abrechnung möglichst direkt über dein eigenes Meta-Werbekonto</li>
+                <li>Kampagnen starten erst nach deiner ausdrücklichen Freigabe</li>
+                <li>Monatliche Ausgabengrenze 300 €, Überschreitung nur mit vorheriger Zustimmung</li>
+                <li>Nicht eingesetztes Werbebudget wird nicht berechnet</li>
+                <li>Das Werbebudget ist kein zusätzliches Agenturhonorar</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 Zusammenarbeit -->
+      <section class="block">
+        <div class="wrap">
+          <p class="eyebrow">06 · Mitwirkung und Freigaben</p>
+          <h2>Du bleibst der Experte. <em>Nichts geht ohne dein OK.</em></h2>
+          <ol class="steps">
+            {approval.map((a, i) => <li><span class="idx">0{i + 1}</span><strong>{a.t}</strong><span>{a.d}</span></li>)}
+          </ol>
+          <div class="two">
+            <div>
+              <p class="label label--gold">Dein Beitrag</p>
+              <ul class="list">
+                <li>Unternehmensinformationen und fachliche Grundlagen</li>
+                <li>Bildmaterial, Zugänge und Rückmeldungen</li>
+                <li>Fachliche Prüfung und ausdrückliche Freigabe aller Aussagen, insbesondere zu Versicherungs-, Beamten-, PKV- und Dienstunfähigkeitsthemen</li>
+              </ul>
+            </div>
+            <div>
+              <p class="label label--gold">Spielregeln</p>
+              <ul class="list">
+                <li>Keine stillschweigende Freigabe bei ausbleibender Rückmeldung</li>
+                <li>Fehlende Informationen oder verzögerte Freigaben können den Zeitplan entsprechend verschieben</li>
+                <li>Keine künstliche Stimme und keine digitale Nachbildung von dir ohne deine ausdrückliche Zustimmung</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 Erwartungen -->
+      <section class="block">
+        <div class="wrap">
+          <p class="eyebrow">07 · Erfolgserwartungen und Grenzen</p>
+          <h2>Aufbauen, testen, <em>messen.</em></h2>
+          <ul class="facts">
+            <li>Wir garantieren keine Reichweiten, Follower, Leads, Termine oder Versicherungsabschlüsse.</li>
+            <li>Die Pilotphase dient dem Aufbau, dem Testen und dem Messen.</li>
+            <li>Es bestehen derzeit keine Livekampagnen und keine produktiven Automatisierungen; beides wird im Pilot aufgebaut.</li>
+            <li>Versicherungsbezogene Aussagen benötigen deine fachliche Freigabe.</li>
+            <li>Datenschutz, erforderliche Einwilligungen, Vermittlerpflichten und Werbevorgaben müssen vor dem produktiven Einsatz geklärt werden.</li>
+            <li>Wir leisten keine rechtliche Prüfung und keine Rechtsberatung.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 8 Ende -->
+      <section class="block block--end page">
+        <div class="wrap">
+          <p class="eyebrow">08 · Ende nach 90 Tagen</p>
+          <h2>Ein Pilot mit <em>klarem Ende.</em></h2>
+          <div class="endbox">
+            <p class="endbox__big">Die Zusammenarbeit endet nach 90 Tagen automatisch.<br /><span>Keine automatische Verlängerung. Keine Verpflichtung zur Weiterführung.</span></p>
+            <ul class="list">
+              <li>Die 750 € netto monatlich sind ein einmaliger, vergünstigter Pilotpreis ausschließlich für die ersten 90 Tage, kein dauerhaftes Agenturhonorar.</li>
+              <li>Im dritten Monat prüfen wir gemeinsam Ergebnisse, tatsächlichen Arbeitsaufwand, technische Kosten und den gewünschten weiteren Leistungsumfang.</li>
+              <li>Auf dieser Grundlage können wir ein neues Angebot zu neu kalkulierten Konditionen erstellen. Wird der Leistungsumfang fortgeführt, wird eine Anschlussbetreuung voraussichtlich höher vergütet. Ein Folgepreis ist noch nicht festgelegt.</li>
+              <li>Eine Fortsetzung ist freiwillig und setzt die ausdrückliche Zustimmung beider Seiten zu einem neuen Angebot voraus.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 Annahme -->
+      <section class="block">
+        <div class="wrap">
+          <p class="eyebrow">09 · Konditionen und Annahme</p>
+          <h2>Der nächste Schritt.</h2>
+          <dl class="terms">
+            <div><dt>Laufzeit</dt><dd>90 Tage bzw. drei Abrechnungsmonate ab Kick-off am <span class="ph">{P('Datum')}</span>; endet automatisch</dd></div>
+            <div><dt>Agenturhonorar</dt><dd>750 € netto pro Monat, gesamt 2.250 € netto, zzgl. gesetzlicher USt., sofern sie anfällt</dd></div>
+            <div><dt>Rechnungsstellung</dt><dd class="ph">{P('z. B. monatlich im Voraus / zum Monatsende')}</dd></div>
+            <div><dt>Zahlungsziel</dt><dd class="ph">{P('z. B. 14 Tage nach Rechnungsdatum')}</dd></div>
+            <div><dt>Variable Kosten</dt><dd>Technik- und Werbebudget nach den Regeln in Abschnitt 05, möglichst direkt über deine Konten</dd></div>
+            <div><dt>Vertragsgrundlagen</dt><dd class="ph">{P('AGB, Auftragsverarbeitungsvertrag (AVV), Nutzungsrechte an Inhalten')}</dd></div>
+          </dl>
+          <div class="sign">
+            <div><span class="sign__line"></span><p>Ort, Datum · Stefan Neudorf, Team-Neudorf Versicherungen</p></div>
+            <div><span class="sign__line"></span><p>Ort, Datum · <span class="ph">{P('Agentur, Name')}</span></p></div>
+          </div>
+          <p class="fine">Dieses Angebot ergänzt die Präsentation „Digital Vision & Growth“. Es ist ein Entwurf; Vertragsdetails, Platzhalter und rechtliche Formulierungen sind vor dem Versand zu vervollständigen und gegebenenfalls prüfen zu lassen.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">90-Tage-Pilotpartnerschaft · Team Neudorf · vertraulich</div>
+    </footer>
+  </body>
+</html>
