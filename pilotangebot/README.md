@@ -21,7 +21,7 @@ npm run preview   # gebauten Stand ansehen, http://localhost:4600
 **PDF:** Button „PDF speichern“ (oben) bzw. „Angebot als PDF speichern“ (Abschluss) oder Strg/Cmd + P →
 „Als PDF speichern“, A4, Hintergrundgrafiken an. Die Druckfassung ersetzt interaktive Elemente durch
 statische Darstellungen: alle drei Monate der Roadmap, alle Leistungsmodule geöffnet, Budgettabelle statt
-Rechner, keine Animationen. Umfang derzeit 14 A4-Seiten (dunkles Deckblatt, helle Folgeseiten).
+Rechner, keine Animationen. Umfang derzeit 12 A4-Seiten (dunkles Deckblatt, helle Folgeseiten).
 
 ## Aufbau der Seite
 
@@ -33,7 +33,7 @@ Rechner, keine Animationen. Umfang derzeit 14 A4-Seiten (dunkles Deckblatt, hell
 | 02 Leistungen | Sechs aufklappbare Module; Übersicht Enthalten / Optional nach Freigabe / Nicht enthalten |
 | 03 Pilotpreis | 750 € in Gold mit Zähleranimation, Hinweis „Einmalige Pilotkonditionen“, externer Marktvergleich als Spanne mit Skala, drei Kostenpositionen |
 | 04 Budgetrechner | Schieberegler Technik 0–350 € und Meta 0–300 €, Schnellauswahl, optionale USt.-Planungsannahme 19 %, Monats- und 3-Monats-Summe; Budgettabelle und Budgetregeln |
-| 05 Steuern und Förderung | Drei Stufen: Betriebsausgaben / Förderung individuell prüfen / bewilligt: keine; offizielle Links |
+| 05 Steuerliche Absetzbarkeit | Zwei Karten: Betriebsausgaben grundsätzlich berücksichtigungsfähig / eingeschränkter Vorsteuerabzug bei Versicherungsvermittlern; Gesetzeslinks. Keine Förderangaben, keine Ersparnisbeträge |
 | 06–07 Zusammenarbeit, Erwartungen | Freigabeprozess, Mitwirkung, Grenzen |
 | 08 Ende nach 90 Tagen | Automatisches Ende, kein Folgepreis |
 | 09 Nächste Schritte | Vier Schritte, PDF-Button, Kontakt (Platzhalter, bis `src/data/angebot.ts → agency` gefüllt ist) |
@@ -49,7 +49,7 @@ Die Seite enthält keinen funktionslosen „Beauftragen“-Button. Sobald in `sr
 E-Mail und/oder Telefon eingetragen sind, erscheinen im Abschluss echte Links („Gesprächstermin anfragen“,
 Telefonnummer). Bis dahin steht dort ein sichtbarer Platzhalter; der PDF-Button funktioniert immer.
 
-## Marktvergleich, Steuern, Förderung – Stand und Prüfbedarf
+## Marktvergleich und Steuern – Stand und Prüfbedarf
 
 Daten in `src/data/recherche.ts`, Stand der Recherche November 2026.
 
@@ -60,15 +60,13 @@ Daten in `src/data/recherche.ts`, Stand der Recherche November 2026.
   früherer Preis. Die Formulierung sollte vor dem Versand wettbewerbsrechtlich (UWG/PAngV) mit freigegeben werden.
 - **Steuern:** § 4 Abs. 4 EStG (Betriebsausgaben), § 4 Nr. 11 und § 15 Abs. 2 UStG (Vorsteuerausschluss bei
   Versicherungsvermittlern), § 13b UStG (Reverse Charge, z. B. Meta Irland). Keine Ersparnis zugesagt.
-- **Förderung:** BAFA-Unternehmensberatung (nur Beratung durch registrierte Berater, keine Umsetzung),
-  RWP-Beratung NRW (nur GRW-Fördergebiete, Mechernich nicht bestätigt), Mittelstand-Digital (kostenfreie
-  Orientierung). Nicht beantragbar/passend: go-digital (Ende 2024), Digital Jetzt (Ende 2023), MID NRW 2026.
-  Bewilligte Förderung: keine.
+- **Förderung:** Der Förderbereich wurde auf Wunsch des Auftraggebers vollständig entfernt (kein belastbar
+  passendes Zuschussprogramm für den konkreten Pilot). Die Seite enthält keine Förderprogramme, -links oder
+  Zuschussaussagen.
 
-**Vor dem Versand prüfen:** Die amtlichen Seiten (bafa.de, gesetze-im-internet.de, nrwbank.de,
-wirtschaft.nrw) und die Anbieterseiten waren in der Arbeitsumgebung gesperrt; die Angaben stammen aus
-Suchergebnissen und Sekundärquellen. Alle Links öffnen, Zahlen und Status bestätigen. Auf der Seite ist das
-mit zwei sichtbaren Platzhaltern markiert.
+**Vor dem Versand prüfen:** Die Anbieterseiten des Marktvergleichs und gesetze-im-internet.de waren in der
+Arbeitsumgebung gesperrt; die Angaben stammen aus Suchergebnissen. Links öffnen und bestätigen. Der
+Marktvergleich trägt dafür einen sichtbaren Platzhalter.
 
 ## Platzhalter vor dem Versand
 
@@ -81,7 +79,6 @@ Gelb markiert in eckigen Klammern:
 - Vertragsgrundlagen: AGB, Auftragsverarbeitungsvertrag (AVV), Nutzungsrechte an Inhalten
 - `[Kontakt der Agentur: E-Mail und Telefon]` (Abschluss; über `agency` in `src/data/angebot.ts`)
 - `[Quellen vor Versand auf den Originalseiten prüfen]` (Marktvergleich)
-- `[Angaben vor Versand auf den verlinkten offiziellen Seiten prüfen]` (Steuern und Förderung)
 
 Außerdem offen: Umsatzsteuer-Status der Agentur, betreuter Hauptkanal, Veröffentlichungsumfang in Monat 1.
 Das Angebot enthält keine rechtliche oder steuerliche Prüfung.
@@ -126,7 +123,7 @@ und ist kein Vorfahre von `claude/busy-hopper-kebr8h`; ein Push dieses Branches 
 | `netlify.toml`, `public/_headers`, `public/robots.txt` | Netlify-Build, noindex, Sicherheits- und Cache-Header |
 | `src/pages/index.astro` | Angebotsseite |
 | `src/data/angebot.ts` | Leistungen, Roadmap, Budget, nächste Schritte, Agenturkontakt |
-| `src/data/recherche.ts` | Marktspanne, Steuer- und Förderangaben mit Quellen |
+| `src/data/recherche.ts` | Marktspanne und Gesetzeslinks mit Quellen |
 | `src/scripts/angebot.ts` | Interaktion: Navigation, Reveal, Tabs, Module, Zähler, Rechner, Druck, Halftone |
 | `src/styles/angebot.css` | Gestaltung, Responsive-Regeln, Druck-/PDF-Regeln |
 | `src/assets/logo.png`, `src/assets/avatar.png` | Kopien aus `digital-vision/` |

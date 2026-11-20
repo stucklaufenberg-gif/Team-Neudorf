@@ -19,7 +19,7 @@ export const chapters = [
   { id: 'leistungen', label: 'Leistungen' },
   { id: 'preis', label: 'Pilotpreis' },
   { id: 'rechner', label: 'Budget' },
-  { id: 'steuern', label: 'Steuern & Förderung' },
+  { id: 'steuern', label: 'Steuern' },
   { id: 'zusammenarbeit', label: 'Zusammenarbeit' },
   { id: 'entscheidung', label: 'Entscheidung' },
 ];

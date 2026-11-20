@@ -12,7 +12,7 @@ import { Image, getImage } from 'astro:assets';
 import logo from '../assets/logo.png';
 import avatar from '../assets/avatar.png';
 import { agency, fee, techMax, adsMax, chapters, services, optional, excluded, months, approval, nextSteps, eur } from '../data/angebot';
-import { researchDate, market, pct, law, funding } from '../data/recherche';
+import { researchDate, market, pct, law } from '../data/recherche';
 
 const P = (t: string) => `[${t}]`; // sichtbarer Platzhalter
 const total = fee.month + techMax + adsMax;
@@ -355,59 +355,29 @@ const hasContact = Boolean(agency.email || agency.phoneHref);
         </div>
       </section>
 
-      <!-- F · Steuern und Förderung -->
+      <!-- F · Steuerliche Absetzbarkeit -->
       <section class="block block--tax" id="steuern" data-chapter="steuern">
         <div class="wrap">
-          <p class="eyebrow" data-reveal>05 · Steuern und Förderung</p>
+          <p class="eyebrow" data-reveal>05 · Steuerliche Absetzbarkeit</p>
           <h2 data-reveal>Deine Investition. <em>Deine steuerlichen Möglichkeiten.</em></h2>
-          <p class="sub" data-reveal>Ein Überblick zur Orientierung, keine Steuer- oder Förderberatung. Die tatsächliche Wirkung hängt von deiner individuellen Unternehmenssituation ab; bitte mit deiner Steuerberatung abstimmen.</p>
-          <ol class="tiers">
-            <li class="tier" data-reveal>
-              <p class="tier__n">1</p>
-              <p class="label label--gold">Grundsätzlich als Betriebsausgaben berücksichtigungsfähig</p>
-              <h3>Betrieblich veranlasste Kosten</h3>
-              <p>Agenturhonorar, Software- und KI-Kosten sowie Werbeausgaben, die durch deinen Betrieb veranlasst sind, können grundsätzlich als Betriebsausgaben berücksichtigt werden. Wie viel Steuer du dadurch tatsächlich sparst, hängt von deinem Gewinn, deinem Steuersatz und deiner Rechtsform ab. Eine bestimmte Ersparnis können wir nicht zusagen.</p>
-              <div class="tier__warn">
-                <p class="label">Wichtig für Versicherungsvermittler</p>
-                <p>Umsätze aus der Tätigkeit als Versicherungsvermittler sind in der Regel umsatzsteuerfrei. Damit ist der Vorsteuerabzug für zugehörige Eingangsleistungen meist ausgeschlossen: Die Umsatzsteuer auf Agentur-, Software- und Werbekosten wird dann zum Kostenfaktor. Bei Leistungen ausländischer Anbieter, etwa Meta-Werbung aus Irland, kann die Umsatzsteuer im Reverse-Charge-Verfahren von dir selbst geschuldet sein. Bitte vorab mit deiner Steuerberatung klären.</p>
-              </div>
-              <ul class="sources">
-                {Object.values(law).map((l) => <li><a href={l.href} rel="noopener noreferrer" target="_blank">{l.label}</a></li>)}
-              </ul>
-            </li>
-            <li class="tier" data-reveal style="--i:1">
-              <p class="tier__n">2</p>
-              <p class="label label--gold">Fördermöglichkeiten – Voraussetzungen individuell prüfen</p>
-              <h3>Beratung ja, Umsetzung nein</h3>
-              <p>Für den Einkauf von Content-Produktion, Social-Media-Betreuung und Werbung haben wir kein offenes Förderprogramm gefunden. Die laufenden Programme bezuschussen Beratung, nicht Umsetzung.</p>
-              <ul class="fund">
-                {funding.check.map((f) => (
-                  <li>
-                    <p class="fund__head"><strong>{f.title}</strong><span class="fund__status">{f.status}</span></p>
-                    <p>{f.text}</p>
-                    <a href={f.href} rel="noopener noreferrer" target="_blank">{f.link}</a>
-                  </li>
-                ))}
-              </ul>
-              <p class="label fund__label">Nicht beantragbar oder nicht passend</p>
-              <ul class="fund fund--off">
-                {funding.unavailable.map((f) => (
-                  <li>
-                    <p class="fund__head"><strong>{f.title}</strong></p>
-                    <p>{f.text}</p>
-                    <a href={f.href} rel="noopener noreferrer" target="_blank">{f.link}</a>
-                  </li>
-                ))}
-              </ul>
-            </li>
-            <li class="tier tier--none" data-reveal style="--i:2">
-              <p class="tier__n">3</p>
-              <p class="label label--gold">Tatsächlich bewilligte Förderungen</p>
-              <h3>Für dieses Projekt: derzeit keine.</h3>
-              <p>Es ist keine Förderung beantragt oder bewilligt. Das Angebot und alle Preise gelten unabhängig von einer Förderung.</p>
-            </li>
-          </ol>
-          <p class="fine">Stand der Recherche: {researchDate}. Alle Angaben ohne Gewähr; Förderbedingungen und Fristen ändern sich. Keine garantierten Steuerersparnisse oder Förderzuschüsse. <span class="ph">[Angaben vor Versand auf den verlinkten offiziellen Seiten prüfen]</span></p>
+          <div class="tax">
+            <article class="tax__main" data-reveal>
+              <p class="label label--gold">Grundsätzlich Betriebsausgaben</p>
+              <h3>Betrieblich veranlasste Kosten zählen.</h3>
+              <p>Agenturhonorar, KI- und Softwarekosten sowie Werbeausgaben, die durch deinen Betrieb veranlasst sind, können grundsätzlich als Betriebsausgaben berücksichtigt werden.</p>
+              <p>Wie sich das bei dir auswirkt, hängt von deiner individuellen steuerlichen Situation ab, etwa von Gewinn, Steuersatz und Rechtsform. Eine bestimmte Steuerersparnis nennen oder versprechen wir deshalb nicht.</p>
+            </article>
+            <article class="tax__note" data-reveal style="--i:1">
+              <p class="label label--gold">Wichtig für Versicherungsvermittler</p>
+              <h3>Vorsteuerabzug oft eingeschränkt.</h3>
+              <p>Umsätze aus der Versicherungsvermittlung sind in der Regel umsatzsteuerfrei. Der Vorsteuerabzug für zugehörige Kosten kann dadurch ausgeschlossen oder eingeschränkt sein; die Umsatzsteuer auf Agentur-, Software- und Werbekosten wird dann zum Kostenfaktor. Bei ausländischen Anbietern, etwa Meta, kann die Umsatzsteuer zudem von dir selbst geschuldet sein (Reverse-Charge).</p>
+              <p class="tax__hint">Im Budgetrechner kannst du die Umsatzsteuer deshalb vereinfacht als Kosten einplanen.</p>
+            </article>
+          </div>
+          <ul class="sources tax__sources">
+            {Object.values(law).map((l) => <li><a href={l.href} rel="noopener noreferrer" target="_blank">{l.label}</a></li>)}
+          </ul>
+          <p class="fine">Allgemeine Orientierung, keine Steuerberatung. Bitte die steuerliche Behandlung vorab mit deiner Steuerberatung klären.</p>
         </div>
       </section>
 

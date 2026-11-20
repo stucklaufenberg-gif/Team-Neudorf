@@ -274,25 +274,17 @@ input[type='range']:focus-visible { outline-offset: 6px; }
 .callout { margin-top: 1.4rem; padding: 1rem 1.2rem; border-left: 3px solid var(--gold); background: rgba(217, 178, 90, 0.1); color: var(--ice); break-inside: avoid; }
 .rules { display: grid; gap: 4px; margin-top: 2.2rem; }
 
-/* F · Steuern und Förderung */
+/* F · Steuerliche Absetzbarkeit */
 .block--tax { background: linear-gradient(180deg, var(--navy-900), var(--navy-950)); }
-.tiers { display: grid; gap: 4px; }
-.tier { position: relative; padding: clamp(1.3rem, 3vw, 2rem); border: 1px solid var(--line-strong); background: linear-gradient(160deg, var(--panel), transparent 85%); }
-.tier h3 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem); margin-bottom: 0.9rem; }
-.tier > p:not(.label):not(.tier__n) { color: var(--ice); font-size: 0.97rem; margin-bottom: 1rem; max-width: 72ch; }
-.tier__n { position: absolute; top: clamp(1rem, 2.5vw, 1.6rem); right: clamp(1.2rem, 3vw, 2rem); font: italic 400 3.4rem / 1 var(--serif); color: rgba(217, 178, 90, 0.35); }
-.tier__warn { margin-bottom: 1.1rem; padding: 1rem 1.2rem; border-left: 3px solid var(--gold); background: rgba(217, 178, 90, 0.08); }
-.tier__warn p:last-child { color: var(--ice); font-size: 0.93rem; }
-.tier--none { border-color: var(--gold); }
-.fund { display: grid; gap: 4px; margin-bottom: 1.2rem; }
-.fund li { padding: 1rem 1.1rem; border: 1px solid var(--line); background: rgba(1, 29, 55, 0.45); }
-.fund p { font-size: 0.92rem; color: var(--ice); margin-bottom: 0.5rem; }
-.fund a { font: 500 0.72rem var(--mono); letter-spacing: 0.04em; }
-.fund__head { display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem; align-items: baseline; justify-content: space-between; }
-.fund__status { padding: 0.1rem 0.5rem; border: 1px solid var(--line-gold); border-radius: 999px; font: 500 0.6rem var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
-.fund__label { margin-top: 0.4rem; }
-.fund--off li { border-style: dashed; }
-.fund--off strong { color: var(--mist); text-decoration: line-through; text-decoration-color: rgba(185, 201, 220, 0.5); }
+.tax { display: grid; gap: 4px; }
+.tax__main, .tax__note { position: relative; padding: clamp(1.4rem, 3vw, 2.2rem); border: 1px solid var(--line-strong); background: linear-gradient(160deg, var(--panel), transparent 85%); break-inside: avoid; }
+.tax__main { border-color: var(--gold); }
+.tax__note { border-left: 3px solid var(--gold); background: linear-gradient(160deg, rgba(217, 178, 90, 0.1), transparent 85%); }
+.tax h3 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem); margin-bottom: 0.9rem; }
+.tax p:not(.label) { color: var(--ice); font-size: 0.97rem; max-width: 62ch; }
+.tax p:not(.label) + p { margin-top: 0.8rem; }
+.tax .tax__hint { padding-top: 0.8rem; border-top: 1px solid var(--line); font-size: 0.86rem; color: var(--mist); }
+.tax__sources { margin-top: 1.2rem; }
 
 /* Zusammenarbeit */
 .steps { display: grid; gap: 4px; margin-bottom: 1.8rem; }
@@ -348,10 +340,8 @@ input[type='range']:focus-visible { outline-offset: 6px; }
   .scope { grid-template-columns: 0.8fr 1.1fr 1.1fr; }
   .calc { grid-template-columns: 1.3fr 1fr; }
   .rules { grid-template-columns: 1fr 1fr; }
-  .tiers { grid-template-columns: 1fr; }
-  .tier { break-inside: auto; padding: 5mm; }
-  .tier .sources { grid-template-columns: 1fr 1fr; }
-  .fund { grid-template-columns: 1fr 1fr; }
+  .tax { grid-template-columns: 1fr 1fr; }
+  .tax__sources { grid-template-columns: 1fr 1fr; }
   .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .next { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .next > li { grid-template-columns: 1fr; }
@@ -400,7 +390,7 @@ input[type='range']:focus-visible { outline-offset: 6px; }
   em { color: #a8842e; }
   a { color: var(--navy-700); }
   .wrap { width: 100%; }
-  .eyebrow, .label--gold, .idx, .price--fixed .price__tag, .price--fixed .price__month, .road__out, .table thead th, .mod__badge, .fund__status, .hero-price__badge, .tier__n, .next__n, .sources li::before { color: #a8842e; }
+  .eyebrow, .label--gold, .idx, .price--fixed .price__tag, .price--fixed .price__month, .road__out, .table thead th, .mod__badge, .hero-price__badge, .next__n, .sources li::before { color: #a8842e; }
 
   /* Deckblatt */
   .hero { background: var(--navy-950); color: #fff; padding: 12mm 10mm 10mm; border: 0; break-after: page; }
@@ -419,7 +409,7 @@ input[type='range']:focus-visible { outline-offset: 6px; }
   .close .close__title { font-size: 22pt; }
   .eyebrow { display: flex; }
   .eyebrow, h2, h3, .label { break-after: avoid; page-break-after: avoid; }
-  .card, .road__panel, .mod, .price, .steps > li, .facts > li, .scope__col, .callout, .endbox, .tier, .fund li, .next > li, .market, .hero-price { background: #fff !important; break-inside: avoid; }
+  .card, .road__panel, .mod, .price, .steps > li, .facts > li, .scope__col, .callout, .endbox, .next > li, .market, .hero-price { background: #fff !important; break-inside: avoid; }
   .list li, .facts > li, .scope__col--out li { font-size: 9.5pt; }
 
   /* Roadmap: alle drei Monate statisch */
@@ -457,14 +447,10 @@ input[type='range']:focus-visible { outline-offset: 6px; }
   .rules { grid-template-columns: 1fr 1fr; margin-top: 5mm; }
 
   /* Steuern */
-  .tiers { grid-template-columns: 1fr; }
-  .tier { break-inside: auto; padding: 5mm; }
-  .tier .sources { grid-template-columns: 1fr 1fr; }
-  .fund { grid-template-columns: 1fr 1fr; }
-  .tier__n { font-size: 26pt; }
-  .tier__warn { background: rgba(217, 178, 90, 0.1); }
-  .fund li { padding: 3mm; }
-  .fund--off strong { color: var(--mist); }
+  .tax { grid-template-columns: 1fr 1fr; }
+  .tax__sources { grid-template-columns: 1fr 1fr; }
+  .tax__main, .tax__note { padding: 5mm; background: #fff !important; }
+  .tax__note { background: rgba(217, 178, 90, 0.1) !important; }
 
   .steps { grid-template-columns: repeat(4, 1fr); }
   .two, .sign { grid-template-columns: 1fr 1fr; }
