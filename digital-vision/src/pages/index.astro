@@ -29,6 +29,9 @@ const levelName = Object.fromEntries(levels.map((l) => [l.id, l.label]));
 const firstCal = calendar[0].items[0];
 const calCount = (types: string[]) => calendar.reduce((n, w) => n + w.items.filter((i) => types.includes(i.type)).length, 0);
 const d0 = dashData[0];
+// Build-Kennung: zeigt online, aus welchem Commit diese Fassung gebaut wurde (Cloudflare Workers Builds setzt die Variable).
+declare const process: { env: Record<string, string | undefined> };
+const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
 ---
 <!doctype html>
 <html lang="de">
@@ -38,6 +41,7 @@ const d0 = dashData[0];
     <title>Digital Vision & Growth · Stefan Neudorf</title>
     <meta name="description" content="Von der Expertise zur sichtbaren Marke und zu qualifizierten Beratungsanfragen. Konzept für eine mögliche Zusammenarbeit." />
     <meta name="robots" content="noindex, nofollow" />
+    <meta name="dv-build" content={buildCommit} />
     <meta name="theme-color" content="#011D37" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script is:inline>document.documentElement.classList.add('js');</script>
