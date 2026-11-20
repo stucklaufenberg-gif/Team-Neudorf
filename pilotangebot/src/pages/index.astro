@@ -1,5 +1,6 @@
 ---
-// 90-Tage-Pilotangebot für Team Neudorf Versicherungen – eigenständiges Dokument zur Präsentation „Digital Vision & Growth“.
+// 90-Tage-Pilotangebot für Team Neudorf Versicherungen – interaktive Angebotspräsentation mit Druck-/PDF-Fassung.
+// Eigenständig; die Präsentation „Digital Vision & Growth“ dient nur als gestalterische Referenz.
 // Platzhalter in eckigen Klammern [ … ] müssen vor dem Versand ausgefüllt werden (Liste im README).
 import '@fontsource-variable/inter/wght.css';
 import '@fontsource/instrument-serif/latin-400.css';
@@ -7,98 +8,20 @@ import '@fontsource/instrument-serif/latin-400-italic.css';
 import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/jetbrains-mono/latin-500.css';
 import '../styles/angebot.css';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import logo from '../assets/logo.png';
 import avatar from '../assets/avatar.png';
+import { agency, fee, techMax, adsMax, chapters, services, optional, excluded, months, approval, nextSteps, eur } from '../data/angebot';
+import { researchDate, market, pct, law, funding } from '../data/recherche';
 
 const P = (t: string) => `[${t}]`; // sichtbarer Platzhalter
-
-const budget = [
-  { kind: 'Agenturhonorar', tag: 'Fest vereinbart', month: '750 € netto', total: '2.250 € netto', note: 'Unser Honorar für die vereinbarten Leistungen. Zuzüglich gesetzlicher Umsatzsteuer, sofern sie anfällt.', fixed: true },
-  { kind: 'Technikbudget', tag: 'Variabel · Obergrenze', month: 'max. 350 €', total: 'max. 1.050 €', note: 'Projektbezogene KI-, Software- und Automatisierungskosten. Nur tatsächlich angefallene, vorher vereinbarte Kosten.', fixed: false },
-  { kind: 'Meta-Werbebudget', tag: 'Variabel · Obergrenze', month: 'max. 300 €', total: 'max. 900 €', note: 'Tatsächliche Werbeausgaben, möglichst direkt über dein eigenes Meta-Werbekonto. Start nur nach Freigabe.', fixed: false },
-];
-
-const services = [
-  {
-    n: '01', title: 'Strategie und Aufbau', items: [
-      'Gemeinsamer Kick-off',
-      'Zielgruppen und Kommunikationsziele festlegen',
-      'Positionierung als Experte für Versicherungen, insbesondere für Beamte und den öffentlichen Dienst in NRW',
-      'Content-Strategie und Redaktionsplanung',
-      'Aufbau und Konfiguration der notwendigen Produktionsprozesse',
-      'Vorbereitung eines einfachen Prozesses zur Lead-Erfassung',
-    ],
-  },
-  {
-    n: '02', title: 'KI-gestützte Content-Produktion', items: [
-      'Ab Monat 2 geplanter Umfang pro Monat: bis zu 8 KI-gestützte Kurzvideos/Reels',
-      'Ab Monat 2 geplanter Umfang pro Monat: bis zu 4 ergänzende Grafik- oder Karussellbeiträge',
-      'Skripte, Hooks, Beitragstexte und grundlegender Schnitt',
-      'Vorbereitung und Veröffentlichung nach deiner Freigabe',
-      'Produktion nach der KI-first-Methodik aus der Präsentation',
-    ],
-    note: 'Monat 1 ist Aufbauphase mit geringerem Veröffentlichungsumfang. Die sechs vorhandenen Muster-Reels dienen als kreative und technische Referenz; sie sind keine veröffentlichten Kampagnenergebnisse.',
-  },
-  {
-    n: '03', title: 'Social Media', items: [
-      'Betreuung eines gemeinsam festgelegten Hauptkanals',
-      'Redaktionsplanung',
-      'Veröffentlichung freigegebener Beiträge',
-      'Grundlegende Performance-Auswertung',
-      'Anpassung der Inhalte anhand erster Erkenntnisse',
-    ],
-  },
-  {
-    n: '04', title: 'Lead-Erfassung und Automatisierung', items: [
-      'Konzeption und Einrichtung eines einfachen Lead-Einstiegs',
-      'Anbindung an eine geeignete Kontaktverwaltung bzw. ein CRM',
-      'Benachrichtigung über neue Anfragen',
-      'Einbindung einer Terminbuchung, sofern technisch und organisatorisch sinnvoll',
-      'Grundlegende Funktionstests',
-    ],
-  },
-  {
-    n: '05', title: 'Meta-Werbung', items: [
-      'Vorbereitung einer einfachen Testkampagne',
-      'Bis zu zwei Anzeigen-Creatives',
-      'Abstimmung von Zielgruppe, Werbebotschaft und Budget',
-      'Grundlegende Auswertung der Testkampagne',
-    ],
-    note: 'Die Schaltung setzt deine gesonderte Freigabe und die Erfüllung aller rechtlichen und technischen Voraussetzungen voraus. Weitere Kampagnenkonzepte aus der Präsentation sind nicht automatisch Teil des Pilots.',
-  },
-  {
-    n: '06', title: 'Reporting und Abstimmung', items: [
-      'Monatliche Übersicht über erbrachte Leistungen und verfügbare Kennzahlen',
-      'Ein monatliches Abstimmungs- und Strategiegespräch von bis zu 60 Minuten',
-      'Abschließende Auswertung nach 90 Tagen',
-    ],
-  },
-];
-
-const excluded = [
-  'Zusätzliche Sonderproduktionen und unbegrenzte Überarbeitungen',
-  'Umfangreiche externe Dreharbeiten',
-  'Tägliche Community-Betreuung und aktive Kaltakquise',
-  'Komplexe KI-Chatbots und automatisierte Versicherungsberatung',
-  'Umfangreiche individuelle CRM-Entwicklungen',
-  'Dauerhafte, umfassende Performance-Marketing-Betreuung',
-  'Weitere Kanäle über den vereinbarten Hauptkanal hinaus',
-  'Rechtliche Prüfung oder Rechtsberatung',
-];
-
-const months = [
-  { tag: 'Monat 1', title: 'Strategie, Aufbau und erste Inhalte', items: ['Woche 1–2: Onboarding, Strategie, Zugänge, Freigabeprozess, technische Einrichtung', 'Danach: erste Veröffentlichungen in reduziertem Umfang', 'Gegebenenfalls ein freigegebener Werbetest'], out: 'Strategie, Prozesse und erste Inhalte stehen.' },
-  { tag: 'Monat 2', title: 'Regelbetrieb und erste Optimierungen', items: ['Regelmäßige Content-Produktion im geplanten Umfang', 'Veröffentlichung nach Freigabe', 'Auswertung und Optimierung des Lead-Prozesses'], out: 'Ein laufender Kanal und erste Erkenntnisse.' },
-  { tag: 'Monat 3', title: 'Fortführung, Auswertung und Entscheidung', items: ['Fortführung der vereinbarten Leistungen', 'Abschließende Analyse', 'Gemeinsames Auswertungsgespräch zur möglichen Zukunft'], out: 'Eine fundierte Entscheidung auf Basis echter Erfahrungen.' },
-];
-
-const approval = [
-  { t: 'Wir erstellen', d: 'Wir erstellen den Content und übermitteln ihn gebündelt.' },
-  { t: 'Du prüfst', d: 'Du prüfst möglichst innerhalb von zwei Werktagen.' },
-  { t: 'Eine Korrekturschleife', d: 'Eine gebündelte Korrekturschleife ist enthalten.' },
-  { t: 'Erst dann online', d: 'Veröffentlichung erst nach deiner ausdrücklichen Freigabe.' },
-];
+const total = fee.month + techMax + adsMax;
+const pos = (v: number) => `${((v / market.scaleMax) * 100).toFixed(2)}%`;
+const belowHigh = pct(fee.month, market.high);
+const aboveLow = Math.round(((fee.month - market.low) / market.low) * 100);
+const outputs = ['Reels', 'Grafiken', 'Anzeigen', 'Anfragen'];
+const avatarSmall = await getImage({ src: avatar, width: 240, format: 'webp' });
+const hasContact = Boolean(agency.email || agency.phoneHref);
 ---
 <!doctype html>
 <html lang="de">
@@ -110,25 +33,78 @@ const approval = [
     <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#011D37" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body>
+    <a class="skip" href="#inhalt">Zum Inhalt springen</a>
     <header class="top">
       <div class="wrap top__inner">
-        <Image src={logo} alt="Team-Neudorf Versicherungen" width={300} densities={[1, 2]} loading="eager" class="top__logo" />
-        <button class="btn" type="button" onclick="window.print()">Als PDF speichern</button>
+        <a href="#start" class="top__brand"><Image src={logo} alt="Team-Neudorf Versicherungen – zum Anfang" width={300} densities={[1, 2]} loading="eager" class="top__logo" /></a>
+        <nav class="nav" aria-label="Kapitel">
+          <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-list" data-nav-toggle>Kapitel</button>
+          <ol class="nav__list" id="nav-list">
+            {chapters.map((c, i) => <li><a href={`#${c.id}`} data-nav-link={c.id}><span>{String(i + 1).padStart(2, '0')}</span>{c.label}</a></li>)}
+          </ol>
+        </nav>
+        <button class="btn" type="button" data-print>PDF<span class="hide-s"> speichern</span></button>
       </div>
+      <div class="progress" aria-hidden="true"><i></i></div>
     </header>
 
-    <main>
-      <!-- Deckblatt -->
-      <section class="cover page">
-        <div class="wrap cover__grid">
-          <div>
-            <p class="eyebrow">Angebot · 90-Tage-Pilotpartnerschaft</p>
-            <h1>Die Grundlage für deine <em>digitale Sichtbarkeit.</em></h1>
-            <p class="lead">Wir entwickeln in den ersten 90 Tagen gemeinsam die Grundlage für deine digitale Sichtbarkeit und Kundengewinnung – zu einem einmaligen Pilotpreis von <strong>750 € netto monatlich</strong>. Die tatsächlich erforderlichen KI- und Softwarekosten sowie freigegebene Werbeausgaben trägst du zusätzlich und transparent.</p>
+    <main id="inhalt">
+      <!-- A · Hero -->
+      <section class="hero page" id="start" data-chapter="start">
+        <canvas class="hero__dots" data-halftone aria-hidden="true"></canvas>
+        <div class="hero__light" aria-hidden="true"><i></i><i></i></div>
+        <div class="wrap hero__grid">
+          <div class="hero__text">
+            <p class="eyebrow">Angebot · 90-Tage-Pilotpartnerschaft für Stefan Neudorf</p>
+            <h1 class="hero__title">
+              <span class="line"><span>Deine digitale Zukunft.</span></span>
+              <span class="line"><span><em>Unser gemeinsamer 90-Tage-Start.</em></span></span>
+            </h1>
+            <p class="lead">In 90 Tagen bauen wir gemeinsam dein KI-gestütztes Marketing- und Content-System auf: Positionierung, regelmäßige Inhalte für einen Hauptkanal, ein einfacher Weg für Anfragen und ein erster Werbetest. Du lieferst die Expertise, wir die Produktion. Nichts geht ohne deine Freigabe online.</p>
+            <div class="hero__actions">
+              <a class="cta" href="#roadmap">Die 90 Tage ansehen</a>
+              <a class="cta cta--ghost" href="#preis">Zum Pilotpreis</a>
+            </div>
           </div>
-          <figure class="cover__avatar"><Image src={avatar} alt="Stefan Neudorf" width={360} densities={[1, 2]} loading="eager" /></figure>
+
+          <figure class="flow" aria-labelledby="flow-cap">
+            <svg viewBox="0 0 560 460" role="img" aria-labelledby="flow-title">
+              <title id="flow-title">KI-first: Aus deiner Expertise entstehen über einen KI-gestützten Workflow und deine Freigabe Reels, Grafiken, Anzeigen und Anfragen.</title>
+              <defs>
+                <clipPath id="clip-avatar"><circle cx="86" cy="230" r="58" /></clipPath>
+                <linearGradient id="silk" x1="0" x2="1"><stop offset="0" stop-color="#d9b25a" stop-opacity="0.15" /><stop offset="0.5" stop-color="#d9b25a" /><stop offset="1" stop-color="#cfe0f2" stop-opacity="0.5" /></linearGradient>
+              </defs>
+              <g class="flow__silk" fill="none" stroke="url(#silk)">
+                {Array.from({ length: 7 }, (_, k) => <path d={`M150 ${206 + k * 8} C 210 ${150 + k * 26}, 230 ${300 - k * 20}, 268 230`} style={`--k:${k}`} />)}
+              </g>
+              <g class="flow__out" fill="none">
+                {outputs.map((_, k) => <path class="flow__wire" d={`M352 230 C 400 230, 410 ${70 + k * 107}, 452 ${70 + k * 107}`} style={`--k:${k}`} />)}
+              </g>
+              <circle cx="86" cy="230" r="66" class="flow__ring" />
+              <image href={avatarSmall.src} x="28" y="172" width="116" height="116" clip-path="url(#clip-avatar)" preserveAspectRatio="xMidYMid slice" />
+              <text x="86" y="326" class="flow__cap" text-anchor="middle">Deine Expertise</text>
+              <g class="flow__core">
+                <circle cx="310" cy="230" r="46" class="flow__hub" />
+                <circle cx="310" cy="230" r="64" class="flow__orbit" />
+                <circle r="4" class="flow__sat" cx="310" cy="166" />
+                <circle r="3" class="flow__sat flow__sat--b" cx="310" cy="294" />
+                <text x="310" y="226" class="flow__hubtxt" text-anchor="middle">KI-first</text>
+                <text x="310" y="244" class="flow__hubsub" text-anchor="middle">Workflow</text>
+              </g>
+              <g class="flow__gate"><rect x="372" y="208" width="44" height="44" rx="22" /><path d="M384 230 l7 7 l14 -15" fill="none" /></g>
+              <text x="394" y="276" class="flow__cap" text-anchor="middle">Freigabe</text>
+              {outputs.map((o, k) => (
+                <g class="flow__node" style={`--k:${k}`}>
+                  <rect x="452" y={52 + k * 107} width="100" height="36" rx="4" />
+                  <text x="502" y={75 + k * 107} text-anchor="middle">{o}</text>
+                </g>
+              ))}
+            </svg>
+            <figcaption id="flow-cap">Das KI-first-Prinzip: Deine Expertise ist der Ausgangspunkt, KI beschleunigt die Produktion, deine Freigabe entscheidet.</figcaption>
+          </figure>
         </div>
         <dl class="wrap meta">
           <div><dt>Für</dt><dd>Stefan Neudorf<br />Team-Neudorf Versicherungen, Mechernich</dd></div>
@@ -138,101 +114,219 @@ const approval = [
         </dl>
       </section>
 
-      <!-- 1 Ausgangslage -->
-      <section class="block">
-        <div class="wrap">
-          <p class="eyebrow">01 · Ausgangslage und Ziel</p>
-          <h2>Von der Vision <em>in die Praxis.</em></h2>
-          <div class="two">
+      <!-- Ausgangslage -->
+      <section class="block block--intro">
+        <div class="wrap two two--intro">
+          <div data-reveal>
+            <p class="eyebrow">Ausgangslage und Ziel</p>
+            <h2>Von der Vision <em>in die Praxis.</em></h2>
+          </div>
+          <div class="intro__text" data-reveal style="--i:1">
             <p>In der Präsentation „Digital Vision & Growth“ haben wir unsere langfristige Vision für dein digitales Wachstum gezeigt: KI-gestützte Inhalte, eine wachsende Personal Brand und ein System, das zu qualifizierten Beratungsanfragen führt.</p>
             <p>Dieses Angebot legt fest, was davon in den <strong>ersten 90 Tagen tatsächlich enthalten ist</strong>. Ziel ist es, ein KI-gestütztes Marketing- und Content-System aufzubauen und zu erproben, erste Ergebnisse zu messen und gemeinsam herauszufinden, wie eine langfristige Zusammenarbeit aussehen könnte.</p>
           </div>
         </div>
       </section>
 
-      <!-- 2 Leistungen -->
-      <section class="block">
+      <!-- B · Roadmap -->
+      <section class="block" id="roadmap" data-chapter="roadmap">
         <div class="wrap">
-          <p class="eyebrow">02 · Leistungsumfang</p>
-          <h2>Was in 90 Tagen <em>enthalten ist.</em></h2>
-          <div class="services">
-            {services.map((s) => (
-              <article class="card">
-                <p class="idx">{s.n}</p>
-                <h3>{s.title}</h3>
-                <ul class="list">{s.items.map((i) => <li>{i}</li>)}</ul>
-                {s.note && <p class="card__note">{s.note}</p>}
-              </article>
-            ))}
+          <p class="eyebrow" data-reveal>01 · Die 90-Tage-Roadmap</p>
+          <h2 data-reveal>Drei Monate. <em>Ein klarer Ablauf.</em></h2>
+          <div class="road" data-tabs>
+            <div class="road__rail" role="tablist" aria-label="Monate der Pilotphase">
+              <span class="road__line" aria-hidden="true"><i></i></span>
+              {months.map((m, i) => (
+                <button class="road__tab" role="tab" type="button" id={`tab-m${i}`} aria-controls={`panel-m${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+                  <span class="road__dot" aria-hidden="true"></span>
+                  <span class="road__tag">{m.tag}</span>
+                  <span class="road__days">{m.days}</span>
+                  <span class="road__short">{m.title}</span>
+                </button>
+              ))}
+            </div>
+            <div class="road__panels">
+              {months.map((m, i) => (
+                <div class="road__panel" role="tabpanel" id={`panel-m${i}`} aria-labelledby={`tab-m${i}`} tabindex="0" data-panel>
+                  <div>
+                    <p class="label label--gold">{m.tag} · {m.days}</p>
+                    <h3>{m.title}</h3>
+                    <ul class="list">{m.items.map((x) => <li>{x}</li>)}</ul>
+                  </div>
+                  <div class="road__milestone">
+                    <p class="label">Meilenstein</p>
+                    <p class="road__out">{m.milestone}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div class="excluded">
-            <p class="label">Nicht enthalten</p>
-            <ul>{excluded.map((e) => <li>{e}</li>)}</ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3 Zeitplan -->
-      <section class="block">
-        <div class="wrap">
-          <p class="eyebrow">03 · Zeitplan</p>
-          <h2>Drei Monate. <em>Ein klarer Ablauf.</em></h2>
-          <ol class="roadmap">
-            {months.map((m) => (
-              <li>
-                <span class="roadmap__dot" aria-hidden="true"></span>
-                <p class="label label--gold">{m.tag}</p>
-                <h3>{m.title}</h3>
-                <ul class="list">{m.items.map((x) => <li>{x}</li>)}</ul>
-                <p class="roadmap__out">{m.out}</p>
-              </li>
-            ))}
-          </ol>
           <p class="fine">Die Laufzeit beginnt mit dem vereinbarten Projektstart bzw. Kick-off am <span class="ph">{P('Datum Kick-off')}</span>, nicht erst mit der ersten Veröffentlichung.</p>
         </div>
       </section>
 
-      <!-- 4 Investition -->
-      <section class="block block--price page">
+      <!-- C · Leistungen -->
+      <section class="block" id="leistungen" data-chapter="leistungen">
         <div class="wrap">
-          <p class="eyebrow">04 · Investition</p>
-          <h2>Drei getrennte Positionen. <em>Volle Transparenz.</em></h2>
-          <div class="prices">
-            {budget.map((b) => (
-              <article class:list={['price', { 'price--fixed': b.fixed }]}>
-                <p class="price__tag">{b.tag}</p>
-                <h3>{b.kind}</h3>
-                <p class="price__month">{b.month}<small>pro Monat</small></p>
-                <p class="price__total">{b.total} für 3 Monate</p>
-                <p class="price__note">{b.note}</p>
+          <p class="eyebrow" data-reveal>02 · Leistungsumfang</p>
+          <h2 data-reveal>Was in 90 Tagen <em>enthalten ist.</em></h2>
+          <div class="mods">
+            {services.map((s, i) => (
+              <article class="mod" data-reveal style={`--i:${i % 2}`} data-mod>
+                <h3>
+                  <button type="button" class="mod__head" aria-expanded="false" aria-controls={`mod-${s.key}`} id={`modh-${s.key}`}>
+                    <span class="idx">{s.n}</span>
+                    <span class="mod__title">{s.title}</span>
+                    <span class="mod__badge">Enthalten</span>
+                    <span class="mod__icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <p class="mod__short">{s.short}</p>
+                <div class="mod__body" id={`mod-${s.key}`} role="region" aria-labelledby={`modh-${s.key}`}>
+                  <div class="mod__inner">
+                    <ul class="list">{s.items.map((it) => <li>{it}</li>)}</ul>
+                    {s.note && <p class="card__note">{s.note}</p>}
+                  </div>
+                </div>
               </article>
             ))}
           </div>
-          <p class="label">Budgetübersicht</p>
-          <table class="table">
-            <thead><tr><th scope="col">Kostenart</th><th scope="col">Monatlich</th><th scope="col">Für 3 Monate</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Agenturhonorar</th><td>750 € netto</td><td>2.250 € netto</td></tr>
-              <tr><th scope="row">Technikbudget, maximal</th><td>350 €</td><td>1.050 €</td></tr>
-              <tr><th scope="row">Meta-Werbebudget, maximal</th><td>300 €</td><td>900 €</td></tr>
-            </tbody>
-            <tfoot><tr><th scope="row">Rechnerisches Gesamtbudget</th><td>1.400 €</td><td>4.200 €</td></tr></tfoot>
-          </table>
-          <div class="callout">
-            <p><strong>Wichtig:</strong> 1.400 € monatlich bzw. 4.200 € für drei Monate sind nur die rechnerischen Budgetwerte bei vollständiger Ausschöpfung aller Positionen – keine feste Gesamtrechnung. Fest vereinbart ist ausschließlich das Agenturhonorar. Technik- und Werbeausgaben sind variable, separat zu tragende Kosten.</p>
+          <div class="scope">
+            <div class="scope__col scope__col--in" data-reveal>
+              <p class="label label--gold">Enthalten</p>
+              <p>Alle sechs Module oben im beschriebenen Umfang, für die gesamte Laufzeit von 90 Tagen, abgegolten mit dem Agenturhonorar.</p>
+            </div>
+            <div class="scope__col scope__col--opt" data-reveal style="--i:1">
+              <p class="label label--gold">Optional – nur nach gesonderter Freigabe</p>
+              <ul class="list">{optional.map((o) => <li>{o}</li>)}</ul>
+            </div>
+            <div class="scope__col scope__col--out" data-reveal style="--i:2">
+              <p class="label">Nicht enthalten</p>
+              <ul>{excluded.map((e) => <li>{e}</li>)}</ul>
+            </div>
           </div>
-          <p class="fine">Steuerlicher Hinweis: Das Agenturhonorar versteht sich netto zuzüglich gesetzlicher Umsatzsteuer, sofern sie anfällt. Bei Drittanbieterkosten (Software, KI-Dienste, Meta) richtet sich die steuerliche Behandlung nach der jeweiligen Abrechnung des Anbieters. Strategie- und Aufbauphase sind im Honorar enthalten, ein zusätzliches Setup-Honorar fällt für den vereinbarten Pilotumfang nicht an.</p>
         </div>
       </section>
 
-      <!-- 5 Kostenregeln -->
-      <section class="block">
+      <!-- D · Pilotpreis -->
+      <section class="block block--price page" id="preis" data-chapter="preis">
+        <canvas class="price-dots" data-halftone aria-hidden="true"></canvas>
         <div class="wrap">
-          <p class="eyebrow">05 · Regeln für Technik- und Werbebudget</p>
-          <h2>Du zahlst nur, <em>was wirklich anfällt.</em></h2>
+          <p class="eyebrow" data-reveal>03 · Deine Investition</p>
+          <h2 data-reveal>Ein Pilotpreis, <em>der den Start leicht macht.</em></h2>
+          <div class="hero-price" data-reveal>
+            <p class="hero-price__badge">Einmalige Pilotkonditionen – ausschließlich für die ersten 90 Tage.</p>
+            <p class="hero-price__value"><span data-count={fee.month}>{fee.month}</span><span class="hero-price__cur"> €</span></p>
+            <p class="hero-price__unit">netto pro Monat · Agenturhonorar für die ersten 90 Tage<br /><span>{eur(fee.month * fee.months)} netto für die gesamte Pilotphase, kein Setup-Honorar</span></p>
+          </div>
+
+          <div class="market" data-reveal>
+            <div class="market__head">
+              <p class="label label--gold">Externer Marktvergleich · Preisspanne</p>
+              <p class="market__statement">{market.statement}</p>
+            </div>
+            <div class="scale" role="img" aria-label={`Skala von 0 bis ${eur(market.scaleMax)}: Marktspanne ${eur(market.low)} bis ${eur(market.high)}, Pilotpreis ${eur(fee.month)}.`}>
+              <div class="scale__track">
+                <span class="scale__range" style={`left:${pos(market.low)};width:calc(${pos(market.high)} - ${pos(market.low)})`}></span>
+                <span class="scale__mark" style={`left:${pos(fee.month)}`}><b>Pilot {eur(fee.month)}</b></span>
+              </div>
+              <div class="scale__ticks" aria-hidden="true">
+                <span style="left:0">0 €</span>
+                <span style={`left:${pos(market.low)}`}>{eur(market.low)}</span>
+                <span style={`left:${pos(market.high)}`}>{eur(market.high)}</span>
+              </div>
+            </div>
+            <p class="market__calc">Der Pilotpreis von {eur(fee.month)} liegt am unteren Rand dieser Spanne: <strong>{belowHigh} % unter dem oberen Wert</strong> von {eur(market.high)} (Rechnung: ({eur(market.high)} − {eur(fee.month)}) ÷ {eur(market.high)}) und {aboveLow} % über dem unteren Wert von {eur(market.low)}. Die Spanne ist ein externer Marktvergleich aus Anbieterangaben, kein bisheriger Verkaufspreis von uns, und die Leistungsumfänge sind nicht eins zu eins vergleichbar.</p>
+            <ul class="sources">
+              {market.sources.map((s) => <li><a href={s.href} rel="noopener noreferrer" target="_blank">{s.label}</a> – {s.detail}</li>)}
+              <li>Stand der Recherche: {researchDate}. Anbieterangaben, keine unabhängige Studie. <span class="ph">[Quellen vor Versand auf den Originalseiten prüfen]</span></li>
+            </ul>
+          </div>
+
+          <div class="prices">
+            <article class="price price--fixed" data-reveal>
+              <p class="price__tag">Fest vereinbart</p>
+              <h3>Agenturhonorar</h3>
+              <p class="price__month">{eur(fee.month)} netto<small>pro Monat</small></p>
+              <p class="price__total">{eur(fee.month * fee.months)} netto für 3 Monate</p>
+              <p class="price__note">Unser Honorar für die vereinbarten Leistungen. Zuzüglich gesetzlicher Umsatzsteuer, sofern sie anfällt.</p>
+            </article>
+            <article class="price" data-reveal style="--i:1">
+              <p class="price__tag">Variabel · Obergrenze</p>
+              <h3>Technikbudget</h3>
+              <p class="price__month">max. {eur(techMax)}<small>pro Monat</small></p>
+              <p class="price__total">max. {eur(techMax * 3)} für 3 Monate</p>
+              <p class="price__note">Projektbezogene KI-, Software- und Automatisierungskosten. Nur tatsächlich angefallene, vorher vereinbarte Kosten.</p>
+            </article>
+            <article class="price" data-reveal style="--i:2">
+              <p class="price__tag">Variabel · Obergrenze</p>
+              <h3>Meta-Werbebudget</h3>
+              <p class="price__month">max. {eur(adsMax)}<small>pro Monat</small></p>
+              <p class="price__total">max. {eur(adsMax * 3)} für 3 Monate</p>
+              <p class="price__note">Tatsächliche Werbeausgaben, möglichst direkt über dein eigenes Meta-Werbekonto. Start nur nach Freigabe.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- E · Budgetrechner -->
+      <section class="block" id="rechner" data-chapter="rechner">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>04 · Budgetrechner</p>
+          <h2 data-reveal>Du siehst, <em>was jeder Euro tut.</em></h2>
+          <div class="calc" data-calc data-fee={fee.month} data-months={fee.months}>
+            <div class="calc__controls">
+              <div class="calc__row calc__row--fixed">
+                <div class="calc__lab"><span class="calc__sw calc__sw--fee" aria-hidden="true"></span>Agenturhonorar <small>fest</small></div>
+                <p class="calc__val">{eur(fee.month)} netto</p>
+              </div>
+              <div class="calc__row">
+                <label class="calc__lab" for="r-tech"><span class="calc__sw calc__sw--tech" aria-hidden="true"></span>Technikaufwand <small>variabel, 0–{eur(techMax)}</small></label>
+                <output class="calc__val" for="r-tech" data-out="tech">{eur(techMax)}</output>
+                <input type="range" id="r-tech" min="0" max={techMax} step="10" value={techMax} data-in="tech" aria-describedby="calc-hint" />
+              </div>
+              <div class="calc__row">
+                <label class="calc__lab" for="r-ads"><span class="calc__sw calc__sw--ads" aria-hidden="true"></span>Meta-Werbeaufwand <small>variabel, 0–{eur(adsMax)}</small></label>
+                <output class="calc__val" for="r-ads" data-out="ads">{eur(adsMax)}</output>
+                <input type="range" id="r-ads" min="0" max={adsMax} step="10" value={adsMax} data-in="ads" aria-describedby="calc-hint" />
+              </div>
+              <div class="calc__presets" role="group" aria-label="Schnellauswahl">
+                <button type="button" class="chip" data-preset="0,0">Nur Honorar</button>
+                <button type="button" class="chip" data-preset="170,150">Mittlere Annahme</button>
+                <button type="button" class="chip" data-preset={`${techMax},${adsMax}`}>Obergrenzen</button>
+              </div>
+              <label class="calc__vat"><input type="checkbox" data-vat /> <span>Umsatzsteuer als Kosten einplanen <small>(vereinfachte Annahme: 19 % auf alle Positionen)</small></span></label>
+            </div>
+            <div class="calc__result" aria-live="polite">
+              <p class="label">Rechnerisch pro Monat</p>
+              <p class="calc__sum" data-sum-month>{eur(total)}</p>
+              <div class="calc__bar" aria-hidden="true"><i class="calc__seg calc__seg--fee" data-seg="fee"></i><i class="calc__seg calc__seg--tech" data-seg="tech"></i><i class="calc__seg calc__seg--ads" data-seg="ads"></i></div>
+              <p class="label">Rechnerisch für 3 Monate</p>
+              <p class="calc__sum calc__sum--s" data-sum-total>{eur(total * 3)}</p>
+              <p class="calc__basis" data-basis>Netto-Werte bzw. Beträge laut Anbieterabrechnung</p>
+            </div>
+          </div>
+          <p class="fine" id="calc-hint"><strong>Planungshilfe, keine Rechnung.</strong> Der Rechner zeigt nur, wie sich die monatlichen Kosten zusammensetzen können. Fest vereinbart ist ausschließlich das Agenturhonorar; Technik- und Werbeausgaben fallen nur in tatsächlicher, vorher freigegebener Höhe an. Das Agenturhonorar versteht sich zuzüglich gesetzlicher Umsatzsteuer, sofern sie anfällt. Bei Drittanbieterkosten richtet sich die steuerliche Behandlung nach der jeweiligen Abrechnung des Anbieters. Die Umsatzsteuer-Option rechnet vereinfacht mit 19 % und ersetzt keine steuerliche Beratung.</p>
+
+          <div class="static-budget">
+            <p class="label">Budgetübersicht (Obergrenzen)</p>
+            <table class="table">
+              <thead><tr><th scope="col">Kostenart</th><th scope="col">Monatlich</th><th scope="col">Für 3 Monate</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Agenturhonorar (fest)</th><td>{eur(fee.month)} netto</td><td>{eur(fee.month * 3)} netto</td></tr>
+                <tr><th scope="row">Technikbudget, maximal</th><td>{eur(techMax)}</td><td>{eur(techMax * 3)}</td></tr>
+                <tr><th scope="row">Meta-Werbebudget, maximal</th><td>{eur(adsMax)}</td><td>{eur(adsMax * 3)}</td></tr>
+              </tbody>
+              <tfoot><tr><th scope="row">Rechnerisches Gesamtbudget</th><td>{eur(total)}</td><td>{eur(total * 3)}</td></tr></tfoot>
+            </table>
+            <div class="callout">
+              <p><strong>Wichtig:</strong> {eur(total)} monatlich bzw. {eur(total * 3)} für drei Monate sind nur die rechnerischen Budgetwerte bei vollständiger Ausschöpfung aller Positionen – keine feste Gesamtrechnung. Fest vereinbart ist ausschließlich das Agenturhonorar. Technik- und Werbeausgaben sind variable, separat zu tragende Kosten. Strategie- und Aufbauphase sind im Honorar enthalten, ein zusätzliches Setup-Honorar fällt für den vereinbarten Pilotumfang nicht an.</p>
+            </div>
+          </div>
+
           <div class="rules">
-            <article class="card">
-              <p class="label label--gold">Technikbudget · max. 350 € pro Monat</p>
+            <article class="card" data-reveal>
+              <p class="label label--gold">Regeln Technikbudget · max. {eur(techMax)} pro Monat</p>
               <p>Für projektbezogene Kosten, zum Beispiel KI-Video und -Bild (etwa Higgsfield), KI-Assistenten (etwa Claude, ChatGPT), Automatisierung (etwa Make oder n8n), CRM und Terminbuchung, API-Nutzung, zusätzliche Credits und gegebenenfalls Hosting. Die Auswahl erfolgt bedarfsorientiert; nicht jedes Werkzeug wird benötigt.</p>
               <ul class="list">
                 <li>Obergrenze, keine Pauschale</li>
@@ -245,14 +339,14 @@ const approval = [
               </ul>
               <p class="card__note">Softwarepreise können sich ändern. Wir nennen deshalb keine festen Anbieterpreise.</p>
             </article>
-            <article class="card">
-              <p class="label label--gold">Meta-Werbebudget · max. 300 € pro Monat</p>
+            <article class="card" data-reveal style="--i:1">
+              <p class="label label--gold">Regeln Meta-Werbebudget · max. {eur(adsMax)} pro Monat</p>
               <p>Für die tatsächlichen Werbeausgaben einer überschaubaren Testkampagne mit bis zu zwei Creatives.</p>
               <ul class="list">
                 <li>Du trägst die tatsächlichen Werbeausgaben</li>
                 <li>Abrechnung möglichst direkt über dein eigenes Meta-Werbekonto</li>
                 <li>Kampagnen starten erst nach deiner ausdrücklichen Freigabe</li>
-                <li>Monatliche Ausgabengrenze 300 €, Überschreitung nur mit vorheriger Zustimmung</li>
+                <li>Monatliche Ausgabengrenze {eur(adsMax)}, Überschreitung nur mit vorheriger Zustimmung</li>
                 <li>Nicht eingesetztes Werbebudget wird nicht berechnet</li>
                 <li>Das Werbebudget ist kein zusätzliches Agenturhonorar</li>
               </ul>
@@ -261,16 +355,72 @@ const approval = [
         </div>
       </section>
 
-      <!-- 6 Zusammenarbeit -->
-      <section class="block">
+      <!-- F · Steuern und Förderung -->
+      <section class="block block--tax" id="steuern" data-chapter="steuern">
         <div class="wrap">
-          <p class="eyebrow">06 · Mitwirkung und Freigaben</p>
-          <h2>Du bleibst der Experte. <em>Nichts geht ohne dein OK.</em></h2>
+          <p class="eyebrow" data-reveal>05 · Steuern und Förderung</p>
+          <h2 data-reveal>Deine Investition. <em>Deine steuerlichen Möglichkeiten.</em></h2>
+          <p class="sub" data-reveal>Ein Überblick zur Orientierung, keine Steuer- oder Förderberatung. Die tatsächliche Wirkung hängt von deiner individuellen Unternehmenssituation ab; bitte mit deiner Steuerberatung abstimmen.</p>
+          <ol class="tiers">
+            <li class="tier" data-reveal>
+              <p class="tier__n">1</p>
+              <p class="label label--gold">Grundsätzlich als Betriebsausgaben berücksichtigungsfähig</p>
+              <h3>Betrieblich veranlasste Kosten</h3>
+              <p>Agenturhonorar, Software- und KI-Kosten sowie Werbeausgaben, die durch deinen Betrieb veranlasst sind, können grundsätzlich als Betriebsausgaben berücksichtigt werden. Wie viel Steuer du dadurch tatsächlich sparst, hängt von deinem Gewinn, deinem Steuersatz und deiner Rechtsform ab. Eine bestimmte Ersparnis können wir nicht zusagen.</p>
+              <div class="tier__warn">
+                <p class="label">Wichtig für Versicherungsvermittler</p>
+                <p>Umsätze aus der Tätigkeit als Versicherungsvermittler sind in der Regel umsatzsteuerfrei. Damit ist der Vorsteuerabzug für zugehörige Eingangsleistungen meist ausgeschlossen: Die Umsatzsteuer auf Agentur-, Software- und Werbekosten wird dann zum Kostenfaktor. Bei Leistungen ausländischer Anbieter, etwa Meta-Werbung aus Irland, kann die Umsatzsteuer im Reverse-Charge-Verfahren von dir selbst geschuldet sein. Bitte vorab mit deiner Steuerberatung klären.</p>
+              </div>
+              <ul class="sources">
+                {Object.values(law).map((l) => <li><a href={l.href} rel="noopener noreferrer" target="_blank">{l.label}</a></li>)}
+              </ul>
+            </li>
+            <li class="tier" data-reveal style="--i:1">
+              <p class="tier__n">2</p>
+              <p class="label label--gold">Fördermöglichkeiten – Voraussetzungen individuell prüfen</p>
+              <h3>Beratung ja, Umsetzung nein</h3>
+              <p>Für den Einkauf von Content-Produktion, Social-Media-Betreuung und Werbung haben wir kein offenes Förderprogramm gefunden. Die laufenden Programme bezuschussen Beratung, nicht Umsetzung.</p>
+              <ul class="fund">
+                {funding.check.map((f) => (
+                  <li>
+                    <p class="fund__head"><strong>{f.title}</strong><span class="fund__status">{f.status}</span></p>
+                    <p>{f.text}</p>
+                    <a href={f.href} rel="noopener noreferrer" target="_blank">{f.link}</a>
+                  </li>
+                ))}
+              </ul>
+              <p class="label fund__label">Nicht beantragbar oder nicht passend</p>
+              <ul class="fund fund--off">
+                {funding.unavailable.map((f) => (
+                  <li>
+                    <p class="fund__head"><strong>{f.title}</strong></p>
+                    <p>{f.text}</p>
+                    <a href={f.href} rel="noopener noreferrer" target="_blank">{f.link}</a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li class="tier tier--none" data-reveal style="--i:2">
+              <p class="tier__n">3</p>
+              <p class="label label--gold">Tatsächlich bewilligte Förderungen</p>
+              <h3>Für dieses Projekt: derzeit keine.</h3>
+              <p>Es ist keine Förderung beantragt oder bewilligt. Das Angebot und alle Preise gelten unabhängig von einer Förderung.</p>
+            </li>
+          </ol>
+          <p class="fine">Stand der Recherche: {researchDate}. Alle Angaben ohne Gewähr; Förderbedingungen und Fristen ändern sich. Keine garantierten Steuerersparnisse oder Förderzuschüsse. <span class="ph">[Angaben vor Versand auf den verlinkten offiziellen Seiten prüfen]</span></p>
+        </div>
+      </section>
+
+      <!-- Zusammenarbeit -->
+      <section class="block" id="zusammenarbeit" data-chapter="zusammenarbeit">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>06 · Mitwirkung und Freigaben</p>
+          <h2 data-reveal>Du bleibst der Experte. <em>Nichts geht ohne dein OK.</em></h2>
           <ol class="steps">
-            {approval.map((a, i) => <li><span class="idx">0{i + 1}</span><strong>{a.t}</strong><span>{a.d}</span></li>)}
+            {approval.map((a, i) => <li data-reveal style={`--i:${i}`}><span class="idx">0{i + 1}</span><strong>{a.t}</strong><span>{a.d}</span></li>)}
           </ol>
           <div class="two">
-            <div>
+            <div data-reveal>
               <p class="label label--gold">Dein Beitrag</p>
               <ul class="list">
                 <li>Unternehmensinformationen und fachliche Grundlagen</li>
@@ -278,7 +428,7 @@ const approval = [
                 <li>Fachliche Prüfung und ausdrückliche Freigabe aller Aussagen, insbesondere zu Versicherungs-, Beamten-, PKV- und Dienstunfähigkeitsthemen</li>
               </ul>
             </div>
-            <div>
+            <div data-reveal style="--i:1">
               <p class="label label--gold">Spielregeln</p>
               <ul class="list">
                 <li>Keine stillschweigende Freigabe bei ausbleibender Rückmeldung</li>
@@ -287,31 +437,28 @@ const approval = [
               </ul>
             </div>
           </div>
+
+          <div class="expect">
+            <p class="eyebrow" data-reveal>07 · Erfolgserwartungen und Grenzen</p>
+            <h2 data-reveal>Aufbauen, testen, <em>messen.</em></h2>
+            <ul class="facts">
+              <li>Wir garantieren keine Reichweiten, Follower, Leads, Termine oder Versicherungsabschlüsse.</li>
+              <li>Die Pilotphase dient dem Aufbau, dem Testen und dem Messen.</li>
+              <li>Es bestehen derzeit keine Livekampagnen und keine produktiven Automatisierungen; beides wird im Pilot aufgebaut.</li>
+              <li>Versicherungsbezogene Aussagen benötigen deine fachliche Freigabe.</li>
+              <li>Datenschutz, erforderliche Einwilligungen, Vermittlerpflichten und Werbevorgaben müssen vor dem produktiven Einsatz geklärt werden.</li>
+              <li>Wir leisten keine rechtliche Prüfung und keine Rechtsberatung.</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <!-- 7 Erwartungen -->
-      <section class="block">
+      <!-- Ende nach 90 Tagen -->
+      <section class="block block--end">
         <div class="wrap">
-          <p class="eyebrow">07 · Erfolgserwartungen und Grenzen</p>
-          <h2>Aufbauen, testen, <em>messen.</em></h2>
-          <ul class="facts">
-            <li>Wir garantieren keine Reichweiten, Follower, Leads, Termine oder Versicherungsabschlüsse.</li>
-            <li>Die Pilotphase dient dem Aufbau, dem Testen und dem Messen.</li>
-            <li>Es bestehen derzeit keine Livekampagnen und keine produktiven Automatisierungen; beides wird im Pilot aufgebaut.</li>
-            <li>Versicherungsbezogene Aussagen benötigen deine fachliche Freigabe.</li>
-            <li>Datenschutz, erforderliche Einwilligungen, Vermittlerpflichten und Werbevorgaben müssen vor dem produktiven Einsatz geklärt werden.</li>
-            <li>Wir leisten keine rechtliche Prüfung und keine Rechtsberatung.</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- 8 Ende -->
-      <section class="block block--end page">
-        <div class="wrap">
-          <p class="eyebrow">08 · Ende nach 90 Tagen</p>
-          <h2>Ein Pilot mit <em>klarem Ende.</em></h2>
-          <div class="endbox">
+          <p class="eyebrow" data-reveal>08 · Ende nach 90 Tagen</p>
+          <h2 data-reveal>Ein Pilot mit <em>klarem Ende.</em></h2>
+          <div class="endbox" data-reveal>
             <p class="endbox__big">Die Zusammenarbeit endet nach 90 Tagen automatisch.<br /><span>Keine automatische Verlängerung. Keine Verpflichtung zur Weiterführung.</span></p>
             <ul class="list">
               <li>Die 750 € netto monatlich sind ein einmaliger, vergünstigter Pilotpreis ausschließlich für die ersten 90 Tage, kein dauerhaftes Agenturhonorar.</li>
@@ -323,17 +470,46 @@ const approval = [
         </div>
       </section>
 
-      <!-- 9 Annahme -->
-      <section class="block">
+      <!-- G · Abschluss -->
+      <section class="close" id="entscheidung" data-chapter="entscheidung">
+        <div class="hero__light" aria-hidden="true"><i></i><i></i></div>
         <div class="wrap">
-          <p class="eyebrow">09 · Konditionen und Annahme</p>
-          <h2>Der nächste Schritt.</h2>
+          <p class="eyebrow" data-reveal>09 · Nächste Schritte</p>
+          <h2 class="close__title" data-reveal>90 Tage. Ein gemeinsamer Start. <em>Eine klare Perspektive.</em></h2>
+          <ol class="next">
+            {nextSteps.map((s, i) => (
+              <li data-reveal style={`--i:${i}`}>
+                <span class="next__n">{i + 1}</span>
+                <strong>{s.t}</strong>
+                <span>{s.d}</span>
+              </li>
+            ))}
+          </ol>
+          <div class="close__actions" data-reveal>
+            <button class="cta" type="button" data-print>Angebot als PDF speichern</button>
+            {hasContact ? (
+              <>
+                {agency.email && <a class="cta cta--ghost" href={`mailto:${agency.email}?subject=${encodeURIComponent('90-Tage-Pilotpartnerschaft – Gesprächstermin')}`}>Gesprächstermin anfragen</a>}
+                {agency.phoneHref && <a class="cta cta--ghost" href={agency.phoneHref}>{agency.phone}</a>}
+              </>
+            ) : (
+              <p class="close__contact">Gesprächstermin: <span class="ph">{P('Kontakt der Agentur: E-Mail und Telefon')}</span></p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <!-- Konditionen und Annahme -->
+      <section class="block block--terms">
+        <div class="wrap">
+          <p class="eyebrow">10 · Konditionen und Annahme</p>
+          <h2>Die Vereinbarung.</h2>
           <dl class="terms">
             <div><dt>Laufzeit</dt><dd>90 Tage bzw. drei Abrechnungsmonate ab Kick-off am <span class="ph">{P('Datum')}</span>; endet automatisch</dd></div>
-            <div><dt>Agenturhonorar</dt><dd>750 € netto pro Monat, gesamt 2.250 € netto, zzgl. gesetzlicher USt., sofern sie anfällt</dd></div>
+            <div><dt>Agenturhonorar</dt><dd>{eur(fee.month)} netto pro Monat, gesamt {eur(fee.month * 3)} netto, zzgl. gesetzlicher USt., sofern sie anfällt</dd></div>
             <div><dt>Rechnungsstellung</dt><dd class="ph">{P('z. B. monatlich im Voraus / zum Monatsende')}</dd></div>
             <div><dt>Zahlungsziel</dt><dd class="ph">{P('z. B. 14 Tage nach Rechnungsdatum')}</dd></div>
-            <div><dt>Variable Kosten</dt><dd>Technik- und Werbebudget nach den Regeln in Abschnitt 05, möglichst direkt über deine Konten</dd></div>
+            <div><dt>Variable Kosten</dt><dd>Technik- und Werbebudget nach den Regeln in Abschnitt 04, möglichst direkt über deine Konten</dd></div>
             <div><dt>Vertragsgrundlagen</dt><dd class="ph">{P('AGB, Auftragsverarbeitungsvertrag (AVV), Nutzungsrechte an Inhalten')}</dd></div>
           </dl>
           <div class="sign">
@@ -348,5 +524,6 @@ const approval = [
     <footer class="foot">
       <div class="wrap">90-Tage-Pilotpartnerschaft · Team Neudorf · vertraulich</div>
     </footer>
+    <script>import '../scripts/angebot.ts';</script>
   </body>
 </html>

@@ -1,0 +1,16 @@
+"$schema" = "https://open-api.netlify.com/netlify.schema.json"
+
+# Netlify-Konfiguration des 90-Tage-Pilotangebots – eigene Site, getrennt von Präsentation und Versicherungswebsite.
+# Voraussetzung im Netlify-Projekt: Base directory = pilotangebot (bzw. CLI-Deploy aus diesem Verzeichnis).
+# Pfade sind relativ zum Base directory: Build läuft in pilotangebot/, veröffentlicht wird pilotangebot/dist.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+  environment = { NODE_VERSION = "22" }
+
+# Individuelles Kundenangebot: nicht indexieren (zusätzlich zu public/_headers, robots.txt und Meta-Tag).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
