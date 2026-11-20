@@ -49,8 +49,13 @@ export const pillarsOfPitch = [
 ];
 export interface MechanicRef { name: string; what: string; url: string; note: string }
 export const mechanicRefs: MechanicRef[] = [
-  { name: 'Creator Class', what: 'Kurs zu Social-Media-Wachstum: Formate, Hooks, Storytelling und Analyse viraler Reels.', url: 'https://www.creatorclass.net/', note: 'Referenz für Content-Mechanik, nicht für Versicherungsfragen.' },
+  { name: 'Creator Class', what: 'Instagram-Account creatorclass.de, Inhalte aus der bereitgestellten Bildschirmaufnahme.', url: 'https://www.instagram.com/creatorclass.de/', note: 'Referenz für Content-Mechanik, nicht für Versicherungsfragen.' },
   { name: 'Christian Wolf', what: 'Mitgründer von MORE Nutrition, bekannt für Kurzvideo-Formate mit hoher Reichweite.', url: 'https://blackforestspace.de/speaker/christian-wolf/', note: 'Referenz für Content-Mechanik, keine Versicherungsexpertise.' },
+];
+export const observations = [
+  { time: '00:50–01:06', seen: 'Split-Screen: oben ein Zuhörer, unten ein Sprecher, Nutzenfrage als Titel, laufende Untertitel.', ours: 'Berufsgruppen-Duell: Polizei vs. Lehramt' },
+  { time: '03:55–04:59', seen: 'Serie mit Zuschauerfrage, Fallbeispiel und klarer Diagnose in kurzen Sätzen.', ours: 'Der Beamten-Check: ein Punkt der Checkliste pro Folge' },
+  { time: '06:17–07:26', seen: 'Drei Varianten desselben Inhalts nebeneinander, die Unterschiede werden erklärt.', ours: 'Ein Thema, drei Hooks (Station 04)' },
 ];
 export const hookFacts: { text: string; source: string; url: string }[] = [
   { text: 'Die ersten drei Sekunden eines Reels entscheiden, ob jemand weiterwischt.', source: 'Instagram Creators, FAQ', url: 'https://creators.instagram.com/faq' },
@@ -63,42 +68,42 @@ export const hookLayers = [
   { id: 'spoken', label: 'Spoken Hook', short: 'Was man hört' },
   { id: 'text', label: 'Text Hook', short: 'Was man liest' },
 ] as const;
-export const hookTopic = 'Polizei oder Lehramt: Wer bekommt Heilfürsorge, wer Beihilfe?';
+export const hookTopic = 'Heilfürsorge oder Beihilfe? Ein Thema, drei Einstiege.';
 export const hookVariants = [
-  { id: 'split', label: 'Variante A · Vergleich', scene: 'split', visual: 'Split-Screen: links Einsatzjacke und Streifenwagen-Tür, rechts Tafel und Klassenraum.', spoken: '„Gleicher Beamtenstatus, aber völlig andere Krankenversicherung. Warum?“', text: 'Gleicher Status. Gleiche Absicherung?', why: 'Der Kontrast stoppt den Daumen, die Frage hält die Aufmerksamkeit.' },
-  { id: 'detail', label: 'Variante B · Detail', scene: 'detail', visual: 'Nahaufnahme: Ernennungsurkunde auf dem Tisch, daneben zwei Versicherungskarten.', spoken: '„Ab dem Tag deiner Ernennung gilt für dich etwas Neues. Und zwar nicht für alle das Gleiche.“', text: 'Polizei: Heilfürsorge. Lehramt: Beihilfe.', why: 'Die Antwort steht schon im Bild, die Begründung kommt von Stefan.' },
-  { id: 'frage', label: 'Variante C · Direkt', scene: 'person', visual: 'Stefan schaut direkt in die Kamera, ruhiger Hintergrund im Büro.', spoken: '„Du startest bei der Polizei? Dann brauchst du etwas, das Lehrkräfte nicht brauchen.“', text: 'Polizei-Start: Das wissen viele nicht.', why: 'Direkte Ansprache, Stefan als Gesicht der Marke.' },
+  { id: 'vergleich', label: 'Berufsvergleich', scene: 'cards', visual: 'Stefan steht zwischen zwei Karten „POLIZEI“ und „LEHRAMT“, kurzer Split-Frame ab dem ersten Bild.', spoken: '„Zwei Leute starten als Beamtenanwärter in NRW. Aber die Krankenversicherung ist nicht automatisch gleich geregelt.“', text: 'POLIZEI ≠ LEHRAMT?', cta: 'Checkliste im Profil', why: 'Format „Berufsgruppen-Duell“, abgeleitet aus dem beobachteten Split-Screen-Reel.' },
+  { id: 'frage', label: 'Frage / Denkfehler', scene: 'person', visual: 'Stefan direkt in die Kamera, Blickkontakt, eine große Untertitelzeile.', spoken: '„Du denkst, als Beamter ist die Krankenversicherung überall gleich geregelt? Polizei und Lehramt starten unterschiedlich.“', text: 'Überall gleich geregelt?', cta: 'Frage in die Kommentare', why: 'Format „Die unerwartete Konsequenz“: eine verbreitete Annahme, sachlich aufgelöst, ohne Panik.' },
+  { id: 'check', label: 'Checkliste', scene: 'detail', visual: 'Die gedruckte NRW-Checkliste in der Hand, ein Punkt wird angestrichen.', spoken: '„Punkt zwei meiner Checkliste klärt, ob für dich Heilfürsorge oder Beihilfe gilt.“', text: 'Heilfürsorge oder Beihilfe? Punkt 2.', cta: 'Checkliste holen', why: 'Format „Der Beamten-Check“: Serie mit einem Punkt pro Folge, das Dokument als sichtbarer Beleg.' },
 ] as const;
 
 /* ---------- 05 · Drei Reel-Konzepte ---------- */
 export const concepts = [
   {
-    id: 'a', tab: 'A', title: 'Polizei vs. Lehramt', scene: 'split', video: '', poster: '',
-    hook: 'Gleicher Beamtenstatus. Gleiche Absicherung?',
-    spoken: 'Warum unterscheiden sich die Versicherungsfragen beim Polizeistart und im Lehramtsreferendariat?',
-    opening: 'Split-Screen, zwei Berufswelten, ein Schnitt auf Stefan.',
-    times: ['0–1 s', '1–3 s', '3–12 s', '12–25 s', '25–30 s'],
-    board: ['Visual Hook: Split-Screen, Einsatzalltag links, Klassenraum rechts', 'Text Hook steht, Spoken Hook von Stefan aus dem Off', 'Schnitt auf Stefan: „Polizei NRW bekommt Heilfürsorge, Lehramt Beihilfe.“', 'Zwei Spalten im Bild: was jeweils dazu nötig ist', 'Handlungsaufruf: Checkliste im Profil'],
+    id: 'a', tab: 'A', title: 'Polizei vs. Lehramt', scene: 'cards', video: '', poster: '', length: '25–35 s', format: 'Berufsgruppen-Duell', origin: 'Split-Screen-Reel, Aufnahme 00:50–01:06',
+    hook: 'Gleiche Verbeamtung. Gleiche Absicherung?',
+    spoken: 'Du wirst Beamtenanwärter in NRW. Aber weißt du, welche Krankenversicherungsregeln für deine Laufbahn gelten?',
+    opening: 'Zwei Akten nebeneinander: „POLIZEI“ und „LEHRAMT“, Stefan dazwischen.',
+    times: ['0–4 s', '4–15 s', '15–20 s', '20–25 s', '25–35 s'],
+    board: ['Visual Hook: zwei Akten, Text Hook steht, Stefan stellt die Frage', 'Stefan: Polizeivollzugsdienst NRW mit Heilfürsorge, Lehramt mit Beihilfe', 'Die gedruckte Checkliste in die Kamera', 'Drei Fragen eingeblendet: Welche Laufbahn? Welcher Status? Wann beginnt der Dienst?', 'CTA: „Die NRW-Checkliste findest du über mein Profil.“'],
     core: 'Im Polizeivollzugsdienst NRW gibt es freie Heilfürsorge, im Lehramt in der Regel 50 Prozent Beihilfe plus private Krankenversicherung. Wer Heilfürsorge hat, denkt an eine Anwartschaft für später.',
     cta: 'Checkliste ansehen', goal: 'Reichweite bei Anwärtern, Einstieg in die Checkliste',
   },
   {
-    id: 'b', tab: 'B', title: 'Drei Prüfpunkte vor dem ersten Diensttag', scene: 'detail', video: '', poster: '',
-    hook: 'Deine Verbeamtung steht bevor?',
-    spoken: 'Drei Dinge, die du vor deinem ersten Diensttag prüfen solltest.',
-    opening: 'Detailaufnahmen: Unterlagen, Kalender, ein markierter Termin, Checkliste.',
-    times: ['0–1 s', '1–3 s', '3–12 s', '12–21 s', '21–30 s'],
-    board: ['Visual Hook: Kalender, ein Termin wird gold markiert', 'Text Hook im Bild, Stefan spricht den Spoken Hook in die Kamera', 'Punkt 1: Leistungsauszug der Krankenkasse anfordern', 'Punkt 2: private Krankenversicherung ab dem Ernennungstag', 'Punkt 3: Austritt aus der gesetzlichen Kasse fristgerecht, dann Hinweis auf die Checkliste'],
-    core: 'Leistungsauszug nach § 305 SGB V anfordern, die private Krankenversicherung ab dem Tag der Ernennungsurkunde beginnen lassen und den Austritt aus der gesetzlichen Kasse innerhalb von zwei Wochen nach deren Hinweis erklären.',
+    id: 'b', tab: 'B', title: 'Drei Prüfpunkte vor dem ersten Diensttag', scene: 'detail', video: '', poster: '', length: '25–40 s', format: 'Countdown mit drei Karten', origin: 'Talking Head mit eingeblendeten Belegen, Aufnahme 01:12–02:16',
+    hook: 'Verbeamtung in Sicht?',
+    spoken: 'Bevor du deine Ernennungsurkunde bekommst: Diese drei Fragen würde ich zuerst prüfen.',
+    opening: 'Kalenderblatt mit markierter „Ernennung“, Stefan legt drei Karten auf den Tisch.',
+    times: ['0–4 s', '4–12 s', '12–20 s', '20–28 s', '28–40 s'],
+    board: ['Visual Hook: Kalender und drei Karten, Text Hook, Stefans Frage', 'Karte 1: bestehende Verträge nicht vorschnell kündigen', 'Karte 2: Gesundheitsfragen vorbereiten, Leistungsauszug anfordern', 'Karte 3: private Krankenversicherung ab dem Tag der Ernennungsurkunde', 'CTA: „Die ausführliche Checkliste gibt es kostenlos, gern gehen wir sie gemeinsam durch.“'],
+    core: 'Bestehende Verträge wie eine Berufsunfähigkeitsversicherung nicht kündigen, bevor die neue Absicherung steht. Für die Gesundheitsfragen den Leistungsauszug nach § 305 SGB V anfordern. Die private Krankenversicherung auf den Tag der Ernennungsurkunde legen.',
     cta: 'Ganze Checkliste holen', goal: 'Vertrauen durch konkreten Nutzen, Download der Checkliste',
   },
   {
-    id: 'c', tab: 'C', title: 'Der verlorene Dienstschlüssel', scene: 'key', video: '', poster: '',
+    id: 'c', tab: 'C', title: 'Der verlorene Dienstschlüssel', scene: 'key', video: '', poster: '', length: '30–40 s', format: 'Die unerwartete Konsequenz', origin: 'Kontroverse These mit konkretem Beispiel, Aufnahme 03:03–03:47',
     hook: 'Dienstschlüssel verloren. Was jetzt?',
     spoken: 'Wann kann ein verlorener Dienstschlüssel eigentlich teuer werden?',
-    opening: 'Ein Schlüssel fällt auf den Schreibtisch. Stille. Perspektivwechsel.',
-    times: ['0–1 s', '1–3 s', '3–14 s', '14–24 s', '24–30 s'],
-    board: ['Visual Hook: Schlüssel fällt, Aufprall, kurze Stille', 'Text Hook erscheint, Stefan stellt die Frage als Spoken Hook', 'Stefan: wann der Dienstherr Regress nehmen kann', 'Was eine Diensthaftpflicht abdeckt, was die Gewerkschaft schon regelt', 'Handlungsaufruf: Gespräch anfragen'],
+    opening: 'Ein Schlüssel fällt auf den Schreibtisch. Stille. Perspektivwechsel auf Stefan.',
+    times: ['0–2 s', '2–5 s', '5–18 s', '18–32 s', '32–40 s'],
+    board: ['Visual Hook: Schlüssel fällt, Aufprall, eine Sekunde Stille', 'Text Hook, Stefan stellt die Frage', 'Drei Fragen auf der Tafel: Was ist passiert? Wie fahrlässig? Was ist schon abgesichert?', 'Einordnung ohne Pauschalaussage: wann Regress droht, was die Diensthaftpflicht abdeckt', 'CTA: „Wenn du unsicher bist, lass uns kurz drüber sprechen.“'],
     core: 'Regress droht bei Vorsatz und grober Fahrlässigkeit (§ 48 BeamtStG). Versicherbar ist die grobe Fahrlässigkeit über eine Diensthaftpflicht. Vorher prüfen, was die Gewerkschaft schon abdeckt.',
     cta: 'Gespräch anfragen', goal: 'Beratungsbedarf wecken, Kontaktaufnahme',
   },

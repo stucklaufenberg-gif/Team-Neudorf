@@ -18,7 +18,7 @@ import reelC from '../assets/reel-c.jpg';
 import reelD from '../assets/reel-d.jpg';
 import reelE from '../assets/reel-e.jpg';
 import {
-  chapters, tagLabel, brands, potentialTakeaways, pillarsOfPitch, mechanicRefs, hookFacts, hookLayers, hookTopic, hookVariants,
+  chapters, tagLabel, brands, potentialTakeaways, pillarsOfPitch, mechanicRefs, observations, hookFacts, hookLayers, hookTopic, hookVariants,
   concepts, pillars, tiles, shootTopics, shootOutputs, calTypes, calTypeName, days, calendar, campaigns, adRules, pathNodes, routes,
   levels, workflows, roles, dashData, kpiSources, roadmap, costTypes, questions,
 } from '../data/vision';
@@ -155,9 +155,13 @@ const buildCommit = (process.env.COMMIT_REF ?? process.env.WORKERS_CI_COMMIT_SHA
           ))}
           <figure class="quad__center"><Image src={avatar} alt="Stefan Neudorf" width={220} densities={[1, 2]} loading="lazy" /><figcaption>Stefan als Gesicht der Marke</figcaption></figure>
         </div>
-        <ul class="refs" data-reveal>
-          {mechanicRefs.map((r) => <li><a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a><span>{r.what}</span><small>{r.note}</small></li>)}
-        </ul>
+        <div class="obs" data-reveal>
+          <p class="label label--gold">Beobachtete Creator-Mechanik → unser Format</p>
+          <ol>
+            {observations.map((o) => <li><span class="idx">{o.time}</span><span class="obs__seen">{o.seen}</span><span class="obs__ours">{o.ours}</span></li>)}
+          </ol>
+          <p class="fine"><span class="tag tag--quelle">Beobachtung</span> Qualitative Sichtung einer bereitgestellten Bildschirmaufnahme von Creator-Class-Inhalten auf Instagram (20.11.2026). Kein Ranking, keine Views, keine Performance-Aussage; gesprochene Hooks wurden nicht transkribiert. Referenzen: {mechanicRefs.map((r, i) => <>{i > 0 && ', '}<a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a></>)}, jeweils nur für Content-Mechanik.</p>
+        </div>
       </section>
 
       <!-- ========== 04 · CONTENT-LAB ========== -->
@@ -195,6 +199,7 @@ const buildCommit = (process.env.COMMIT_REF ?? process.env.WORKERS_CI_COMMIT_SHA
                 <div data-layer-row="visual"><dt>Visual</dt><dd>{v.visual}</dd></div>
                 <div data-layer-row="spoken"><dt>Spoken</dt><dd>{v.spoken}</dd></div>
                 <div data-layer-row="text"><dt>Text</dt><dd>{v.text}</dd></div>
+                <div><dt>CTA</dt><dd>{v.cta}</dd></div>
                 <div class="lab__why"><dt>Warum</dt><dd>{v.why}</dd></div>
               </dl>
             ))}
@@ -202,7 +207,7 @@ const buildCommit = (process.env.COMMIT_REF ?? process.env.WORKERS_CI_COMMIT_SHA
         </div>
         <ul class="facts-mini" data-reveal>
           {hookFacts.map((f) => <li><span class="tag tag--doku">{tagLabel.doku}</span>{f.text} <a href={f.url} target="_blank" rel="noopener noreferrer">{f.source}</a></li>)}
-          <li><span class="tag tag--idee">Beobachtete Mechanik</span>Drei gleichzeitige Hook-Ebenen sind eine Faustregel aus der Creator-Praxis, keine Plattformvorgabe. Die Varianten oben sind unser eigenes Formatkonzept; Performance-Daten gibt es erst nach Tests.</li>
+          <li><span class="tag tag--quelle">Beobachtung</span>In der gesichteten Creator-Aufnahme arbeiten die Formate mit Bild, kurzem Text und Sprecher gleichzeitig. Die drei Varianten oben sind unser eigenes Formatkonzept. Welche besser wirkt, zeigt erst der Test.</li>
         </ul>
       </section>
 
@@ -233,7 +238,7 @@ const buildCommit = (process.env.COMMIT_REF ?? process.env.WORKERS_CI_COMMIT_SHA
             </div>
             <div class="concept-card__body">
               <h3>{c.title}</h3>
-              <p class="concept-card__meta"><span class="tag tag--idee">Eigenes Formatkonzept</span>Ziel: {c.goal}. Noch keine Performance-Daten.</p>
+              <p class="concept-card__meta"><span class="tag tag--idee">Eigenes Formatkonzept</span>{c.format} · {c.length} · abgeleitet aus: {c.origin}. Ziel: {c.goal}. Noch keine Performance-Daten.</p>
               <dl class="hook3">
                 <div><dt>Visual Hook</dt><dd>{c.opening}</dd></div>
                 <div><dt>Spoken Hook</dt><dd>„{c.spoken}“</dd></div>

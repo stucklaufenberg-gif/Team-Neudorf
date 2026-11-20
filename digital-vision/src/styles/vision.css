@@ -535,7 +535,7 @@ dd { color: var(--ice); }
 .takeaways li::before { content: ''; position: absolute; left: 0; top: 0.75em; width: 8px; height: 1px; background: var(--gold); }
 
 .quad { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.quad article { display: grid; align-content: start; gap: 0.5rem; min-height: clamp(150px, 22vh, 220px); padding: clamp(1.1rem, 2.4vw, 2rem); border: 1px solid var(--line-strong); background: linear-gradient(160deg, var(--panel), transparent 85%); }
+.quad article { display: grid; align-content: start; gap: 0.4rem; min-height: clamp(120px, 17vh, 200px); padding: clamp(1.1rem, 2.4vw, 2rem); border: 1px solid var(--line-strong); background: linear-gradient(160deg, var(--panel), transparent 85%); }
 .quad article:nth-child(2), .quad article:nth-child(4) { text-align: right; justify-items: end; }
 .quad article:nth-child(3), .quad article:nth-child(4) { align-content: end; }
 .quad h3 { font-size: clamp(1.4rem, 1.1rem + 1vw, 2.2rem); } .quad p { color: var(--mist); max-width: 30ch; font-size: 0.95rem; }
@@ -593,6 +593,18 @@ dd { color: var(--ice); }
 .art__board { position: absolute; left: 8%; right: 8%; top: 18%; height: 34%; border: 3px solid #8a6a3b; background: #1e3a2f; }
 .art__chalk { position: absolute; left: 16%; top: 26%; width: 50%; height: 14%; background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0 2px, transparent 2px 12px); }
 .art__cap { position: absolute; left: 0.6rem; bottom: 0.6rem; font: 500 0.55rem var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.75); }
+.art--cards { background: radial-gradient(110% 70% at 50% 25%, #1c4a7c, #06182c 72%); }
+.art__file { position: absolute; top: 38%; width: 40%; aspect-ratio: 3 / 4; display: grid; place-items: end center; padding-bottom: 14%; background: linear-gradient(180deg, #f4efe4, #d9d0bd); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.75); }
+.art__file::before { content: ''; position: absolute; left: 0; top: -7%; width: 46%; height: 9%; border-radius: 4px 4px 0 0; background: #d9d0bd; }
+.art__file b { font: 700 clamp(0.62rem, 0.5rem + 0.4vw, 0.82rem) var(--sans); letter-spacing: 0.12em; color: var(--navy-950); padding: 0.25rem 0.4rem; border-top: 2px solid var(--gold); }
+.art__file--a { left: 7%; transform: rotate(-5deg); } .art__file--b { right: 7%; transform: rotate(4deg); }
+.art__split { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--gold); opacity: 0.8; }
+.obs { margin-top: 1rem; }
+.obs ol { display: grid; gap: 4px; margin: 0.6rem 0 0; }
+.obs li { display: grid; grid-template-columns: 7.5rem 1.4fr 1fr; gap: 0.3rem 1.2rem; align-items: baseline; padding: 0.55rem 0.8rem; border: 1px solid var(--line); background: rgba(234, 241, 250, 0.03); font-size: 0.86rem; }
+.obs__seen { color: var(--mist); } .obs__ours { color: #fff; font-family: var(--serif); font-size: 1.05rem; }
+.obs__ours::before { content: '→ '; color: var(--gold); }
+.obs .fine { margin-top: 0.6rem; font-size: 0.76rem; }
 .art--detail { background: radial-gradient(120% 80% at 50% 0%, #2b4b6e, #0a1d33 70%); }
 .art__paper { position: absolute; left: 10%; top: 40%; width: 52%; height: 42%; display: grid; align-content: start; gap: 9px; padding: 14% 10%; background: #f3efe6; transform: rotate(-6deg); box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7); }
 .art__paper b { height: 4px; background: #c9c0ad; } .art__paper b:first-child { width: 60%; height: 7px; background: var(--navy-700); }
@@ -780,6 +792,7 @@ dd { color: var(--ice); }
   .paths { grid-template-columns: 1fr; grid-template-rows: none; }
   .quad { grid-template-columns: 1fr; } .quad article:nth-child(n) { text-align: left; justify-items: start; align-content: start; min-height: 0; } .quad__center { position: static; transform: none; margin: 0 auto 0.6rem; order: -1; }
   .refs li { grid-template-columns: 1fr; } .refs small { grid-column: 1; }
+  .obs li { grid-template-columns: 1fr; }
   .lab__layers button small { display: none; }
   .board { grid-template-columns: 1fr; } .board li { grid-template-columns: 4rem 1fr; } .hook3 { grid-template-columns: 1fr; }
   .route { grid-template-columns: 1fr; } .route li { padding: 0.8rem 0.9rem 0.8rem 2.4rem; } .route__dot { left: 0.8rem; top: 1.05rem; } .route li.is-on:not(:last-child)::after { content: none; } .route li:not(.is-on) p { display: none; }

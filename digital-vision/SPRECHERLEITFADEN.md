@@ -14,7 +14,7 @@ Content-Idee bis zur Beratungsanfrage. Du bleibst der Experte.“
 |---|---|---|---|
 | 01 | Einstieg | Wir sind nicht hier, um deine Geschichte nachzuerzählen. Wir zeigen, wie aus deinem Wissen Anfragen werden. | Hero, dann weiter |
 | 02 | Marktpotenzial | Andere Makler erreichen sechsstellige Follower mit Versicherungswissen. Für dich zählt nicht die größte Reichweite, sondern die richtige: Beamte und Anwärter in NRW. | Sechs Accounts mit einheitlichem Stand 20.10.2026, darunter drei für Beamte und Polizei |
-| 03 | Differenzierung | Creator-Agenturen können Hooks, Versicherer können Fachwissen. Wir verbinden beides und denken jeden Inhalt bis zur Anfrage. | Die vier Felder, du in der Mitte |
+| 03 | Differenzierung | Creator-Agenturen können Hooks, Versicherer können Fachwissen. Wir verbinden beides und denken jeden Inhalt bis zur Anfrage. | Vier Felder, darunter drei beobachtete Formate mit Timecode und unser eigenes Format |
 | 04 | Content-Lab | In den ersten drei Sekunden entscheidet sich alles. Wir arbeiten mit drei Ebenen gleichzeitig. | Ebenen einzeln ausschalten, dann Varianten wechseln |
 | 05 | Drei Reel-Konzepte | Diese Themen kommen aus deiner eigenen Checkliste. Fertige Storyboards, die fachliche Aussage kommt von dir. | Konzept A, B, C, Storyboard-Leiste |
 | 06 | Content-Säulen | Reichweite holt neue Leute, Vertrauen zeigt Kompetenz, Conversion löst Anfragen aus. | Säulen umschalten, Profil reagiert |
@@ -27,6 +27,17 @@ Content-Idee bis zur Beratungsanfrage. Du bleibst der Experte.“
 | 13 | Erfolgsmessung | Wir messen Gespräche und Kunden, nicht Likes. Die Zahlen hier sind Demo, echte gibt es im Pilot. | Kampagne A gegen B |
 | 14 | 90-Tage-Pilot | Drei Monate, klare Aufgaben auf beiden Seiten, danach entscheidest du. | Phasen durchklicken, Kostenarten |
 | – | Einladung | Lass es uns gemeinsam umsetzen. | Die drei Fragen offen stellen |
+
+## Hypothesen für den Pilot (keine Prognosen)
+
+Aus der Reel-Analyse vom 20.11.2026, im Pilot zu testen:
+
+- **H1:** Konkrete Laufbahn-Duelle erzielen mehr relevante Aufmerksamkeit als allgemeine Versicherungstipps.
+- **H2:** Eine sichtbare Checkliste macht den Handlungsaufruf verständlicher als eine nur gesprochene Aufforderung.
+- **H3:** Frage plus Dokumentbeleg hält besser als reiner Talking Head.
+- **H4:** Breite Viral-Themen bringen eventuell mehr Views, aber nicht zwingend mehr qualifizierte Anfragen.
+
+Entscheidungsregel: Ein Format kommt in Serie, wenn es relevante Folgeschritte auslöst, nicht nur Likes.
 
 ## Antworten auf typische Einwände
 

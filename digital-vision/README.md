@@ -213,5 +213,7 @@ Nicht geprüft: Safari und Firefox, echte Mobilgeräte, Beamer-Auflösungen unte
 7. **Absender:** Agenturname und Kontaktdaten fehlen bewusst, sie wurden nicht erfunden.
 8. **Preise:** Die Präsentation nennt keine Beträge. Die Cockpit-Werte sind Demo-Daten.
 9. **Werkzeuge:** Für CRM, Terminbuchung und Automatisierung ist noch nichts ausgewählt oder eingerichtet.
-10. **Research-Handoff-ZIP** (README, Original-Checkliste, Reel-Analyse mit neun Bildbelegen) ist in der
-    Entwicklungsumgebung nicht angekommen und deshalb noch nicht ausgewertet.
+10. **Reel-Analyse eingearbeitet** (Handoff vom 20.11.2026): Content-Lab mit drei Einstiegen zu einem Thema,
+    Storyboards nach den drei Prototypen mit Zeitmarken, Station 03 mit drei beobachteten Formaten (Timecode).
+    Gesprochene Hooks der fremden Reels sind nicht transkribiert und werden nicht zitiert. Die neun Bildbelege
+    und die Videoübersicht bleiben intern und werden nicht veröffentlicht.

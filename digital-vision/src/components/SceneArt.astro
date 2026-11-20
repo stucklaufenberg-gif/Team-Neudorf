@@ -13,6 +13,13 @@ const { scene } = Astro.props;
       <div class="art__half art__half--b"><i class="art__board"></i><i class="art__chalk"></i><span class="art__cap">Klassenraum</span></div>
     </>
   )}
+  {scene === 'cards' && (
+    <>
+      <i class="art__file art__file--a"><b>POLIZEI</b></i>
+      <i class="art__file art__file--b"><b>LEHRAMT</b></i>
+      <i class="art__split"></i>
+    </>
+  )}
   {scene === 'detail' && (
     <>
       <i class="art__paper"><b></b><b></b><b></b><b></b></i>
