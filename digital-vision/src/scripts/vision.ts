@@ -1,7 +1,7 @@
 // Digital Vision & Growth – Interaktion und Bewegung. Kein Framework, kein Tracking, keine externen Dienste.
 // 1 Scroll-Engine · 2 Hero · 3 Reveal · 4 Kapitel & Schritte · 5 Präsentationsmodus & Tastatur ·
-// 6 Tabs (Zielgruppen, Formate, Säulen, Kampagnen, Journey, Roadmap) · 7 Schalter und Demonstrationen
-// (Vergleich, Redaktionskalender, Produktionsprozess, Drehtag, Anfragewege, Cockpit) · 8 Halftone
+// 6 Tabs · 7 Demonstrationen (Content-Lab, Reel-Konzepte, Kalender, Drehtag, Kampagnen, Anfrageweg,
+// Automatisierung, Cockpit) · 8 Halftone
 
 const root = document.documentElement;
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -183,28 +183,53 @@ function tabs(list: HTMLElement, onSelect?: (tab: HTMLElement, i: number, all: H
   const initial = all.find((t) => t.getAttribute('aria-selected') === 'true') ?? all[0];
   if (initial) onSelect?.(initial, all.indexOf(initial), all);
 }
-// Einfache Tab-Gruppen: Zielgruppen, Videoformate
-for (const sel of ['[data-segments]', '[data-reels]']) { const el = $(sel); if (el) tabs($('[role="tablist"]', el)!); }
+// Einfache Tab-Gruppen
+const replay = (el: HTMLElement, cls: string) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); };
+const pressGroup = (buttons: HTMLElement[], active: HTMLElement) => buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === active)));
+const setText = (sel: string, value: string | undefined, scope: ParentNode = document) => { const el = $(sel, scope); if (el) el.textContent = value ?? ''; };
 // Content-Säulen ↔ Profil-Mockup
 const pillarsRoot = $('[data-pillars]');
 if (pillarsRoot) tabs($('[role="tablist"]', pillarsRoot)!, (tab) => $('.phone', pillarsRoot)?.setAttribute('data-active-pillar', tab.dataset.pillar ?? ''));
 // Roadmap: Linie füllt sich bis zum gewählten Schritt
-const fillLine = (el: HTMLElement) => (_t: HTMLElement, i: number, all: HTMLElement[]) => { el.style.setProperty('--a', String(i)); all.forEach((b, k) => b.classList.toggle('is-reached', k <= i)); };
 const roadmapEl = $('[data-roadmap] .roadmap');
-if (roadmapEl) tabs($('[role="tablist"]', roadmapEl)!, fillLine(roadmapEl));
+if (roadmapEl) tabs($('[role="tablist"]', roadmapEl)!, (_t, i, all) => { roadmapEl.style.setProperty('--a', String(i)); all.forEach((b, k) => b.classList.toggle('is-reached', k <= i)); });
 
-/* ---------- 7 · Schalter und Demonstrationen ---------- */
-const pressGroup = (buttons: HTMLElement[], active: HTMLElement) => buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === active)));
-const setText = (sel: string, value: string | undefined, scope: ParentNode = document) => { const el = $(sel, scope); if (el) el.textContent = value ?? ''; };
-const replay = (el: HTMLElement, cls: string) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); };
-// Vergleiche (Differenzierung, organisch/bezahlt)
-$$('[data-compare]').forEach((cmp) => { const btns = $$('[data-mode]', $('.switch', cmp)!); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); $('.compare', cmp)?.setAttribute('data-mode', b.dataset.mode ?? 'both'); })); });
+/* ---------- 7 · Demonstrationen ---------- */
+// Content-Lab: Hook-Varianten und drei ein- und ausblendbare Ebenen
+const lab = $('[data-hooklab]');
+if (lab) {
+  const phone = $('[data-lab-phone]', lab)!;
+  tabs($('[role="tablist"]', lab)!, (tab) => {
+    $$('[data-lab-screen]', lab).forEach((s) => (s.hidden = s.dataset.labScreen !== tab.dataset.variant));
+    replay(phone, 'is-swapping');
+  });
+  const layerBtns = $$('[data-layer]', lab);
+  layerBtns.forEach((b) => b.addEventListener('click', () => {
+    b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
+    const on = layerBtns.filter((x) => x.getAttribute('aria-pressed') === 'true').map((x) => x.dataset.layer);
+    phone.dataset.layers = on.join(' ');
+    $$('[data-layer-row]', lab).forEach((row) => row.classList.toggle('is-off', !on.includes(row.dataset.layerRow)));
+  }));
+}
 
-// Demo 1 · Redaktionskalender: Filter nach Art, Auswahl zeigt die Details
+// Reel-Konzepte: Tabs; Musterclips spielen nur auf Klick, stumm, ohne Autoplay
+const conceptsRoot = $('[data-concepts]');
+const stopVideos = (scope: ParentNode) => $$<HTMLVideoElement>('video[data-reel-video]', scope).forEach((v) => { v.pause(); v.closest('[data-reel-player]')?.classList.remove('is-playing'); });
+if (conceptsRoot) {
+  tabs($('[role="tablist"]', conceptsRoot)!, () => stopVideos(conceptsRoot));
+  $$('[data-reel-play]', conceptsRoot).forEach((btn) => btn.addEventListener('click', () => {
+    const player = btn.closest<HTMLElement>('[data-reel-player]')!, video = $<HTMLVideoElement>('video', player);
+    if (!video) return;
+    if (video.paused) { video.play().then(() => player.classList.add('is-playing')).catch(() => player.classList.add('has-error')); btn.setAttribute('aria-label', 'Muster-Reel anhalten'); }
+    else { video.pause(); player.classList.remove('is-playing'); btn.setAttribute('aria-label', 'Muster-Reel abspielen'); }
+  }));
+}
+
+// Redaktionskalender: Filter nach Art, Auswahl zeigt die Details
 const cal = $('[data-cal]');
 if (cal) {
   const items = $$('.cal__item', cal), filters = $$('[data-cal-filter]', cal);
-  const show = (it: HTMLElement) => { pressGroup(items, it); for (const k of ['when', 'kind', 'title', 'format', 'goal', 'cta']) setText(`[data-cal-${k}]`, it.dataset[k], cal); const d = $('.cal__detail', cal); if (d) replay(d, 'is-swapping'); };
+  const show = (it: HTMLElement) => { pressGroup(items, it); for (const k of ['when', 'kind', 'title', 'format', 'to']) setText(`[data-cal-${k}]`, it.dataset[k], cal); const d = $('.cal__detail', cal); if (d) replay(d, 'is-swapping'); };
   items.forEach((it) => it.addEventListener('click', () => show(it)));
   filters.forEach((f) => f.addEventListener('click', () => {
     pressGroup(filters, f); const t = f.dataset.calFilter;
@@ -214,17 +239,13 @@ if (cal) {
   }));
 }
 
-// Produktionsprozess: Art der Arbeit hervorheben
-const pipe = $('[data-pipeline]');
-if (pipe) { const btns = $$('[data-level-filter]', pipe); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); const f = b.dataset.levelFilter; $$('[data-level]', pipe).forEach((li) => li.classList.toggle('is-dim', f !== 'alle' && li.dataset.level !== f)); setText('[data-level-note]', b.dataset.note, pipe); })); }
-
-// Demo 2 · Drehtag: aus n Themen werden Formate für mehrere Wochen (Rechenbeispiel)
+// Drehtag: aus n Themen werden Formate für mehrere Wochen (illustratives Rechenbeispiel)
 const shoot = $('[data-shoot]');
 if (shoot) {
   const input = $<HTMLInputElement>('[data-shoot-input]', shoot)!;
   const render = () => {
     const n = Number(input.value), karussells = Math.ceil(n / 2), feed = n + karussells, weeks = Math.floor(feed / 3);
-    const out: Record<string, number> = { reels: n, stories: n, karussells, zitate: n, ads: Math.min(3, n), feed, weeks };
+    const out: Record<string, number> = { reels: n, hooks: n * 3, stories: n, karussells, ads: Math.min(4, n), feed, weeks };
     setText('[data-shoot-n]', String(n), shoot);
     for (const [k, v] of Object.entries(out)) $$(`[data-out="${k}"]`, shoot).forEach((el) => { if (el.textContent !== String(v)) { el.textContent = String(v); replay(el, 'is-bump'); } });
     $$('[data-topic]', shoot).forEach((li) => li.classList.toggle('is-on', Number(li.dataset.topic) < n));
@@ -234,42 +255,43 @@ if (shoot) {
   input.addEventListener('input', render); render();
 }
 
-// Demo 3 · Kampagnen: Auswahl tauscht Anzeige und Steckbrief, Format wechselt Feed/Story
+// Paid Advertising: Kampagne, Creative und Format
 const adRoot = $('[data-ad]');
 if (adRoot) {
-  const ad = $('.ad', adRoot)!, formatBtns = $$('[data-ad-format]', adRoot);
-  let first = true;
-  tabs($('[role="tablist"]', adRoot)!, (tab) => {
-    for (const k of ['headline', 'sub', 'text', 'cta']) setText(`[data-ad-${k}]`, tab.dataset[k], ad);
-    $$('[data-ad-img]', ad).forEach((im) => (im.hidden = im.dataset.adImg !== tab.dataset.campaign));
+  const ad = $('.ad', adRoot)!, formatBtns = $$('[data-ad-format]', adRoot), creativeBtns = $$('[data-creative]', adRoot);
+  let camp: HTMLElement | null = null, creative = 0, first = true;
+  const paint = () => {
+    if (!camp) return;
+    const cr = (JSON.parse(camp.dataset.creatives ?? '[]') as { headline: string; sub: string }[])[creative];
+    setText('[data-ad-headline]', cr?.headline, ad); setText('[data-ad-sub]', cr?.sub, ad);
+    setText('[data-ad-offer]', camp.dataset.offer, ad); setText('[data-ad-cta]', camp.dataset.cta, ad);
+    $$('[data-ad-img]', ad).forEach((im) => (im.hidden = im.dataset.adImg !== `${camp!.dataset.campaign}${creative}`));
     if (!first) replay(ad, 'is-swapping');
     first = false;
-  });
+  };
+  tabs($('[role="tablist"]', adRoot)!, (tab) => { camp = tab; creative = 0; pressGroup(creativeBtns, creativeBtns[0]); paint(); });
+  creativeBtns.forEach((b) => b.addEventListener('click', () => { pressGroup(creativeBtns, b); creative = Number(b.dataset.creative); paint(); }));
   formatBtns.forEach((b) => b.addEventListener('click', () => { pressGroup(formatBtns, b); ad.dataset.format = b.dataset.adFormat ?? 'feed'; }));
 }
-// Wege zur Anfrage
-const paths = $('[data-paths]');
-if (paths) { const btns = $$('[data-path]', $('.switch', paths)!); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); $('.paths', paths)?.setAttribute('data-path', b.dataset.path ?? ''); })); }
 
-// Demo 4 · Lead Journey: Stationen als Tabs, auf Wunsch läuft der Ablauf Schritt für Schritt durch
-const journeyEl = $('[data-journey] .journey');
-if (journeyEl) {
-  const list = $('[role="tablist"]', journeyEl)!, steps = $$('[role="tab"]', list);
-  const playBtn = $<HTMLButtonElement>('[data-journey-play]', journeyEl);
-  let timer = 0, auto = false;
-  const stop = () => { window.clearInterval(timer); timer = 0; playBtn?.setAttribute('aria-pressed', 'false'); journeyEl.classList.remove('is-playing'); setText('[data-journey-play-label]', 'Ablauf abspielen', journeyEl); };
-  tabs(list, (t, i, all) => { fillLine(journeyEl)(t, i, all); if (!auto && timer) stop(); });
-  playBtn?.addEventListener('click', () => {
-    if (timer) return stop();
-    let i = steps.findIndex((st) => st.getAttribute('aria-selected') === 'true');
-    if (i >= steps.length - 1) i = -1;
-    const next = () => { i += 1; auto = true; steps[i].click(); auto = false; if (i >= steps.length - 1) stop(); };
-    playBtn.setAttribute('aria-pressed', 'true'); journeyEl.classList.add('is-playing'); setText('[data-journey-play-label]', 'Anhalten', journeyEl);
-    timer = window.setInterval(next, 2400); next();
-  });
+// Weg zur Anfrage: Route hebt die beteiligten Stationen hervor
+const routesRoot = $('[data-routes]');
+if (routesRoot) {
+  const btns = $$('[data-route]', routesRoot), route = $('.route', routesRoot)!;
+  btns.forEach((b) => b.addEventListener('click', () => {
+    pressGroup(btns, b);
+    const nodes = (b.dataset.nodes ?? '').split(' ');
+    $$('[data-node]', route).forEach((li) => { li.classList.toggle('is-on', nodes.includes(li.dataset.node ?? '')); li.style.setProperty('--o', String(Math.max(0, nodes.indexOf(li.dataset.node ?? '')))); });
+    setText('[data-route-note]', b.dataset.note, routesRoot);
+    replay(route, 'is-swapping');
+  }));
 }
 
-// Demo 5 · Performance-Cockpit mit Demo-Daten
+// Automatisierung: Content- oder Lead-Workflow
+const flows = $('[data-workflows]');
+if (flows) { const btns = $$('[data-workflow]', flows); btns.forEach((b) => b.addEventListener('click', () => { pressGroup(btns, b); $$('[data-flow]', flows).forEach((f) => (f.hidden = f.dataset.flow !== b.dataset.workflow)); })); }
+
+// Erfolgsmessung: Cockpit mit Demo-Daten
 const dash = $('[data-dash]');
 if (dash) {
   interface Row { id: string; spend: number; leads: number; qualified: number; booked: number; attended: number; customers: number; verdict: string; action: string }

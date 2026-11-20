@@ -1,306 +1,269 @@
-// Inhalte der Präsentation „Digital Vision & Growth“ – Creative Direction 02.
-// Agentur-Pitch: von der Expertise zur sichtbaren Marke und zu qualifizierten Beratungsanfragen.
+// Inhalte der Präsentation „Digital Vision & Growth“ – Final Pitch (14 Stationen).
+// Hauptbotschaft: Wir übernehmen die digitale Vermarktung von Stefans Expertise, von der Content-Idee bis zur Beratungsanfrage.
+// Fachliche Aussagen stammen aus Stefans „Checkliste Beamtenanwärter NRW“ (team-neudorf.de) und brauchen seine Freigabe.
 // Keine erfundenen Zahlen, Referenzen, Preise oder Ergebnisse. Mockups sind Konzepte, Dashboard-Werte sind Demo-Daten.
-// Drei Kennzeichnungen trennen die Aussagen: doku = laut Plattform-Dokumentation, hyp = unsere Hypothese, idee = unser Vorschlag.
 
-export const tagLabel = { ist: 'Ist-Stand', doku: 'Laut Plattform-Doku', hyp: 'Unsere Hypothese', idee: 'Unser Vorschlag' } as const;
+export const tagLabel = { ist: 'Ist-Stand', quelle: 'Mit Quelle', doku: 'Laut Plattform-Doku', hyp: 'Unsere Hypothese', idee: 'Unser Vorschlag', check: 'Aus Stefans Checkliste' } as const;
 export type Tag = keyof typeof tagLabel;
 
 export const chapters = [
-  { id: 'k1', n: '01', title: 'Das ungenutzte Potenzial', line: 'Die Expertise ist da. Es fehlt das System, das sie sichtbar macht.' },
-  { id: 'k2', n: '02', title: 'Wen wir gewinnen wollen', line: 'Vier Zielgruppen, eine klare Reihenfolge.' },
-  { id: 'k3', n: '03', title: 'Die Personenmarke', line: 'Wie wir Stefan als Experten vermarkten.' },
-  { id: 'k4', n: '04', title: 'Die Social-Media-Strategie', line: 'Drei Säulen und ein Plan für vier Wochen.' },
-  { id: 'k5', n: '05', title: 'Produktion & Automatisierung', line: 'Ein Drehtag, mehrere Wochen Content.' },
-  { id: 'k6', n: '06', title: 'Kampagnen & Leads', line: 'Drei Kampagnen, drei Wege zur Anfrage.' },
-  { id: 'k7', n: '07', title: 'Die Lead Journey', line: 'Von der Anzeige bis zur Nachverfolgung.' },
-  { id: 'k8', n: '08', title: 'Growth Intelligence', line: 'Woran wir eine Kampagne messen.' },
-  { id: 'k9', n: '09', title: 'Der 90-Tage-Plan', line: 'Ein Pilot mit klarem Ende und offener Entscheidung.' },
-  { id: 'k10', n: '10', title: 'Angebot & nächster Schritt', line: 'Wer was übernimmt und wie wir starten.' },
+  { id: 's1', n: '01', title: 'Einstieg', line: 'Deine Expertise verdient mehr Sichtbarkeit.' },
+  { id: 's2', n: '02', title: 'Marktpotenzial', line: 'Was Personenmarken in der Branche heute erreichen.' },
+  { id: 's3', n: '03', title: 'Unsere Differenzierung', line: 'Creator-Mechanik trifft Versicherungswissen.' },
+  { id: 's4', n: '04', title: 'Das Content-Lab', line: 'Der dreifache Hook, live umgeschaltet.' },
+  { id: 's5', n: '05', title: 'Drei Reel-Konzepte', line: 'Aus deiner Checkliste, fertig zum Drehen.' },
+  { id: 's6', n: '06', title: 'Content-Säulen', line: 'Reichweite, Vertrauen, Conversion.' },
+  { id: 's7', n: '07', title: 'Ein Drehtag', line: 'Ein Termin, viele Inhalte.' },
+  { id: 's8', n: '08', title: 'Vier Wochen Content', line: 'Ein Plan, der auf Beratung zuläuft.' },
+  { id: 's9', n: '09', title: 'Paid Advertising', line: 'Drei Kampagnen, je zwei Creatives.' },
+  { id: 's10', n: '10', title: 'Weg zur Anfrage', line: 'Mehrere Einstiege, keine Pflichtschritte.' },
+  { id: 's11', n: '11', title: 'Automatisierung', line: 'Zwei Workflows, die wir aufbauen.' },
+  { id: 's12', n: '12', title: 'Dein Anteil', line: 'Was du tust und was wir übernehmen.' },
+  { id: 's13', n: '13', title: 'Erfolgsmessung', line: 'Wir zählen Gespräche, nicht Likes.' },
+  { id: 's14', n: '14', title: '90-Tage-Pilot', line: 'Testen, messen, gemeinsam entscheiden.' },
 ] as const;
 
-/* ---------- 01 · Potenzial ---------- */
-export const potential: { tag: Tag; label: string; title: string; items: string[] }[] = [
-  { tag: 'ist', label: 'Schon vorhanden', title: 'Ein Fundament, das steht', items: ['Website mit Seiten für Öffentlichen Dienst, Privat- und Gewerbekunden', 'Instagram-Profil im Markenbild', 'Klarer Schwerpunkt: Öffentlicher Dienst', 'Ein Makler, der selbst vor die Kamera kann'] },
-  { tag: 'hyp', label: 'Noch ungenutzt', title: 'Sichtbarkeit bleibt Zufall', items: ['Kein fester Rhythmus für Video und Beiträge', 'Keine Kampagnen, die gezielt Anfragen holen', 'Kein durchgängiger Weg von der Anfrage zum Termin', 'Keine Zahlen, die zeigen, was sich lohnt'] },
-  { tag: 'idee', label: 'Unser Ansatz', title: 'Ein System, das wir betreiben', items: ['Planbare Inhalte aus gebündelten Drehtagen', 'Kampagnen für klar benannte Zielgruppen', 'Ein Lead-Prozess mit festen Schritten', 'Auswertung, die Entscheidungen möglich macht'] },
+/* ---------- 02 · Marktpotenzial ---------- */
+// Wird aus der Recherche befüllt. Jede Zahl braucht Quelle und Datum; ohne Beleg steht „nicht belegt“.
+export interface Brand { name: string; handle: string; platform: string; focus: string; reach: string; date: string; source: string; sourceLabel: string }
+export const brands: Brand[] = [
+  { name: 'Florian Hörning', handle: 'finance_made_simple_', platform: 'Instagram', focus: 'Makler, Finanzen und Versicherungen', reach: 'ca. 383.000', date: '02.06.2026', source: 'https://versicherungsmonitor.de/2026/06/05/383-000-follower/', sourceLabel: 'VMK-Auswertung, berichtet von Versicherungsmonitor' },
+  { name: 'Bastian Kunkel', handle: 'versicherungenmitkopf', platform: 'Instagram', focus: 'Makler, Versicherungen erklärt', reach: 'ca. 343.000', date: '02.06.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Auswertung (eigene Studie)' },
+  { name: 'Marco Schmich', handle: 'finanzglas', platform: 'Instagram', focus: 'Finanzen und Versicherungen', reach: 'ca. 147.000', date: '02.06.2026', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'VMK-Auswertung (eigene Studie)' },
+  { name: 'Finanzexperten für Lehrer', handle: 'finanzexperten_fuer_lehrer', platform: 'Instagram', focus: 'Makler mit Zielgruppe Lehrkräfte', reach: 'nicht eindeutig belegt', date: 'unklar', source: 'https://www.versicherungenmitkopf.de/allgemein/die-besten-versicherungs-instagrammer-deutschlands', sourceLabel: 'In der VMK-Auswertung gelistet' },
+];
+export const startPoint = { posts: '11', followers: '109', note: 'Laut bereitgestelltem Profil-Screenshot (Aufnahmedatum nicht bekannt)' };
+export const potentialTakeaways = [
+  'Versicherungswissen lässt sich als Personenmarke erzählen: mit Gesicht, Fragen und klaren Antworten.',
+  'Reichweite entsteht über Serien und Wiederholung, nicht über einzelne Beiträge.',
+  'Für Stefan zählt nicht die größte Reichweite, sondern die richtige: Beamte und Anwärter in NRW.',
 ];
 
-export const system = [
-  { title: 'Expertise', text: 'Stefans Wissen und Auftreten' },
-  { title: 'Content', text: 'Formate mit Wiedererkennung' },
-  { title: 'Sichtbarkeit', text: 'Regelmäßig bei den Zielgruppen' },
-  { title: 'Kampagnen', text: 'Was funktioniert, bekommt Reichweite' },
-  { title: 'Anfragen', text: 'Menschen mit Beratungsbedarf' },
-  { title: 'Messung', text: 'Auswerten, lernen, verbessern' },
+/* ---------- 03 · Differenzierung ---------- */
+export const pillarsOfPitch = [
+  { title: 'Creator-Mechaniken', text: 'Hooks, Serien, Schnittrhythmus: was auf Instagram funktioniert.' },
+  { title: 'Versicherungswissen', text: 'Beihilfe, Heilfürsorge, Dienstunfähigkeit: fachlich sauber, von Stefan freigegeben.' },
+  { title: 'Kundengewinnung', text: 'Jeder Inhalt hat ein Ziel: Checkliste, Gespräch oder Termin.' },
+  { title: 'Professionelle Produktion', text: 'Skript, Regie, Dreh und Schnitt aus einer Hand.' },
+];
+export interface MechanicRef { name: string; what: string; url: string; note: string }
+export const mechanicRefs: MechanicRef[] = [
+  { name: 'Creator Class', what: 'Kurs zu Social-Media-Wachstum: Formate, Hooks, Storytelling und Analyse viraler Reels.', url: 'https://www.creatorclass.net/', note: 'Referenz für Content-Mechanik, nicht für Versicherungsfragen.' },
+  { name: 'Christian Wolf', what: 'Mitgründer von MORE Nutrition, bekannt für Kurzvideo-Formate mit hoher Reichweite.', url: 'https://blackforestspace.de/speaker/christian-wolf/', note: 'Referenz für Content-Mechanik, keine Versicherungsexpertise.' },
+];
+export const hookFacts: { text: string; source: string; url: string }[] = [
+  { text: 'Die ersten drei Sekunden eines Reels entscheiden, ob jemand weiterwischt.', source: 'Instagram Creators, FAQ', url: 'https://creators.instagram.com/faq' },
+  { text: 'Der Hook gehört in die ersten sechs Sekunden, das Kernversprechen möglichst in die ersten drei.', source: 'TikTok for Business, Creative Best Practices', url: 'https://ads.tiktok.com/help/article/creative-best-practices' },
 ];
 
-/* ---------- 02 · Zielgruppen ---------- */
-export const criteria = ['Beratungsbedarf', 'Differenzierung', 'Erreichbarkeit', 'Wirtschaftliches Potenzial'] as const;
-const level = ['', 'niedrig', 'mittel', 'hoch'];
-export const levelText = (v: number) => level[v];
-export const segments = [
-  {
-    id: 'anwaerter', title: 'Beamtenanwärter & Referendare', role: 'Fokus im Pilot',
-    lead: 'Viele Entscheidungen in kurzer Zeit, feste Starttermine und ein Thema, bei dem Stefan zu Hause ist.',
-    scores: [3, 3, 3, 2],
-    reasons: ['Krankenversicherung und Dienstunfähigkeit müssen zum Berufsstart geklärt sein.', 'Schwerpunkt Öffentlicher Dienst, eigene Seite für den Start ins Referendariat.', 'Klarer Anlass und klarer Zeitpunkt: Inhalte und Anzeigen lassen sich darauf ausrichten.', 'Kleiner Einstieg, aber die Chance auf eine lange Kundenbeziehung.'],
-  },
-  {
-    id: 'einsatz', title: 'Polizei, Feuerwehr & Bundeswehr', role: 'Zweite Welle',
-    lead: 'Eine Berufswelt mit eigenen Regeln. Stefan war selbst Soldat und spricht ihre Sprache.',
-    scores: [3, 3, 2, 2],
-    reasons: ['Heilfürsorge, Dienstunfähigkeit und Diensthaftpflicht sind erklärungsbedürftig.', 'Eigene Erfahrung im Dienst: ein Vorteil, den kaum ein Wettbewerber hat.', 'Kleinere Gruppen, die man eher über Inhalte und Empfehlung erreicht als über breite Anzeigen.', 'Enge Gemeinschaften: Wer überzeugt, wird weiterempfohlen.'],
-  },
-  {
-    id: 'privat', title: 'Privatkunden in Lebenssituationen', role: 'Regional begleitend',
-    lead: 'Familie, Haus, Berufsstart: Anlässe, bei denen Menschen einen festen Ansprechpartner suchen.',
-    scores: [2, 1, 3, 2],
-    reasons: ['Bedarf entsteht punktuell, dann aber konkret.', 'Viel Wettbewerb. Den Unterschied macht die Person, nicht das Produkt.', 'Regional gut erreichbar: Mechernich, Euskirchen, Bonn und Köln.', 'Solide, wenn aus einem Vertrag eine Betreuung wird.'],
-  },
-  {
-    id: 'gewerbe', title: 'Ausgewählte Gewerbekunden', role: 'Später, gezielt',
-    lead: 'Hoher Wert je Kunde, aber ein anderer Weg dorthin als über Instagram und Facebook.',
-    scores: [3, 2, 1, 3],
-    reasons: ['Betriebliche Risiken und betriebliche Vorsorge sind beratungsintensiv.', 'Fachlich stark, aber noch ohne eigenes Profil in dieser Zielgruppe.', 'Entscheider erreicht man eher über Empfehlung, Suche und berufliche Netzwerke.', 'Wenige Kunden können viel bewegen.'],
-  },
+/* ---------- 04 · Content-Lab ---------- */
+export const hookLayers = [
+  { id: 'visual', label: 'Visual Hook', short: 'Was man sieht' },
+  { id: 'spoken', label: 'Spoken Hook', short: 'Was man hört' },
+  { id: 'text', label: 'Text Hook', short: 'Was man liest' },
+] as const;
+export const hookTopic = 'Polizei oder Lehramt: Wer bekommt Heilfürsorge, wer Beihilfe?';
+export const hookVariants = [
+  { id: 'split', label: 'Variante A · Vergleich', scene: 'split', visual: 'Split-Screen: links Einsatzjacke und Streifenwagen-Tür, rechts Tafel und Klassenraum.', spoken: '„Gleicher Beamtenstatus, aber völlig andere Krankenversicherung. Warum?“', text: 'Gleicher Status. Gleiche Absicherung?', why: 'Der Kontrast stoppt den Daumen, die Frage hält die Aufmerksamkeit.' },
+  { id: 'detail', label: 'Variante B · Detail', scene: 'detail', visual: 'Nahaufnahme: Ernennungsurkunde auf dem Tisch, daneben zwei Versicherungskarten.', spoken: '„Ab dem Tag deiner Ernennung gilt für dich etwas Neues. Und zwar nicht für alle das Gleiche.“', text: 'Polizei: Heilfürsorge. Lehramt: Beihilfe.', why: 'Die Antwort steht schon im Bild, die Begründung kommt von Stefan.' },
+  { id: 'frage', label: 'Variante C · Direkt', scene: 'person', visual: 'Stefan schaut direkt in die Kamera, ruhiger Hintergrund im Büro.', spoken: '„Du startest bei der Polizei? Dann brauchst du etwas, das Lehrkräfte nicht brauchen.“', text: 'Polizei-Start: Das wissen viele nicht.', why: 'Direkte Ansprache, Stefan als Gesicht der Marke.' },
 ] as const;
 
-/* ---------- 03 · Personenmarke ---------- */
-export const differentiation = [
-  { row: 'Absender', a: 'Ein Logo, ein Tarif, ein Slogan', b: 'Stefan, mit Gesicht und Stimme' },
-  { row: 'Einstieg', a: '„Jetzt vergleichen und sparen“', b: 'Eine Frage, die die Zielgruppe wirklich hat' },
-  { row: 'Inhalt', a: 'Produkt und Preis', b: 'Erklärung, Einordnung, nächster Schritt' },
-  { row: 'Bild', a: 'Stockfotos, wechselnde Gestaltung', b: 'Ein Markenbild, das man wiedererkennt' },
-  { row: 'Wirkung', a: 'Wird überblättert', b: 'Wird gemerkt, bevor Bedarf entsteht' },
-];
-
-export const brandPrinciples = [
-  { title: 'Ein Markenbild', text: 'Navy, Gold, eine Schrift, ein Cover-Raster. Jeder Beitrag ist als Stefan erkennbar.' },
-  { title: 'Feste Formate', text: 'Wiederkehrende Serien statt einzelner Ideen. Das spart Zeit und schafft Gewohnheit.' },
-  { title: 'Experte, nicht Verkäufer', text: 'Stefan erklärt und ordnet ein. Das Produkt kommt erst im Gespräch.' },
-  { title: 'Echt vor der Kamera', text: 'Kurze Sätze, eigener Ton, kein Ablesen. Wir führen Regie und schneiden.' },
-  { title: 'Hilfe vor Werbung', text: 'Jeder Beitrag beantwortet eine Frage. Vertrauen entsteht vor dem Bedarf.' },
-];
-
-export const formats = [
+/* ---------- 05 · Drei Reel-Konzepte ---------- */
+export const concepts = [
   {
-    id: 'erklaert', img: 'd', series: 'Kurz erklärt', kind: 'Wissen', rhythm: 'wöchentlich · 30 bis 45 Sekunden', cover: 'Beihilfe oder Heilfürsorge?',
-    hook: 'Beihilfe oder Heilfürsorge? Erst einmal den Unterschied verstehen',
-    aufbau: 'Frage, Erklärung in drei Sätzen, Einblendung der Begriffe.', nutzen: 'Zeigt Kompetenz in dem Feld, in dem Stefan stark ist.', cta: '„Überblick ansehen“ führt zur Seite Öffentlicher Dienst.',
+    id: 'a', tab: 'A', title: 'Polizei vs. Lehramt', scene: 'split', video: '', poster: '',
+    hook: 'Gleicher Beamtenstatus. Gleiche Absicherung?',
+    spoken: 'Warum unterscheiden sich die Versicherungsfragen beim Polizeistart und im Lehramtsreferendariat?',
+    opening: 'Split-Screen, zwei Berufswelten, ein Schnitt auf Stefan.',
+    board: ['Split-Screen: Polizei links, Klassenraum rechts', 'Text-Hook erscheint, kurze Pause', 'Stefan: „Polizei NRW bekommt Heilfürsorge, Lehramt Beihilfe.“', 'Zwei Spalten: was jeweils dazu nötig ist', 'Hinweis auf die Checkliste'],
+    core: 'Im Polizeivollzugsdienst NRW gibt es freie Heilfürsorge, im Lehramt in der Regel 50 Prozent Beihilfe plus private Krankenversicherung. Wer Heilfürsorge hat, denkt an eine Anwartschaft für später.',
+    cta: 'Checkliste ansehen', goal: 'Reichweite bei Anwärtern, Einstieg in die Checkliste',
   },
   {
-    id: 'frag', img: 'b', series: 'Frag Stefan', kind: 'FAQ', rhythm: 'wöchentlich · 20 bis 40 Sekunden', cover: 'Referendariat: drei Fragen vorab',
-    hook: 'Referendariat startet: Welche Fragen solltest du vorher klären?',
-    aufbau: 'Echte Kundenfrage im Bild, Stefan antwortet direkt.', nutzen: 'Die Themen kommen aus der Beratung. Der Vorrat geht nie aus.', cta: '„Checkliste ansehen“ führt zur Seite für Anwärter.',
+    id: 'b', tab: 'B', title: 'Drei Prüfpunkte vor dem ersten Diensttag', scene: 'detail', video: '', poster: '',
+    hook: 'Deine Verbeamtung steht bevor?',
+    spoken: 'Drei Dinge, die du vor deinem ersten Diensttag prüfen solltest.',
+    opening: 'Detailaufnahmen: Unterlagen, Kalender, ein markierter Termin, Checkliste.',
+    board: ['Kalender, ein Termin wird markiert', 'Text-Hook, Stefan im Bild', 'Punkt 1: Leistungsauszug der Krankenkasse anfordern', 'Punkt 2: Beginn der privaten Krankenversicherung auf den Ernennungstag legen', 'Punkt 3: Austritt aus der gesetzlichen Kasse fristgerecht erklären'],
+    core: 'Leistungsauszug nach § 305 SGB V anfordern, die private Krankenversicherung ab dem Tag der Ernennungsurkunde beginnen lassen und den Austritt aus der gesetzlichen Kasse innerhalb von zwei Wochen nach deren Hinweis erklären.',
+    cta: 'Ganze Checkliste holen', goal: 'Vertrauen durch konkreten Nutzen, Download der Checkliste',
   },
   {
-    id: 'buero', img: 'c', series: 'Aus dem Büro', kind: 'Einblick', rhythm: '14-tägig · 30 Sekunden', cover: 'So läuft ein erstes Gespräch ab',
-    hook: 'So läuft ein erstes Gespräch bei mir ab',
-    aufbau: 'Drei Schritte, gefilmt im Büro, ruhig geschnitten.', nutzen: 'Nimmt die Hürde vor dem ersten Kontakt.', cta: '„Gespräch anfragen“ führt zu Telefon, WhatsApp oder Termin.',
-  },
-  {
-    id: 'klartext', img: 'a', series: 'Klartext', kind: 'Haltung', rhythm: '14-tägig · 30 bis 45 Sekunden', cover: 'Woran du gute Beratung erkennst',
-    hook: 'Woran du gute Beratung erkennst',
-    aufbau: 'Eine klare Aussage, eine Begründung, ein Beispiel.', nutzen: 'Macht Stefans Haltung sichtbar und grenzt ihn ab.', cta: '„Mehr über Stefan“ führt zur Über-uns-Seite.',
+    id: 'c', tab: 'C', title: 'Der verlorene Dienstschlüssel', scene: 'key', video: '', poster: '',
+    hook: 'Dienstschlüssel verloren. Was jetzt?',
+    spoken: 'Wann kann ein verlorener Dienstschlüssel eigentlich teuer werden?',
+    opening: 'Ein Schlüssel fällt auf den Schreibtisch. Stille. Perspektivwechsel.',
+    board: ['Schlüssel fällt, Nahaufnahme, kurze Stille', 'Text-Hook', 'Stefan: Wann der Dienstherr Regress nehmen kann', 'Was eine Diensthaftpflicht abdeckt und was die Gewerkschaft schon regelt', 'Einladung zum Gespräch'],
+    core: 'Regress droht bei Vorsatz und grober Fahrlässigkeit (§ 48 BeamtStG). Versicherbar ist die grobe Fahrlässigkeit über eine Diensthaftpflicht. Vorher prüfen, was die Gewerkschaft schon abdeckt.',
+    cta: 'Gespräch anfragen', goal: 'Beratungsbedarf wecken, Kontaktaufnahme',
   },
 ] as const;
 
-/* ---------- 04 · Social-Media-Strategie ---------- */
+/* ---------- 06 · Content-Säulen ---------- */
 export const pillars = [
-  { id: 'wissen', n: '01', title: 'Wissen & Orientierung', effect: 'zeigt Kompetenz', text: 'Versicherungsthemen verständlich erklärt, mit Schwerpunkt Öffentlicher Dienst.', formats: ['Kurz erklärt', 'Wissens-Karussells', 'Checklisten'] },
-  { id: 'vertrauen', n: '02', title: 'Fragen & Vertrauen', effect: 'baut Vertrauen', text: 'Antworten auf echte Fragen und ein Blick darauf, wie Beratung abläuft.', formats: ['Frag Stefan', 'Fragen-Sticker in Stories', 'Kundenstimmen nur mit Freigabe'] },
-  { id: 'person', n: '03', title: 'Person & Einblick', effect: 'schafft Nähe', text: 'Stefan bei der Arbeit: Haltung, Alltag, Region.', formats: ['Aus dem Büro', 'Klartext', 'Unterwegs in der Region'] },
+  { id: 'reichweite', n: '01', title: 'Reichweite', effect: 'Neue Menschen erreichen', text: 'Fragen, Vergleiche und Alltagssituationen, die jeder im Dienst kennt.', formats: ['Polizei vs. Lehramt', 'Dienstschlüssel verloren', 'Was ändert sich am ersten Diensttag?'] },
+  { id: 'vertrauen', n: '02', title: 'Vertrauen', effect: 'Kompetenz zeigen', text: 'Fachwissen verständlich erklärt, dazu persönliche Einblicke.', formats: ['Kurz erklärt: Öffnungsaktion', 'Frag Stefan', 'So läuft ein Erstgespräch'] },
+  { id: 'conversion', n: '03', title: 'Conversion', effect: 'Anfragen auslösen', text: 'Checklisten, konkrete Beratungsfragen und passende Terminangebote.', formats: ['Checkliste für den Start in NRW', 'Drei Fragen vor dem Antrag', 'Termin für Anwärter'] },
 ] as const;
-
 export const tiles = [
-  { img: 'd', pillar: 'wissen', text: 'Beihilfe oder Heilfürsorge?' },
-  { img: 'b', pillar: 'vertrauen', text: 'Frag Stefan: Referendariat' },
-  { img: 'a', pillar: 'person', text: 'Woran du gute Beratung erkennst' },
-  { img: 'e', pillar: 'wissen', text: 'Dienstunfähigkeit kurz erklärt' },
-  { img: 'c', pillar: 'person', text: 'So läuft ein Erstgespräch' },
-  { img: 'd', pillar: 'vertrauen', text: 'Eure Fragen der Woche' },
+  { img: 'd', pillar: 'reichweite', text: 'Polizei vs. Lehramt' },
+  { img: 'b', pillar: 'vertrauen', text: 'Kurz erklärt: Öffnungsaktion' },
+  { img: 'ad', pillar: 'conversion', text: 'Checkliste für NRW' },
+  { img: 'e', pillar: 'reichweite', text: 'Dienstschlüssel verloren' },
+  { img: 'c', pillar: 'vertrauen', text: 'So läuft ein Erstgespräch' },
+  { img: 'a', pillar: 'conversion', text: 'Termin für Anwärter' },
 ] as const;
 
+/* ---------- 07 · Ein Drehtag ---------- */
+export const shootTopics = ['Polizei vs. Lehramt', 'Drei Prüfpunkte', 'Dienstschlüssel', 'Öffnungsaktion', 'Dienstunfähigkeit', 'So läuft ein Erstgespräch', 'Frag Stefan', 'Freizeitunfall'];
+export const shootOutputs = [
+  { id: 'reels', label: 'Reels', hint: 'je Thema ein Video', shape: 'tall' },
+  { id: 'hooks', label: 'Hook-Varianten', hint: 'drei Einstiege je Reel', shape: 'tall3' },
+  { id: 'stories', label: 'Story-Ausschnitte', hint: 'Kurzfassungen', shape: 'tall3' },
+  { id: 'karussells', label: 'Carousels', hint: 'aus den Skripten', shape: 'stack' },
+  { id: 'ads', label: 'Anzeigen-Creatives', hint: 'für freigegebene Kampagnen', shape: 'ad' },
+] as const;
+
+/* ---------- 08 · Vier Wochen Content ---------- */
 export const calTypes = [
   { id: 'reel', label: 'Reels' },
   { id: 'story', label: 'Stories' },
-  { id: 'wissen', label: 'Wissen' },
-  { id: 'einblick', label: 'Einblicke' },
+  { id: 'wissen', label: 'Carousels' },
   { id: 'faq', label: 'FAQ' },
   { id: 'cta', label: 'Handlungsaufruf' },
 ] as const;
 export type CalType = (typeof calTypes)[number]['id'];
-export const calTypeName: Record<CalType, string> = { reel: 'Reel', story: 'Story', wissen: 'Wissen', einblick: 'Einblick', faq: 'FAQ', cta: 'Handlungsaufruf' };
+export const calTypeName: Record<CalType, string> = { reel: 'Reel', story: 'Story', wissen: 'Carousel', faq: 'FAQ', cta: 'Handlungsaufruf' };
 export const days = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'] as const;
-interface CalItem { d: number; type: CalType; title: string; format: string; goal: string; cta: string }
+interface CalItem { d: number; type: CalType; title: string; format: string; to: string }
 export const calendar: { theme: string; items: CalItem[] }[] = [
-  { theme: 'Start ins Referendariat', items: [
-    { d: 0, type: 'reel', title: 'Referendariat: drei Fragen vorab', format: 'Reel · Serie „Frag Stefan“', goal: 'Aufmerksamkeit bei Anwärtern', cta: 'Checkliste ansehen' },
-    { d: 1, type: 'story', title: 'Umfrage: Wo stehst du gerade?', format: 'Story mit Umfrage-Sticker', goal: 'Interaktion und Themenideen', cta: 'Antworten lassen' },
-    { d: 2, type: 'wissen', title: 'Die Checkliste in fünf Schritten', format: 'Karussell, fünf Seiten', goal: 'Speichern und Weiterleiten', cta: 'Checkliste ansehen' },
-    { d: 3, type: 'einblick', title: 'So bereite ich ein Gespräch vor', format: 'Story-Sequenz aus dem Büro', goal: 'Nähe und Vertrauen', cta: 'Kein Aufruf' },
-    { d: 4, type: 'faq', title: 'Wann sollte ich mich kümmern?', format: 'Reel · Serie „Frag Stefan“', goal: 'Häufige Frage beantworten', cta: 'Frage stellen' },
-    { d: 6, type: 'cta', title: 'Checkliste für den Start in NRW', format: 'Beitrag mit Link in Story und Profil', goal: 'Besuch der Seite für Anwärter', cta: 'Checkliste ansehen' },
+  { theme: 'Polizei oder Lehramt?', items: [
+    { d: 0, type: 'reel', title: 'Polizei vs. Lehramt', format: 'Reel, Konzept A', to: 'Checkliste' },
+    { d: 1, type: 'story', title: 'Umfrage: Wo startest du?', format: 'Story mit Umfrage', to: 'Antworten für W2' },
+    { d: 2, type: 'wissen', title: 'Heilfürsorge und Beihilfe im Überblick', format: 'Carousel, 5 Seiten', to: 'Checkliste' },
+    { d: 4, type: 'faq', title: 'Brauche ich mit Heilfürsorge noch etwas?', format: 'Reel, Frag Stefan', to: 'Beratung' },
+    { d: 6, type: 'cta', title: 'Checkliste für den Start in NRW', format: 'Beitrag und Story mit Link', to: 'Checkliste' },
   ] },
-  { theme: 'Beihilfe & Heilfürsorge', items: [
-    { d: 0, type: 'reel', title: 'Beihilfe oder Heilfürsorge?', format: 'Reel · Serie „Kurz erklärt“', goal: 'Kompetenz zeigen', cta: 'Überblick ansehen' },
-    { d: 1, type: 'story', title: 'Quiz: Was gilt für wen?', format: 'Story mit Quiz-Sticker', goal: 'Interaktion', cta: 'Mitraten' },
-    { d: 2, type: 'wissen', title: 'Zwei Wege im Überblick', format: 'Karussell, vier Seiten', goal: 'Speichern und Weiterleiten', cta: 'Überblick ansehen' },
-    { d: 4, type: 'einblick', title: 'Zwischen Büro und Hausbesuch', format: 'Reel · Serie „Aus dem Büro“', goal: 'Stefan als Person zeigen', cta: 'Kein Aufruf' },
-    { d: 6, type: 'faq', title: 'Eure Fragen der Woche', format: 'Story-Sequenz, drei Antworten', goal: 'Vertrauen, neue Themen', cta: 'Frage stellen' },
+  { theme: 'Vor dem ersten Diensttag', items: [
+    { d: 0, type: 'reel', title: 'Drei Prüfpunkte vor dem ersten Diensttag', format: 'Reel, Konzept B', to: 'Checkliste' },
+    { d: 1, type: 'story', title: 'Quiz: Ab wann gilt die Beihilfe?', format: 'Story mit Quiz', to: 'Checkliste' },
+    { d: 2, type: 'wissen', title: 'Den Krankenkassen-Austritt richtig erklären', format: 'Carousel, 4 Seiten', to: 'Checkliste' },
+    { d: 4, type: 'faq', title: 'Was ist ein Leistungsauszug?', format: 'Reel, Frag Stefan', to: 'Beratung' },
+    { d: 6, type: 'cta', title: 'Termin vor dem Dienstantritt', format: 'Story mit Link', to: 'Termin' },
   ] },
   { theme: 'Dienstunfähigkeit verstehen', items: [
-    { d: 0, type: 'reel', title: 'Dienstunfähigkeit kurz erklärt', format: 'Reel · Serie „Kurz erklärt“', goal: 'Kompetenz zeigen', cta: 'Mehr dazu' },
-    { d: 2, type: 'faq', title: 'Brauche ich das schon als Anwärter?', format: 'Reel · Serie „Frag Stefan“', goal: 'Häufige Frage beantworten', cta: 'Frage stellen' },
-    { d: 3, type: 'story', title: 'Was ist dir noch unklar?', format: 'Story mit Fragen-Sticker', goal: 'Themen für den nächsten Dreh', cta: 'Frage stellen' },
-    { d: 4, type: 'wissen', title: 'Drei Begriffe, die oft verwechselt werden', format: 'Karussell, vier Seiten', goal: 'Speichern und Weiterleiten', cta: 'Mehr dazu' },
-    { d: 6, type: 'cta', title: 'Erstgespräch: kostenlos und unverbindlich', format: 'Beitrag und Story', goal: 'Gesprächsanfragen', cta: 'Gespräch anfragen' },
+    { d: 0, type: 'reel', title: 'Was passiert bei Dienstunfähigkeit als Anwärter?', format: 'Reel, Kurz erklärt', to: 'Beratung' },
+    { d: 2, type: 'wissen', title: 'Die Klausel, auf die es ankommt', format: 'Carousel, 4 Seiten', to: 'Checkliste' },
+    { d: 3, type: 'story', title: 'Was ist dir noch unklar?', format: 'Story mit Fragen-Sticker', to: 'Themen für den Drehtag' },
+    { d: 4, type: 'faq', title: 'Warum früh abschließen?', format: 'Reel, Frag Stefan', to: 'Beratung' },
+    { d: 6, type: 'cta', title: 'Erstgespräch: kostenlos und unverbindlich', format: 'Beitrag und Story', to: 'Termin' },
   ] },
-  { theme: 'So arbeitet Stefan', items: [
-    { d: 0, type: 'einblick', title: 'So läuft ein erstes Gespräch ab', format: 'Reel · Serie „Aus dem Büro“', goal: 'Hürde vor dem Kontakt senken', cta: 'Gespräch anfragen' },
-    { d: 1, type: 'story', title: 'Hinter den Kulissen vom Drehtag', format: 'Story-Sequenz', goal: 'Nähe', cta: 'Kein Aufruf' },
-    { d: 2, type: 'reel', title: 'Woran du gute Beratung erkennst', format: 'Reel · Serie „Klartext“', goal: 'Haltung zeigen, abgrenzen', cta: 'Mehr über Stefan' },
-    { d: 4, type: 'faq', title: 'Wie arbeitet ein Makler eigentlich?', format: 'Reel · Serie „Frag Stefan“', goal: 'Vertrauen durch Transparenz', cta: 'Frage stellen' },
-    { d: 6, type: 'cta', title: 'Termin für den nächsten Monat', format: 'Story mit Link', goal: 'Terminbuchungen', cta: 'Termin anfragen' },
+  { theme: 'Haftung im Dienstalltag', items: [
+    { d: 0, type: 'reel', title: 'Dienstschlüssel verloren. Was jetzt?', format: 'Reel, Konzept C', to: 'Beratung' },
+    { d: 1, type: 'story', title: 'Hinter den Kulissen vom Drehtag', format: 'Story-Sequenz', to: 'Profil' },
+    { d: 2, type: 'wissen', title: 'Dienstunfall und Freizeitunfall', format: 'Carousel, 4 Seiten', to: 'Checkliste' },
+    { d: 4, type: 'faq', title: 'Was deckt meine Gewerkschaft schon ab?', format: 'Reel, Frag Stefan', to: 'Beratung' },
+    { d: 6, type: 'cta', title: 'Termin für den nächsten Monat', format: 'Story mit Link', to: 'Termin' },
   ] },
 ];
 
-export const channels = [
-  { name: 'Instagram', role: 'Hauptkanal', why: 'Reels, Stories und Profil als Schaufenster.' },
-  { name: 'Facebook', role: 'Mitlaufend', why: 'Gleiche Inhalte, regionale Reichweite, dieselbe Planung.' },
-  { name: 'LinkedIn', role: 'Später', why: 'Sinnvoll, sobald Gewerbekunden in den Fokus rücken.' },
-];
-
-/* ---------- 05 · Produktion & Automatisierung ---------- */
-export const levels = [
-  { id: 'auto', label: 'Automatisierbar', note: 'Routine ohne fachliche Aussage: planen, exportieren, erinnern, Zahlen abrufen. Das kann Software übernehmen.' },
-  { id: 'ki', label: 'KI-unterstützt, geprüft', note: 'KI liefert Entwürfe und Varianten. Wir prüfen jede Fassung, bevor Stefan sie sieht.' },
-  { id: 'stefan', label: 'Stefan persönlich', note: 'Fachliche Aussagen, der Auftritt vor der Kamera und jede Freigabe bleiben bei Stefan.' },
-] as const;
-export type Level = (typeof levels)[number]['id'];
-export const pipeline: { title: string; text: string; level: Level }[] = [
-  { title: 'Themenplanung', text: 'Häufige Kundenfragen werden zu einem Monatsplan.', level: 'ki' },
-  { title: 'Skripte', text: 'Hook, drei Sätze, nächster Schritt. Entwurf von uns.', level: 'ki' },
-  { title: 'Drehtag', text: 'Mehrere Themen an einem Termin, mit Regie.', level: 'stefan' },
-  { title: 'Schnitt', text: 'Schnitt, Untertitel und Cover im Markenbild.', level: 'ki' },
-  { title: 'Varianten', text: 'Kurzfassungen, Formate und Texte für jeden Kanal.', level: 'ki' },
-  { title: 'Freigabe', text: 'Stefan prüft jeden Beitrag fachlich, bevor er geplant wird.', level: 'stefan' },
-  { title: 'Veröffentlichung', text: 'Freigegebene Beiträge gehen geplant online.', level: 'auto' },
-  { title: 'Analyse', text: 'Zahlen werden gesammelt und monatlich besprochen.', level: 'auto' },
-];
-export const shootTopics = ['Referendariat: drei Fragen', 'Beihilfe oder Heilfürsorge', 'Dienstunfähigkeit erklärt', 'So läuft ein Erstgespräch', 'Woran du gute Beratung erkennst', 'Wann sollte ich mich kümmern', 'Wie arbeitet ein Makler', 'Zwischen Büro und Hausbesuch'];
-export const shootOutputs = [
-  { id: 'reels', label: 'Reels', hint: '9:16, mit Untertiteln', shape: 'tall' },
-  { id: 'stories', label: 'Story-Sequenzen', hint: 'Kurzfassung in drei Teilen', shape: 'tall3' },
-  { id: 'karussells', label: 'Wissens-Karussells', hint: 'Aus dem Skript abgeleitet', shape: 'stack' },
-  { id: 'zitate', label: 'Zitat-Grafiken', hint: 'Ein Satz, ein Bild', shape: 'square' },
-  { id: 'ads', label: 'Anzeigenmotive', hint: 'Für freigegebene Kampagnen', shape: 'ad' },
-] as const;
-
-/* ---------- 06 · Kampagnen & Leads ---------- */
-export const compare = [
-  { row: 'Erreicht', a: 'Follower, Empfehlungen, Menschen aus der Region', b: 'Ausgewählte Zielgruppen auf Instagram und Facebook' },
-  { row: 'Stärke', a: 'Vertrauen und Wiedererkennung', b: 'Steuerbar und schnell testbar' },
-  { row: 'Grenze', a: 'Reichweite wächst langsam', b: 'Ohne gute Inhalte wirkungslos' },
-  { row: 'Kosten', a: 'Zeit und Produktion', b: 'Werbebudget, zusätzlich zur Agenturleistung' },
-];
-
+/* ---------- 09 · Paid Advertising ---------- */
 export const campaigns = [
   {
-    id: 'a', tab: 'A', img: 'ad', name: 'Referendariat & Berufseinstieg',
-    headline: 'Dein Start in NRW. Auf zwei Seiten.', sub: 'Die Checkliste für deine Absicherung im Referendariat.', text: 'Für angehende Lehrkräfte und Beamtenanwärter in NRW.', cta: 'Checkliste ansehen',
-    facts: [
-      ['Zielgruppe', 'Angehende Lehrkräfte und Beamtenanwärter in NRW, kurz vor dem Dienstantritt'],
-      ['Problem', 'Viele Entscheidungen in wenigen Wochen, wenig Überblick'],
-      ['Nutzen', 'Eine Checkliste und ein Ansprechpartner, der die Fragen kennt'],
-      ['Format', 'Reel-Anzeige und Story, Motiv mit Stefan'],
-      ['Weg', 'Landingpage zum Referendariat, von dort zur Terminanfrage'],
-      ['Messung', 'Seitenbesuche, Kontakt-Klicks, Terminanfragen'],
+    id: 'a', tab: 'A', name: 'Beamtenanwärter NRW', audience: 'Anwärterinnen und Anwärter sowie Referendare in NRW', offer: 'Die kostenlose Checkliste für den Start', cta: 'Checkliste ansehen', path: 'Landingpage mit Checkliste, danach freiwillig Kontakt',
+    creatives: [
+      { img: 'ad', headline: 'Deine Verbeamtung steht bevor?', sub: 'Drei Dinge, die du vorher prüfen solltest.' },
+      { img: 'd', headline: 'Polizei oder Lehramt?', sub: 'Andere Regeln für deine Krankenversicherung.' },
     ],
   },
   {
-    id: 'b', tab: 'B', img: 'c', name: 'Absicherung im Öffentlichen Dienst',
-    headline: 'Beihilfe oder Heilfürsorge?', sub: 'Verständlich erklärt von jemandem, der den Dienst kennt.', text: 'Für Beamte, Polizei, Feuerwehr und Bundeswehr.', cta: 'Mehr dazu',
-    facts: [
-      ['Zielgruppe', 'Beamte und Angehörige von Polizei, Feuerwehr und Bundeswehr in der Region'],
-      ['Problem', 'Die eigene Versorgung ist schwer zu durchschauen'],
-      ['Nutzen', 'Ein verständlicher Überblick und ein Rückruf, wenn gewünscht'],
-      ['Format', 'Video-Anzeige aus der Serie „Kurz erklärt“'],
-      ['Weg', 'Meta-Lead-Formular mit wenigen Feldern: Name, Kontakt, Rückrufwunsch'],
-      ['Messung', 'Qualifizierte Leads, Kosten je qualifiziertem Lead, geführte Gespräche'],
+    id: 'b', tab: 'B', name: 'Polizei & öffentlicher Dienst', audience: 'Beamte im Polizei- und Verwaltungsdienst in der Region', offer: 'Ein kurzes Erklärvideo und ein Rückruf, wenn gewünscht', cta: 'Mehr erfahren', path: 'Meta-Lead-Formular mit wenigen Feldern',
+    creatives: [
+      { img: 'e', headline: 'Dienstschlüssel verloren?', sub: 'Wann es teuer werden kann, kurz erklärt.' },
+      { img: 'c', headline: 'Heilfürsorge, und dann?', sub: 'Was du für später regeln solltest.' },
     ],
   },
   {
-    id: 'c', tab: 'C', img: 'a', name: 'Persönliche Beratung für Privatkunden',
-    headline: 'Ein Ansprechpartner. Vor Ort.', sub: 'Erstgespräch kostenlos und unverbindlich.', text: 'Stefan Neudorf, Versicherungsmakler in Mechernich.', cta: 'Termin anfragen',
-    facts: [
-      ['Zielgruppe', 'Privatkunden rund um Mechernich und Euskirchen, mit einem konkreten Anlass'],
-      ['Problem', 'Verträge aus vielen Jahren, niemand fühlt sich zuständig'],
-      ['Nutzen', 'Ein fester Ansprechpartner, der zuhört und sortiert'],
-      ['Format', 'Porträt-Anzeige im Feed, regional ausgespielt'],
-      ['Weg', 'Direkte Terminbuchung für ein Erstgespräch'],
-      ['Messung', 'Gebuchte und wahrgenommene Termine'],
+    id: 'c', tab: 'C', name: 'Persönliche Beratung', audience: 'Privatkunden rund um Mechernich und Euskirchen', offer: 'Erstgespräch, kostenlos und unverbindlich', cta: 'Termin anfragen', path: 'Direkte Terminbuchung',
+    creatives: [
+      { img: 'a', headline: 'Ein Ansprechpartner. Vor Ort.', sub: 'Stefan Neudorf, Versicherungsmakler in Mechernich.' },
+      { img: 'b', headline: 'Viele Verträge, ein Überblick.', sub: 'Wir sortieren gemeinsam, in Ruhe.' },
     ],
   },
 ] as const;
+export const adRules: { tag: Tag; text: string }[] = [
+  { tag: 'doku', text: 'Lead-Formulare brauchen einen Datenschutz-Link und dürfen keine Gesundheits-, Finanz- oder Vertragsdaten abfragen.' },
+  { tag: 'doku', text: 'Anzeigen dürfen persönliche Merkmale wie Gesundheit oder finanzielle Lage nicht andeuten.' },
+  { tag: 'hyp', text: 'Ob Metas Sonderkategorie für Finanzprodukte bei Versicherungsanzeigen in Deutschland greift, prüfen wir vor dem Start im Werbekonto.' },
+];
 
-export const leadPaths = [
-  { id: 'form', title: 'Meta-Lead-Formular', rows: ['Formular öffnet sich direkt in Instagram oder Facebook, Kontaktdaten sind vorausgefüllt.', 'Niedrigste Hürde, viele Anfragen möglich.', 'Anfragen können unverbindlicher sein. Ein Prüfschritt im Formular hilft.', 'Datenschutz-Link ist Pflicht. Keine Fragen zu Gesundheit, Finanzen oder bestehenden Verträgen.', 'Kampagne B'] },
-  { id: 'page', title: 'Landingpage', rows: ['Die Anzeige führt auf eine Seite, die das Thema erklärt und zum Kontakt führt.', 'Wer anfragt, hat sich vorher informiert.', 'Mehr Schritte, dadurch weniger Anfragen.', 'Volle Kontrolle über Hinweise, Einwilligung und Erstinformation.', 'Kampagne A'] },
-  { id: 'booking', title: 'Terminbuchung', rows: ['Interessenten wählen selbst einen freien Termin.', 'Höchste Verbindlichkeit, kein Hin und Her.', 'Höchste Hürde. Braucht Vertrauen aus den Inhalten davor.', 'Buchungswerkzeug mit Vertrag zur Auftragsverarbeitung nötig.', 'Kampagne C'] },
+/* ---------- 10 · Weg zur Anfrage ---------- */
+export const pathNodes = [
+  { id: 'reel', label: 'Reel', text: 'Jemand sieht Stefan mit einer Frage, die ihn betrifft.' },
+  { id: 'profil', label: 'Profil oder Landingpage', text: 'Mehr Inhalte zum Thema, ein klarer nächster Schritt.' },
+  { id: 'check', label: 'Checkliste', text: 'Kostenlos und ohne Pflichtangaben. Sie bringt Nutzen, bevor jemand fragt.' },
+  { id: 'kontakt', label: 'Freiwillige Kontaktaufnahme', text: 'Telefon, WhatsApp, Nachricht oder Formular. Der Interessent entscheidet.' },
+  { id: 'termin', label: 'Beratungstermin', text: 'Stefan berät persönlich. Die Erstinformation übergibt er im Gespräch.' },
 ] as const;
-export const pathRows = ['So funktioniert es', 'Stärke', 'Grenze', 'Zu beachten', 'Passt zu'];
+export const routes = [
+  { id: 'klassisch', label: 'Über die Checkliste', nodes: ['reel', 'profil', 'check', 'kontakt', 'termin'], note: 'Der ausführliche Weg für alle, die sich erst informieren wollen.' },
+  { id: 'direkt', label: 'Direkt zum Termin', nodes: ['reel', 'profil', 'termin'], note: 'Wer schon überzeugt ist, bucht sofort. Keine Checkliste nötig.' },
+  { id: 'anzeige', label: 'Über eine Anzeige', nodes: ['reel', 'kontakt', 'termin'], note: 'Ein Lead-Formular in der Anzeige: zwei Klicks bis zur Anfrage.' },
+  { id: 'nachricht', label: 'Per Nachricht', nodes: ['reel', 'kontakt', 'termin'], note: 'Eine Frage per DM oder WhatsApp, Stefan antwortet persönlich.' },
+] as const;
 
-export const platformRules: { tag: Tag; text: string }[] = [
-  { tag: 'doku', text: 'Meta-Lead-Formulare brauchen einen Link zur eigenen Datenschutzerklärung. Gesundheits-, Finanz- und Versicherungsdaten dürfen ohne Erlaubnis von Meta nicht abgefragt werden.' },
-  { tag: 'doku', text: 'Anzeigen dürfen persönliche Merkmale wie Gesundheit oder finanzielle Lage weder behaupten noch andeuten. Der Nutzen steht im Mittelpunkt, nicht die Lage der Person.' },
-  { tag: 'doku', text: 'Google verlangt für Finanzdienstleistungs-Anzeigen in Deutschland eine Verifizierung des Werbetreibenden. Deshalb beginnt der Pilot mit Meta, Google Ads prüfen wir danach.' },
-  { tag: 'hyp', text: 'Ob Metas besondere Anzeigenkategorie für Finanzprodukte bei Versicherungsanzeigen in Deutschland greift, klären wir vor dem Start direkt im Werbekonto.' },
-];
+/* ---------- 11 · Automatisierung ---------- */
+export const levels = [
+  { id: 'auto', label: 'Automatisierbar' },
+  { id: 'ki', label: 'KI-unterstützt, geprüft' },
+  { id: 'mensch', label: 'Mensch entscheidet' },
+] as const;
+export type Level = (typeof levels)[number]['id'];
+export const workflows = [
+  { id: 'content', label: 'Content-Workflow', steps: [
+    { title: 'Recherche', text: 'Häufige Fragen, Trends und Termine im Jahr der Zielgruppe sammeln.', level: 'ki' },
+    { title: 'Skriptvorschläge', text: 'Hooks und Skripte als Entwurf, von uns überarbeitet.', level: 'ki' },
+    { title: 'Fachliche Freigabe', text: 'Stefan prüft jede Aussage, bevor gedreht wird.', level: 'mensch' },
+    { title: 'Schnittunterstützung', text: 'Untertitel, Rohschnitt, Formatvarianten. Feinschnitt von uns.', level: 'ki' },
+    { title: 'Planung', text: 'Freigegebene Beiträge werden für beide Kanäle eingeplant.', level: 'auto' },
+    { title: 'Reporting', text: 'Zahlen werden gesammelt und monatlich aufbereitet.', level: 'auto' },
+  ] },
+  { id: 'lead', label: 'Lead-Workflow', steps: [
+    { title: 'Erfassung', text: 'Zulässige Anfragen aus Formular, Anzeige oder Buchung landen an einem Ort.', level: 'auto' },
+    { title: 'CRM-Zuordnung', text: 'Kontakt anlegen, Quelle und Kampagne vermerken, Dubletten erkennen.', level: 'auto' },
+    { title: 'Benachrichtigung', text: 'Stefan erfährt sofort von jeder neuen Anfrage.', level: 'auto' },
+    { title: 'Erste Antwort', text: 'Stefan meldet sich persönlich. Vorlagen helfen, entscheiden tut er.', level: 'mensch' },
+    { title: 'Terminorganisation', text: 'Buchung, Bestätigung, Erinnerung am Vortag.', level: 'auto' },
+    { title: 'Reporting', text: 'Anfragen, Termine und Ergebnis je Kampagne.', level: 'auto' },
+  ] },
+] as const;
 
-/* ---------- 07 · Lead Journey ---------- */
-export const journey = [
-  { title: 'Anzeige oder Content', sees: 'Sieht ein Reel oder eine Anzeige mit Stefan.', auto: 'Ausspielung an die freigegebene Zielgruppe.', stefan: 'Gibt Motiv und Text vorher frei.', data: 'Reichweite, Aufrufe, Klicks' },
-  { title: 'Kontaktanfrage', sees: 'Füllt ein kurzes Formular aus oder klickt auf „Termin anfragen“.', auto: 'Bestätigung auf dem Bildschirm, Hinweis auf Datenschutz.', stefan: 'Nichts. Die Anfrage kommt von selbst.', data: 'Anzahl der Anfragen je Kampagne' },
-  { title: 'Strukturierte Erfassung', sees: 'Bekommt eine kurze Bestätigung mit Stefans Kontaktdaten.', auto: 'Anfrage landet mit Quelle und Zeitpunkt an einem Ort.', stefan: 'Nichts.', data: 'Herkunft: Kampagne, Motiv, Kanal' },
-  { title: 'CRM', sees: 'Merkt davon nichts.', auto: 'Kontakt wird angelegt, Status „neu“, Dubletten werden erkannt.', stefan: 'Sieht alle Anfragen in einer Liste.', data: 'Status je Kontakt' },
-  { title: 'Benachrichtigung', sees: 'Wartet nicht lange auf eine Antwort.', auto: 'Stefan erhält sofort eine Nachricht mit den Angaben.', stefan: 'Entscheidet: anrufen, schreiben oder Termin vorschlagen.', data: 'Zeit bis zur ersten Reaktion' },
-  { title: 'Terminbuchung', sees: 'Wählt einen freien Termin und bekommt eine Erinnerung.', auto: 'Kalendereintrag, Bestätigung, Erinnerung am Vortag.', stefan: 'Legt fest, wann Termine möglich sind.', data: 'Gebuchte Termine' },
-  { title: 'Beratung', sees: 'Spricht mit Stefan. Kostenlos und unverbindlich.', auto: 'Nichts. Beratung bleibt persönlich.', stefan: 'Führt das Gespräch, übergibt die Erstinformation, dokumentiert.', data: 'Wahrgenommene Termine, Ergebnis' },
-  { title: 'Nachverfolgung', sees: 'Bekommt die vereinbarten Unterlagen und einen nächsten Schritt.', auto: 'Erinnerung an offene Punkte, Status wird fortgeschrieben.', stefan: 'Hält den Kontakt und meldet, ob ein Kunde gewonnen wurde.', data: 'Gewonnene Kunden, soweit Stefan sie meldet' },
-];
+/* ---------- 12 · Dein Anteil ---------- */
+export const roles = {
+  stefan: [
+    { title: 'Expertise', text: 'Dein Wissen ist der Inhalt.' },
+    { title: 'Kameraauftritte', text: 'Gebündelt, mit Regie, an wenigen Terminen.' },
+    { title: 'Fachliche Freigaben', text: 'Nichts geht ohne dein OK online.' },
+    { title: 'Persönliche Beratung', text: 'Die Gespräche führst du.' },
+  ],
+  wir: ['Strategie', 'Research', 'Content-Ideen', 'Skripte', 'Produktion und Schnitt', 'Kampagnensteuerung', 'Publishing-Vorbereitung', 'Auswertung und Optimierung'],
+};
 
-export const privacy = [
-  { title: 'Einwilligung und Information', text: 'Wer anfragt, erfährt klar, wer die Daten bekommt und wofür. Rückruf und E-Mail nur mit ausdrücklicher Einwilligung, die wir dokumentieren.' },
-  { title: 'So wenig Daten wie möglich', text: 'Name, Kontaktweg, Anliegen. Angaben zu Gesundheit oder bestehenden Verträgen gehören ins Gespräch, nicht ins Formular.' },
-  { title: 'Zugriff und Löschung', text: 'Anbieter mit Vertrag zur Auftragsverarbeitung, Zugriff nur für Stefan und benannte Personen, feste Löschfristen.' },
-];
-
-/* ---------- 08 · Growth Intelligence (Demo-Daten, frei erfunden) ---------- */
+/* ---------- 13 · Erfolgsmessung (Demo-Daten, frei erfunden) ---------- */
 export const dashData = [
-  { id: 'a', name: 'Kampagne A', spend: 450, leads: 38, qualified: 14, booked: 9, attended: 7, customers: 2, verdict: 'Viele Anfragen, aber nur jede dritte ist qualifiziert.', action: 'Formular schärfen: eine Frage zum Anlass ergänzen, Zielgruppe enger fassen.' },
-  { id: 'b', name: 'Kampagne B', spend: 450, leads: 16, qualified: 11, booked: 8, attended: 7, customers: 3, verdict: 'Weniger Anfragen, dafür werden fast alle zu Gesprächen.', action: 'Laufen lassen. Budget erst erhöhen, wenn die Quote stabil bleibt.' },
-  { id: 'c', name: 'Kampagne C', spend: 300, leads: 6, qualified: 3, booked: 2, attended: 1, customers: 0, verdict: 'Zu wenige Daten für ein Urteil.', action: 'Weiterlaufen lassen und ein zweites Motiv testen, bevor wir entscheiden.' },
+  { id: 'a', name: 'Kampagne A', spend: 450, leads: 38, qualified: 14, booked: 9, attended: 7, customers: 2, verdict: 'Viele Anfragen, aber nur jede dritte ist qualifiziert.', action: 'Zielgruppe enger fassen, eine Frage zum Anlass ergänzen.' },
+  { id: 'b', name: 'Kampagne B', spend: 450, leads: 16, qualified: 11, booked: 8, attended: 7, customers: 3, verdict: 'Weniger Anfragen, dafür werden fast alle zu Gesprächen.', action: 'Laufen lassen. Budget erst erhöhen, wenn das so bleibt.' },
+  { id: 'c', name: 'Kampagne C', spend: 300, leads: 6, qualified: 3, booked: 2, attended: 1, customers: 0, verdict: 'Zu wenige Daten für ein Urteil.', action: 'Zweites Motiv testen, dann entscheiden.' },
 ];
 export const kpiSources = { spend: 'Werbekonto', qualified: 'CRM, von Stefan bestätigt', cpl: 'Berechnet', booked: 'Kalender', attended: 'Kalender und Stefan', customers: 'Stefans Rückmeldung' };
 
-/* ---------- 09 · 90-Tage-Plan ---------- */
+/* ---------- 14 · 90-Tage-Pilot ---------- */
 export const roadmap = [
-  { days: 'Tag 1–30', title: 'Vorbereiten', items: ['Positionierung und Zielgruppen festlegen', 'Themenplan und Skripte', 'Erster Drehtag', 'Lead-Weg und Messung einrichten'], result: 'Ergebnis: ein abgestimmter Plan, erstes Material, ein getesteter Anfrageweg.' },
-  { days: 'Tag 31–60', title: 'Veröffentlichen', items: ['Regelmäßige Beiträge nach Plan', 'Erste freigegebene Kampagnentests', 'Lead-Prozess im Alltag erproben', 'Zweiter Drehtag'], result: 'Ergebnis: ein sichtbarer Kanal und die ersten echten Anfragen.' },
-  { days: 'Tag 61–90', title: 'Auswerten', items: ['Kampagnen vergleichen', 'Motive und Formulare verbessern', 'Kosten je qualifizierter Anfrage ermitteln'], result: 'Ergebnis: echte Zahlen als Grundlage.' },
-  { days: 'Tag 90', title: 'Entscheiden', items: ['Was hat funktioniert?', 'Was kostet ein Gespräch?', 'Ausbauen, anpassen oder beenden'], result: 'Eine gemeinsame Entscheidung. Ohne Erfolgsgarantie, aber mit Zahlen.' },
+  { days: 'Tag 1–30', title: 'Aufbauen', wir: ['Positionierung und Themenplan', 'Skripte für den ersten Drehtag', 'Lead-Weg und Messung einrichten'], stefan: ['Themen freigeben', 'Erster Drehtag'], result: 'Ein abgestimmter Plan, erstes Material, ein getesteter Anfrageweg.' },
+  { days: 'Tag 31–60', title: 'Veröffentlichen', wir: ['Regelmäßige Beiträge nach Plan', 'Erste freigegebene Kampagnentests', 'Zweiter Drehtag'], stefan: ['Beiträge freigeben', 'Anfragen beantworten'], result: 'Ein sichtbarer Kanal und die ersten echten Anfragen.' },
+  { days: 'Tag 61–90', title: 'Auswerten', wir: ['Kampagnen vergleichen und verbessern', 'Kosten je qualifizierter Anfrage ermitteln'], stefan: ['Rückmeldung zu den Gesprächen'], result: 'Echte Zahlen statt Annahmen.' },
+  { days: 'Tag 90', title: 'Entscheiden', wir: ['Ergebnisbericht und Empfehlung'], stefan: ['Entscheidung: ausbauen, anpassen oder beenden'], result: 'Eine gemeinsame Entscheidung. Ohne Erfolgsgarantie, aber mit Zahlen.' },
 ];
-
-/* ---------- 10 · Angebot ---------- */
-export const roles = {
-  wir: ['Strategie, Zielgruppen und Themenplan', 'Skripte, Regie und Dreh', 'Schnitt, Untertitel, Grafik', 'Planung und Veröffentlichung nach Freigabe', 'Kampagnen: Aufbau, Betreuung, Auswertung', 'Lead-Prozess einrichten und pflegen', 'Monatliches Gespräch mit Zahlen', 'Ein fester Ansprechpartner'],
-  stefan: ['Themen und Aussagen fachlich freigeben', 'Drehtermine wahrnehmen', 'Anfragen persönlich beantworten', 'Rückmeldung geben, was aus Gesprächen wird'],
-};
-export const offer = [
-  { label: 'Pilotprojekt', title: 'Was dazugehören könnte', items: ['Strategie-Workshop', 'Zwei Drehtage', 'Redaktionsplan für drei Monate', 'Bis zu drei Kampagnentests', 'Lead-Prozess und Auswertung'], foot: 'Umfang und Honorar legen wir gemeinsam fest.' },
-  { label: 'Zusätzliche Kostenarten', title: 'Was getrennt anfällt', items: ['Werbebudget, geht direkt an die Plattform', 'Werkzeuge für Terminbuchung und CRM', 'Rechtliche Prüfung von Datenschutz und Werbeaussagen', 'Bei Bedarf: Drehort oder zusätzliche Technik'], foot: 'Beträge nennen wir erst, wenn der Umfang feststeht.' },
-  { label: 'So starten wir', title: 'Drei Schritte', items: ['Gespräch: Ziele, Zielgruppe, verfügbare Zeit', 'Unser Vorschlag für den Pilot mit Umfang und Preis', 'Stefans Entscheidung, danach der erste Workshop'], foot: 'Kein Vertrag vor dem Gespräch.' },
-];
-export const questions = ['Welche Zielgruppe soll zuerst wachsen?', 'Wie viel Zeit kannst du im Monat einplanen?', 'Wie kommen Anfragen heute bei dir an?'];
+export const costTypes = ['Agenturleistung für den Pilot (Umfang und Honorar legen wir gemeinsam fest)', 'Werbebudget, direkt an die Plattform', 'Werkzeuge für CRM und Terminbuchung', 'Rechtliche Prüfung von Datenschutz und Werbeaussagen'];
+export const questions = ['Welche Zielgruppe soll zuerst wachsen?', 'Wie viele Drehtage passen in dein Quartal?', 'Wie kommen Anfragen heute bei dir an?'];

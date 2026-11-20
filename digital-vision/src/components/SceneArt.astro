@@ -1,0 +1,31 @@
+---
+// Gezeichnete Platzhalter-Szenen für Reel-Konzepte (kein Foto, kein KI-Bild).
+// Sie zeigen die Bildidee, bis echtes Material oder freigegebene Muster vorliegen.
+import { Image } from 'astro:assets';
+import reelC from '../assets/reel-c.jpg';
+interface Props { scene: string }
+const { scene } = Astro.props;
+---
+<div class={`art art--${scene}`} aria-hidden="true">
+  {scene === 'split' && (
+    <>
+      <div class="art__half art__half--a"><i class="art__glow"></i><i class="art__door"></i><span class="art__cap">Einsatzalltag</span></div>
+      <div class="art__half art__half--b"><i class="art__board"></i><i class="art__chalk"></i><span class="art__cap">Klassenraum</span></div>
+    </>
+  )}
+  {scene === 'detail' && (
+    <>
+      <i class="art__paper"><b></b><b></b><b></b><b></b></i>
+      <i class="art__cal">{Array.from({ length: 28 }, (_, k) => <b class={k === 17 ? 'is-mark' : ''}></b>)}</i>
+      <i class="art__list"><b></b><b></b><b></b></i>
+    </>
+  )}
+  {scene === 'key' && (
+    <>
+      <i class="art__desk"></i>
+      <svg class="art__key" viewBox="0 0 120 48"><circle cx="22" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="5" /><path d="M38 24h70v10h-8v-6h-8v8h-8v-8H38z" fill="currentColor" /></svg>
+      <i class="art__shadow"></i>
+    </>
+  )}
+  {scene === 'person' && <Image src={reelC} alt="" width={420} loading="lazy" class="art__photo" />}
+</div>

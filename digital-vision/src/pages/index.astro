@@ -7,6 +7,7 @@ import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/jetbrains-mono/latin-500.css';
 import '../styles/vision.css';
 import { Image, Picture } from 'astro:assets';
+import SceneArt from '../components/SceneArt.astro';
 import portrait from '../assets/portrait.jpg';
 import avatar from '../assets/avatar.png';
 import logo from '../assets/logo.png';
@@ -17,18 +18,17 @@ import reelC from '../assets/reel-c.jpg';
 import reelD from '../assets/reel-d.jpg';
 import reelE from '../assets/reel-e.jpg';
 import {
-  chapters, tagLabel, potential, system, criteria, levelText, segments, differentiation, brandPrinciples, formats, pillars, tiles,
-  calTypes, calTypeName, days, calendar, channels, levels, pipeline, shootTopics, shootOutputs, compare, campaigns, leadPaths, pathRows,
-  platformRules, journey, privacy, dashData, kpiSources, roadmap, roles, offer, questions,
+  chapters, tagLabel, brands, startPoint, potentialTakeaways, pillarsOfPitch, mechanicRefs, hookFacts, hookLayers, hookTopic, hookVariants,
+  concepts, pillars, tiles, shootTopics, shootOutputs, calTypes, calTypeName, days, calendar, campaigns, adRules, pathNodes, routes,
+  levels, workflows, roles, dashData, kpiSources, roadmap, costTypes, questions,
 } from '../data/vision';
 
 const img = { a: reelA, b: reelB, c: reelC, d: reelD, e: reelE, ad: adImg } as const;
-const ch = (id: string) => chapters.find((c) => c.id === id)!;
-const words = (t: string) => t.split(' ');
 const levelName = Object.fromEntries(levels.map((l) => [l.id, l.label]));
 const firstCal = calendar[0].items[0];
-const calCount = (types: string[]) => calendar.reduce((n, w) => n + w.items.filter((i) => types.includes(i.type)).length, 0);
+const calCount = calendar.reduce((n, w) => n + w.items.length, 0);
 const d0 = dashData[0];
+const c0 = campaigns[0];
 // Build-Kennung: zeigt online, aus welchem Commit diese Fassung gebaut wurde (Cloudflare Workers Builds setzt die Variable).
 declare const process: { env: Record<string, string | undefined> };
 const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
@@ -39,7 +39,7 @@ const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Digital Vision & Growth · Stefan Neudorf</title>
-    <meta name="description" content="Von der Expertise zur sichtbaren Marke und zu qualifizierten Beratungsanfragen. Konzept für eine mögliche Zusammenarbeit." />
+    <meta name="description" content="Wir übernehmen die digitale Vermarktung deiner Expertise: von der Content-Idee bis zur Beratungsanfrage. Konzept für eine mögliche Zusammenarbeit." />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="dv-build" content={buildCommit} />
     <meta name="theme-color" content="#011D37" />
@@ -91,13 +91,13 @@ const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
             <li><a href={`#${c.id}`} data-index-link><span class="index__letter">{c.n}</span><strong>{c.title}</strong><span>{c.line}</span></a></li>
           ))}
         </ol>
-        <p class="index__keys"><kbd>←</kbd><kbd>→</kbd> Schritt zurück / weiter · <kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd> Kapitel · <kbd>G</kbd> Übersicht · <kbd>P</kbd> Präsentieren · <kbd>F</kbd> Vollbild · <kbd>Esc</kbd> Beenden</p>
+        <p class="index__keys"><kbd>←</kbd><kbd>→</kbd> Schritt zurück / weiter · <kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd> Station 01–10 · <kbd>G</kbd> Übersicht · <kbd>P</kbd> Präsentieren · <kbd>F</kbd> Vollbild · <kbd>Esc</kbd> Beenden</p>
       </div>
     </dialog>
 
     <main id="start">
-      <!-- ========== HERO ========== -->
-      <section class="hero" data-stop="Start" data-hero>
+      <!-- ========== 01 · EINSTIEG ========== -->
+      <section class="hero chapter" id="s1" data-chapter="s1" data-stop="01 · Einstieg" data-hero>
         <div class="hero__light" aria-hidden="true"><i></i><i></i><i></i></div>
         <canvas class="hero__dots" data-halftone aria-hidden="true"></canvas>
         <span class="hero__frame" aria-hidden="true"></span>
@@ -105,524 +105,396 @@ const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
           <Picture src={portrait} alt="Stefan Neudorf, Versicherungsmakler in Mechernich" formats={['avif', 'webp']} widths={[480, 720, 900]} sizes="(max-width: 860px) 100vw, 46vw" loading="eager" fetchpriority="high" />
         </figure>
         <div class="hero__content wrap">
-          <p class="eyebrow hero__eyebrow">Digital Vision &amp; Growth · für Stefan Neudorf</p>
-          <h1 class="hero__title">
-            <span class="line"><span>Aus Expertise</span></span>
-            <span class="line line--gold"><span><em>werden Anfragen.</em></span></span>
+          <p class="eyebrow hero__eyebrow">Digital Growth Pitch · für Stefan Neudorf</p>
+          <h1 class="hero__title hero__title--long">
+            <span class="line"><span>Deine Expertise</span></span>
+            <span class="line"><span>verdient mehr</span></span>
+            <span class="line line--gold"><span><em>Sichtbarkeit.</em></span></span>
           </h1>
-          <p class="hero__lead">Wir machen aus deiner Expertise eine sichtbare Marke und aus digitaler Aufmerksamkeit qualifizierte Beratungsanfragen.</p>
+          <p class="hero__lead">Wir übernehmen die digitale Vermarktung deiner Expertise: von der Content-Idee über Social Media und Kampagnen bis zur qualifizierten Beratungsanfrage.</p>
           <div class="hero__actions">
-            <a class="cta" href="#k1">Strategie ansehen</a>
-            <button class="cta cta--ghost" type="button" data-open-index>Kapitelübersicht</button>
+            <a class="cta" href="#s2">Pitch starten</a>
+            <button class="cta cta--ghost" type="button" data-open-index>Alle 14 Stationen</button>
           </div>
         </div>
         <p class="hero__note wrap"><span>Konzept für eine mögliche Zusammenarbeit</span><span>November 2026</span></p>
       </section>
 
-      <!-- ========== 01 · POTENZIAL ========== -->
-      <section class="chapter" id="k1" data-chapter="k1">
-        <header class="opener" data-stop="01 · Das ungenutzte Potenzial" data-parallax>
-          <span class="opener__letter" aria-hidden="true">01</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 01</p><h2>{ch('k1').title}</h2><p>{ch('k1').line}</p></div>
-        </header>
-
-        <div class="scene scene--statement" data-scene>
-          <i class="stop" data-stop="Die Ausgangslage" style="top:88%"></i>
-          <div class="scene__sticky">
-            <div class="wrap">
-              <p class="statement" data-words aria-label="Die Expertise ist da. Die Bühne fehlt noch.">
-                {words('Die Expertise ist da.').map((w) => <span aria-hidden="true">{w} </span>)}
-                {words('Die Bühne fehlt noch.').map((w) => <span class="gold" aria-hidden="true">{w} </span>)}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="block wrap" data-stop="Vorhanden, ungenutzt, unser Ansatz">
-          <p class="eyebrow" data-reveal>Bezogen auf Team-Neudorf</p>
-          <h2 class="h-xl" data-reveal>Das Fundament steht. <em>Der Motor fehlt.</em></h2>
-          <div class="triple triple--fields">
-            {potential.map((p, i) => (
-              <article data-reveal style={`--i:${i}`}><p class="label">{p.label}</p><h3>{p.title}</h3><ul>{p.items.map((t) => <li>{t}</li>)}</ul><span class={`tag tag--${p.tag}`}>{tagLabel[p.tag]}</span></article>
+      <!-- ========== 02 · MARKTPOTENZIAL ========== -->
+      <section class="chapter block wrap" id="s2" data-chapter="s2" data-stop="02 · Marktpotenzial">
+        <p class="eyebrow" data-reveal>02 · Marktpotenzial</p>
+        <h2 class="h-xl" data-reveal>Versicherungswissen <em>hat ein Publikum.</em></h2>
+        <div class="market">
+          <ul class="brands">
+            {brands.map((b, i) => (
+              <li data-reveal style={`--i:${i}`}>
+                <span class="label">{b.platform} · {b.focus}</span>
+                <strong>{b.name}</strong>
+                <span class="brands__handle">@{b.handle}</span>
+                <b class:list={['brands__reach', { 'is-open': b.date === 'unklar' }]}>{b.reach}</b>
+                <small>Follower · Stand {b.date} · <a href={b.source} target="_blank" rel="noopener noreferrer">{b.sourceLabel}</a></small>
+              </li>
             ))}
-          </div>
-          <p class="fine" data-reveal>Der Ist-Stand stammt aus team-neudorf.de und dem Instagram-Profil. Was ungenutzt bleibt, ist unsere Einschätzung von außen und gehört ins erste Gespräch.</p>
+          </ul>
+          <aside class="market__side" data-reveal style="--i:2">
+            <p class="label label--gold">Stefans Ausgangspunkt</p>
+            <p class="market__start"><b>{startPoint.posts}</b> Beiträge · <b>{startPoint.followers}</b> Follower</p>
+            <p class="market__note">{startPoint.note}</p>
+            <ul class="takeaways">{potentialTakeaways.map((t) => <li>{t}</li>)}</ul>
+          </aside>
         </div>
-
-        <div class="scene scene--system" data-scene>
-          <i class="stop" data-stop="Das System" style="top:8%"></i>
-          <i class="stop" data-stop="Das System: Ergebnis" style="top:92%"></i>
-          <div class="scene__sticky">
-            <div class="wrap">
-              <p class="eyebrow">Unser Ansatz</p>
-              <h2 class="h-xl">Ein System statt <em>einzelner Beiträge.</em></h2>
-              <ol class="chain" style={`--n:${system.length}`}>
-                {system.map((s, i) => (
-                  <li style={`--i:${i}`}><span class="chain__node" aria-hidden="true"></span><span class="idx">0{i + 1}</span><h3>{s.title}</h3><p>{s.text}</p></li>
-                ))}
-              </ol>
-              <p class="aside">Am Ende steht nicht Reichweite, sondern das Beratungsgespräch.</p>
-            </div>
-          </div>
-        </div>
+        <p class="fine" data-reveal><span class="tag tag--quelle">{tagLabel.quelle}</span> Reichweiten aus der Auswertung „Die besten Versicherungs-Instagrammer Deutschlands 2026“ eines Maklerunternehmens (Stichtag 02.06.2026), recherchiert über Suchergebnisse. Vor dem Termin im Original prüfen. Über Anfragen oder Abschlüsse dieser Accounts ist nichts bekannt.</p>
       </section>
 
-      <!-- ========== 02 · ZIELGRUPPEN ========== -->
-      <section class="chapter" id="k2" data-chapter="k2">
-        <header class="opener" data-stop="02 · Wen wir gewinnen wollen" data-parallax>
-          <span class="opener__letter" aria-hidden="true">02</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 02</p><h2>{ch('k2').title}</h2><p>{ch('k2').line}</p></div>
-        </header>
-
-        <div class="block wrap" data-stop="Priorisierung der Zielgruppen" data-segments>
-          <p class="eyebrow" data-reveal>Vier Segmente, vier Kriterien</p>
-          <h2 class="h-xl" data-reveal>Zuerst dort, wo Stefan <em>am stärksten ist.</em></h2>
-          <div class="seg">
-            <div class="tabs seg__tabs" role="tablist" aria-label="Zielgruppen" data-reveal>
-              {segments.map((s, i) => (
-                <button role="tab" type="button" id={`seg-tab-${s.id}`} aria-controls={`seg-${s.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}><span class="idx">0{i + 1}</span><span class="seg__name">{s.title}<small>{s.role}</small></span></button>
-              ))}
-            </div>
-            <div class="seg__panels" data-reveal style="--i:1">
-              {segments.map((s, i) => (
-                <article class="seg__panel" role="tabpanel" id={`seg-${s.id}`} aria-labelledby={`seg-tab-${s.id}`} hidden={i !== 0}>
-                  <p class="seg__lead">{s.lead}</p>
-                  <dl class="seg__scores">
-                    {criteria.map((c, k) => (
-                      <div style={`--k:${k}`}>
-                        <dt>{c}</dt>
-                        <dd><span class="pips" data-v={s.scores[k]} role="img" aria-label={levelText(s.scores[k])}><i></i><i></i><i></i></span><b>{levelText(s.scores[k])}</b><span>{s.reasons[k]}</span></dd>
-                      </div>
-                    ))}
-                  </dl>
-                </article>
-              ))}
-            </div>
-          </div>
-          <p class="fine" data-reveal><span class="tag tag--hyp">{tagLabel.hyp}</span> Die Bewertung ist unsere begründete Einschätzung, keine Marktstudie. Marktgrößen und Abschlussquoten nennen wir nicht, weil wir sie nicht belegen können.</p>
+      <!-- ========== 03 · DIFFERENZIERUNG ========== -->
+      <section class="chapter block wrap" id="s3" data-chapter="s3" data-stop="03 · Unsere Differenzierung">
+        <p class="eyebrow" data-reveal>03 · Unsere Differenzierung</p>
+        <h2 class="h-xl" data-reveal>Vier Kompetenzen. <em>Ein Team.</em></h2>
+        <div class="quad" data-reveal>
+          {pillarsOfPitch.map((p, i) => (
+            <article style={`--i:${i}`}><span class="idx">0{i + 1}</span><h3>{p.title}</h3><p>{p.text}</p></article>
+          ))}
+          <figure class="quad__center"><Image src={avatar} alt="Stefan Neudorf" width={220} densities={[1, 2]} loading="lazy" /><figcaption>Stefan als Gesicht der Marke</figcaption></figure>
         </div>
+        <ul class="refs" data-reveal>
+          {mechanicRefs.map((r) => <li><a href={r.url} target="_blank" rel="noopener noreferrer">{r.name}</a><span>{r.what}</span><small>{r.note}</small></li>)}
+        </ul>
       </section>
 
-      <!-- ========== 03 · PERSONENMARKE ========== -->
-      <section class="chapter" id="k3" data-chapter="k3">
-        <header class="opener" data-stop="03 · Die Personenmarke" data-parallax>
-          <span class="opener__letter" aria-hidden="true">03</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 03</p><h2>{ch('k3').title}</h2><p>{ch('k3').line}</p></div>
-        </header>
-
-        <div class="scene scene--statement" data-scene>
-          <i class="stop" data-stop="Menschen folgen Menschen" style="top:88%"></i>
-          <div class="scene__sticky">
-            <div class="wrap statement-split">
-              <p class="statement" data-words aria-label="Menschen folgen Menschen. Nicht Versicherungen.">
-                {words('Menschen folgen Menschen.').map((w) => <span aria-hidden="true">{w} </span>)}
-                {words('Nicht Versicherungen.').map((w) => <span class="gold" aria-hidden="true">{w} </span>)}
-              </p>
-              <figure class="statement__avatar"><Image src={avatar} alt="Stefan Neudorf" width={420} densities={[1, 2]} loading="lazy" /></figure>
-            </div>
-          </div>
-        </div>
-
-        <div class="block wrap" data-stop="Austauschbar oder erkennbar" data-compare>
-          <p class="eyebrow" data-reveal>Differenzierung</p>
-          <h2 class="h-xl" data-reveal>Versicherungswerbung ist austauschbar. <em>Stefan ist es nicht.</em></h2>
-          <div class="switch" role="group" aria-label="Ansicht wählen" data-reveal>
-            <button type="button" aria-pressed="true" data-mode="both">Vergleich</button>
-            <button type="button" aria-pressed="false" data-mode="a">Übliche Werbung</button>
-            <button type="button" aria-pressed="false" data-mode="b">Stefan als Marke</button>
-          </div>
-          <div class="compare" data-mode="both" data-reveal>
-            <div class="compare__head"><span></span><h3 data-col="a">Übliche Versicherungswerbung</h3><h3 data-col="b">Stefan als Marke</h3></div>
-            {differentiation.map((c) => (
-              <div class="compare__row"><span class="label">{c.row}</span><p data-col="a">{c.a}</p><p data-col="b">{c.b}</p></div>
-            ))}
-          </div>
-          <p class="aside" data-reveal>Seine Herkunft aus dem Dienst ist kein Thema für jede Woche. Sie ist der Grund, warum man ihm zuhört.</p>
-        </div>
-
-        <div class="block wrap brand" data-stop="Markenführung">
-          <div class="brand__board" data-reveal data-parallax>
-            <div class="brand__swatches" aria-hidden="true"><i style="--c:#011d37"></i><i style="--c:#143d6b"></i><i style="--c:#d9b25a"></i><i style="--c:#eaf1fa"></i></div>
-            <p class="brand__type" aria-hidden="true">Aa<span>Instrument Serif · Inter</span></p>
-            <ul class="brand__covers">
-              {formats.slice(0, 3).map((f) => (
-                <li><Image src={img[f.img]} alt="" width={240} loading="lazy" /><span class="brand__series">{f.series}</span><span class="brand__cap">{f.cover}</span></li>
-              ))}
-            </ul>
-            <p class="brand__sub" aria-hidden="true"><span>Untertitel im Markenbild</span></p>
-            <p class="concept">Konzept · Visualisierung</p>
-          </div>
-          <div>
-            <p class="eyebrow" data-reveal>Markenführung</p>
-            <h2 class="h-xl" data-reveal>Fünf Regeln, die Stefan <em>wiedererkennbar machen.</em></h2>
-            <ol class="rules">
-              {brandPrinciples.map((b, i) => (
-                <li data-reveal style={`--i:${i}`}><span class="idx">0{i + 1}</span><div><h3>{b.title}</h3><p>{b.text}</p></div></li>
-              ))}
-            </ol>
-          </div>
-        </div>
-
-        <div class="block wrap reels" data-stop="Wiederkehrende Videoformate" data-reels>
-          <p class="eyebrow" data-reveal>Vier feste Serien</p>
-          <h2 class="h-xl" data-reveal>Formate, die man <em>am ersten Bild erkennt.</em></h2>
-          <div class="reels__stage">
-            <div class="reels__fan" role="tablist" aria-label="Videoformate" data-reveal>
-              {formats.map((r, i) => (
-                <button role="tab" type="button" class="reel-cover" id={`reel-tab-${r.id}`} aria-controls={`reel-${r.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} style={`--k:${i}`}>
-                  <Image src={img[r.img]} alt="" width={420} loading="lazy" />
-                  <span class="reel-cover__pillar">{r.series}</span>
-                  <span class="reel-cover__title">{r.cover}</span>
-                </button>
+      <!-- ========== 04 · CONTENT-LAB ========== -->
+      <section class="chapter block wrap" id="s4" data-chapter="s4" data-stop="04 · Das Content-Lab" data-hooklab>
+        <p class="eyebrow" data-reveal>04 · Das Content-Lab</p>
+        <h2 class="h-xl" data-reveal>Drei Hooks in <em>drei Sekunden.</em></h2>
+        <div class="lab">
+          <div class="lab__controls" data-reveal>
+            <p class="lab__topic"><span class="label">Thema</span>{hookTopic}</p>
+            <div class="tabs lab__variants" role="tablist" aria-label="Hook-Varianten">
+              {hookVariants.map((v, i) => (
+                <button role="tab" type="button" id={`hv-tab-${v.id}`} aria-controls={`hv-${v.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-variant={v.id}>{v.label}</button>
               ))}
             </div>
-            <div class="reels__detail">
-              {formats.map((r, i) => (
-                <article role="tabpanel" id={`reel-${r.id}`} aria-labelledby={`reel-tab-${r.id}`} hidden={i !== 0}>
-                  <p class="label label--gold">Serie 0{i + 1} · {r.kind} · {r.rhythm}</p>
-                  <h3>{r.series}: „{r.hook}“</h3>
-                  <dl>
-                    <div><dt>Aufbau</dt><dd>{r.aufbau}</dd></div>
-                    <div><dt>Wozu</dt><dd>{r.nutzen}</dd></div>
-                    <div><dt>CTA</dt><dd>{r.cta}</dd></div>
-                  </dl>
-                </article>
-              ))}
+            <div class="lab__layers" role="group" aria-label="Ebenen ein- und ausblenden">
+              {hookLayers.map((l) => <button type="button" aria-pressed="true" data-layer={l.id}><i aria-hidden="true"></i>{l.label}<small>{l.short}</small></button>)}
             </div>
           </div>
-          <p class="fine"><span class="concept concept--inline">Konzept · Visualisierung</span> Die Motive sind Platzhalter aus dem vorhandenen Porträt. Fachliche Aussagen gibt Stefan vor jeder Veröffentlichung frei.</p>
-        </div>
-      </section>
-
-      <!-- ========== 04 · SOCIAL-MEDIA-STRATEGIE ========== -->
-      <section class="chapter" id="k4" data-chapter="k4">
-        <header class="opener" data-stop="04 · Die Social-Media-Strategie" data-parallax>
-          <span class="opener__letter" aria-hidden="true">04</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 04</p><h2>{ch('k4').title}</h2><p>{ch('k4').line}</p></div>
-        </header>
-
-        <div class="block wrap profile" data-stop="Säulen und Profil" data-pillars>
-          <div class="profile__text">
-            <p class="eyebrow" data-reveal>Drei Content-Säulen</p>
-            <h2 class="h-xl" data-reveal>Ein Profil, das <em>eine Aufgabe hat.</em></h2>
-            <div class="tabs" role="tablist" aria-label="Content-Säulen" data-reveal>
-              {pillars.map((p, i) => (
-                <button role="tab" type="button" id={`tab-${p.id}`} aria-controls={`panel-${p.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-pillar={p.id}><span class="idx">{p.n}</span>{p.title}</button>
-              ))}
-            </div>
-            {pillars.map((p, i) => (
-              <div class="tabpanel" role="tabpanel" id={`panel-${p.id}`} aria-labelledby={`tab-${p.id}`} hidden={i !== 0}>
-                <p class="tabpanel__text">{p.text}</p>
-                <ul class="formats">{p.formats.map((f) => <li>{f}</li>)}</ul>
-                <p class="label label--gold">{p.effect}</p>
-              </div>
-            ))}
-            <ul class="channels" data-reveal>
-              {channels.map((c) => <li><strong>{c.name}</strong><span class="label">{c.role}</span><span>{c.why}</span></li>)}
-            </ul>
-          </div>
-          <div class="phone-stage" data-parallax data-tilt>
-            <div class="phone" data-active-pillar="wissen">
-              <p class="phone__handle">teamneudorf_versicherungen</p>
-              <div class="phone__head">
-                <Image src={avatar} alt="" width={140} densities={[1, 2]} loading="lazy" />
-                <div><strong>Stefan Neudorf</strong><span>Versicherungsmakler</span><span>Öffentlicher Dienst · Privat · Gewerbe</span><span>Persönlich. Verständlich. Vor Ort.</span></div>
-              </div>
-              <div class="phone__buttons"><span class="is-gold">Folgen</span><span>Nachricht</span><span>Termin</span></div>
-              <ul class="phone__highlights"><li>Start ÖD</li><li>Fragen</li><li>Ablauf</li><li>Kontakt</li></ul>
-              <ul class="phone__grid">
-                {tiles.map((t) => (
-                  <li data-tile={t.pillar}><Image src={img[t.img]} alt="" width={240} loading="lazy" /><span>{t.text}</span></li>
-                ))}
-              </ul>
-            </div>
-            <p class="concept">Konzept · Visualisierung</p>
-          </div>
-        </div>
-
-        <div class="block wrap" data-stop="Vier Wochen Redaktionsplan" data-cal>
-          <p class="eyebrow" data-reveal>Beispielhafter Redaktionsplan</p>
-          <h2 class="h-xl" data-reveal>Vier Wochen, <em>fertig geplant.</em></h2>
-          <div class="chips" data-reveal>
-            <div class="chips__group" role="group" aria-label="Nach Art filtern">
-              <button type="button" aria-pressed="true" data-cal-filter="alle">Alle</button>
-              {calTypes.map((t) => <button type="button" aria-pressed="false" data-cal-filter={t.id}>{t.label}</button>)}
-            </div>
-          </div>
-          <div class="cal" data-reveal>
-            <div class="cal__grid" role="group" aria-label="Redaktionskalender, vier Wochen">
-              <div class="cal__head" aria-hidden="true"><span></span>{days.map((d) => <span>{d}</span>)}</div>
-              {calendar.map((w, wi) => (
-                <div class="cal__week">
-                  <p class="cal__theme"><span class="idx">W{wi + 1}</span>{w.theme}</p>
-                  {days.map((d, di) => {
-                    const it = w.items.find((x) => x.d === di);
-                    return (
-                      <div class="cal__day" data-empty={it ? undefined : ''}>
-                        {it && (
-                          <button type="button" class="cal__item" data-cal-type={it.type} aria-pressed={wi === 0 && di === 0 ? 'true' : 'false'} data-when={`Woche ${wi + 1} · ${d}`} data-kind={calTypeName[it.type]} data-title={it.title} data-format={it.format} data-goal={it.goal} data-cta={it.cta}>
-                            <span class="cal__day-name">{d}</span><span class="cal__type">{calTypeName[it.type]}</span><span class="cal__title">{it.title}</span>
-                          </button>
-                        )}
-                      </div>
-                    );
-                  })}
+          <div class="lab__phone" data-reveal style="--i:1">
+            <div class="reelphone" data-lab-phone data-layers="visual spoken text">
+              {hookVariants.map((v, i) => (
+                <div class="reelphone__screen" data-lab-screen={v.id} hidden={i !== 0}>
+                  <div class="reelphone__visual"><SceneArt scene={v.scene} /></div>
+                  <p class="reelphone__text">{v.text}</p>
+                  <p class="reelphone__spoken"><span aria-hidden="true">◖◗</span>{v.spoken}</p>
                 </div>
               ))}
+              <span class="reelphone__ui" aria-hidden="true"><i></i><i></i><i></i></span>
             </div>
-            <aside class="cal__detail" aria-live="polite">
-              <p class="label label--gold"><span data-cal-when>Woche 1 · Mo</span> · <span data-cal-kind>{calTypeName[firstCal.type]}</span></p>
-              <h3 data-cal-title>{firstCal.title}</h3>
-              <dl>
-                <div><dt>Format</dt><dd data-cal-format>{firstCal.format}</dd></div>
-                <div><dt>Ziel</dt><dd data-cal-goal>{firstCal.goal}</dd></div>
-                <div><dt>Aufruf</dt><dd data-cal-cta>{firstCal.cta}</dd></div>
-                <div><dt>Kanäle</dt><dd>Instagram und Facebook</dd></div>
+            <p class="concept">Konzept · gezeichnete Szene</p>
+          </div>
+          <div class="lab__detail" data-reveal style="--i:2">
+            {hookVariants.map((v, i) => (
+              <dl role="tabpanel" id={`hv-${v.id}`} aria-labelledby={`hv-tab-${v.id}`} hidden={i !== 0}>
+                <div data-layer-row="visual"><dt>Visual</dt><dd>{v.visual}</dd></div>
+                <div data-layer-row="spoken"><dt>Spoken</dt><dd>{v.spoken}</dd></div>
+                <div data-layer-row="text"><dt>Text</dt><dd>{v.text}</dd></div>
+                <div class="lab__why"><dt>Warum</dt><dd>{v.why}</dd></div>
               </dl>
-              <p class="cal__sum"><b>{calCount(calTypes.map((t) => t.id))}</b> geplante Inhalte in vier Wochen, aus einem bis zwei Drehtagen. Jeder Beitrag wird vorab von Stefan freigegeben.</p>
+            ))}
+          </div>
+        </div>
+        <ul class="facts-mini" data-reveal>
+          {hookFacts.map((f) => <li><span class="tag tag--doku">{tagLabel.doku}</span>{f.text} <a href={f.url} target="_blank" rel="noopener noreferrer">{f.source}</a></li>)}
+          <li><span class="tag tag--idee">Praxisregel</span>Drei gleichzeitige Hook-Ebenen sind eine Faustregel aus der Creator-Praxis, keine Plattformvorgabe. Wir testen sie gegeneinander.</li>
+        </ul>
+      </section>
+
+      <!-- ========== 05 · DREI REEL-KONZEPTE ========== -->
+      <section class="chapter block wrap" id="s5" data-chapter="s5" data-stop="05 · Drei Reel-Konzepte" data-concepts>
+        <p class="eyebrow" data-reveal>05 · Drei Reel-Konzepte aus deiner Checkliste</p>
+        <h2 class="h-xl" data-reveal>Fertig zum Drehen. <em>Fachlich von dir.</em></h2>
+        <div class="chips" data-reveal>
+          <div class="chips__group" role="tablist" aria-label="Konzept wählen">
+            {concepts.map((c, i) => <button role="tab" type="button" id={`cc-tab-${c.id}`} aria-controls={`cc-${c.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-concept={c.id}>{c.tab} · {c.title}</button>)}
+          </div>
+        </div>
+        {concepts.map((c, i) => (
+          <article class="concept-card" role="tabpanel" id={`cc-${c.id}`} aria-labelledby={`cc-tab-${c.id}`} hidden={i !== 0}>
+            <div class="concept-card__phone">
+              <div class="reelphone" data-reel-player>
+                <div class="reelphone__screen">
+                  <div class="reelphone__visual">
+                    <SceneArt scene={c.scene} />
+                    {c.video && <video src={c.video} poster={c.poster || undefined} muted playsinline loop preload="none" data-reel-video></video>}
+                  </div>
+                  <p class="reelphone__text">{c.hook}</p>
+                  {c.video ? <button type="button" class="reelphone__play" data-reel-play aria-label={`Muster-Reel „${c.title}“ abspielen`}><span aria-hidden="true"></span></button> : <span class="reelphone__badge">Storyboard · Video folgt</span>}
+                </div>
+                <span class="reelphone__ui" aria-hidden="true"><i></i><i></i><i></i></span>
+              </div>
+              <p class="concept">Konzept {c.tab} · Pitch-Mockup</p>
+            </div>
+            <div class="concept-card__body">
+              <h3>{c.title}</h3>
+              <p class="concept-card__spoken">„{c.spoken}“</p>
+              <ol class="board">
+                {c.board.map((b, k) => <li><span class="idx">0{k + 1}</span>{b}</li>)}
+              </ol>
+              <dl class="facts facts--two">
+                <div><dt>Eröffnung</dt><dd>{c.opening}</dd></div>
+                <div><dt>Ziel</dt><dd>{c.goal}</dd></div>
+                <div class="facts__wide"><dt>Kernaussage</dt><dd>{c.core} <span class="tag tag--check">{tagLabel.check}</span></dd></div>
+                <div><dt>Handlungsaufruf</dt><dd>{c.cta}</dd></div>
+              </dl>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <!-- ========== 06 · CONTENT-SÄULEN ========== -->
+      <section class="chapter block wrap profile" id="s6" data-chapter="s6" data-stop="06 · Content-Säulen" data-pillars>
+        <div class="profile__text">
+          <p class="eyebrow" data-reveal>06 · Deine Content-Säulen</p>
+          <h2 class="h-xl" data-reveal>Ein System, <em>das sich wiederholt.</em></h2>
+          <div class="tabs" role="tablist" aria-label="Content-Säulen" data-reveal>
+            {pillars.map((p, i) => (
+              <button role="tab" type="button" id={`tab-${p.id}`} aria-controls={`panel-${p.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-pillar={p.id}><span class="idx">{p.n}</span>{p.title}</button>
+            ))}
+          </div>
+          {pillars.map((p, i) => (
+            <div class="tabpanel" role="tabpanel" id={`panel-${p.id}`} aria-labelledby={`tab-${p.id}`} hidden={i !== 0}>
+              <p class="tabpanel__text">{p.text}</p>
+              <ul class="formats">{p.formats.map((f) => <li>{f}</li>)}</ul>
+              <p class="label label--gold">{p.effect}</p>
+            </div>
+          ))}
+        </div>
+        <div class="phone-stage" data-parallax data-tilt>
+          <div class="phone" data-active-pillar="reichweite">
+            <p class="phone__handle">teamneudorf_versicherungen</p>
+            <div class="phone__head">
+              <Image src={avatar} alt="" width={140} densities={[1, 2]} loading="lazy" />
+              <div><strong>Stefan Neudorf</strong><span>Versicherungsmakler</span><span>Öffentlicher Dienst · Privat · Gewerbe</span><span>Persönlich. Verständlich. Vor Ort.</span></div>
+            </div>
+            <div class="phone__buttons"><span class="is-gold">Folgen</span><span>Nachricht</span><span>Termin</span></div>
+            <ul class="phone__highlights"><li>Start ÖD</li><li>Fragen</li><li>Checkliste</li><li>Kontakt</li></ul>
+            <ul class="phone__grid">
+              {tiles.map((t) => (
+                <li data-tile={t.pillar}><Image src={img[t.img]} alt="" width={240} loading="lazy" /><span>{t.text}</span></li>
+              ))}
+            </ul>
+          </div>
+          <p class="concept">Konzept · Visualisierung</p>
+        </div>
+      </section>
+
+      <!-- ========== 07 · EIN DREHTAG ========== -->
+      <section class="chapter block wrap" id="s7" data-chapter="s7" data-stop="07 · Ein Drehtag" data-shoot>
+        <p class="eyebrow" data-reveal>07 · Ein Drehtag, viele Inhalte</p>
+        <h2 class="h-xl" data-reveal>Ein Termin mit dir. <em>Content für Wochen.</em></h2>
+        <div class="shoot" data-reveal>
+          <div class="shoot__source">
+            <div class="shoot__cam"><Image src={img.c} alt="" width={420} loading="lazy" /><span class="shoot__rec" aria-hidden="true">REC</span></div>
+            <label class="shoot__range" for="shoot-n"><span class="label">Themen am Drehtag</span><output for="shoot-n" data-shoot-n>6</output></label>
+            <input id="shoot-n" type="range" min="3" max="8" step="1" value="6" data-shoot-input />
+            <ul class="shoot__topics" aria-label="Gedrehte Themen">
+              {shootTopics.map((t, i) => <li data-topic={i}>{t}</li>)}
+            </ul>
+          </div>
+          <span class="shoot__arrow" aria-hidden="true">→</span>
+          <div class="shoot__out" aria-live="polite">
+            <ul class="shoot__tiles">
+              {shootOutputs.map((o) => (
+                <li><span class={`shape shape--${o.shape}`} aria-hidden="true"><i></i><i></i><i></i></span><b data-out={o.id}>0</b><span class="shoot__label">{o.label}</span><small>{o.hint}</small></li>
+              ))}
+            </ul>
+            <div class="shoot__weeks">
+              <p><b data-out="feed">0</b> Feed-Beiträge. Bei drei pro Woche reicht das für rund <b data-out="weeks">0</b> Wochen.</p>
+              <ol aria-hidden="true">{[1, 2, 3, 4, 5, 6].map((w) => <li data-week={w}>W{w}</li>)}</ol>
+            </div>
+          </div>
+        </div>
+        <p class="fine" data-reveal><span class="concept concept--inline">Illustratives Leistungspaket · keine Zusage</span> Was an einem Tag entsteht, hängt von Vorbereitung und Themen ab.</p>
+      </section>
+
+      <!-- ========== 08 · VIER WOCHEN CONTENT ========== -->
+      <section class="chapter block wrap" id="s8" data-chapter="s8" data-stop="08 · Vier Wochen Content" data-cal>
+        <p class="eyebrow" data-reveal>08 · Vier Wochen Content</p>
+        <h2 class="h-xl" data-reveal>Jede Woche führt <em>zur Checkliste oder zu dir.</em></h2>
+        <div class="chips" data-reveal>
+          <div class="chips__group" role="group" aria-label="Nach Art filtern">
+            <button type="button" aria-pressed="true" data-cal-filter="alle">Alle</button>
+            {calTypes.map((t) => <button type="button" aria-pressed="false" data-cal-filter={t.id}>{t.label}</button>)}
+          </div>
+        </div>
+        <div class="cal" data-reveal>
+          <div class="cal__grid" role="group" aria-label="Redaktionskalender, vier Wochen">
+            <div class="cal__head" aria-hidden="true"><span></span>{days.map((d) => <span>{d}</span>)}</div>
+            {calendar.map((w, wi) => (
+              <div class="cal__week">
+                <p class="cal__theme"><span class="idx">W{wi + 1}</span>{w.theme}</p>
+                {days.map((d, di) => {
+                  const it = w.items.find((x) => x.d === di);
+                  return (
+                    <div class="cal__day" data-empty={it ? undefined : ''}>
+                      {it && (
+                        <button type="button" class="cal__item" data-cal-type={it.type} aria-pressed={wi === 0 && di === 0 ? 'true' : 'false'} data-when={`Woche ${wi + 1} · ${d}`} data-kind={calTypeName[it.type]} data-title={it.title} data-format={it.format} data-to={it.to}>
+                          <span class="cal__day-name">{d}</span><span class="cal__type">{calTypeName[it.type]}</span><span class="cal__title">{it.title}</span>
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+          <aside class="cal__detail" aria-live="polite">
+            <p class="label label--gold"><span data-cal-when>Woche 1 · Mo</span> · <span data-cal-kind>{calTypeName[firstCal.type]}</span></p>
+            <h3 data-cal-title>{firstCal.title}</h3>
+            <dl>
+              <div><dt>Format</dt><dd data-cal-format>{firstCal.format}</dd></div>
+              <div><dt>Führt zu</dt><dd data-cal-to>{firstCal.to}</dd></div>
+            </dl>
+            <p class="cal__sum"><b>{calCount}</b> Inhalte in vier Wochen, alle aus Themen deiner Checkliste. Jeder Beitrag wird vorab von dir freigegeben.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ========== 09 · PAID ADVERTISING ========== -->
+      <section class="chapter block wrap campaign" id="s9" data-chapter="s9" data-stop="09 · Paid Advertising" data-ad>
+        <div class="ad-stage" data-parallax data-tilt>
+          <article class="ad" data-format="feed">
+            <header><Image src={avatar} alt="" width={64} densities={[1, 2]} loading="lazy" /><div><strong>teamneudorf_versicherungen</strong><span>Gesponsert</span></div></header>
+            <div class="ad__media">
+              {campaigns.flatMap((c, i) => c.creatives.map((cr, k) => <Image src={img[cr.img]} alt="" width={640} loading="eager" data-ad-img={`${c.id}${k}`} hidden={!(i === 0 && k === 0)} />))}
+              <div class="ad__copy"><h3 data-ad-headline>{c0.creatives[0].headline}</h3><p data-ad-sub>{c0.creatives[0].sub}</p></div>
+            </div>
+            <footer><p data-ad-offer>{c0.offer}</p><span class="ad__cta" data-ad-cta>{c0.cta}</span></footer>
+          </article>
+          <p class="concept">Entwurf · keine geschaltete Anzeige</p>
+        </div>
+        <div>
+          <p class="eyebrow" data-reveal>09 · Paid Advertising</p>
+          <h2 class="h-xl" data-reveal>Drei Kampagnen. <em>Je zwei Creatives.</em></h2>
+          <div class="chips" data-reveal>
+            <div class="chips__group" role="tablist" aria-label="Kampagne wählen">
+              {campaigns.map((c, i) => <button role="tab" type="button" id={`camp-tab-${c.id}`} aria-controls={`camp-${c.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-campaign={c.id} data-offer={c.offer} data-cta={c.cta} data-creatives={JSON.stringify(c.creatives)}>{c.tab} · {c.name}</button>)}
+            </div>
+            <div class="chips__group" role="group" aria-label="Creative">
+              <button type="button" aria-pressed="true" data-creative="0">Creative 1</button>
+              <button type="button" aria-pressed="false" data-creative="1">Creative 2</button>
+            </div>
+            <div class="chips__group" role="group" aria-label="Format">
+              <button type="button" aria-pressed="true" data-ad-format="feed">Feed</button>
+              <button type="button" aria-pressed="false" data-ad-format="story">Story</button>
+            </div>
+          </div>
+          {campaigns.map((c, i) => (
+            <div class="camp" role="tabpanel" id={`camp-${c.id}`} aria-labelledby={`camp-tab-${c.id}`} hidden={i !== 0}>
+              <dl class="facts facts--two">
+                <div><dt>Zielgruppe</dt><dd>{c.audience}</dd></div>
+                <div><dt>Angebot</dt><dd>{c.offer}</dd></div>
+                <div><dt>CTA</dt><dd>{c.cta}</dd></div>
+                <div><dt>Weg</dt><dd>{c.path}</dd></div>
+              </dl>
+            </div>
+          ))}
+          <ul class="facts-mini">
+            {adRules.map((r) => <li><span class={`tag tag--${r.tag}`}>{tagLabel[r.tag]}</span>{r.text}</li>)}
+          </ul>
+          <p class="fine">Motiv, Text, Zielgruppe und Budget gibst du frei, bevor etwas startet. Wir nennen keine Ergebnisse, bevor es echte gibt.</p>
+        </div>
+      </section>
+
+      <!-- ========== 10 · WEG ZUR ANFRAGE ========== -->
+      <section class="chapter block wrap" id="s10" data-chapter="s10" data-stop="10 · Weg zur Anfrage" data-routes>
+        <p class="eyebrow" data-reveal>10 · Der Weg zur Beratungsanfrage</p>
+        <h2 class="h-xl" data-reveal>Viele Einstiege. <em>Keine Pflichtschritte.</em></h2>
+        <div class="switch" role="group" aria-label="Weg wählen" data-reveal>
+          {routes.map((r, i) => <button type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-route={r.id} data-nodes={r.nodes.join(' ')} data-note={r.note}>{r.label}</button>)}
+        </div>
+        <ol class="route" data-reveal data-active={routes[0].nodes.join(' ')}>
+          {pathNodes.map((n, i) => (
+            <li data-node={n.id} class:list={[{ 'is-on': (routes[0].nodes as readonly string[]).includes(n.id) }]}><span class="route__dot" aria-hidden="true"></span><span class="idx">0{i + 1}</span><strong>{n.label}</strong><p>{n.text}</p></li>
+          ))}
+        </ol>
+        <p class="aside" data-route-note aria-live="polite">{routes[0].note}</p>
+        <p class="fine" data-reveal><span class="tag tag--idee">{tagLabel.idee}</span> Die Checkliste bleibt ohne Pflichtangaben. Daten erheben wir nur, wenn jemand selbst Kontakt aufnimmt, und nur so viele wie nötig. Datenschutzhinweise und Erstinformation prüft vor dem Start eine Fachperson.</p>
+      </section>
+
+      <!-- ========== 11 · AUTOMATISIERUNG ========== -->
+      <section class="chapter block wrap" id="s11" data-chapter="s11" data-stop="11 · Automatisierung" data-workflows>
+        <p class="eyebrow" data-reveal>11 · Automatisierung des Marketings</p>
+        <h2 class="h-xl" data-reveal>Routine macht die Maschine. <em>Entscheidungen machen Menschen.</em></h2>
+        <div class="switch" role="group" aria-label="Workflow wählen" data-reveal>
+          {workflows.map((w, i) => <button type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-workflow={w.id}>{w.label}</button>)}
+        </div>
+        {workflows.map((w, i) => (
+          <ol class="process process--6" data-flow={w.id} hidden={i !== 0}>
+            {w.steps.map((s, k) => (
+              <li data-level={s.level} style={`--k:${k}`}><span class="process__n">0{k + 1}</span><h3>{s.title}</h3><p>{s.text}</p><span class={`label level level--${s.level}`}>{levelName[s.level]}</span></li>
+            ))}
+          </ol>
+        ))}
+        <p class="fine" data-reveal><span class="concept concept--inline">Konzept · nichts davon ist eingerichtet</span> Werkzeuge wählen wir gemeinsam, mit Vertrag zur Auftragsverarbeitung. Fachliche Inhalte werden nie automatisch veröffentlicht.</p>
+      </section>
+
+      <!-- ========== 12 · DEIN ANTEIL ========== -->
+      <section class="chapter block wrap" id="s12" data-chapter="s12" data-stop="12 · Dein Anteil">
+        <p class="eyebrow" data-reveal>12 · Was du selbst tun musst</p>
+        <h2 class="h-xl" data-reveal>Du bleibst der Experte. <em>Den Rest übernehmen wir.</em></h2>
+        <div class="share">
+          <article class="share__you" data-reveal>
+            <p class="label label--gold">Dein Anteil</p>
+            <ol>{roles.stefan.map((r, i) => <li><span class="idx">0{i + 1}</span><div><h3>{r.title}</h3><p>{r.text}</p></div></li>)}</ol>
+          </article>
+          <article class="share__us" data-reveal style="--i:1">
+            <p class="label">Unser Anteil, im vereinbarten Umfang</p>
+            <ul>{roles.wir.map((r) => <li>{r}</li>)}</ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========== 13 · ERFOLGSMESSUNG ========== -->
+      <section class="chapter block wrap" id="s13" data-chapter="s13" data-stop="13 · Erfolgsmessung" data-dash={JSON.stringify(dashData)}>
+        <p class="eyebrow" data-reveal>13 · Erfolgsmessung</p>
+        <h2 class="h-xl" data-reveal>Wir zählen Gespräche, <em>nicht Likes.</em></h2>
+        <div class="dash" data-reveal>
+          <header class="dash__head">
+            <p class="dash__demo">Demo-Daten · frei erfunden, um die Auswertung zu erklären</p>
+            <div class="switch" role="group" aria-label="Kampagne wählen">
+              {dashData.map((d, i) => <button type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-dash-set={d.id}>{d.name}</button>)}
+            </div>
+          </header>
+          <ul class="dash__kpis">
+            <li><span class="label">Werbekosten</span><b data-kpi="spend">{d0.spend} €</b><small>{kpiSources.spend}</small></li>
+            <li><span class="label">Qualifizierte Anfragen</span><b data-kpi="qualified">{d0.qualified}</b><small>{kpiSources.qualified}</small></li>
+            <li class="is-key"><span class="label">Kosten je qualifizierter Anfrage</span><b data-kpi="cpl">–</b><small>{kpiSources.cpl}</small></li>
+            <li><span class="label">Beratungstermine</span><b data-kpi="booked">{d0.booked}</b><small>{kpiSources.booked}</small></li>
+            <li><span class="label">Wahrgenommen</span><b data-kpi="attended">{d0.attended}</b><small>{kpiSources.attended}</small></li>
+            <li><span class="label">Gewonnene Kunden</span><b data-kpi="customers">{d0.customers}</b><small>{kpiSources.customers}</small></li>
+          </ul>
+          <div class="dash__body">
+            <ol class="funnel" aria-label="Von der Anfrage zum Kunden (Demo)">
+              {[['leads', 'Anfragen'], ['qualified', 'Qualifiziert'], ['booked', 'Gebucht'], ['attended', 'Wahrgenommen'], ['customers', 'Kunden']].map(([k, l]) => (
+                <li data-funnel={k}><span class="funnel__label">{l}</span><span class="funnel__bar"><i></i></span><b></b></li>
+              ))}
+            </ol>
+            <aside class="dash__verdict" aria-live="polite">
+              <p class="label label--gold">So lesen wir das</p>
+              <p class="dash__verdict-text" data-dash-verdict>{d0.verdict}</p>
+              <p class="label">Nächster Schritt</p>
+              <p data-dash-action>{d0.action}</p>
             </aside>
           </div>
-          <p class="fine" data-reveal><span class="concept concept--inline">Konzept · Beispielplan</span> <span class="tag tag--doku">{tagLabel.doku}</span> Beiträge, Reels und Stories lassen sich in der Meta Business Suite für beide Kanäle vorausplanen.</p>
         </div>
+        <p class="fine" data-reveal>Ob aus einem Gespräch ein Kunde wird, weißt nur du. Diese Zahl kommt von dir, nicht aus einem Werkzeug.</p>
       </section>
 
-      <!-- ========== 05 · PRODUKTION & AUTOMATISIERUNG ========== -->
-      <section class="chapter" id="k5" data-chapter="k5">
-        <header class="opener" data-stop="05 · Produktion & Automatisierung" data-parallax>
-          <span class="opener__letter" aria-hidden="true">05</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 05 · Schwerpunkt</p><h2>{ch('k5').title}</h2><p>{ch('k5').line}</p></div>
-        </header>
-
-        <div class="block wrap" data-stop="Der Produktionsprozess" data-pipeline>
-          <p class="eyebrow" data-reveal>Acht Schritte, drei Arten von Arbeit</p>
-          <h2 class="h-xl" data-reveal>Stefan berät. <em>Wir betreiben die Maschine.</em></h2>
-          <div class="switch" role="group" aria-label="Art der Arbeit hervorheben" data-reveal>
-            <button type="button" aria-pressed="true" data-level-filter="alle" data-note="Der ganze Ablauf von der Idee bis zur Auswertung. Stefan ist an zwei Stellen gefragt.">Alle Schritte</button>
-            {levels.map((l) => <button type="button" aria-pressed="false" data-level-filter={l.id} data-note={l.note}>{l.label}</button>)}
-          </div>
-          <ol class="process process--8">
-            {pipeline.map((p, i) => (
-              <li data-level={p.level} data-reveal style={`--i:${i % 4}`}><span class="process__n">0{i + 1}</span><h3>{p.title}</h3><p>{p.text}</p><span class={`label level level--${p.level}`}>{levelName[p.level]}</span></li>
-            ))}
-          </ol>
-          <p class="aside" data-level-note aria-live="polite">Der ganze Ablauf von der Idee bis zur Auswertung. Stefan ist an zwei Stellen gefragt.</p>
-          <p class="fine" data-reveal>Kein fachlicher Beitrag geht ohne Stefans Freigabe online. Nichts davon ist heute eingerichtet: Das ist der Ablauf, den wir aufbauen würden.</p>
-        </div>
-
-        <div class="block wrap" data-stop="Ein Drehtag, mehrere Wochen" data-shoot>
-          <p class="eyebrow" data-reveal>Aus einem Drehtag</p>
-          <h2 class="h-xl" data-reveal>Ein Termin im Monat. <em>Content für Wochen.</em></h2>
-          <div class="shoot" data-reveal>
-            <div class="shoot__source">
-              <div class="shoot__cam"><Image src={img.c} alt="" width={420} loading="lazy" /><span class="shoot__rec" aria-hidden="true">REC</span></div>
-              <label class="shoot__range" for="shoot-n"><span class="label">Themen am Drehtag</span><output for="shoot-n" data-shoot-n>6</output></label>
-              <input id="shoot-n" type="range" min="3" max="8" step="1" value="6" data-shoot-input />
-              <ul class="shoot__topics" aria-label="Gedrehte Themen">
-                {shootTopics.map((t, i) => <li data-topic={i}>{t}</li>)}
-              </ul>
-            </div>
-            <span class="shoot__arrow" aria-hidden="true">→</span>
-            <div class="shoot__out" aria-live="polite">
-              <ul class="shoot__tiles">
-                {shootOutputs.map((o) => (
-                  <li><span class={`shape shape--${o.shape}`} aria-hidden="true"><i></i><i></i><i></i></span><b data-out={o.id}>0</b><span class="shoot__label">{o.label}</span><small>{o.hint}</small></li>
-                ))}
-              </ul>
-              <div class="shoot__weeks">
-                <p><b data-out="feed">0</b> Feed-Beiträge. Bei drei pro Woche reicht das für rund <b data-out="weeks">0</b> Wochen.</p>
-                <ol aria-hidden="true">{[1, 2, 3, 4, 5, 6].map((w) => <li data-week={w}>W{w}</li>)}</ol>
-              </div>
-            </div>
-          </div>
-          <p class="fine" data-reveal><span class="concept concept--inline">Rechenbeispiel · keine Zusage</span> Wie viel an einem Tag entsteht, hängt von Vorbereitung und Tagesform ab. Stories entstehen zusätzlich im Alltag.</p>
-        </div>
-      </section>
-
-      <!-- ========== 06 · KAMPAGNEN & LEADS ========== -->
-      <section class="chapter" id="k6" data-chapter="k6">
-        <header class="opener" data-stop="06 · Kampagnen & Leads" data-parallax>
-          <span class="opener__letter" aria-hidden="true">06</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 06 · Schwerpunkt</p><h2>{ch('k6').title}</h2><p>{ch('k6').line}</p></div>
-        </header>
-
-        <div class="block wrap" data-stop="Organisch und bezahlt" data-compare>
-          <h2 class="h-xl" data-reveal>Organisch baut Vertrauen. <em>Bezahlt bringt Reichweite.</em></h2>
-          <div class="switch" role="group" aria-label="Ansicht wählen" data-reveal>
-            <button type="button" aria-pressed="true" data-mode="both">Beides</button>
-            <button type="button" aria-pressed="false" data-mode="a">Organisch</button>
-            <button type="button" aria-pressed="false" data-mode="b">Bezahlt</button>
-          </div>
-          <div class="compare" data-mode="both" data-reveal>
-            <div class="compare__head"><span></span><h3 data-col="a">Organischer Content</h3><h3 data-col="b">Bezahlte Reichweite (Meta Ads)</h3></div>
-            {compare.map((c) => (
-              <div class="compare__row"><span class="label">{c.row}</span><p data-col="a">{c.a}</p><p data-col="b">{c.b}</p></div>
-            ))}
-          </div>
-          <p class="aside" data-reveal>Was organisch funktioniert, bekommt Budget. Nicht umgekehrt.</p>
-        </div>
-
-        <div class="block wrap campaign" data-stop="Drei Kampagnen" data-ad>
-          <div class="ad-stage" data-parallax data-tilt>
-            <article class="ad" data-format="feed">
-              <header><Image src={avatar} alt="" width={64} densities={[1, 2]} loading="lazy" /><div><strong>teamneudorf_versicherungen</strong><span>Gesponsert</span></div></header>
-              <div class="ad__media">
-                {campaigns.map((c, i) => <Image src={img[c.img]} alt="" width={640} loading="lazy" data-ad-img={c.id} hidden={i !== 0} />)}
-                <div class="ad__copy"><h3 data-ad-headline>{campaigns[0].headline}</h3><p data-ad-sub>{campaigns[0].sub}</p></div>
-              </div>
-              <footer><p data-ad-text>{campaigns[0].text}</p><span class="ad__cta" data-ad-cta>{campaigns[0].cta}</span></footer>
-            </article>
-            <p class="concept">Entwurf · keine geschaltete Anzeige</p>
-          </div>
-          <div>
-            <p class="eyebrow" data-reveal>Drei Kampagnenkonzepte</p>
-            <h2 class="h-xl" data-reveal>Jede Kampagne hat <em>ein Ziel und einen Weg.</em></h2>
-            <div class="chips" data-reveal>
-              <div class="chips__group" role="tablist" aria-label="Kampagne wählen">
-                {campaigns.map((c, i) => <button role="tab" type="button" id={`camp-tab-${c.id}`} aria-controls={`camp-${c.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-campaign={c.id} data-headline={c.headline} data-sub={c.sub} data-text={c.text} data-cta={c.cta}>Kampagne {c.tab}</button>)}
-              </div>
-              <div class="chips__group" role="group" aria-label="Format">
-                <button type="button" aria-pressed="true" data-ad-format="feed">Feed</button>
-                <button type="button" aria-pressed="false" data-ad-format="story">Story</button>
-              </div>
-            </div>
-            {campaigns.map((c, i) => (
-              <div class="camp" role="tabpanel" id={`camp-${c.id}`} aria-labelledby={`camp-tab-${c.id}`} hidden={i !== 0}>
-                <h3 class="camp__name">{c.name}</h3>
-                <dl class="facts facts--two">
-                  {c.facts.map((f) => <div><dt>{f[0]}</dt><dd>{f[1]}</dd></div>)}
-                </dl>
-              </div>
-            ))}
-            <p class="fine">Motiv, Text, Zielgruppe und Budget gibt Stefan frei, bevor etwas startet. Wir schalten nichts ohne Freigabe.</p>
-          </div>
-        </div>
-
-        <div class="block wrap" data-stop="Wege zur Anfrage und Plattformregeln" data-paths>
-          <p class="eyebrow" data-reveal>Drei Wege zur Anfrage</p>
-          <h2 class="h-xl" data-reveal>Je niedriger die Hürde, <em>desto genauer prüfen wir.</em></h2>
-          <div class="switch" role="group" aria-label="Weg wählen" data-reveal>
-            {leadPaths.map((p, i) => <button type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-path={p.id}>{p.title}</button>)}
-          </div>
-          <div class="paths" data-path="form" data-reveal>
-            <div class="paths__col paths__col--rows" aria-hidden="true"><span></span>{pathRows.map((r) => <span class="label">{r}</span>)}</div>
-            {leadPaths.map((p) => (
-              <div class="paths__col" data-col={p.id}><h3>{p.title}</h3>{p.rows.map((r, k) => <p><span class="label paths__row-label">{pathRows[k]}</span>{r}</p>)}</div>
-            ))}
-          </div>
-          <p class="fine" data-reveal><span class="tag tag--hyp">{tagLabel.hyp}</span> Welche Anfragen am Ende besser sind, zeigt erst der Test. Deshalb probieren wir im Pilot mehr als einen Weg.</p>
-        </div>
-
-        <div class="block wrap" data-stop="Plattformregeln">
-          <p class="eyebrow" data-reveal>Regeln für Versicherungswerbung</p>
-          <h2 class="h-xl" data-reveal>Was die Plattformen verlangen, <em>planen wir von Anfang an ein.</em></h2>
-          <ul class="rulebox">
-            {platformRules.map((r) => <li data-reveal><span class={`tag tag--${r.tag}`}>{tagLabel[r.tag]}</span><span>{r.text}</span></li>)}
-          </ul>
-          <p class="fine" data-reveal>Stand der Recherche: November 2026, aus den Hilfeseiten von Meta und Google. Vor dem Start prüfen wir die Regeln im Werbekonto. Rechtliche Fragen zu Werbung und Datenschutz klärt eine Fachperson, nicht wir.</p>
-        </div>
-      </section>
-
-      <!-- ========== 07 · LEAD JOURNEY ========== -->
-      <section class="chapter" id="k7" data-chapter="k7">
-        <header class="opener" data-stop="07 · Die Lead Journey" data-parallax>
-          <span class="opener__letter" aria-hidden="true">07</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 07</p><h2>{ch('k7').title}</h2><p>{ch('k7').line}</p></div>
-        </header>
-
-        <div class="block wrap" data-stop="Acht Stationen" data-journey>
-          <p class="eyebrow" data-reveal>Von der Anzeige bis zum Kunden</p>
-          <h2 class="h-xl" data-reveal>Keine Anfrage <em>geht verloren.</em></h2>
-          <div class="journey journey--8" data-reveal style={`--n:${journey.length}`}>
-            <div class="journey__bar">
-              <button type="button" class="btn-ui" data-journey-play aria-pressed="false"><span class="play" aria-hidden="true"></span><span data-journey-play-label>Ablauf abspielen</span></button>
-              <p class="journey__legend" aria-hidden="true"><span class="dot dot--sees"></span>Interessent<span class="dot dot--auto"></span>Automatisierbar<span class="dot dot--stefan"></span>Stefan<span class="dot dot--data"></span>Messung</p>
-            </div>
-            <div class="journey__track">
-              <div class="journey__line" aria-hidden="true"><i></i></div>
-              <div class="journey__steps" role="tablist" aria-label="Lead Journey">
-                {journey.map((j, i) => (
-                  <button role="tab" type="button" id={`j-tab-${i}`} aria-controls={`j-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-step={i}><span class="journey__node" aria-hidden="true"></span><span class="idx">0{i + 1}</span><span class="journey__name">{j.title}</span></button>
-                ))}
-              </div>
-            </div>
-            {journey.map((j, i) => (
-              <div class="journey__panel journey__panel--four" role="tabpanel" id={`j-${i}`} aria-labelledby={`j-tab-${i}`} hidden={i !== 0}>
-                <div class="facet facet--sees"><p class="label">Was der Interessent erlebt</p><p>{j.sees}</p></div>
-                <div class="facet facet--auto"><p class="label">Was automatisiert werden könnte</p><p>{j.auto}</p></div>
-                <div class="facet facet--stefan"><p class="label">Wo Stefan eingreift</p><p>{j.stefan}</p></div>
-                <div class="facet facet--data"><p class="label">Was wir messen</p><p>{j.data}</p></div>
-              </div>
-            ))}
-          </div>
-          <p class="fine" data-reveal><span class="concept concept--inline">Konzept · nichts davon läuft heute</span> <span class="tag tag--doku">{tagLabel.doku}</span> Meta stellt Leads als Download, über Partner-Anbindungen und über eine Schnittstelle bereit. Abrufbar sind sie dort nur 90 Tage, deshalb gehören sie sofort ins eigene System.</p>
-        </div>
-
-        <div class="block wrap" data-stop="Datenschutz und Einwilligung">
-          <p class="eyebrow" data-reveal>Datenschutz gehört in den Entwurf</p>
-          <h2 class="h-xl" data-reveal>Versicherungsdaten sind sensibel. <em>Der Prozess muss es auch sein.</em></h2>
-          <ol class="triple">
-            {privacy.map((p, i) => (
-              <li data-reveal style={`--i:${i}`}><span class="idx">0{i + 1}</span><h3>{p.title}</h3><p>{p.text}</p></li>
-            ))}
-          </ol>
-          <p class="fine" data-reveal><span class="tag tag--idee">{tagLabel.idee}</span> Das ist unser Entwurf, keine rechtliche Prüfung. Datenschutzhinweise, Einwilligungstexte und die Erstinformation nach Vermittlerrecht gehören vor dem Start in fachkundige Hände.</p>
-        </div>
-      </section>
-
-      <!-- ========== 08 · GROWTH INTELLIGENCE ========== -->
-      <section class="chapter" id="k8" data-chapter="k8">
-        <header class="opener" data-stop="08 · Growth Intelligence" data-parallax>
-          <span class="opener__letter" aria-hidden="true">08</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 08</p><h2>{ch('k8').title}</h2><p>{ch('k8').line}</p></div>
-        </header>
-
-        <div class="block wrap" data-stop="Das Performance-Cockpit" data-dash={JSON.stringify(dashData)}>
-          <p class="eyebrow" data-reveal>Sechs Zahlen, eine Entscheidung</p>
-          <h2 class="h-xl" data-reveal>Wir zählen Gespräche, <em>nicht Likes.</em></h2>
-          <div class="dash" data-reveal>
-            <header class="dash__head">
-              <p class="dash__demo">Demo-Daten · frei erfunden, um die Auswertung zu erklären</p>
-              <div class="switch" role="group" aria-label="Kampagne wählen">
-                {dashData.map((d, i) => <button type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-dash-set={d.id}>{d.name}</button>)}
-              </div>
-            </header>
-            <ul class="dash__kpis">
-              <li><span class="label">Werbeausgaben</span><b data-kpi="spend">{d0.spend} €</b><small>{kpiSources.spend}</small></li>
-              <li><span class="label">Qualifizierte Leads</span><b data-kpi="qualified">{d0.qualified}</b><small>{kpiSources.qualified}</small></li>
-              <li class="is-key"><span class="label">Kosten je qualifiziertem Lead</span><b data-kpi="cpl">–</b><small>{kpiSources.cpl}</small></li>
-              <li><span class="label">Gebuchte Gespräche</span><b data-kpi="booked">{d0.booked}</b><small>{kpiSources.booked}</small></li>
-              <li><span class="label">Wahrgenommene Gespräche</span><b data-kpi="attended">{d0.attended}</b><small>{kpiSources.attended}</small></li>
-              <li><span class="label">Gewonnene Kunden</span><b data-kpi="customers">{d0.customers}</b><small>{kpiSources.customers}</small></li>
-            </ul>
-            <div class="dash__body">
-              <ol class="funnel" aria-label="Von der Anfrage zum Kunden (Demo)">
-                {[['leads', 'Anfragen'], ['qualified', 'Qualifiziert'], ['booked', 'Gebucht'], ['attended', 'Wahrgenommen'], ['customers', 'Kunden']].map(([k, l]) => (
-                  <li data-funnel={k}><span class="funnel__label">{l}</span><span class="funnel__bar"><i></i></span><b></b></li>
-                ))}
-              </ol>
-              <aside class="dash__verdict" aria-live="polite">
-                <p class="label label--gold">So lesen wir das</p>
-                <p class="dash__verdict-text" data-dash-verdict>{d0.verdict}</p>
-                <p class="label">Nächster Schritt</p>
-                <p data-dash-action>{d0.action}</p>
-              </aside>
-            </div>
-          </div>
-          <p class="fine" data-reveal>Echte Zahlen gibt es erst im Pilot. Ob aus einem Gespräch ein Kunde wird, weiß nur Stefan: Diese Zahl kommt von ihm, nicht aus einem Werkzeug.</p>
-        </div>
-      </section>
-
-      <!-- ========== 09 · 90-TAGE-PLAN ========== -->
-      <section class="chapter" id="k9" data-chapter="k9">
-        <header class="opener" data-stop="09 · Der 90-Tage-Plan" data-parallax>
-          <span class="opener__letter" aria-hidden="true">09</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 09</p><h2>{ch('k9').title}</h2><p>{ch('k9').line}</p></div>
-        </header>
-
-        <div class="block wrap" data-stop="90-Tage-Pilot" data-roadmap>
-          <p class="eyebrow" data-reveal>Vorschlag für den Einstieg</p>
-          <h2 class="h-xl" data-reveal>90 Tage, um es <em>gemeinsam herauszufinden.</em></h2>
-          <div class="roadmap" data-reveal data-active="0" style={`--n:${roadmap.length}`}>
+      <!-- ========== 14 · 90-TAGE-PILOT ========== -->
+      <section class="chapter" id="s14" data-chapter="s14">
+        <div class="block wrap" data-stop="14 · 90-Tage-Pilot" data-roadmap>
+          <p class="eyebrow" data-reveal>14 · Die 90-Tage-Pilotphase</p>
+          <h2 class="h-xl" data-reveal>90 Tage. <em>Dann entscheiden wir gemeinsam.</em></h2>
+          <div class="roadmap" data-reveal style={`--n:${roadmap.length}`}>
             <div class="roadmap__track" aria-hidden="true"><i></i></div>
             <div class="roadmap__steps" role="tablist" aria-label="Pilotphase">
               {roadmap.map((r, i) => (
@@ -630,55 +502,33 @@ const buildCommit = process.env.WORKERS_CI_COMMIT_SHA?.slice(0, 7) ?? 'lokal';
               ))}
             </div>
             {roadmap.map((r, i) => (
-              <div class="roadmap__panel" role="tabpanel" id={`r-${i}`} aria-labelledby={`r-tab-${i}`} hidden={i !== 0}>
-                <ul>{r.items.map((t) => <li>{t}</li>)}</ul>
+              <div class="roadmap__panel roadmap__panel--split" role="tabpanel" id={`r-${i}`} aria-labelledby={`r-tab-${i}`} hidden={i !== 0}>
+                <div><p class="label">Wir</p><ul>{r.wir.map((t) => <li>{t}</li>)}</ul></div>
+                <div><p class="label label--gold">Du</p><ul>{r.stefan.map((t) => <li>{t}</li>)}</ul></div>
                 <p>{r.result}</p>
               </div>
             ))}
           </div>
-          <p class="fine" data-reveal>Kampagnen starten erst nach Stefans Freigabe. Wir garantieren keine Ergebnisse. Wir garantieren, dass am Ende Zahlen auf dem Tisch liegen.</p>
-        </div>
-      </section>
-
-      <!-- ========== 10 · ANGEBOT ========== -->
-      <section class="chapter" id="k10" data-chapter="k10">
-        <header class="opener" data-stop="10 · Angebot & nächster Schritt" data-parallax>
-          <span class="opener__letter" aria-hidden="true">10</span>
-          <div class="wrap"><p class="eyebrow">Kapitel 10</p><h2>{ch('k10').title}</h2><p>{ch('k10').line}</p></div>
-        </header>
-
-        <div class="block wrap" data-stop="Wer was übernimmt">
-          <h2 class="h-xl" data-reveal>Wir übernehmen die Arbeit. <em>Stefan bleibt der Experte.</em></h2>
-          <div class="roles">
-            <article data-reveal><p class="label label--gold">Was Stefan beiträgt</p><ul>{roles.stefan.map((r) => <li>{r}</li>)}</ul></article>
-            <article class="roles__wide" data-reveal style="--i:1"><p class="label label--gold">Was unsere Agentur übernimmt, im vereinbarten Umfang</p><ul class="roles__two">{roles.wir.map((r) => <li>{r}</li>)}</ul></article>
+          <div class="costs" data-reveal>
+            <p class="label">Kostenarten im Pilot</p>
+            <ul>{costTypes.map((c) => <li>{c}</li>)}</ul>
           </div>
         </div>
 
-        <div class="block wrap" data-stop="Pilot, Kostenarten, Start">
-          <h2 class="h-xl" data-reveal>Ein Pilot mit <em>klaren Grenzen.</em></h2>
-          <div class="budget budget--three">
-            {offer.map((b, i) => (
-              <article data-reveal style={`--i:${i}`} class:list={[{ 'is-gold': i === 2 }]}><p class="label label--gold">{b.label}</p><h3>{b.title}</h3><ul>{b.items.map((t) => <li>{t}</li>)}</ul><p class="budget__foot">{b.foot}</p></article>
-            ))}
-          </div>
-          <p class="fine" data-reveal>Preise nennen wir im Gespräch, sobald der Umfang feststeht. Es gibt keine garantierten Ergebnisse.</p>
-        </div>
-
-        <div class="closing" data-stop="Der nächste Schritt">
+        <div class="closing" data-stop="Einladung">
           <canvas class="closing__dots" data-halftone aria-hidden="true"></canvas>
           <div class="wrap closing__grid">
             <div>
               <p class="eyebrow" data-reveal>Der nächste Schritt</p>
-              <h2 class="closing__title" data-reveal>Kein Vertrag. <em>Ein Gespräch.</em></h2>
+              <h2 class="closing__title" data-reveal>Lass es uns <em>gemeinsam umsetzen.</em></h2>
               <ol class="questions">
                 {questions.map((q, i) => <li data-reveal style={`--i:${i}`}><span class="idx">0{i + 1}</span>{q}</li>)}
               </ol>
-              <div class="hero__actions" data-reveal><a class="cta cta--ghost" href="#start">Zurück zum Anfang</a><button class="cta cta--ghost" type="button" data-open-index>Kapitelübersicht</button></div>
+              <div class="hero__actions" data-reveal><a class="cta cta--ghost" href="#start">Zurück zum Anfang</a><button class="cta cta--ghost" type="button" data-open-index>Stationsübersicht</button></div>
             </div>
             <figure class="closing__avatar" data-parallax data-reveal><Image src={avatar} alt="Stefan Neudorf" width={420} densities={[1, 2]} loading="lazy" /></figure>
           </div>
-          <p class="wrap closing__legal">Konzept für eine mögliche Zusammenarbeit. Alle Mockups, Anzeigen und Pläne sind Entwürfe; nichts davon ist veröffentlicht oder eingerichtet. Das Dashboard zeigt Demo-Daten. Aussagen zu Plattformfunktionen stammen aus den Hilfeseiten von Meta und Google (Stand November 2026) und ersetzen keine rechtliche Prüfung. Angaben zu Stefan Neudorf stammen von team-neudorf.de und seinem Instagram-Profil.</p>
+          <p class="wrap closing__legal">Konzept für eine mögliche Zusammenarbeit. Alle Mockups, Anzeigen, Szenen und Pläne sind Entwürfe; nichts davon ist veröffentlicht oder eingerichtet. Das Cockpit zeigt Demo-Daten. Fachliche Aussagen stammen aus Stefans Checkliste für Beamtenanwärter in NRW und brauchen vor jeder Veröffentlichung seine Freigabe. Reichweiten und Plattformangaben mit Quelle und Datum, Stand November 2026; sie ersetzen keine rechtliche Prüfung.</p>
         </div>
       </section>
     </main>
