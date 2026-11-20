@@ -49,10 +49,19 @@ Für Mobilgeräte reicht notfalls 720 × 1280 (`scale=720:1280`, `-crf 25`).
 
 ## Status (20.11.2026)
 
-| Slot | Status |
-|---|---|
-| Reel 01 | Testfilm mit 32,5 s extern vorhanden, wird weiterentwickelt. Noch keine Datei im Projekt. |
-| Reel 02 bis 06 | Musterproduktion extern, noch keine Datei im Projekt. |
+Alle sechs Webversionen sind integriert (H.264 720 × 1280, AAC, Faststart, Poster 360 × 640).
+Die 1080p-Master werden separat archiviert und liegen nicht im Repository.
+
+| Slot | Laufzeit | Video | Poster |
+|---|---|---|---|
+| Reel 01 | 32,5 s | 3.790.649 Byte | 16.005 Byte |
+| Reel 02 | 40,0 s | 4.340.089 Byte | 26.104 Byte |
+| Reel 03 | 40,0 s | 4.472.293 Byte | 21.896 Byte |
+| Reel 04 | 40,0 s | 4.461.971 Byte | 25.147 Byte |
+| Reel 05 | 40,0 s | 4.429.800 Byte | 19.563 Byte |
+| Reel 06 | 40,0 s | 4.429.807 Byte | 21.743 Byte |
+
+Die Text Hooks in der Galerie entsprechen den Texten in den Filmen.
 
 Alle Filme sind unveröffentlichte Beispielkonzepte. Versicherungs- und Rechtsaussagen braucht vor einer echten
 Veröffentlichung die fachliche Freigabe durch Stefan.

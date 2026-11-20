@@ -702,6 +702,10 @@ dd { color: var(--ice); }
 .is-playing .reelphone__sound, .reelphone__sound:focus-visible { opacity: 1; }
 .is-playing .reelphone__text, .is-playing .reelphone__badge { opacity: 0; }
 .has-error .reelphone__text { opacity: 1; }
+.has-video .reelphone__text, .has-video .reelphone__ui { display: none; }
+.has-video.has-error .reelphone__text { display: block; }
+.has-video .reelphone__visual video { opacity: 1; object-fit: cover; }
+.has-video:not(.is-playing) .reelphone__play { opacity: 1; }
 
 .brandmap__tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
 .brandmap__tabs button { display: grid; gap: 0.3rem; justify-items: start; padding: 0.9rem 1rem; border: 1px solid var(--line); background: transparent; text-align: left; color: var(--haze); transition: background 0.3s, color 0.3s, border-color 0.3s; }

@@ -258,7 +258,7 @@ const buildCommit = (process.env.COMMIT_REF || process.env.WORKERS_CI_COMMIT_SHA
           <div class="gallery__stage" data-reveal style="--i:1">
             {reels.map((r, i) => (
               <div class="gallery__slot" data-slot={r.id} hidden={i !== 0}>
-                <div class="reelphone reelphone--xl" data-reel-player>
+                <div class:list={['reelphone reelphone--xl', { 'has-video': !!reelMedia[i].video }]} data-reel-player>
                   <div class="reelphone__screen">
                     <div class="reelphone__visual">
                       <SceneArt scene={r.scene} />
@@ -274,7 +274,7 @@ const buildCommit = (process.env.COMMIT_REF || process.env.WORKERS_CI_COMMIT_SHA
                   </div>
                   <span class="reelphone__ui" aria-hidden="true"><i></i><i></i><i></i></span>
                 </div>
-                <p class="concept">Musterproduktion · unveröffentlicht</p>
+                <p class="concept">KI-gestützte Musterproduktion · unveröffentlicht</p>
               </div>
             ))}
           </div>
@@ -298,7 +298,7 @@ const buildCommit = (process.env.COMMIT_REF || process.env.WORKERS_CI_COMMIT_SHA
             ))}
           </div>
         </div>
-        <p class="fine" data-reveal><span class="concept concept--inline">Musterproduktion · 9:16 · 35–45 s · ohne Voice-over</span> Unveröffentlichte Beispielkonzepte. Versicherungs- und Rechtsaussagen gibt Stefan vor jeder Veröffentlichung fachlich frei.</p>
+        <p class="fine" data-reveal><span class="concept concept--inline">KI-gestützte Musterproduktion · 9:16 · ohne Voice-over</span> Noch nicht veröffentlicht. Die Versicherungs- und Rechtsaussagen in den Filmen müssen vor einer Veröffentlichung von Stefan fachlich freigegeben werden.</p>
       </section>
 
       <!-- ========== 07 · PERSONAL BRAND ========== -->
